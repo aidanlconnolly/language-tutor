@@ -2,11 +2,13 @@ import type { DailyRead } from "../types";
 import { READ_FIUMICINO } from "./01-fiumicino";
 import { READ_MONTI_HOTEL } from "./02-monti-hotel";
 import { READ_BAR_MORNING } from "./03-bar-morning";
+import { READ_TRASTEVERE_LUNCH } from "./04-trastevere-lunch";
 
 export const DAILY_READS: DailyRead[] = [
   READ_FIUMICINO,
   READ_MONTI_HOTEL,
   READ_BAR_MORNING,
+  READ_TRASTEVERE_LUNCH,
 ];
 
 export const READS_BY_SLUG: Record<string, DailyRead> = Object.fromEntries(

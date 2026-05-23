@@ -4,10 +4,14 @@ import { UNIT_GREETINGS } from "./02-greetings";
 import { UNIT_NUMBERS_TIME } from "./03-numbers-time";
 import { UNIT_ARTICLES } from "./04-articles";
 import { UNIT_ESSERE_AVERE } from "./05-essere-avere";
+import { UNIT_ABOUT_ME } from "./06-about-me";
+import { UNIT_QUESTIONS } from "./07-questions";
+import { UNIT_LIKES_WANTS } from "./08-likes-wants";
+import { UNIT_CONNECTORS } from "./09-connectors";
 
 /**
  * All authored units, in stage+order sequence.
- * Stage 2-8 unit previews live in `lib/content/stages.ts` as UNIT_OUTLINE.
+ * Remaining stages' unit previews live in `lib/content/stages.ts` as UNIT_OUTLINE.
  */
 export const UNITS: Unit[] = [
   UNIT_ALPHABET,
@@ -15,6 +19,10 @@ export const UNITS: Unit[] = [
   UNIT_NUMBERS_TIME,
   UNIT_ARTICLES,
   UNIT_ESSERE_AVERE,
+  UNIT_ABOUT_ME,
+  UNIT_QUESTIONS,
+  UNIT_LIKES_WANTS,
+  UNIT_CONNECTORS,
 ];
 
 export const UNITS_BY_SLUG: Record<string, Unit> = Object.fromEntries(
