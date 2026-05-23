@@ -191,8 +191,9 @@ export function DailyReadView({ read }: { read: DailyRead }) {
     <main className="mx-auto max-w-5xl px-4 py-8 font-sans sm:px-6">
       <header className="mb-6 flex flex-wrap items-baseline justify-between gap-3">
         <div>
-          <div className="text-[10px] font-bold uppercase tracking-widest text-amber-700 dark:text-amber-400">
-            Daily read · ~10 minutes
+          <div className="flex flex-wrap items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-amber-700 dark:text-amber-400">
+            <span>Daily read · ~10 minutes</span>
+            <DifficultyBadge value={read.difficulty} />
           </div>
           <h1 className="font-serif text-3xl font-bold tracking-tight" lang="it">
             {read.titleIt}
@@ -278,5 +279,25 @@ export function DailyReadView({ read }: { read: DailyRead }) {
         </button>
       </div>
     </main>
+  );
+}
+
+function DifficultyBadge({ value }: { value: number }) {
+  const tone =
+    value <= 5
+      ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-300"
+      : value <= 7
+        ? "bg-amber-100 text-amber-800 dark:bg-amber-950/40 dark:text-amber-300"
+        : "bg-rose-100 text-rose-800 dark:bg-rose-950/40 dark:text-rose-300";
+  const formatted = value % 1 === 0 ? value.toFixed(0) : value.toFixed(1);
+  return (
+    <span
+      className={["rounded-full px-2 py-0.5 text-[10px] font-bold", tone].join(
+        " ",
+      )}
+      title={`Difficulty: ${formatted} / 10`}
+    >
+      {formatted}/10
+    </span>
   );
 }

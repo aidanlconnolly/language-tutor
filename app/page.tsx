@@ -96,8 +96,11 @@ export default async function Home() {
           <div className="flex items-start gap-4">
             <div className="text-3xl">📖</div>
             <div className="flex-1">
-              <div className="text-[10px] font-bold uppercase tracking-widest text-amber-700 dark:text-amber-400">
-                Today&apos;s 10-minute read {readDoneToday ? "· ✓ done" : ""}
+              <div className="flex flex-wrap items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-amber-700 dark:text-amber-400">
+                <span>
+                  Today&apos;s 10-minute read {readDoneToday ? "· ✓ done" : ""}
+                </span>
+                <DifficultyBadge value={todaysRead.difficulty} />
               </div>
               <div className="mt-1 font-serif text-lg font-semibold" lang="it">
                 {todaysRead.titleIt}
@@ -142,6 +145,28 @@ export default async function Home() {
         }}
       />
     </main>
+  );
+}
+
+function DifficultyBadge({ value }: { value: number }) {
+  // Colors ramp green → amber → red as difficulty climbs
+  const tone =
+    value <= 5
+      ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-300"
+      : value <= 7
+        ? "bg-amber-100 text-amber-800 dark:bg-amber-950/40 dark:text-amber-300"
+        : "bg-rose-100 text-rose-800 dark:bg-rose-950/40 dark:text-rose-300";
+  // Format: drop trailing .0 ("4.0" → "4")
+  const formatted = value % 1 === 0 ? value.toFixed(0) : value.toFixed(1);
+  return (
+    <span
+      className={["rounded-full px-2 py-0.5 text-[10px] font-bold", tone].join(
+        " ",
+      )}
+      title={`Difficulty: ${formatted} / 10`}
+    >
+      {formatted}/10
+    </span>
   );
 }
 

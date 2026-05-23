@@ -210,6 +210,15 @@ export type DailyRead = {
   order: number;
   /** Minimum stage required to unlock this read */
   stageUnlock: number;
+  /**
+   * Difficulty rating 1-10. Roughly:
+   *  4 = absolute beginner (present tense only, very short sentences, common vocab)
+   *  6 = A2 (present + vorrei, longer sentences, mild subordination)
+   *  8 = A2/B1 (passato prossimo + imperfetto, longer paragraphs)
+   * 10 = B1+ (subjunctive, idioms, complex narration)
+   * Stories ramp gradually so 2 months in you're comfortably at 9-10.
+   */
+  difficulty: number;
   titleIt: string;
   titleEn: string;
   intro: string;
