@@ -178,9 +178,14 @@ function UnitNode({
           ))}
           {isBuilt && (
             <span className="ml-auto text-[10px] uppercase tracking-wider text-zinc-400">
-              {completedLessons.size > 0
-                ? `${lessons.filter((l) => completedLessons.has(l.slug)).length} / ${lessons.length}`
-                : `${lessons.length} lessons`}
+              {(() => {
+                const doneCount = lessons.filter((l) =>
+                  completedLessons.has(l.slug),
+                ).length;
+                return doneCount > 0
+                  ? `${doneCount} / ${lessons.length}`
+                  : `${lessons.length} lessons`;
+              })()}
             </span>
           )}
         </div>
@@ -193,7 +198,9 @@ function UnitNode({
       )}
       {status === "active" && (
         <div className="mt-3 text-xs font-semibold text-amber-700 dark:text-amber-400">
-          Continue →
+          {lessons.every((l) => completedLessons.has(l.slug))
+            ? "Take checkpoint →"
+            : "Continue →"}
         </div>
       )}
       {status === "available" && (
@@ -206,14 +213,19 @@ function UnitNode({
 
   // Find next lesson to jump to
   let href: string | null = null;
-  if (isBuilt && isUnlocked && built) {
-    const nextLesson =
-      built.lessons.find((l) => !completedLessons.has(l.slug)) ??
-      built.lessons[built.lessons.length - 1];
-    href = isCompleted
-      ? `/checkpoint/${unit.slug}`
-      : `/lesson/${unit.slug}/${nextLesson.slug}`;
+  if (isBuilt && isUnlocked && built && !isCompleted) {
+    const allLessonsDone = lessons.every((l) => completedLessons.has(l.slug));
+    if (allLessonsDone) {
+      // All lessons done — send straight to checkpoint
+      href = `/checkpoint/${unit.slug}`;
+    } else {
+      const nextLesson =
+        lessons.find((l) => !completedLessons.has(l.slug)) ??
+        lessons[lessons.length - 1];
+      href = `/lesson/${unit.slug}/${nextLesson.slug}`;
+    }
   }
+  // Completed units are non-clickable (checkpoint already passed)
 
   return (
     <li
