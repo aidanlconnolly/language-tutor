@@ -102,19 +102,19 @@ function McQuestion({
           );
         })}
       </ul>
-      {answered && (
-        <div
-          className={[
-            "mt-3 rounded border p-2 text-xs",
-            correct
-              ? "border-emerald-300 bg-emerald-50 text-emerald-900 dark:border-emerald-700 dark:bg-emerald-950/30 dark:text-emerald-200"
-              : "border-rose-300 bg-rose-50 text-rose-900 dark:border-rose-700 dark:bg-rose-950/30 dark:text-rose-200",
-          ].join(" ")}
-        >
-          <span className="font-semibold">
-            {correct ? "Correct." : "Not quite."}
-          </span>{" "}
-          {q.fb ?? (correct ? "Nice." : `The answer is "${q.options[q.correct]}".`)}
+      {answered && !correct && (
+        <div className="mt-3 rounded border border-rose-300 bg-rose-50 p-2 text-xs text-rose-900 dark:border-rose-700 dark:bg-rose-950/30 dark:text-rose-200">
+          <span className="font-semibold">Not quite.</span>{" "}
+          {q.fb ?? `The answer is "${q.options[q.correct]}".`}
+          <div className="mt-1 font-semibold">
+            👆 Tap the correct answer (shown in green) to continue.
+          </div>
+        </div>
+      )}
+      {answered && correct && (
+        <div className="mt-3 rounded border border-emerald-300 bg-emerald-50 p-2 text-xs text-emerald-900 dark:border-emerald-700 dark:bg-emerald-950/30 dark:text-emerald-200">
+          <span className="font-semibold">Correct.</span>{" "}
+          {q.fb ?? "Nice."}
         </div>
       )}
     </div>

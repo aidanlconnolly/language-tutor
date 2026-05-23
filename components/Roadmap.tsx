@@ -211,21 +211,25 @@ function UnitNode({
     </div>
   );
 
-  // Find next lesson to jump to
+  // Find where to navigate on click
   let href: string | null = null;
-  if (isBuilt && isUnlocked && built && !isCompleted) {
-    const allLessonsDone = lessons.every((l) => completedLessons.has(l.slug));
-    if (allLessonsDone) {
-      // All lessons done — send straight to checkpoint
-      href = `/checkpoint/${unit.slug}`;
+  if (isBuilt && isUnlocked && built) {
+    if (isCompleted) {
+      // Unit done — link back to first lesson for review
+      href = `/lesson/${unit.slug}/${lessons[0].slug}`;
     } else {
-      const nextLesson =
-        lessons.find((l) => !completedLessons.has(l.slug)) ??
-        lessons[lessons.length - 1];
-      href = `/lesson/${unit.slug}/${nextLesson.slug}`;
+      const allLessonsDone = lessons.every((l) => completedLessons.has(l.slug));
+      if (allLessonsDone) {
+        // All lessons done — send straight to checkpoint
+        href = `/checkpoint/${unit.slug}`;
+      } else {
+        const nextLesson =
+          lessons.find((l) => !completedLessons.has(l.slug)) ??
+          lessons[lessons.length - 1];
+        href = `/lesson/${unit.slug}/${nextLesson.slug}`;
+      }
     }
   }
-  // Completed units are non-clickable (checkpoint already passed)
 
   return (
     <li
