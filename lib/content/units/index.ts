@@ -23,6 +23,10 @@ import { UNIT_PASSATO_ESSERE } from "./21-passato-essere";
 import { UNIT_IMPERFETTO } from "./22-imperfetto";
 import { UNIT_FUTURO } from "./23-futuro";
 import { UNIT_NARRATE_TRIP } from "./24-narrate-trip";
+import { UNIT_SHOPPING } from "./25-shopping";
+import { UNIT_MARKET } from "./26-market";
+import { UNIT_FORMAL } from "./27-formal";
+import { UNIT_COMPLAINTS } from "./28-complaints";
 
 /**
  * All authored units, in stage+order sequence.
@@ -53,6 +57,10 @@ export const UNITS: Unit[] = [
   UNIT_IMPERFETTO,
   UNIT_FUTURO,
   UNIT_NARRATE_TRIP,
+  UNIT_SHOPPING,
+  UNIT_MARKET,
+  UNIT_FORMAL,
+  UNIT_COMPLAINTS,
 ];
 
 export const UNITS_BY_SLUG: Record<string, Unit> = Object.fromEntries(
