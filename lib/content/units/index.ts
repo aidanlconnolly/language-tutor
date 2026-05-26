@@ -27,6 +27,13 @@ import { UNIT_SHOPPING } from "./25-shopping";
 import { UNIT_MARKET } from "./26-market";
 import { UNIT_FORMAL } from "./27-formal";
 import { UNIT_COMPLAINTS } from "./28-complaints";
+import { UNIT_IDIOMS } from "./29-idioms";
+import { UNIT_RELIGION } from "./30-religion";
+import { UNIT_MUSEUMS } from "./31-museums";
+import { UNIT_SMALL_TALK } from "./32-small-talk";
+import { UNIT_CONDIZIONALE } from "./33-condizionale";
+import { UNIT_CONGIUNTIVO } from "./34-congiuntivo";
+import { UNIT_OPINIONS } from "./35-opinions";
 
 /**
  * All authored units, in stage+order sequence.
@@ -61,6 +68,13 @@ export const UNITS: Unit[] = [
   UNIT_MARKET,
   UNIT_FORMAL,
   UNIT_COMPLAINTS,
+  UNIT_IDIOMS,
+  UNIT_RELIGION,
+  UNIT_MUSEUMS,
+  UNIT_SMALL_TALK,
+  UNIT_CONDIZIONALE,
+  UNIT_CONGIUNTIVO,
+  UNIT_OPINIONS,
 ];
 
 export const UNITS_BY_SLUG: Record<string, Unit> = Object.fromEntries(
