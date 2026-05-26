@@ -18,6 +18,11 @@ import { UNIT_TRATTORIA } from "./16-trattoria";
 import { UNIT_FOOD_VOCAB } from "./17-food-vocab";
 import { UNIT_DIET_WINE } from "./18-diet-wine";
 import { UNIT_ROMAN_FOOD } from "./19-roman-food";
+import { UNIT_PASSATO_AVERE } from "./20-passato-avere";
+import { UNIT_PASSATO_ESSERE } from "./21-passato-essere";
+import { UNIT_IMPERFETTO } from "./22-imperfetto";
+import { UNIT_FUTURO } from "./23-futuro";
+import { UNIT_NARRATE_TRIP } from "./24-narrate-trip";
 
 /**
  * All authored units, in stage+order sequence.
@@ -43,6 +48,11 @@ export const UNITS: Unit[] = [
   UNIT_FOOD_VOCAB,
   UNIT_DIET_WINE,
   UNIT_ROMAN_FOOD,
+  UNIT_PASSATO_AVERE,
+  UNIT_PASSATO_ESSERE,
+  UNIT_IMPERFETTO,
+  UNIT_FUTURO,
+  UNIT_NARRATE_TRIP,
 ];
 
 export const UNITS_BY_SLUG: Record<string, Unit> = Object.fromEntries(
