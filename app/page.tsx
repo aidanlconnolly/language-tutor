@@ -142,11 +142,12 @@ export default async function Home() {
 
       {/* Past reads */}
       {pastReads.length > 0 && (
-        <section className="mb-10">
-          <h2 className="mb-3 text-xs font-bold uppercase tracking-widest text-zinc-500">
+        <details className="group mb-10">
+          <summary className="flex cursor-pointer list-none items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-zinc-500 hover:text-amber-700">
+            <span className="transition-transform group-open:rotate-90">▸</span>
             Past reads · {pastReads.length}
-          </h2>
-          <ul className="divide-y divide-zinc-200 rounded-lg border border-zinc-200 bg-white dark:divide-zinc-800 dark:border-zinc-800 dark:bg-zinc-950">
+          </summary>
+          <ul className="mt-3 divide-y divide-zinc-200 rounded-lg border border-zinc-200 bg-white dark:divide-zinc-800 dark:border-zinc-800 dark:bg-zinc-950">
             {pastReads.map((r) => (
               <li key={r.slug}>
                 <Link
@@ -169,7 +170,7 @@ export default async function Home() {
               </li>
             ))}
           </ul>
-        </section>
+        </details>
       )}
 
       {/* Errors */}
