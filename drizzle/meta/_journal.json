@@ -1,0 +1,13 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1780239161092,
+      "tag": "0000_breezy_praxagora",
+      "breakpoints": true
+    }
+  ]
+}

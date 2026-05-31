@@ -1,20 +1,21 @@
 "use server";
 
-import { eq } from "drizzle-orm";
+import { and, eq } from "drizzle-orm";
 import { nanoid } from "nanoid";
 import { db, schema } from "@/lib/db/client";
 import { freshCardState } from "@/lib/srs";
+import { requireAuth } from "@/lib/auth";
 
 export type SaveResult =
   | { ok: true; cardId: string; created: boolean }
   | { ok: false; error: string };
 
 /**
- * Save (or no-op) a card for the given word.
+ * Save (or no-op) a card for the given word, scoped to the current user.
  *
- * Lemma-only semantics: the `cards` table has a UNIQUE constraint on `word_id`,
- * so re-saving an already-saved lemma is a no-op that keeps the *original*
- * source sentence. This matches CLAUDE.md's lemma-saving rule.
+ * Lemma-only semantics: the `cards` table has a composite UNIQUE constraint
+ * on (user_id, word_id), so re-saving an already-saved lemma is a no-op that
+ * keeps the *original* source sentence. This matches CLAUDE.md's lemma-saving rule.
  */
 export async function saveCardForWord(args: {
   wordId: string;
@@ -23,10 +24,17 @@ export async function saveCardForWord(args: {
   sourceTextId?: string;
 }): Promise<SaveResult> {
   try {
+    const userId = await requireAuth();
+
     const existing = await db
       .select({ id: schema.cards.id })
       .from(schema.cards)
-      .where(eq(schema.cards.wordId, args.wordId))
+      .where(
+        and(
+          eq(schema.cards.userId, userId),
+          eq(schema.cards.wordId, args.wordId),
+        ),
+      )
       .limit(1);
 
     if (existing.length > 0) {
@@ -38,6 +46,7 @@ export async function saveCardForWord(args: {
     const id = nanoid();
     await db.insert(schema.cards).values({
       id,
+      userId,
       wordId: args.wordId,
       sourceSentence: args.sourceSentence.normalize("NFC"),
       sourceSurface: args.sourceSurface.normalize("NFC"),

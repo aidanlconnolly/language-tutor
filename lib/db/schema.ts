@@ -1,5 +1,23 @@
-import { sqliteTable, text, integer, index } from "drizzle-orm/sqlite-core";
+import {
+  sqliteTable,
+  text,
+  integer,
+  index,
+  uniqueIndex,
+  primaryKey,
+} from "drizzle-orm/sqlite-core";
 import { relations } from "drizzle-orm";
+
+/* ─────────── Users ─────────── */
+
+export const users = sqliteTable("users", {
+  id: text("id").primaryKey(),
+  email: text("email").notNull().unique(),
+  passwordHash: text("password_hash").notNull(),
+  createdAt: integer("created_at").notNull(),
+});
+
+/* ─────────── Shared word dictionary (no userId — global cache) ─────────── */
 
 export const words = sqliteTable(
   "words",
@@ -34,13 +52,16 @@ export const texts = sqliteTable("texts", {
   createdAt: integer("created_at").notNull(),
 });
 
+/* ─────────── Per-user tables ─────────── */
+
 export const cards = sqliteTable(
   "cards",
   {
     id: text("id").primaryKey(),
+    // userId: defaults to '__legacy__' so existing rows survive drizzle-kit push
+    userId: text("user_id").notNull().default("__legacy__"),
     wordId: text("word_id")
       .notNull()
-      .unique()
       .references(() => words.id, { onDelete: "cascade" }),
     sourceSentence: text("source_sentence").notNull(),
     sourceSurface: text("source_surface").notNull(),
@@ -53,7 +74,11 @@ export const cards = sqliteTable(
       .notNull(),
     createdAt: integer("created_at").notNull(),
   },
-  (t) => [index("cards_fsrs_due_idx").on(t.fsrsDue)],
+  (t) => [
+    // Composite unique: one card per word per user
+    uniqueIndex("cards_user_word_idx").on(t.userId, t.wordId),
+    index("cards_fsrs_due_idx").on(t.fsrsDue),
+  ],
 );
 
 export const reviews = sqliteTable("reviews", {
@@ -70,6 +95,70 @@ export const reviews = sqliteTable("reviews", {
     .$type<FsrsCardState>()
     .notNull(),
 });
+
+export const lessonProgress = sqliteTable(
+  "lesson_progress",
+  {
+    id: text("id").primaryKey(),
+    userId: text("user_id").notNull().default("__legacy__"),
+    lessonSlug: text("lesson_slug").notNull(),
+    unitSlug: text("unit_slug").notNull(),
+    completedAt: integer("completed_at").notNull(),
+    score: integer("score").notNull().default(100),
+  },
+  (t) => [
+    uniqueIndex("lesson_progress_user_lesson_idx").on(t.userId, t.lessonSlug),
+    index("lesson_progress_unit_idx").on(t.unitSlug),
+  ],
+);
+
+export const checkpointAttempts = sqliteTable(
+  "checkpoint_attempts",
+  {
+    id: text("id").primaryKey(),
+    userId: text("user_id").notNull().default("__legacy__"),
+    unitSlug: text("unit_slug").notNull(),
+    score: integer("score").notNull(),
+    passed: integer("passed", { mode: "boolean" }).notNull(),
+    takenAt: integer("taken_at").notNull(),
+  },
+  (t) => [index("checkpoint_attempts_unit_idx").on(t.unitSlug)],
+);
+
+export const readProgress = sqliteTable(
+  "read_progress",
+  {
+    id: text("id").primaryKey(),
+    userId: text("user_id").notNull().default("__legacy__"),
+    readSlug: text("read_slug").notNull(),
+    completedAt: integer("completed_at").notNull(),
+    comprehensionScore: integer("comprehension_score").notNull().default(0),
+  },
+  (t) => [
+    uniqueIndex("read_progress_user_read_idx").on(t.userId, t.readSlug),
+  ],
+);
+
+export const streaks = sqliteTable(
+  "streaks",
+  {
+    userId: text("user_id").notNull().default("__legacy__"),
+    kind: text("kind").notNull(),
+    current: integer("current").notNull().default(0),
+    longest: integer("longest").notNull().default(0),
+    lastDay: text("last_day"),
+  },
+  (t) => [primaryKey({ columns: [t.userId, t.kind] })],
+);
+
+/* ─────────── Relations ─────────── */
+
+export const usersRelations = relations(users, ({ many }) => ({
+  cards: many(cards),
+  lessonProgress: many(lessonProgress),
+  checkpointAttempts: many(checkpointAttempts),
+  readProgress: many(readProgress),
+}));
 
 export const wordsRelations = relations(words, ({ many }) => ({
   cards: many(cards),
@@ -92,49 +181,10 @@ export const textsRelations = relations(texts, ({ many }) => ({
   cards: many(cards),
 }));
 
-/* ─────────── Roadmap progress ─────────── */
+/* ─────────── Types ─────────── */
 
-export const lessonProgress = sqliteTable(
-  "lesson_progress",
-  {
-    id: text("id").primaryKey(),
-    lessonSlug: text("lesson_slug").notNull().unique(),
-    unitSlug: text("unit_slug").notNull(),
-    completedAt: integer("completed_at").notNull(),
-    score: integer("score").notNull().default(100),
-  },
-  (t) => [index("lesson_progress_unit_idx").on(t.unitSlug)],
-);
-
-export const checkpointAttempts = sqliteTable(
-  "checkpoint_attempts",
-  {
-    id: text("id").primaryKey(),
-    unitSlug: text("unit_slug").notNull(),
-    score: integer("score").notNull(),
-    passed: integer("passed", { mode: "boolean" }).notNull(),
-    takenAt: integer("taken_at").notNull(),
-  },
-  (t) => [index("checkpoint_attempts_unit_idx").on(t.unitSlug)],
-);
-
-export const readProgress = sqliteTable(
-  "read_progress",
-  {
-    id: text("id").primaryKey(),
-    readSlug: text("read_slug").notNull().unique(),
-    completedAt: integer("completed_at").notNull(),
-    comprehensionScore: integer("comprehension_score").notNull().default(0),
-  },
-);
-
-export const streaks = sqliteTable("streaks", {
-  kind: text("kind").primaryKey(),
-  current: integer("current").notNull().default(0),
-  longest: integer("longest").notNull().default(0),
-  lastDay: text("last_day"),
-});
-
+export type User = typeof users.$inferSelect;
+export type NewUser = typeof users.$inferInsert;
 export type LessonProgress = typeof lessonProgress.$inferSelect;
 export type CheckpointAttempt = typeof checkpointAttempts.$inferSelect;
 export type ReadProgress = typeof readProgress.$inferSelect;

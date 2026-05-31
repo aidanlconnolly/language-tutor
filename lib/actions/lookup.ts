@@ -1,9 +1,10 @@
 "use server";
 
-import { eq } from "drizzle-orm";
+import { and, eq } from "drizzle-orm";
 import { nanoid } from "nanoid";
 import { db, schema } from "@/lib/db/client";
 import { lookupItalianWord } from "@/lib/anthropic";
+import { requireAuth, getSession } from "@/lib/auth";
 import type { Word } from "@/lib/db/schema";
 
 export type LookupResult =
@@ -12,20 +13,9 @@ export type LookupResult =
 
 /**
  * Look up an Italian word. Cache-first: hits Claude only on a lemma miss.
- *
- * Strategy:
- *  1. Ask Claude what the lemma is (always; we can't lemmatize "vado" → "andare"
- *     reliably on our own).
- *  2. Check the words table by lemma.
- *  3. If miss: insert; if hit: append the surface form to surfaceSeen if new.
- *
- * Future optimization (NOT in v1): keep a small client-side surface→lemma map
- * so we skip the Claude call entirely for forms we've already resolved. For
- * now Haiku is cheap enough that one call per *tap* is acceptable on miss-only
- * lemmas; subsequent taps of the same lemma hit the cache instantly.
- *
- * Even simpler shortcut we DO take: if the surface itself exists in any
- * `surface_seen` row, return that row immediately — zero Claude calls.
+ * The `words` table is a shared global dictionary — no userId filter here.
+ * Only the `cards` table (which records whether *this user* saved the word)
+ * is per-user.
  */
 export async function lookupWord(args: {
   surface: string;
@@ -35,7 +25,9 @@ export async function lookupWord(args: {
   const sentence = args.sentence.normalize("NFC");
 
   try {
-    // Shortcut: have we seen this exact surface form before?
+    const userId = await requireAuth();
+
+    // Shortcut: have we seen this exact surface form before (in the global dict)?
     const all = await db.select().from(schema.words);
     const surfaceMatch = all.find(
       (w) =>
@@ -43,7 +35,7 @@ export async function lookupWord(args: {
         (w.surfaceSeen ?? []).includes(surface),
     );
     if (surfaceMatch) {
-      const isSaved = await wordIsSaved(surfaceMatch.id);
+      const isSaved = await wordIsSaved(surfaceMatch.id, userId);
       return { ok: true, word: surfaceMatch, cached: true, isSaved };
     }
 
@@ -51,11 +43,8 @@ export async function lookupWord(args: {
     const lookup = await lookupItalianWord({ surface, sentence });
     const lemma = lookup.lemma.normalize("NFC");
 
-    // Race-safe: another tap may have just inserted this lemma. Try-insert
-    // then fall back to read on unique-conflict.
     const existing = all.find((w) => w.lemma === lemma);
     if (existing) {
-      // Append the new surface form if we haven't seen it
       const seen = existing.surfaceSeen ?? [];
       if (!seen.includes(surface)) {
         await db
@@ -64,7 +53,7 @@ export async function lookupWord(args: {
           .where(eq(schema.words.id, existing.id));
         existing.surfaceSeen = [...seen, surface];
       }
-      const isSaved = await wordIsSaved(existing.id);
+      const isSaved = await wordIsSaved(existing.id, userId);
       return { ok: true, word: existing, cached: true, isSaved };
     }
 
@@ -87,7 +76,13 @@ export async function lookupWord(args: {
     await db.insert(schema.words).values(newWord);
     return {
       ok: true,
-      word: { ...newWord, gender: newWord.gender ?? null, conjugation: newWord.conjugation ?? null, grammarNotes: newWord.grammarNotes ?? null, surfaceSeen: newWord.surfaceSeen ?? [] } as Word,
+      word: {
+        ...newWord,
+        gender: newWord.gender ?? null,
+        conjugation: newWord.conjugation ?? null,
+        grammarNotes: newWord.grammarNotes ?? null,
+        surfaceSeen: newWord.surfaceSeen ?? [],
+      } as Word,
       cached: false,
       isSaved: false,
     };
@@ -99,22 +94,25 @@ export async function lookupWord(args: {
   }
 }
 
-async function wordIsSaved(wordId: string): Promise<boolean> {
+async function wordIsSaved(wordId: string, userId: string): Promise<boolean> {
   const rows = await db
     .select({ id: schema.cards.id })
     .from(schema.cards)
-    .where(eq(schema.cards.wordId, wordId))
+    .where(and(eq(schema.cards.wordId, wordId), eq(schema.cards.userId, userId)))
     .limit(1);
   return rows.length > 0;
 }
 
 /**
- * Returns the set of word IDs that have a card. Used by the Reader to render
- * "already saved" styling on TappableWord.
+ * Returns the set of word IDs that have a card for the current user.
+ * Used by the Reader to render "already saved" styling on TappableWord.
  */
 export async function getSavedWordIds(): Promise<Set<string>> {
+  const session = await getSession();
+  if (!session) return new Set();
   const rows = await db
     .select({ wordId: schema.cards.wordId })
-    .from(schema.cards);
+    .from(schema.cards)
+    .where(eq(schema.cards.userId, session.userId));
   return new Set(rows.map((r) => r.wordId));
 }

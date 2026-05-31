@@ -1,8 +1,9 @@
 "use server";
 
-import { asc, eq, lte } from "drizzle-orm";
+import { and, asc, eq, lte } from "drizzle-orm";
 import { nanoid } from "nanoid";
 import { db, schema } from "@/lib/db/client";
+import { requireAuth } from "@/lib/auth";
 import type { Card, Word } from "@/lib/db/schema";
 import {
   applyRating,
@@ -18,16 +19,19 @@ export type ReviewRow = {
 };
 
 /**
- * Cards due now (fsrs_due <= now). Includes joined word + predicted intervals
- * for each of the 4 ratings.
+ * Cards due now (fsrs_due <= now) for the current user.
+ * Includes joined word + predicted intervals for each of the 4 ratings.
  */
 export async function getDueCards(limit = 50): Promise<ReviewRow[]> {
+  const userId = await requireAuth();
   const now = Date.now();
   const rows = await db
     .select()
     .from(schema.cards)
     .innerJoin(schema.words, eq(schema.cards.wordId, schema.words.id))
-    .where(lte(schema.cards.fsrsDue, now))
+    .where(
+      and(eq(schema.cards.userId, userId), lte(schema.cards.fsrsDue, now)),
+    )
     .orderBy(asc(schema.cards.fsrsDue))
     .limit(limit);
 
@@ -51,6 +55,8 @@ export async function rateCard(args: {
   if (!rating) return { ok: false, error: `Invalid rating ${args.rating}` };
 
   try {
+    const userId = await requireAuth();
+
     const rows = await db
       .select()
       .from(schema.cards)
@@ -60,6 +66,11 @@ export async function rateCard(args: {
       return { ok: false, error: "Card not found" };
     }
     const card = rows[0];
+    // Safety: ensure this card belongs to the current user
+    if (card.userId !== userId) {
+      return { ok: false, error: "Card not found" };
+    }
+
     const now = new Date();
     const { state, dueMs } = applyRating(card.fsrsState, rating, now);
 
@@ -86,28 +97,38 @@ export async function rateCard(args: {
   }
 }
 
-/** Counts for the home dashboard. */
+/** Counts for the home dashboard (scoped to current user). */
 export async function getDailyStats(): Promise<{
   dueNow: number;
   reviewedToday: number;
   deckSize: number;
   retention7d: number | null;
 }> {
+  const userId = await requireAuth();
   const now = Date.now();
   const startOfDay = new Date();
   startOfDay.setHours(0, 0, 0, 0);
   const startMs = startOfDay.getTime();
   const sevenDaysAgo = now - 7 * 86_400_000;
 
-  const allCards = await db.select().from(schema.cards);
+  const allCards = await db
+    .select()
+    .from(schema.cards)
+    .where(eq(schema.cards.userId, userId));
   const dueNow = allCards.filter((c) => c.fsrsDue <= now).length;
 
-  const recent = await db
-    .select({ rating: schema.reviews.rating, reviewedAt: schema.reviews.reviewedAt })
-    .from(schema.reviews);
+  // Reviews are linked to cards; filter via join
+  const recentReviews = await db
+    .select({
+      rating: schema.reviews.rating,
+      reviewedAt: schema.reviews.reviewedAt,
+    })
+    .from(schema.reviews)
+    .innerJoin(schema.cards, eq(schema.reviews.cardId, schema.cards.id))
+    .where(eq(schema.cards.userId, userId));
 
-  const reviewedToday = recent.filter((r) => r.reviewedAt >= startMs).length;
-  const last7 = recent.filter((r) => r.reviewedAt >= sevenDaysAgo);
+  const reviewedToday = recentReviews.filter((r) => r.reviewedAt >= startMs).length;
+  const last7 = recentReviews.filter((r) => r.reviewedAt >= sevenDaysAgo);
   const retention7d =
     last7.length === 0
       ? null
@@ -122,8 +143,7 @@ export async function getDailyStats(): Promise<{
 }
 
 /**
- * Convenience: serve everything the /review page needs in one round trip and
- * a single Server Action — initial cards plus a re-fetch helper.
+ * Convenience: serve everything the /review page needs in one round trip.
  */
 export async function fetchInitialReviewBatch(): Promise<ReviewRow[]> {
   return getDueCards(50);

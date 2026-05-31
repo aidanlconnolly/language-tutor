@@ -4,6 +4,7 @@ import { and, desc, eq, gte } from "drizzle-orm";
 import { nanoid } from "nanoid";
 import { db, schema } from "@/lib/db/client";
 import { findUnit, UNITS } from "@/lib/content/units";
+import { requireAuth } from "@/lib/auth";
 
 /* ─────────── Lesson progress ─────────── */
 
@@ -15,7 +16,11 @@ export type LessonStatus = {
 };
 
 export async function getAllLessonProgress(): Promise<LessonStatus[]> {
-  const rows = await db.select().from(schema.lessonProgress);
+  const userId = await requireAuth();
+  const rows = await db
+    .select()
+    .from(schema.lessonProgress)
+    .where(eq(schema.lessonProgress.userId, userId));
   return rows.map((r) => ({
     lessonSlug: r.lessonSlug,
     unitSlug: r.unitSlug,
@@ -30,27 +35,39 @@ export async function markLessonDone(args: {
   score: number;
 }): Promise<{ ok: true } | { ok: false; error: string }> {
   try {
+    const userId = await requireAuth();
     const now = Date.now();
     const existing = await db
       .select()
       .from(schema.lessonProgress)
-      .where(eq(schema.lessonProgress.lessonSlug, args.lessonSlug))
+      .where(
+        and(
+          eq(schema.lessonProgress.userId, userId),
+          eq(schema.lessonProgress.lessonSlug, args.lessonSlug),
+        ),
+      )
       .limit(1);
     if (existing.length > 0) {
       await db
         .update(schema.lessonProgress)
         .set({ score: Math.max(existing[0].score, args.score), completedAt: now })
-        .where(eq(schema.lessonProgress.lessonSlug, args.lessonSlug));
+        .where(
+          and(
+            eq(schema.lessonProgress.userId, userId),
+            eq(schema.lessonProgress.lessonSlug, args.lessonSlug),
+          ),
+        );
     } else {
       await db.insert(schema.lessonProgress).values({
         id: nanoid(),
+        userId,
         lessonSlug: args.lessonSlug,
         unitSlug: args.unitSlug,
         completedAt: now,
         score: args.score,
       });
     }
-    await touchStreak("lesson");
+    await touchStreak("lesson", userId);
     return { ok: true };
   } catch (err) {
     return { ok: false, error: err instanceof Error ? err.message : String(err) };
@@ -67,9 +84,11 @@ export type CheckpointStatus = {
 };
 
 export async function getAllCheckpointStatus(): Promise<CheckpointStatus[]> {
+  const userId = await requireAuth();
   const rows = await db
     .select()
     .from(schema.checkpointAttempts)
+    .where(eq(schema.checkpointAttempts.userId, userId))
     .orderBy(desc(schema.checkpointAttempts.takenAt));
   const byUnit = new Map<string, CheckpointStatus>();
   for (const r of rows) {
@@ -98,11 +117,13 @@ export async function recordCheckpoint(args: {
   score: number;
 }): Promise<{ ok: true; passed: boolean } | { ok: false; error: string }> {
   try {
+    const userId = await requireAuth();
     const unit = findUnit(args.unitSlug);
     if (!unit) return { ok: false, error: "Unknown unit" };
     const passed = args.score >= unit.checkpoint.passingPct;
     await db.insert(schema.checkpointAttempts).values({
       id: nanoid(),
+      userId,
       unitSlug: args.unitSlug,
       score: args.score,
       passed,
@@ -119,7 +140,11 @@ export async function recordCheckpoint(args: {
 export async function getAllReadProgress(): Promise<
   { readSlug: string; completedAt: number; comprehensionScore: number }[]
 > {
-  const rows = await db.select().from(schema.readProgress);
+  const userId = await requireAuth();
+  const rows = await db
+    .select()
+    .from(schema.readProgress)
+    .where(eq(schema.readProgress.userId, userId));
   return rows.map((r) => ({
     readSlug: r.readSlug,
     completedAt: r.completedAt,
@@ -132,10 +157,16 @@ export async function markReadDone(args: {
   comprehensionScore: number;
 }): Promise<{ ok: true } | { ok: false; error: string }> {
   try {
+    const userId = await requireAuth();
     const existing = await db
       .select()
       .from(schema.readProgress)
-      .where(eq(schema.readProgress.readSlug, args.readSlug))
+      .where(
+        and(
+          eq(schema.readProgress.userId, userId),
+          eq(schema.readProgress.readSlug, args.readSlug),
+        ),
+      )
       .limit(1);
     if (existing.length > 0) {
       await db
@@ -147,16 +178,22 @@ export async function markReadDone(args: {
             args.comprehensionScore,
           ),
         })
-        .where(eq(schema.readProgress.readSlug, args.readSlug));
+        .where(
+          and(
+            eq(schema.readProgress.userId, userId),
+            eq(schema.readProgress.readSlug, args.readSlug),
+          ),
+        );
     } else {
       await db.insert(schema.readProgress).values({
         id: nanoid(),
+        userId,
         readSlug: args.readSlug,
         completedAt: Date.now(),
         comprehensionScore: args.comprehensionScore,
       });
     }
-    await touchStreak("read");
+    await touchStreak("read", userId);
     return { ok: true };
   } catch (err) {
     return { ok: false, error: err instanceof Error ? err.message : String(err) };
@@ -166,7 +203,6 @@ export async function markReadDone(args: {
 /* ─────────── Streaks ─────────── */
 
 function localDay(d: Date = new Date()): string {
-  // YYYY-MM-DD in local time
   const yr = d.getFullYear();
   const mo = String(d.getMonth() + 1).padStart(2, "0");
   const da = String(d.getDate()).padStart(2, "0");
@@ -188,16 +224,18 @@ export type StreakInfo = {
 };
 
 export async function getStreak(kind: "lesson" | "read"): Promise<StreakInfo> {
+  const userId = await requireAuth();
   const rows = await db
     .select()
     .from(schema.streaks)
-    .where(eq(schema.streaks.kind, kind))
+    .where(
+      and(eq(schema.streaks.userId, userId), eq(schema.streaks.kind, kind)),
+    )
     .limit(1);
   if (rows.length === 0) {
     return { kind, current: 0, longest: 0, lastDay: null };
   }
   const r = rows[0];
-  // If lastDay is older than yesterday, the streak is dead
   const today = localDay();
   const yest = priorDay(today);
   const live = r.lastDay === today || r.lastDay === yest;
@@ -209,16 +247,19 @@ export async function getStreak(kind: "lesson" | "read"): Promise<StreakInfo> {
   };
 }
 
-async function touchStreak(kind: "lesson" | "read"): Promise<void> {
+async function touchStreak(kind: "lesson" | "read", userId: string): Promise<void> {
   const today = localDay();
   const yest = priorDay(today);
   const rows = await db
     .select()
     .from(schema.streaks)
-    .where(eq(schema.streaks.kind, kind))
+    .where(
+      and(eq(schema.streaks.userId, userId), eq(schema.streaks.kind, kind)),
+    )
     .limit(1);
   if (rows.length === 0) {
     await db.insert(schema.streaks).values({
+      userId,
       kind,
       current: 1,
       longest: 1,
@@ -227,13 +268,15 @@ async function touchStreak(kind: "lesson" | "read"): Promise<void> {
     return;
   }
   const r = rows[0];
-  if (r.lastDay === today) return; // already counted today
+  if (r.lastDay === today) return;
   const newCurrent = r.lastDay === yest ? r.current + 1 : 1;
   const newLongest = Math.max(r.longest, newCurrent);
   await db
     .update(schema.streaks)
     .set({ current: newCurrent, longest: newLongest, lastDay: today })
-    .where(eq(schema.streaks.kind, kind));
+    .where(
+      and(eq(schema.streaks.userId, userId), eq(schema.streaks.kind, kind)),
+    );
 }
 
 /* ─────────── Aggregated dashboard ─────────── */
@@ -275,11 +318,13 @@ export async function getRoadmapSummary(): Promise<RoadmapSummary> {
 
 /** Recent checkpoint attempts list (for showing past scores). */
 export async function getRecentCheckpointAttempts(unitSlug: string, limit = 5) {
+  const userId = await requireAuth();
   return db
     .select()
     .from(schema.checkpointAttempts)
     .where(
       and(
+        eq(schema.checkpointAttempts.userId, userId),
         eq(schema.checkpointAttempts.unitSlug, unitSlug),
         gte(schema.checkpointAttempts.takenAt, 0),
       ),
