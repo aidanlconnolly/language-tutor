@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-A personal Italian-learning web app for an A2–B1 English speaker. Single-user, no auth. Two loops: **Read** (paste Italian text → tap unknown words → save with their source sentence) and **Review** (FSRS-scheduled flashcards built from those saves). Live at `https://italian-tutor-rho.vercel.app` (push to `main` on `aidanlconnolly/italian-tutor` auto-deploys via Vercel).
+An Italian-learning web app for A2–B1 English speakers. **Multi-user with email/password auth (open signup)** — each account's progress is fully isolated; the shared word dictionary is the one thing all users draw from (see "Per-user auth" below). Two loops: **Read** (paste Italian text → tap unknown words → save with their source sentence) and **Review** (FSRS-scheduled flashcards built from those saves). Live at `https://italian-tutor-rho.vercel.app` (push to `main` on `aidanlconnolly/italian-tutor` auto-deploys via Vercel).
 
 ## Stack
 
@@ -13,6 +13,7 @@ A personal Italian-learning web app for an A2–B1 English speaker. Single-user,
 - **Turso (libSQL) + Drizzle ORM** for persistence. Edge-compatible.
 - **`ts-fsrs`** for spaced-repetition scheduling.
 - **Anthropic SDK** (`claude-haiku-4-5`) for word lookups via tool-use structured output.
+- **`jose`** (HS256 JWT in an httpOnly cookie) + **`bcryptjs`** for auth. No NextAuth.
 - Web Speech API for Italian pronunciation.
 
 ## Common commands
@@ -38,6 +39,20 @@ There are no tests in this project.
 
 ## Architecture (the parts that span multiple files)
 
+### Per-user auth (who-sees-what)
+
+The data model splits into **global** vs **per-user**:
+
+- **Global (shared, no `userId`):** the `words` dictionary. It's a cost-control cache — one Claude call per new lemma *ever, across all users*. Never scope it per user. (`texts` and `reviews` are also unscoped — they're reachable only through a user's own `cards` via join.)
+- **Per-user (`userId` column):** `cards`, `lesson_progress`, `checkpoint_attempts`, `read_progress`, `streaks`. Old single-column UNIQUE constraints are now composite — e.g. `cards (user_id, word_id)`, `streaks` PK is `(user_id, kind)`.
+
+Mechanics:
+- `lib/auth.ts` — `createSession`/`getSession`/`deleteSession` (signed JWT, 30d) and `requireAuth()` which returns the userId or throws.
+- `proxy.ts` (Next 16's renamed `middleware`; the export **must** be named `proxy`) — redirects any request without a valid session cookie to `/login`, allowlisting only `/login` and `/register`.
+- `lib/actions/auth.ts` — `registerAction` / `loginAction` / `logoutAction` / `changePasswordAction` (all `useActionState`-driven from `app/{login,register,account}/page.tsx`).
+- **Every per-user Server Action calls `await requireAuth()` first** and filters/inserts with that `userId`. The proxy is defense-in-depth, not the only gate — keep the action-level checks. Helpers that may run pre-login (e.g. `getSavedWordIds`) use `getSession()` and return empty when null.
+- DB migrations that add `userId` default it to `'__legacy__'` so existing rows survive; reassign them to a real account with `UPDATE <table> SET user_id='<id>' WHERE user_id='__legacy__'`.
+
 ### Data flow: tap → Claude → DB → UI
 
 A word tap in `<Reader>` opens `<WordPopover>`, which calls the `lookupWord` Server Action (`lib/actions/lookup.ts`). That action runs a **two-tier cache** before ever hitting Claude:
@@ -50,7 +65,7 @@ This is the heart of the cost-control story: one Claude call per *new lemma enco
 
 ### Lemma-only deck (enforced at the DB)
 
-`cards.word_id` has a **UNIQUE constraint**. Saving any form of a lemma already in the deck is a no-op that preserves the original `source_sentence`. `<TappableWord>`'s green-underline state is driven by `savedSurfaces: Set<string>` in `<Reader>`, seeded from `getSavedSurfaces()` (server-loaded on page mount) and augmented in-place when the popover signals a save. So the underline jumps to other inflected forms of a just-saved lemma immediately.
+`cards` has a **composite UNIQUE constraint on `(user_id, word_id)`**. Saving any form of a lemma already in *this user's* deck is a no-op that preserves the original `source_sentence`. `<TappableWord>`'s green-underline state is driven by `savedSurfaces: Set<string>` in `<Reader>`, seeded from `getSavedSurfaces()` (server-loaded on page mount) and augmented in-place when the popover signals a save. So the underline jumps to other inflected forms of a just-saved lemma immediately.
 
 ### FSRS serialization shim
 
@@ -58,7 +73,7 @@ This is the heart of the cost-control story: one Claude call per *new lemma enco
 
 ### Server Actions over API routes
 
-All backend lives in `lib/actions/*.ts`, each with `"use server"` at the top. No `app/api/*` route handlers exist or are needed in v1 — Server Actions cover lookup, save, deck queries, FSRS rating, and dashboard stats. If you add streaming (e.g. Claude SSE), that's the case where a route handler becomes justified.
+All backend lives in `lib/actions/*.ts`, each with `"use server"` at the top. No `app/api/*` route handlers exist — Server Actions cover lookup, save, deck queries, FSRS rating, dashboard stats, and auth (register/login/logout/change-password). `proxy.ts` is the only non-action backend file. If you add streaming (e.g. Claude SSE), that's the case where a route handler becomes justified.
 
 ### Lazy DB client
 
@@ -78,11 +93,12 @@ All backend lives in `lib/actions/*.ts`, each with `"use server"` at the top. No
 
 ## Environment variables
 
-All three are required in `.env.local` (committed via `.env.local.example`) and in Vercel Project Settings → Environment Variables → production. All three are already configured for production.
+All four are required in `.env.local` (template in `.env.local.example`) and in Vercel Project Settings → Environment Variables → production. All four are already configured for production. Note: an env-var change in Vercel only takes effect on a **fresh deploy** (`vercel redeploy <domain>`) — adding `AUTH_SECRET` without redeploying is what caused the post-login 500 once.
 
 - `ANTHROPIC_API_KEY`
 - `TURSO_DATABASE_URL` — `libsql://italian-tutor-aidanlconnolly.turso.io`
 - `TURSO_AUTH_TOKEN`
+- `AUTH_SECRET` — JWT signing key; generate with `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`. Must match between local and prod for cookies to verify.
 
 ## Token-conscious workflow (per the user)
 
