@@ -65,3 +65,43 @@ export async function logoutAction(): Promise<void> {
   await deleteSession();
   redirect("/login");
 }
+
+export type ChangePasswordState =
+  | { ok: true; message: string }
+  | { error: string }
+  | null;
+
+export async function changePasswordAction(
+  _prevState: ChangePasswordState,
+  formData: FormData,
+): Promise<ChangePasswordState> {
+  const { getSession } = await import("@/lib/auth");
+  const session = await getSession();
+  if (!session) return { error: "Not authenticated" };
+
+  const current = (formData.get("current") as string) ?? "";
+  const next = (formData.get("new") as string) ?? "";
+  const confirm = (formData.get("confirm") as string) ?? "";
+
+  if (!current || !next || !confirm) return { error: "All fields are required" };
+  if (next.length < 8) return { error: "New password must be at least 8 characters" };
+  if (next !== confirm) return { error: "New passwords do not match" };
+
+  const rows = await db
+    .select()
+    .from(schema.users)
+    .where(eq(schema.users.id, session.userId))
+    .limit(1);
+  if (rows.length === 0) return { error: "Account not found" };
+
+  const valid = await bcrypt.compare(current, rows[0].passwordHash);
+  if (!valid) return { error: "Current password is incorrect" };
+
+  const passwordHash = await bcrypt.hash(next, 12);
+  await db
+    .update(schema.users)
+    .set({ passwordHash })
+    .where(eq(schema.users.id, session.userId));
+
+  return { ok: true, message: "Password updated successfully" };
+}

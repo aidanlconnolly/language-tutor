@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Link from "next/link";
 import "./globals.css";
 import { getSession } from "@/lib/auth";
 import { logoutAction } from "@/lib/actions/auth";
@@ -51,14 +52,22 @@ export default async function RootLayout({
           <div className="border-b border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950">
             <div className="mx-auto flex max-w-3xl items-center justify-between px-4 py-2 sm:px-6">
               <span className="text-xs text-zinc-400">{session.email}</span>
-              <form action={logoutAction}>
-                <button
-                  type="submit"
+              <div className="flex items-center gap-4">
+                <Link
+                  href="/account"
                   className="text-xs text-zinc-400 hover:text-amber-700 dark:hover:text-amber-500"
                 >
-                  Sign out
-                </button>
-              </form>
+                  Account
+                </Link>
+                <form action={logoutAction}>
+                  <button
+                    type="submit"
+                    className="text-xs text-zinc-400 hover:text-amber-700 dark:hover:text-amber-500"
+                  >
+                    Sign out
+                  </button>
+                </form>
+              </div>
             </div>
           </div>
         )}
