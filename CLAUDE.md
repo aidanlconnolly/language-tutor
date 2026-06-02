@@ -6,6 +6,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 A combined Italian + French language-learning web app (A0–B1). **Multi-user with email/password auth.** Three learning loops per language: **Roadmap** (35 units × 8 stages with lessons and checkpoint quizzes), **Daily Read** (8 graded stories with comprehension questions), **Review** (FSRS spaced-repetition flashcard deck). Spanish is a planned third language (4-step extension — see below).
 
+Live at **https://language-tutor-silk.vercel.app** (auto-deploys from `main` on `aidanlconnolly/language-tutor`).
+
 ## Stack
 
 **Next.js 16.2** (App Router), React 19, TypeScript strict, Tailwind v4 (config in `app/globals.css` via `@theme` — no `tailwind.config.ts`), **Turso (libSQL) + Drizzle ORM**, `ts-fsrs`, Anthropic SDK (`claude-haiku-4-5`), `jose` HS256 JWT + `bcryptjs`. No NextAuth.
@@ -92,6 +94,10 @@ All backend logic lives in `lib/actions/*.ts` (`"use server"`). No `app/api/` ro
 ### React lang context
 
 `lib/lang-context.tsx` exports `LangProvider` / `useLang()` / `useLangSpeechCode()`. `LessonPlayer` wraps its entire subtree in `<LangProvider lang={lang}>` so page components (`TranslatePage`, `VocabPage`, `ListenPage`, `PronouncePage`, `TipPage`, `DialoguePage`) can call `useLang()` without prop drilling.
+
+### Tokenizer
+
+`lib/tokenize.ts` exports `tokenize(lang, rawText)` — shared for both Italian and French. The regex `\p{L}+'(?=\p{L})|\p{L}+'?` elides `l'ami`/`l'amico`/`j'ai`/`c'est` into two tokens while keeping `po'` attached. All text is NFC-normalized before tokenization and storage.
 
 ### FSRS serialization
 
