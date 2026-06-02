@@ -4,11 +4,13 @@ import type { Lang } from "./lang";
 const LANG_NAMES: Record<Lang, string> = {
   italian: "Italian",
   french: "French",
+  spanish: "Spanish",
 };
 
 const LANG_DIACRITICS: Record<Lang, string> = {
   italian: "à è é ì ò ù",
   french: "à â é è ê ë î ï ô ù û ü ç",
+  spanish: "á é í ó ú ü ñ ¡ ¿",
 };
 
 const LANG_CONJUGATION_NOTE: Record<Lang, string> = {
@@ -16,6 +18,8 @@ const LANG_CONJUGATION_NOTE: Record<Lang, string> = {
     "Keys are tenses ('presente', 'passato prossimo', 'imperfetto', 'futuro'). Each value is an object keyed by person ('io', 'tu', 'lui/lei', 'noi', 'voi', 'loro'). For 'passato prossimo' include the auxiliary.",
   french:
     "Keys are tenses ('présent', 'passé composé', 'imparfait', 'futur simple'). Each value is an object keyed by person ('je', 'tu', 'il/elle', 'nous', 'vous', 'ils/elles'). For 'passé composé' include the auxiliary (avoir/être).",
+  spanish:
+    "Keys are tenses ('presente', 'pretérito indefinido', 'imperfecto', 'futuro simple', 'condicional'). Each value is an object keyed by person ('yo', 'tú', 'él/ella/usted', 'nosotros', 'vosotros', 'ellos/ustedes').",
 };
 
 /**
