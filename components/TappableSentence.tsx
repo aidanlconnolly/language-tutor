@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { tokenize } from "@/lib/italian";
+import { tokenize } from "@/lib/tokenize";
+import type { Lang } from "@/lib/lang";
 import { TappableWord, type WordTapData } from "./TappableWord";
 import { WordPopover, type PopoverState } from "./WordPopover";
 import type { Word } from "@/lib/db/schema";
@@ -17,14 +18,16 @@ import type { Word } from "@/lib/db/schema";
  */
 export function TappableSentence({
   text,
+  lang,
   className,
   serif = true,
 }: {
   text: string;
+  lang: Lang;
   className?: string;
   serif?: boolean;
 }) {
-  const tokens = tokenize(text);
+  const tokens = tokenize(lang, text);
   const [popover, setPopover] = useState<
     (PopoverState & { tokenIndex: number }) | null
   >(null);
@@ -43,7 +46,7 @@ export function TappableSentence({
     <>
       <span
         className={[serif ? "font-serif" : "", className ?? ""].join(" ")}
-        lang="it"
+        lang="auto"
       >
         {tokens.map((tok, i) =>
           tok.type === "word" ? (
@@ -66,6 +69,7 @@ export function TappableSentence({
         <WordPopover
           key={`${popover.surface}|${popover.sentence}`}
           state={popover}
+          lang={lang}
           onClose={() => setPopover(null)}
           onSaved={handleSaved}
         />

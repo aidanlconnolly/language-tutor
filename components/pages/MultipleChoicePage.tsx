@@ -67,12 +67,12 @@ function McQuestion({
         Question {index + 1} of {total}
       </div>
       <div className="mt-1 text-base font-medium">{q.q}</div>
-      {q.qIt && (
+      {q.qL1 && (
         <div
           className="mt-1 font-serif text-lg italic text-zinc-700 dark:text-zinc-300"
-          lang="it"
+          lang="auto"
         >
-          {q.qIt}
+          {q.qL1}
         </div>
       )}
       <ul className="mt-3 space-y-2">

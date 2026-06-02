@@ -1,0 +1,205 @@
+import type { Unit } from "../../types";
+
+export const UNIT_REGIME_VIN: Unit = {
+  slug: "regime-vin",
+  stage: 4,
+  order: 18,
+  icon: "🍷",
+  title: "Wine & dietary needs",
+  tagline: "Vin de la maison, végétarien, je suis allergique à…",
+  lessons: [
+    {
+      slug: "regime-vin-main",
+      title: "Wine vocabulary & dietary restrictions",
+      estMinutes: 8,
+      pages: [
+        {
+          type: "intro",
+          heading: "French wine & communicating dietary needs",
+          body: [
+            "France has 14 major wine regions: Bordeaux (bold reds), Bourgogne/Burgundy (elegant reds and whites), Champagne, Loire Valley, Alsace, Rhône, Provence, and more. Each region has specific rules about grape varieties and production.",
+            "On menus, look for <em>AOP</em> (Appellation d'Origine Protégée) — a quality guarantee tied to a specific region and production method.",
+            "For dietary restrictions, France is improving but still lags behind some countries. Vegetarianism is widely understood; veganism less so. Halal and kosher options exist in Paris but aren't universal. Always ask clearly and specifically — don't assume.",
+          ],
+        },
+        {
+          type: "vocab",
+          heading: "Wine vocabulary",
+          items: [
+            { l1: "le vin rouge / blanc / rosé", en: "red / white / rosé wine" },
+            { l1: "le vin de la maison", en: "house wine", note: "the cheapest option, usually regional" },
+            { l1: "sec / demi-sec / doux", en: "dry / medium-dry / sweet" },
+            { l1: "une bouteille / une carafe / un verre", en: "a bottle / a carafe / a glass" },
+            { l1: "le Bordeaux / le Bourgogne", en: "Bordeaux / Burgundy wine" },
+            { l1: "le champagne / le crémant", en: "champagne / sparkling wine (non-Champagne)" },
+            { l1: "léger / corsé", en: "light / full-bodied" },
+            { l1: "fruité / tannique", en: "fruity / tannic" },
+          ],
+        },
+        {
+          type: "vocab",
+          heading: "Dietary restrictions",
+          items: [
+            { l1: "Je suis végétarien/ne.", en: "I'm vegetarian." },
+            { l1: "Je suis végétalien/ne / vegan.", en: "I'm vegan." },
+            { l1: "Je suis allergique à…", en: "I'm allergic to…" },
+            { l1: "Je suis intolérant/e au gluten / au lactose.", en: "I'm gluten / lactose intolerant." },
+            { l1: "Sans gluten, s'il vous plaît.", en: "Gluten-free, please." },
+            { l1: "Est-ce qu'il y a de la viande dans ce plat?", en: "Is there meat in this dish?" },
+            { l1: "Je ne mange pas de porc.", en: "I don't eat pork." },
+            { l1: "les noix / les arachides / les fruits de mer", en: "nuts / peanuts / seafood (common allergens)" },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "Ordering with restrictions",
+          lines: [
+            { speaker: "You", l1: "Excusez-moi, je suis allergique aux noix. Est-ce que la tarte tatin en contient?", en: "Excuse me, I'm allergic to nuts. Does the tarte tatin contain any?" },
+            { speaker: "Waiter", l1: "Non, notre tarte tatin est sans noix. Elle est faite avec des pommes et du caramel.", en: "No, our tarte tatin is nut-free. It's made with apples and caramel." },
+            { speaker: "You", l1: "Parfait. Et pour le vin, que recommandez-vous?", en: "Perfect. And for wine, what do you recommend?" },
+            { speaker: "Waiter", l1: "Un Sancerre blanc, très fruité. Ou notre vin de la maison, plus léger.", en: "A Sancerre white, very fruity. Or our house wine, lighter." },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate",
+          direction: "en-to-l1",
+          prompt: "I'm vegetarian. Is there meat in the soup?",
+          reference: "Je suis végétarien/ne. Est-ce qu'il y a de la viande dans la soupe?",
+          hint: "il y a = there is; de la viande = some meat",
+        },
+      ],
+    },
+    {
+      slug: "regime-vin-accords",
+      title: "Wine tasting & pairing",
+      estMinutes: 8,
+      pages: [
+        {
+          type: "intro",
+          heading: "Pairing wine with food",
+          body: [
+            "The old rule — red with meat, white with fish — is a useful start, but the French think in terms of matching weight and intensity. A <em>vin léger</em> (light wine) suits delicate dishes; a <em>vin corsé</em> (full-bodied) stands up to red meat.",
+            "To talk pairing: <em>Ça va bien avec…</em> (it goes well with…), <em>accompagner</em> (to accompany), <em>Qu'est-ce que vous me conseillez avec…?</em> (What do you advise with…?).",
+            "At a tasting (<em>une dégustation</em>), you'll hear about the wine's <em>nez</em> (nose/aroma), whether it's <em>fruité</em> (fruity) or <em>boisé</em> (oaky), and its finish. A <em>sommelier</em> is the wine waiter who can guide you.",
+          ],
+          keyPoint: "Match weight: léger with delicate, corsé with red meat. 'Ça va bien avec…' = it goes well with…",
+        },
+        {
+          type: "vocab",
+          heading: "Pairing & tasting vocabulary",
+          items: [
+            { l1: "Ça va bien avec…", en: "It goes well with…" },
+            { l1: "accompagner", en: "to accompany / go with" },
+            { l1: "Qu'est-ce que vous me conseillez?", en: "What do you advise?" },
+            { l1: "le sommelier", en: "the wine waiter" },
+            { l1: "une dégustation", en: "a tasting" },
+            { l1: "le nez / l'arôme", en: "the nose / aroma" },
+            { l1: "boisé / fruité", en: "oaky / fruity" },
+            { l1: "un vin léger / corsé", en: "a light / full-bodied wine" },
+            { l1: "au verre / à la bouteille", en: "by the glass / by the bottle" },
+            { l1: "Santé!", en: "Cheers!" },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "Asking the sommelier",
+          lines: [
+            { speaker: "You", l1: "Bonsoir. Je prends le bœuf. Qu'est-ce que vous me conseillez?", en: "Good evening. I'm having the beef. What do you advise?" },
+            { speaker: "Sommelier", l1: "Un vin rouge corsé, un Bordeaux. Ça va très bien avec la viande rouge.", en: "A full-bodied red, a Bordeaux. It goes very well with red meat." },
+            { speaker: "You", l1: "Au verre ou à la bouteille?", en: "By the glass or the bottle?" },
+            { speaker: "Sommelier", l1: "Au verre, si vous préférez. Il est fruité, pas trop boisé.", en: "By the glass, if you prefer. It's fruity, not too oaky." },
+            { speaker: "You", l1: "Parfait, un verre alors. Merci!", en: "Perfect, a glass then. Thank you!" },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "Pairing check",
+          questions: [
+            {
+              q: "A 'vin corsé' is best with…",
+              options: ["light fish", "red meat", "fruit dessert", "salad"],
+              correct: 1,
+              fb: "Full-bodied (corsé) wines match intense dishes like red meat.",
+            },
+            {
+              q: "'Ça va bien avec le poisson' means…",
+              options: ["It's bad with fish", "It goes well with fish", "There's fish in it", "Fish is expensive"],
+              correct: 1,
+              fb: "'Ça va bien avec…' = it goes well with…",
+            },
+            {
+              q: "'Le sommelier' is…",
+              options: ["the chef", "the wine waiter", "the menu", "the bill"],
+              correct: 1,
+              fb: "The sommelier specializes in wine and can recommend pairings.",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      slug: "regime-vin-fait-maison",
+      title: "Special diets & 'fait maison'",
+      estMinutes: 8,
+      pages: [
+        {
+          type: "intro",
+          heading: "Reading labels & asking how it's made",
+          body: [
+            "French menus increasingly flag quality with words worth knowing: <em>fait maison</em> (homemade — a protected term), <em>bio</em> (organic), <em>de saison</em> (in season), and <em>du producteur</em> / <em>fermier</em> (from the farm).",
+            "To navigate a diet, learn to ask about preparation: <em>C'est cuisiné avec du beurre?</em> (Is it cooked with butter?), <em>Est-ce qu'on peut le faire sans…?</em> (Can it be made without…?).",
+            "Useful framing words: <em>sans</em> (without), <em>avec</em> (with), <em>à la place de</em> (instead of). <em>Est-ce que je peux avoir une salade à la place des frites?</em> — a polite, common request.",
+          ],
+          keyPoint: "fait maison = homemade. bio = organic. Ask: sans / avec / à la place de…",
+        },
+        {
+          type: "vocab",
+          heading: "Diet & quality vocabulary",
+          items: [
+            { l1: "fait maison", en: "homemade" },
+            { l1: "bio", en: "organic" },
+            { l1: "de saison", en: "in season" },
+            { l1: "fermier / du producteur", en: "farm / from the producer" },
+            { l1: "sans / avec", en: "without / with" },
+            { l1: "à la place de", en: "instead of" },
+            { l1: "Est-ce qu'on peut le faire sans…?", en: "Can it be made without…?" },
+            { l1: "C'est cuisiné avec quoi?", en: "What's it cooked with?" },
+            { l1: "léger / copieux", en: "light / hearty, filling" },
+            { l1: "Je fais attention à ce que je mange.", en: "I'm careful about what I eat." },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "Adapting a dish",
+          lines: [
+            { speaker: "You", l1: "Le risotto, c'est fait maison?", en: "The risotto, is it homemade?" },
+            { speaker: "Serveur", l1: "Oui, tout est fait maison ici.", en: "Yes, everything is homemade here." },
+            { speaker: "You", l1: "Est-ce qu'on peut le faire sans crème? Je suis intolérant au lactose.", en: "Can it be made without cream? I'm lactose intolerant." },
+            { speaker: "Serveur", l1: "Je demande en cuisine. On peut peut-être utiliser de l'huile d'olive.", en: "I'll ask the kitchen. We could maybe use olive oil." },
+            { speaker: "You", l1: "Ce serait parfait, merci. Et une salade à la place du pain.", en: "That would be perfect, thanks. And a salad instead of bread." },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate",
+          direction: "en-to-l1",
+          prompt: "Is it homemade? Can it be made without butter?",
+          reference: "C'est fait maison? Est-ce qu'on peut le faire sans beurre?",
+          hint: "homemade = fait maison; 'without butter' = sans beurre",
+        },
+      ],
+    },
+  ],
+  checkpoint: {
+    passingPct: 80,
+    questions: [
+      { q: "'Sec' for wine means…", options: ["sparkling", "dry", "sweet", "light"], correct: 1 },
+      { q: "How do you say 'I'm allergic to nuts'?", options: ["Je déteste les noix.", "Je suis allergique aux noix.", "Je n'aime pas les noix.", "Les noix me font mal."], correct: 1 },
+      { q: "'Le vin de la maison' is…", options: ["The chef's personal wine", "The house wine", "The best wine", "A regional appellation"], correct: 1 },
+      { q: "AOP on a wine label stands for…", options: ["Alcool Ordinaire Palatable", "Appellation d'Origine Protégée", "Authorized Old Production", "Association of Paris"], correct: 1 },
+      { q: "How do you ask 'Is there meat in this dish?'", options: ["Y a-t-il de la viande?", "Est-ce qu'il y a de la viande dans ce plat?", "Ce plat est végétarien?", "Both B and C work"], correct: 3 },
+      { q: "'Corsé' for wine means…", options: ["light-bodied", "sparkling", "full-bodied", "off-dry"], correct: 2 },
+    ],
+  },
+};

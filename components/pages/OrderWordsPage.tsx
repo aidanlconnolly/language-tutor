@@ -131,7 +131,7 @@ export function OrderWordsPage({
                         ? "border-emerald-500 bg-emerald-100 text-emerald-900 dark:bg-emerald-900/40 dark:text-emerald-100"
                         : "border-amber-400 bg-amber-50 text-amber-900 hover:border-amber-600 dark:bg-amber-950/30 dark:text-amber-100",
                     ].join(" ")}
-                    lang="it"
+                    lang="auto"
                   >
                     {it.tokens[tIdx]}
                   </button>
@@ -146,7 +146,7 @@ export function OrderWordsPage({
                   type="button"
                   onClick={() => pick(i, tIdx)}
                   className="rounded border border-zinc-300 bg-white px-2 py-1 font-serif text-sm hover:border-amber-400 dark:border-zinc-700 dark:bg-zinc-900"
-                  lang="it"
+                  lang="auto"
                 >
                   {it.tokens[tIdx]}
                 </button>

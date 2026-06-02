@@ -5,22 +5,24 @@ import { nanoid } from "nanoid";
 import { db, schema } from "@/lib/db/client";
 import { freshCardState } from "@/lib/srs";
 import { requireAuth } from "@/lib/auth";
+import type { Lang } from "@/lib/lang";
 
 export type SaveResult =
   | { ok: true; cardId: string; created: boolean }
   | { ok: false; error: string };
 
 /**
- * Save (or no-op) a card for the given word, scoped to the current user.
+ * Save (or no-op) a card for the given word, scoped to the current user and language.
  *
  * Lemma-only semantics: the `cards` table has a composite UNIQUE constraint
  * on (user_id, word_id), so re-saving an already-saved lemma is a no-op that
- * keeps the *original* source sentence. This matches CLAUDE.md's lemma-saving rule.
+ * keeps the *original* source sentence.
  */
 export async function saveCardForWord(args: {
   wordId: string;
   sourceSurface: string;
   sourceSentence: string;
+  lang: Lang;
   sourceTextId?: string;
 }): Promise<SaveResult> {
   try {
@@ -47,6 +49,7 @@ export async function saveCardForWord(args: {
     await db.insert(schema.cards).values({
       id,
       userId,
+      language: args.lang,
       wordId: args.wordId,
       sourceSentence: args.sourceSentence.normalize("NFC"),
       sourceSurface: args.sourceSurface.normalize("NFC"),

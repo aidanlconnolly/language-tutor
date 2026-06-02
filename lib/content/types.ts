@@ -14,7 +14,7 @@ export type Intro = {
 };
 
 export type VocabItem = {
-  it: string;
+  l1: string;
   en: string;
   /** Optional contextual note (gender for nouns, irregularity, etc.) */
   note?: string;
@@ -29,7 +29,7 @@ export type Vocab = {
 
 export type DialogueLine = {
   speaker: string;
-  it: string;
+  l1: string;
   en: string;
 };
 
@@ -56,7 +56,7 @@ export type Conjugation = {
 
 export type MCQuestion = {
   q: string;
-  qIt?: string;
+  qL1?: string;
   options: string[];
   /** index of the correct option */
   correct: number;
@@ -104,7 +104,7 @@ export type OrderWords = {
 export type Translate = {
   type: "translate";
   heading: string;
-  direction: "it-to-en" | "en-to-it";
+  direction: "l1-to-en" | "en-to-l1";
   prompt: string;
   /** Canonical answer used for grading + reveal */
   reference: string;
@@ -112,7 +112,7 @@ export type Translate = {
 };
 
 export type ListenItem = {
-  it: string;
+  l1: string;
   en: string;
   options: string[];
   correct: number;
@@ -126,7 +126,7 @@ export type Listen = {
 };
 
 export type PronounceItem = {
-  it: string;
+  l1: string;
   en: string;
   tip?: string;
 };
@@ -142,12 +142,12 @@ export type Tip = {
   type: "tip";
   heading: string;
   body: string;
-  example?: { it: string; en: string };
+  example?: { l1: string; en: string };
 };
 
 export type CheckpointQuestion = {
   q: string;
-  qIt?: string;
+  qL1?: string;
   options: string[];
   correct: number;
 };
@@ -213,17 +213,26 @@ export type DailyRead = {
   /**
    * Difficulty rating 1-10. Roughly:
    *  4 = absolute beginner (present tense only, very short sentences, common vocab)
-   *  6 = A2 (present + vorrei, longer sentences, mild subordination)
-   *  8 = A2/B1 (passato prossimo + imperfetto, longer paragraphs)
+   *  6 = A2 (present + voudrais, longer sentences, mild subordination)
+   *  8 = A2/B1 (passé composé + imparfait, longer paragraphs)
    * 10 = B1+ (subjunctive, idioms, complex narration)
    * Stories ramp gradually so 2 months in you're comfortably at 9-10.
    */
   difficulty: number;
-  titleIt: string;
+  titleL1: string;
   titleEn: string;
   intro: string;
-  paragraphs: { it: string; en: string }[];
+  paragraphs: { l1: string; en: string }[];
   comprehension: CheckpointQuestion[];
   /** Star words worth highlighting after reading */
-  vocabSpotlight?: { it: string; en: string }[];
+  vocabSpotlight?: { l1: string; en: string }[];
+};
+
+export type UnitPreview = {
+  slug: string;
+  stage: number;
+  order: number;
+  icon: string;
+  title: string;
+  tagline: string;
 };

@@ -1,0 +1,215 @@
+import type { Unit } from "../../types";
+
+export const UNIT_MARCHE: Unit = {
+  slug: "marche",
+  stage: 6,
+  order: 26,
+  icon: "🥕",
+  title: "Market / supermarché",
+  tagline: "Grammes, kilos, j'en prends deux, au marché.",
+  lessons: [
+    {
+      slug: "marche-main",
+      title: "Shopping for food",
+      estMinutes: 9,
+      pages: [
+        {
+          type: "intro",
+          heading: "The French market tradition",
+          body: [
+            "Open-air markets (<em>les marchés</em>) are a Parisian institution. Most neighborhoods have a market a few mornings a week. Vendors sell produce, cheese, meat, fish, and flowers. It's lively, social, and a great place to practice French.",
+            "Quantities are metric: ask for produce in <em>grammes</em> or <em>kilos</em>. A common request is <em>une livre</em> (500g, literally 'a pound') or <em>un demi-kilo</em>. For small items: <em>j'en prends deux</em> (I'll take two of them).",
+            "The pronoun <strong>en</strong> replaces 'de + noun' — it means 'some of it/them'. <em>Vous avez des tomates? Oui, j'en prends un kilo.</em> (Do you have tomatoes? Yes, I'll take a kilo of them.)",
+          ],
+          keyPoint: "en = 'some of it/them', replacing de + noun. J'en prends deux = I'll take two (of them).",
+        },
+        {
+          type: "vocab",
+          heading: "Quantities & market vocabulary",
+          items: [
+            { l1: "un kilo (de)", en: "a kilo (of)" },
+            { l1: "un demi-kilo / une livre", en: "half a kilo / a 'pound' (500g)" },
+            { l1: "cent grammes (de)", en: "100 grams (of)" },
+            { l1: "une douzaine (d'œufs)", en: "a dozen (eggs)" },
+            { l1: "une tranche (de jambon)", en: "a slice (of ham)" },
+            { l1: "un morceau (de fromage)", en: "a piece (of cheese)" },
+            { l1: "une botte (de radis)", en: "a bunch (of radishes)" },
+            { l1: "J'en prends deux.", en: "I'll take two of them.", note: "en = of them" },
+            { l1: "Et avec ça?", en: "Anything else? (vendor's phrase)" },
+            { l1: "Ce sera tout.", en: "That'll be all." },
+            { l1: "Vous avez de la monnaie?", en: "Do you have change?" },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "At the market",
+          lines: [
+            { speaker: "Vendor", l1: "Bonjour! Qu'est-ce qu'il vous faut?", en: "Hello! What do you need?" },
+            { speaker: "You", l1: "Un kilo de tomates, s'il vous plaît.", en: "A kilo of tomatoes, please." },
+            { speaker: "Vendor", l1: "Voilà. Et avec ça?", en: "Here you go. Anything else?" },
+            { speaker: "You", l1: "Ces pommes ont l'air bonnes. J'en prends six.", en: "These apples look good. I'll take six." },
+            { speaker: "Vendor", l1: "Six pommes. Ce sera tout?", en: "Six apples. Will that be all?" },
+            { speaker: "You", l1: "Oui, ce sera tout. Ça fait combien?", en: "Yes, that'll be all. How much is that?" },
+            { speaker: "Vendor", l1: "Sept euros cinquante.", en: "Seven euros fifty." },
+          ],
+        },
+        {
+          type: "fillBlank",
+          heading: "Quantities practice",
+          items: [
+            { template: "Je voudrais ___ de jambon. (100 g)", answer: "cent grammes", en: "I'd like 100 grams of ham." },
+            { template: "Vous avez des œufs? J'___ prends une douzaine.", answer: "en", en: "Do you have eggs? I'll take a dozen.", options: ["en", "y", "le", "des"] },
+            { template: "Un ___ de fromage, s'il vous plaît. (piece)", answer: "morceau", en: "A piece of cheese, please.", options: ["tranche", "morceau", "botte", "kilo"] },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate",
+          direction: "en-to-l1",
+          prompt: "A kilo of apples and half a kilo of cherries, please.",
+          reference: "Un kilo de pommes et un demi-kilo de cerises, s'il vous plaît.",
+          hint: "cerises = cherries; demi-kilo = half a kilo",
+        },
+      ],
+    },
+    {
+      slug: "marche-fraicheur",
+      title: "Choosing produce & freshness",
+      estMinutes: 8,
+      pages: [
+        {
+          type: "intro",
+          heading: "Picking the good stuff",
+          body: [
+            "Market vendors expect a bit of conversation, and asking for advice is normal — they'll often pick the best for you. Key descriptors: <em>mûr</em> (ripe), <em>pas trop mûr</em> (not too ripe), <em>frais</em> (fresh), <em>de saison</em> (in season).",
+            "A useful question is <em>C'est pour aujourd'hui ou pour demain?</em> — vendors ask this so they can pick fruit at the right ripeness for when you'll eat it.",
+            "To ask for guidance: <em>Qu'est-ce que vous me conseillez?</em> (What do you recommend?) and <em>C'est de chez vous?</em> (Is it from your own farm/local?).",
+          ],
+          keyPoint: "mûr = ripe, frais = fresh, de saison = in season. 'C'est pour aujourd'hui ou pour demain?' picks ripeness.",
+        },
+        {
+          type: "vocab",
+          heading: "Freshness & advice",
+          items: [
+            { l1: "mûr / pas trop mûr", en: "ripe / not too ripe" },
+            { l1: "frais / fraîche", en: "fresh" },
+            { l1: "de saison", en: "in season" },
+            { l1: "Qu'est-ce que vous me conseillez?", en: "What do you recommend?" },
+            { l1: "C'est de chez vous?", en: "Is it local / your own?" },
+            { l1: "C'est pour aujourd'hui ou pour demain?", en: "For today or for tomorrow?" },
+            { l1: "Je peux goûter?", en: "May I taste?" },
+            { l1: "Ils ont l'air bons.", en: "They look good." },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "Asking the vendor",
+          lines: [
+            { speaker: "You", l1: "Bonjour. Les melons sont mûrs?", en: "Hello. Are the melons ripe?" },
+            { speaker: "Maraîcher", l1: "Tout à fait. C'est pour aujourd'hui ou pour demain?", en: "Absolutely. For today or for tomorrow?" },
+            { speaker: "You", l1: "Pour ce soir. Qu'est-ce que vous me conseillez?", en: "For tonight. What do you recommend?" },
+            { speaker: "Maraîcher", l1: "Prenez celui-ci, il est parfait. Et il est de chez nous.", en: "Take this one, it's perfect. And it's from our own farm." },
+            { speaker: "You", l1: "Parfait, j'en prends un. Merci du conseil!", en: "Perfect, I'll take one. Thanks for the advice!" },
+          ],
+        },
+        {
+          type: "fillBlank",
+          heading: "Freshness words",
+          items: [
+            { template: "Est-ce que les fraises sont ___? (in season)", answer: "de saison", en: "Are the strawberries in season?", options: ["de saison", "mûres", "fraîches", "chères"] },
+            { template: "Ce melon est bien ___. (ripe)", answer: "mûr", en: "This melon is nicely ripe." },
+            { template: "Qu'est-ce que vous me ___? (recommend)", answer: "conseillez", en: "What do you recommend?" },
+            { template: "Le poisson est très ___ aujourd'hui. (fresh)", answer: "frais", en: "The fish is very fresh today." },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate",
+          direction: "en-to-l1",
+          prompt: "Are these tomatoes ripe? They're for tonight.",
+          reference: "Est-ce que ces tomates sont mûres? C'est pour ce soir.",
+          hint: "ripe (f. plural) = mûres; 'for tonight' = pour ce soir",
+        },
+      ],
+    },
+    {
+      slug: "marche-supermarche",
+      title: "At the supermarché",
+      estMinutes: 8,
+      pages: [
+        {
+          type: "intro",
+          heading: "Navigating the supermarket",
+          body: [
+            "Not everything is bought at the market. The <em>supermarché</em> has its own vocabulary: <em>le chariot</em> (the trolley/cart), <em>le rayon</em> (the aisle/section), <em>la caisse</em> (the checkout).",
+            "For loose produce you often weigh it yourself: <em>peser</em> (to weigh) at <em>la balance</em>, which prints a sticker with the price. Bring or buy <em>un sac réutilisable</em> — bags aren't free.",
+            "Doing the grocery run is <em>faire les courses</em> (note: <em>les courses</em>, not 'le shopping', which implies clothes/leisure).",
+          ],
+          keyPoint: "le chariot (cart), le rayon (aisle), la caisse (checkout), peser (weigh). Grocery run = faire les courses.",
+        },
+        {
+          type: "vocab",
+          heading: "Supermarket vocabulary",
+          items: [
+            { l1: "faire les courses", en: "to do the grocery shopping" },
+            { l1: "le chariot / le panier", en: "the trolley / the basket" },
+            { l1: "le rayon", en: "the aisle / department", note: "le rayon fromages" },
+            { l1: "la caisse", en: "the checkout / till" },
+            { l1: "la caisse automatique", en: "the self-checkout" },
+            { l1: "peser / la balance", en: "to weigh / the scale" },
+            { l1: "un sac réutilisable", en: "a reusable bag" },
+            { l1: "la date de péremption", en: "the expiry date" },
+            { l1: "en promotion (en promo)", en: "on special offer" },
+            { l1: "le code-barres", en: "the barcode" },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "At the checkout",
+          lines: [
+            { speaker: "Caissier", l1: "Bonjour. Vous avez la carte de fidélité?", en: "Hello. Do you have the loyalty card?" },
+            { speaker: "You", l1: "Non, je n'en ai pas. Où est le rayon du pain, s'il vous plaît?", en: "No, I don't have one. Where's the bread aisle, please?" },
+            { speaker: "Caissier", l1: "Au fond, à droite. Vous voulez un sac?", en: "At the back, on the right. Do you want a bag?" },
+            { speaker: "You", l1: "Oui, un sac réutilisable. Ça fait combien?", en: "Yes, a reusable bag. How much is it?" },
+            { speaker: "Caissier", l1: "Vingt-trois euros quarante, avec le sac.", en: "Twenty-three forty, with the bag." },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "Supermarket check",
+          questions: [
+            {
+              q: "'Le rayon' is…",
+              options: ["the checkout", "the aisle / department", "the trolley", "the receipt"],
+              correct: 1,
+              fb: "'Le rayon' is a section/aisle, e.g. le rayon fromages.",
+            },
+            {
+              q: "'Faire les courses' means…",
+              options: ["to go clothes shopping", "to do the grocery shopping", "to run errands at the bank", "to go to the market only"],
+              correct: 1,
+              fb: "'Les courses' = grocery shopping. 'Le shopping' implies leisure/clothes.",
+            },
+            {
+              q: "Before checkout, loose vegetables often need to be…",
+              options: ["peeled", "weighed (pesé)", "cooked", "wrapped"],
+              correct: 1,
+              fb: "You weigh (peser) them at la balance, which prints a price sticker.",
+            },
+          ],
+        },
+      ],
+    },
+  ],
+  checkpoint: {
+    passingPct: 80,
+    questions: [
+      { q: "'Une livre' at a French market means…", options: ["A book", "About 500 grams", "One kilo", "One liter"], correct: 1 },
+      { q: "The pronoun 'en' replaces…", options: ["a place", "de + noun ('some of it')", "the subject", "an indirect object"], correct: 1 },
+      { q: "'Et avec ça?' means…", options: ["How much?", "Anything else?", "Is that all?", "Do you have change?"], correct: 1 },
+      { q: "'Une tranche de jambon' is…", options: ["a kilo of ham", "a slice of ham", "a packet of ham", "a leg of ham"], correct: 1 },
+      { q: "'J'en prends deux' means…", options: ["I have two", "I'll take two of them", "Two please", "It's two euros"], correct: 1 },
+      { q: "'Ce sera tout' means…", options: ["That's everything/all", "It's all there", "All together", "That's too much"], correct: 0 },
+    ],
+  },
+};

@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import type { Tip } from "@/lib/content/types";
 import { SpeakButton } from "../SpeakButton";
+import { useLangSpeechCode } from "@/lib/lang-context";
 
 export function TipPage({
   page,
@@ -11,6 +12,7 @@ export function TipPage({
   page: Tip;
   setDone: (b: boolean) => void;
 }) {
+  const langCode = useLangSpeechCode();
   useEffect(() => {
     setDone(true);
   }, [setDone]);
@@ -28,10 +30,10 @@ export function TipPage({
       {page.example && (
         <div className="rounded-lg border-l-4 border-amber-500 bg-amber-50 p-4 dark:bg-amber-950/30">
           <div className="flex items-baseline gap-2">
-            <span className="font-serif text-lg italic" lang="it">
-              {page.example.it}
+            <span className="font-serif text-lg italic" lang="auto">
+              {page.example.l1}
             </span>
-            <SpeakButton text={page.example.it} />
+            <SpeakButton text={page.example.l1} langCode={langCode} />
           </div>
           <div className="mt-1 text-sm text-zinc-700 dark:text-zinc-300">
             {page.example.en}

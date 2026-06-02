@@ -1,0 +1,218 @@
+import type { Unit } from "../../types";
+
+export const UNIT_PASSE_AVOIR: Unit = {
+  slug: "passe-avoir",
+  stage: 5,
+  order: 20,
+  icon: "⏪",
+  title: "Passé composé (avoir)",
+  tagline: "Hier j'ai mangé… — the workhorse past tense.",
+  lessons: [
+    {
+      slug: "passe-avoir-main",
+      title: "The passé composé with avoir",
+      estMinutes: 11,
+      pages: [
+        {
+          type: "intro",
+          heading: "The main past tense in spoken French",
+          body: [
+            "The <strong>passé composé</strong> is the go-to past tense in spoken and informal French. It describes completed past actions: things that happened once, at a specific time, with a clear beginning and end.",
+            "Formation: <strong>avoir</strong> (present) + <strong>past participle</strong>. For -er verbs, the past participle ends in <strong>-é</strong>: parler → parlé. For -ir verbs: finir → fini. For -re verbs: attendre → attendu.",
+            "Many common verbs have irregular past participles you must memorize: faire → <strong>fait</strong>, avoir → <strong>eu</strong>, être → <strong>été</strong>, boire → <strong>bu</strong>, voir → <strong>vu</strong>, vouloir → <strong>voulu</strong>.",
+          ],
+          keyPoint: "Passé composé = avoir (present) + past participle. -er verbs → -é. -ir → -i. -re → -u. Many irregulars.",
+        },
+        {
+          type: "vocab",
+          heading: "Past participle patterns",
+          items: [
+            { l1: "manger → mangé", en: "to eat → eaten", note: "-er → -é" },
+            { l1: "parler → parlé", en: "to speak → spoken" },
+            { l1: "finir → fini", en: "to finish → finished", note: "-ir → -i" },
+            { l1: "choisir → choisi", en: "to choose → chosen" },
+            { l1: "attendre → attendu", en: "to wait → waited", note: "-re → -u" },
+            { l1: "faire → fait", en: "to do/make → done", note: "irregular" },
+            { l1: "voir → vu", en: "to see → seen", note: "irregular" },
+            { l1: "boire → bu", en: "to drink → drunk", note: "irregular" },
+            { l1: "prendre → pris", en: "to take → taken", note: "irregular" },
+            { l1: "écrire → écrit", en: "to write → written", note: "irregular" },
+          ],
+        },
+        {
+          type: "conjugation",
+          heading: "Passé composé — manger (to eat)",
+          verb: "manger",
+          meaning: "to eat (passé composé)",
+          tenses: [
+            {
+              name: "passé composé",
+              forms: [
+                { person: "j'", form: "ai mangé", en: "I ate / I have eaten" },
+                { person: "tu", form: "as mangé", en: "you ate" },
+                { person: "il/elle", form: "a mangé", en: "he/she ate" },
+                { person: "nous", form: "avons mangé", en: "we ate" },
+                { person: "vous", form: "avez mangé", en: "you ate" },
+                { person: "ils/elles", form: "ont mangé", en: "they ate" },
+              ],
+            },
+          ],
+        },
+        {
+          type: "tip",
+          heading: "Negation in passé composé",
+          body: "The negative wraps around the auxiliary: <em>je n'ai pas mangé</em> (I didn't eat). The <em>ne…pas</em> always goes around avoir/être, never around the past participle.",
+          example: { l1: "Je n'ai pas vu ce film. Il n'a rien dit.", en: "I didn't see that film. He said nothing." },
+        },
+        {
+          type: "fillBlank",
+          heading: "Conjugate in passé composé",
+          items: [
+            { template: "Hier, nous ___ (manger) une pizza.", answer: "avons mangé", en: "Yesterday we ate a pizza." },
+            { template: "Tu ___ (voir) ce film?", answer: "as vu", en: "Did you see that film?" },
+            { template: "Elle ___ (prendre) le métro.", answer: "a pris", en: "She took the metro." },
+            { template: "Ils ___ (boire) du vin rouge.", answer: "ont bu", en: "They drank red wine." },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate",
+          direction: "en-to-l1",
+          prompt: "Yesterday I ate a croissant and drank a coffee. It was delicious.",
+          reference: "Hier j'ai mangé un croissant et j'ai bu un café. C'était délicieux.",
+          hint: "c'était = it was (imparfait — the right form for descriptions in the past)",
+        },
+      ],
+    },
+    {
+      slug: "passe-avoir-irreguliers",
+      title: "More irregular participles & time markers",
+      estMinutes: 9,
+      pages: [
+        {
+          type: "intro",
+          heading: "The irregular past participles worth drilling",
+          body: [
+            "The passé composé lives or dies on irregular participles. Beyond the ones you've met, this set covers most everyday verbs: <em>mettre → mis</em>, <em>dire → dit</em>, <em>lire → lu</em>, <em>connaître → connu</em>, <em>pouvoir → pu</em>, <em>devoir → dû</em>, <em>recevoir → reçu</em>, <em>ouvrir → ouvert</em>.",
+            "Notice the families: many end in <strong>-u</strong> (lu, connu, pu, dû, reçu), a few in <strong>-is</strong> (mis, pris, appris), and some in <strong>-it/-ert</strong> (dit, écrit, ouvert, offert).",
+            "Past actions usually come with a time marker. Learn the common ones so your sentences are anchored: <em>hier</em> (yesterday), <em>la semaine dernière</em> (last week), <em>il y a deux jours</em> (two days ago).",
+          ],
+          keyPoint: "Drill: mis, dit, lu, connu, pu, dû, reçu, ouvert. Anchor with hier, la semaine dernière, il y a…",
+        },
+        {
+          type: "vocab",
+          heading: "More irregular participles",
+          items: [
+            { l1: "mettre → mis", en: "to put → put" },
+            { l1: "dire → dit", en: "to say → said" },
+            { l1: "lire → lu", en: "to read → read" },
+            { l1: "connaître → connu", en: "to know → knew" },
+            { l1: "pouvoir → pu", en: "to be able → could/was able" },
+            { l1: "devoir → dû", en: "to have to → had to", note: "circumflex on the û" },
+            { l1: "recevoir → reçu", en: "to receive → received" },
+            { l1: "ouvrir → ouvert", en: "to open → opened" },
+            { l1: "offrir → offert", en: "to offer/give → gave" },
+            { l1: "apprendre → appris", en: "to learn → learned" },
+          ],
+        },
+        {
+          type: "vocab",
+          heading: "Past time markers",
+          items: [
+            { l1: "hier / hier soir", en: "yesterday / last night" },
+            { l1: "avant-hier", en: "the day before yesterday" },
+            { l1: "la semaine dernière", en: "last week" },
+            { l1: "le mois dernier / l'année dernière", en: "last month / last year" },
+            { l1: "il y a deux jours", en: "two days ago" },
+            { l1: "déjà", en: "already", note: "j'ai déjà vu = I've already seen" },
+            { l1: "ne … jamais", en: "never", note: "je n'ai jamais mangé…" },
+            { l1: "récemment", en: "recently" },
+          ],
+        },
+        {
+          type: "fillBlank",
+          heading: "Irregular participles in context",
+          items: [
+            { template: "J'ai ___ (lire) ce livre la semaine dernière.", answer: "lu", en: "I read this book last week." },
+            { template: "Il a ___ (dire) la vérité.", answer: "dit", en: "He told the truth." },
+            { template: "Nous avons ___ (recevoir) ta lettre.", answer: "reçu", en: "We received your letter." },
+            { template: "Tu as ___ (mettre) la table?", answer: "mis", en: "Did you set the table?" },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate",
+          direction: "en-to-l1",
+          prompt: "Last week I read a book and I learned a lot.",
+          reference: "La semaine dernière, j'ai lu un livre et j'ai beaucoup appris.",
+          hint: "read = lu; learned = appris; 'a lot' = beaucoup goes before the participle",
+        },
+      ],
+    },
+    {
+      slug: "passe-avoir-recit",
+      title: "Telling what you did",
+      estMinutes: 8,
+      pages: [
+        {
+          type: "intro",
+          heading: "Narrating a day in the past",
+          body: [
+            "To tell a story, chain passé composé actions with the sequencing words you know: <em>d'abord</em> (first), <em>ensuite / puis</em> (then), <em>après</em> (after), <em>enfin</em> (finally).",
+            "To ask about someone's day or trip, the key questions are <em>Qu'est-ce que tu as fait?</em> (What did you do?) and <em>Où est-ce que tu es allé?</em> (Where did you go? — note this one takes être).",
+            "Mixing avoir and être verbs in one story is normal — most actions take avoir, but movement verbs take être. Listen for that switch as you narrate.",
+          ],
+          keyPoint: "Sequence actions: d'abord, ensuite/puis, après, enfin. Ask: Qu'est-ce que tu as fait?",
+        },
+        {
+          type: "vocab",
+          heading: "Narrating phrases",
+          items: [
+            { l1: "Qu'est-ce que tu as fait?", en: "What did you do?" },
+            { l1: "d'abord, j'ai…", en: "first, I…" },
+            { l1: "ensuite / puis", en: "then / next" },
+            { l1: "après, on a…", en: "afterwards, we…" },
+            { l1: "enfin / finalement", en: "finally / in the end" },
+            { l1: "C'était comment?", en: "How was it?" },
+            { l1: "On a passé une bonne journée.", en: "We had a good day." },
+            { l1: "Je me suis bien amusé(e).", en: "I had a good time." },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "What did you do yesterday?",
+          lines: [
+            { speaker: "Karim", l1: "Alors, qu'est-ce que tu as fait hier?", en: "So, what did you do yesterday?" },
+            { speaker: "You", l1: "D'abord, j'ai visité le Louvre. Ensuite, j'ai déjeuné dans un café.", en: "First, I visited the Louvre. Then I had lunch in a café." },
+            { speaker: "Karim", l1: "Et après?", en: "And after?" },
+            { speaker: "You", l1: "Après, je suis allé à Montmartre. C'était magnifique!", en: "After, I went to Montmartre. It was magnificent!" },
+            { speaker: "Karim", l1: "Super! Tu as passé une bonne journée alors.", en: "Great! You had a good day then." },
+          ],
+        },
+        {
+          type: "orderWords",
+          heading: "Build the past sentence",
+          items: [
+            { tokens: ["D'abord,", "j'ai", "pris", "le", "petit-déjeuner."], en: "First, I had breakfast." },
+            { tokens: ["Ensuite,", "nous", "avons", "visité", "le", "musée."], en: "Then we visited the museum." },
+            { tokens: ["Après,", "ils", "ont", "mangé", "au", "restaurant."], en: "Afterwards, they ate at the restaurant." },
+            { tokens: ["Enfin,", "je", "suis", "rentré", "à", "l'hôtel."], en: "Finally, I returned to the hotel." },
+          ],
+        },
+      ],
+    },
+  ],
+  checkpoint: {
+    passingPct: 80,
+    questions: [
+      { q: "The passé composé of 'faire' is…", options: ["j'ai fait", "j'ai faisé", "j'ai faisait", "j'ai fais"], correct: 0 },
+      { q: "'J'ai vu' means…", options: ["I see", "I saw / I have seen", "I will see", "I was seeing"], correct: 1 },
+      { q: "Where does 'ne…pas' go in the passé composé?", options: ["Around the past participle", "Around the auxiliary verb (avoir)", "Before je", "After the past participle"], correct: 1 },
+      { q: "Past participle of 'prendre' is…", options: ["prendu", "prendé", "pris", "prendit"], correct: 2 },
+      { q: "Passé composé describes…", options: ["Ongoing past states", "Completed actions at a specific time", "Habitual past actions", "Future plans"], correct: 1 },
+      { q: "'Nous avons attendu le bus' means…", options: ["We are waiting for the bus", "We waited for the bus", "We will wait for the bus", "We used to wait for the bus"], correct: 1 },
+      { q: "Past participle of 'boire' is…", options: ["bué", "bu", "bui", "buvé"], correct: 1 },
+      { q: "How do you say 'She didn't eat'?", options: ["Elle n'a pas mangé.", "Elle pas a mangé.", "Elle a pas mangé.", "Elle a n'pas mangé."], correct: 0 },
+    ],
+  },
+};

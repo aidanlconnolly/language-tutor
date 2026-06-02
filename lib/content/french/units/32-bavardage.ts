@@ -1,0 +1,201 @@
+import type { Unit } from "../../types";
+
+export const UNIT_BAVARDAGE: Unit = {
+  slug: "bavardage",
+  stage: 7,
+  order: 32,
+  icon: "🌤️",
+  title: "Small talk",
+  tagline: "Météo, sport, ah bon!, les bises — prendre congé.",
+  lessons: [
+    {
+      slug: "bavardage-main",
+      title: "The art of French small talk",
+      estMinutes: 8,
+      pages: [
+        {
+          type: "intro",
+          heading: "Small talk, French style",
+          body: [
+            "The weather (<em>la météo</em>) is a universally safe small-talk topic in France, as elsewhere. Food and culture are also welcome. Money, salary, and overly personal questions are best avoided with people you've just met.",
+            "French conversation uses lots of reactive expressions: <em>Ah bon?</em> (Oh really?), <em>C'est vrai?</em> (Is that true?), <em>Dis donc!</em> (Wow / Well!), <em>Tu m'étonnes!</em> (You don't say / No surprise there).",
+            "Knowing how to gracefully end a conversation — <em>prendre congé</em> — matters. Phrases like <em>Bon, je vais y aller</em> (Well, I'd better go) and <em>On se voit bientôt</em> (See you soon) ease the exit.",
+          ],
+        },
+        {
+          type: "vocab",
+          heading: "Weather & small-talk topics",
+          items: [
+            { l1: "Quel temps fait-il?", en: "What's the weather like?" },
+            { l1: "Il fait beau / mauvais.", en: "The weather is nice / bad." },
+            { l1: "Il fait chaud / froid.", en: "It's hot / cold." },
+            { l1: "Il pleut / Il neige.", en: "It's raining / It's snowing." },
+            { l1: "Il y a du vent / du soleil.", en: "It's windy / sunny." },
+            { l1: "Quelle belle journée!", en: "What a beautiful day!" },
+            { l1: "Tu as passé un bon week-end?", en: "Did you have a good weekend?" },
+            { l1: "Tu suis le foot?", en: "Do you follow football/soccer?" },
+          ],
+        },
+        {
+          type: "vocab",
+          heading: "Reactions & taking leave",
+          items: [
+            { l1: "Ah bon?", en: "Oh really?", note: "the most common reaction" },
+            { l1: "C'est vrai?", en: "Is that true? / Really?" },
+            { l1: "Dis donc!", en: "Well! / Wow!" },
+            { l1: "Sans blague!", en: "No kidding!" },
+            { l1: "Bon, je vais y aller.", en: "Well, I'd better go." },
+            { l1: "Il faut que j'y aille.", en: "I have to go. (subjunctive)" },
+            { l1: "On se voit bientôt!", en: "See you soon!" },
+            { l1: "Passe une bonne journée / soirée!", en: "Have a good day / evening!" },
+            { l1: "À la prochaine!", en: "Until next time!" },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "Casual chat",
+          lines: [
+            { speaker: "Voisin", l1: "Bonjour! Quelle belle journée, n'est-ce pas?", en: "Hello! What a beautiful day, isn't it?" },
+            { speaker: "You", l1: "Oui, il fait enfin beau! Vous avez passé un bon week-end?", en: "Yes, the weather is finally nice! Did you have a good weekend?" },
+            { speaker: "Voisin", l1: "Très bon, merci. On est allés à la campagne.", en: "Very good, thanks. We went to the countryside." },
+            { speaker: "You", l1: "Ah bon? C'est super. Bon, je dois y aller. Bonne journée!", en: "Oh really? That's great. Well, I have to go. Have a good day!" },
+            { speaker: "Voisin", l1: "Vous aussi! À bientôt!", en: "You too! See you soon!" },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate",
+          direction: "en-to-l1",
+          prompt: "What lovely weather! Did you have a good weekend?",
+          reference: "Quel beau temps! Tu as passé un bon week-end?",
+          hint: "Quel beau temps! = What lovely weather!; tu as passé = did you have/spend",
+        },
+      ],
+    },
+    {
+      slug: "bavardage-weekend",
+      title: "The weekend & plans",
+      estMinutes: 8,
+      pages: [
+        {
+          type: "intro",
+          heading: "The Monday-morning conversation",
+          body: [
+            "A huge share of casual chat is about the weekend just gone and the one coming up. The two anchor questions: <em>Tu as passé un bon week-end?</em> (Did you have a good weekend?) and <em>Tu fais quoi ce week-end?</em> (What are you doing this weekend?).",
+            "Answers mix tenses naturally — passé composé for what you did, present or futur proche for plans: <em>Je suis allé au marché, et ce week-end je vais me reposer.</em>",
+            "Keep a few all-purpose replies ready: <em>tranquille</em> (quiet/chill), <em>rien de spécial</em> (nothing special), <em>chargé</em> (busy).",
+          ],
+          keyPoint: "Ask: Tu as passé un bon week-end? / Tu fais quoi ce week-end? Replies: tranquille / rien de spécial / chargé.",
+        },
+        {
+          type: "vocab",
+          heading: "Weekend & plans phrases",
+          items: [
+            { l1: "Tu as passé un bon week-end?", en: "Did you have a good weekend?" },
+            { l1: "Tu fais quoi ce week-end?", en: "What are you doing this weekend?" },
+            { l1: "rien de spécial", en: "nothing special" },
+            { l1: "C'était tranquille.", en: "It was quiet / chill." },
+            { l1: "J'ai une semaine chargée.", en: "I have a busy week." },
+            { l1: "On s'est bien amusés.", en: "We had a great time." },
+            { l1: "Je vais me reposer.", en: "I'm going to rest." },
+            { l1: "On verra bien.", en: "We'll see how it goes." },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "Monday at the office",
+          lines: [
+            { speaker: "Collègue", l1: "Salut! Tu as passé un bon week-end?", en: "Hi! Did you have a good weekend?" },
+            { speaker: "You", l1: "Oui, tranquille. Je suis allé voir une expo. Et toi?", en: "Yes, chill. I went to see an exhibition. And you?" },
+            { speaker: "Collègue", l1: "Rien de spécial, je me suis reposé. Tu fais quoi le week-end prochain?", en: "Nothing special, I rested. What are you doing next weekend?" },
+            { speaker: "You", l1: "Je ne sais pas encore. On verra bien!", en: "I don't know yet. We'll see!" },
+            { speaker: "Collègue", l1: "Bonne semaine en tout cas!", en: "Have a good week anyway!" },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate",
+          direction: "en-to-l1",
+          prompt: "Did you have a good weekend? Me, nothing special, I rested.",
+          reference: "Tu as passé un bon week-end? Moi, rien de spécial, je me suis reposé(e).",
+          hint: "Did you have/spend = Tu as passé; I rested = je me suis reposé(e)",
+        },
+      ],
+    },
+    {
+      slug: "bavardage-occasions",
+      title: "Compliments, congratulations & sympathy",
+      estMinutes: 7,
+      pages: [
+        {
+          type: "intro",
+          heading: "The right words for life's moments",
+          body: [
+            "Social fluency means having ready phrases for good news and bad. For celebrations: <em>Félicitations!</em> (Congratulations!), <em>Bravo!</em>, <em>Je suis content(e) pour toi</em> (I'm happy for you).",
+            "For special days: <em>Joyeux anniversaire!</em> (Happy birthday!), <em>Bonne année!</em> (Happy New Year!), <em>Joyeuses fêtes!</em> (Happy holidays!), <em>Félicitations</em> for weddings/babies.",
+            "For hard times: <em>Je suis désolé(e) pour toi</em> (I'm sorry for you), <em>Bon rétablissement</em> (Get well soon), and the formal condolence <em>Toutes mes condoléances</em> (My deepest sympathies).",
+          ],
+          keyPoint: "Celebrate: Félicitations! / Bravo! Sympathy: Je suis désolé(e) / Bon rétablissement / Toutes mes condoléances.",
+        },
+        {
+          type: "vocab",
+          heading: "Occasion phrases",
+          items: [
+            { l1: "Félicitations!", en: "Congratulations!" },
+            { l1: "Bravo!", en: "Well done! / Bravo!" },
+            { l1: "Je suis content(e) pour toi.", en: "I'm happy for you." },
+            { l1: "Joyeux anniversaire!", en: "Happy birthday!" },
+            { l1: "Bonne année!", en: "Happy New Year!" },
+            { l1: "Joyeuses fêtes!", en: "Happy holidays!" },
+            { l1: "Bon rétablissement!", en: "Get well soon!" },
+            { l1: "Je suis désolé(e) pour toi.", en: "I'm sorry (for you)." },
+            { l1: "Toutes mes condoléances.", en: "My deepest condolences." },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "Which phrase fits?",
+          questions: [
+            {
+              q: "Your friend just got a new job. You say…",
+              options: ["Toutes mes condoléances.", "Félicitations! Je suis content pour toi.", "Bon rétablissement!", "C'est dommage."],
+              correct: 1,
+              fb: "Good news → Félicitations! / Je suis content pour toi.",
+            },
+            {
+              q: "Someone is sick at home. You say…",
+              options: ["Bon rétablissement!", "Bonne année!", "Bravo!", "Félicitations!"],
+              correct: 0,
+              fb: "'Bon rétablissement!' = Get well soon.",
+            },
+            {
+              q: "'Toutes mes condoléances' is said…",
+              options: ["at a birthday", "after a death (sympathy)", "at New Year", "for a promotion"],
+              correct: 1,
+              fb: "It's the standard French expression of condolence.",
+            },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate",
+          direction: "en-to-l1",
+          prompt: "Congratulations! I'm really happy for you. Happy birthday too!",
+          reference: "Félicitations! Je suis vraiment content(e) pour toi. Joyeux anniversaire aussi!",
+          hint: "Congratulations = Félicitations; happy for you = content(e) pour toi",
+        },
+      ],
+    },
+  ],
+  checkpoint: {
+    passingPct: 80,
+    questions: [
+      { q: "'Ah bon?' means…", options: ["That's good", "Oh really?", "Goodbye", "Good morning"], correct: 1 },
+      { q: "'Il fait beau' means…", options: ["It's beautiful (object)", "The weather is nice", "He's handsome", "It's expensive"], correct: 1 },
+      { q: "A safe small-talk topic in France is…", options: ["Salary", "The weather", "Political affiliation", "Personal income"], correct: 1 },
+      { q: "'Prendre congé' means…", options: ["To take a holiday", "To gracefully end a conversation / take leave", "To complain", "To greet"], correct: 1 },
+      { q: "'On se voit bientôt' means…", options: ["We see well", "See you soon", "We can see it", "Look over there"], correct: 1 },
+      { q: "'Il faut que j'y aille' means…", options: ["I'm staying", "I have to go (subjunctive)", "I'll be there", "Let's go together"], correct: 1 },
+    ],
+  },
+};

@@ -1,0 +1,206 @@
+import type { Unit } from "../../types";
+
+export const UNIT_MODE_STYLE: Unit = {
+  slug: "mode-style",
+  stage: 7,
+  order: 31,
+  icon: "👗",
+  title: "Fashion & style",
+  tagline: "La mode, les soldes, les grandes marques, chic.",
+  lessons: [
+    {
+      slug: "mode-style-main",
+      title: "Talking about fashion & style",
+      estMinutes: 8,
+      pages: [
+        {
+          type: "intro",
+          heading: "Paris — the capital of fashion",
+          body: [
+            "Paris is one of the world's fashion capitals, home to <em>haute couture</em> and the great houses: Chanel, Dior, Louis Vuitton, Hermès, Saint Laurent. <em>La Fashion Week</em> twice a year draws the global industry.",
+            "French style values understatement and quality over flashy logos — the ideal is <em>chic</em> and <em>élégant</em> rather than ostentatious. The phrase <em>bien habillé</em> (well dressed) is high praise.",
+            "Vocabulary for clothes, colors, and describing style is useful for shopping and small talk. The verb <em>porter</em> = to wear; <em>s'habiller</em> = to get dressed.",
+          ],
+        },
+        {
+          type: "vocab",
+          heading: "Clothing vocabulary",
+          items: [
+            { l1: "les vêtements", en: "clothes" },
+            { l1: "une chemise / un chemisier", en: "a shirt / a blouse" },
+            { l1: "un pantalon", en: "trousers (singular in French!)" },
+            { l1: "une robe / une jupe", en: "a dress / a skirt" },
+            { l1: "une veste / un manteau", en: "a jacket / a coat" },
+            { l1: "des chaussures", en: "shoes" },
+            { l1: "une écharpe / un foulard", en: "a scarf (winter) / a silk scarf" },
+            { l1: "un chapeau", en: "a hat" },
+            { l1: "porter", en: "to wear" },
+            { l1: "s'habiller", en: "to get dressed / to dress" },
+          ],
+        },
+        {
+          type: "vocab",
+          heading: "Style & describing",
+          items: [
+            { l1: "chic / élégant/e", en: "chic / elegant" },
+            { l1: "à la mode / tendance", en: "fashionable / trendy" },
+            { l1: "démodé/e", en: "out of fashion / dated" },
+            { l1: "Ça te va bien!", en: "That suits you!", note: "common compliment" },
+            { l1: "C'est élégant.", en: "It's elegant." },
+            { l1: "une marque", en: "a brand" },
+            { l1: "les grandes marques", en: "the big designer brands" },
+            { l1: "les soldes", en: "the sales" },
+            { l1: "bien habillé/e", en: "well dressed" },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "Shopping for clothes",
+          lines: [
+            { speaker: "Friend", l1: "Cette robe est superbe! Ça te va très bien.", en: "This dress is gorgeous! It really suits you." },
+            { speaker: "You", l1: "Tu trouves? Elle n'est pas trop chère?", en: "You think so? Isn't it too expensive?" },
+            { speaker: "Friend", l1: "C'est les soldes, il y a moins trente pour cent.", en: "It's the sales, there's thirty percent off." },
+            { speaker: "You", l1: "Alors je la prends! C'est élégant et à la mode.", en: "Then I'll take it! It's elegant and fashionable." },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate",
+          direction: "en-to-l1",
+          prompt: "I love this jacket. It's very elegant and it suits you well.",
+          reference: "J'adore cette veste. Elle est très élégante et elle te va bien.",
+          hint: "te va bien = suits you well; élégante agrees with veste (f)",
+        },
+      ],
+    },
+    {
+      slug: "mode-style-couleurs",
+      title: "Colours, materials & patterns",
+      estMinutes: 8,
+      pages: [
+        {
+          type: "intro",
+          heading: "Describing what something is made of and how it looks",
+          body: [
+            "To describe clothes precisely you need colours, materials, and patterns. Colours agree like adjectives (<em>une robe verte</em>), but a few are <strong>invariable</strong>: <em>marron</em> (brown) and <em>orange</em> never change, and compound colours like <em>bleu clair</em> (light blue) or <em>bleu foncé</em> (dark blue) stay fixed too.",
+            "Material uses <em>en</em>: <em>en coton</em> (cotton), <em>en cuir</em> (leather), <em>en laine</em> (wool), <em>en soie</em> (silk). <em>Un sac en cuir</em> = a leather bag.",
+            "Patterns use <em>à</em>: <em>à rayures</em> (striped), <em>à pois</em> (polka-dot), <em>à fleurs</em> (floral), or <em>uni</em> (plain/solid).",
+          ],
+          keyPoint: "Material = en (coton, cuir, laine, soie). Pattern = à (rayures, pois, fleurs) or uni. marron/orange = invariable.",
+        },
+        {
+          type: "vocab",
+          heading: "Colours, materials & patterns",
+          items: [
+            { l1: "blanc / noir / gris", en: "white / black / grey" },
+            { l1: "rouge / bleu / vert / jaune", en: "red / blue / green / yellow" },
+            { l1: "marron / orange", en: "brown / orange", note: "invariable — never add -e/-s" },
+            { l1: "bleu clair / bleu foncé", en: "light blue / dark blue", note: "compound: invariable" },
+            { l1: "en coton / en laine", en: "(made of) cotton / wool" },
+            { l1: "en cuir / en soie", en: "(made of) leather / silk" },
+            { l1: "à rayures", en: "striped" },
+            { l1: "à pois", en: "polka-dot" },
+            { l1: "à fleurs", en: "floral" },
+            { l1: "uni / imprimé", en: "plain, solid / printed, patterned" },
+          ],
+        },
+        {
+          type: "fillBlank",
+          heading: "Describe the item",
+          items: [
+            { template: "Une chemise ___ (striped).", answer: "à rayures", en: "A striped shirt.", options: ["à pois", "à rayures", "en cuir", "uni"] },
+            { template: "Un sac ___ cuir. (made of)", answer: "en", en: "A leather bag.", options: ["à", "en", "de", "au"] },
+            { template: "Une robe ___ (light blue).", answer: "bleu clair", en: "A light blue dress.", options: ["bleue claire", "bleu clair", "bleus clairs", "bleue clair"] },
+            { template: "Un pull ___ laine, tout simple. (made of)", answer: "en", en: "A wool sweater, very simple." },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "Colour & material check",
+          questions: [
+            {
+              q: "Which colour never changes form (invariable)?",
+              options: ["vert", "bleu", "marron", "gris"],
+              correct: 2,
+              fb: "'Marron' (and 'orange') stay invariable: des chaussures marron.",
+            },
+            {
+              q: "'Un manteau en laine' is…",
+              options: ["a striped coat", "a wool coat", "a plain coat", "a leather coat"],
+              correct: 1,
+              fb: "'en laine' = made of wool.",
+            },
+            {
+              q: "'À pois' means…",
+              options: ["floral", "striped", "polka-dot", "plain"],
+              correct: 2,
+              fb: "'À pois' = polka-dot. 'À rayures' = striped.",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      slug: "mode-style-accessoires",
+      title: "Accessories & describing a look",
+      estMinutes: 7,
+      pages: [
+        {
+          type: "intro",
+          heading: "Pulling a look together",
+          body: [
+            "Accessories (<em>les accessoires</em>) complete an outfit: <em>un sac</em> (bag), <em>une ceinture</em> (belt), <em>des lunettes</em> (glasses), <em>une montre</em> (watch), <em>des bijoux</em> (jewellery).",
+            "To say things match, French uses <em>aller avec</em>: <em>Ce sac va bien avec tes chaussures</em> (this bag goes well with your shoes). The whole outfit is <em>une tenue</em>.",
+            "Compliments are part of the fun: <em>J'adore ta tenue</em> (I love your outfit), <em>Tu es très élégant(e)</em>, <em>Ça te va à merveille</em> (it suits you wonderfully).",
+          ],
+          keyPoint: "Outfit = une tenue. Match = aller avec. Compliment: Ça te va à merveille / J'adore ta tenue.",
+        },
+        {
+          type: "vocab",
+          heading: "Accessories & describing a look",
+          items: [
+            { l1: "les accessoires", en: "accessories" },
+            { l1: "un sac (à main)", en: "a (hand)bag" },
+            { l1: "une ceinture", en: "a belt" },
+            { l1: "des lunettes (de soleil)", en: "(sun)glasses" },
+            { l1: "une montre", en: "a watch" },
+            { l1: "des bijoux", en: "jewellery" },
+            { l1: "une tenue", en: "an outfit" },
+            { l1: "aller avec", en: "to go with / match" },
+            { l1: "Ça te va à merveille.", en: "It suits you wonderfully." },
+            { l1: "J'adore ta tenue.", en: "I love your outfit." },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "Complimenting an outfit",
+          lines: [
+            { speaker: "Clara", l1: "J'adore ta tenue! Ce sac va parfaitement avec tes chaussures.", en: "I love your outfit! That bag goes perfectly with your shoes." },
+            { speaker: "You", l1: "Merci! Je l'ai trouvé en solde. Et tes lunettes sont superbes.", en: "Thanks! I found it on sale. And your glasses are gorgeous." },
+            { speaker: "Clara", l1: "C'est gentil. Tu crois que cette ceinture va avec?", en: "That's kind. Do you think this belt goes with it?" },
+            { speaker: "You", l1: "Tout à fait, ça te va à merveille.", en: "Absolutely, it suits you wonderfully." },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate",
+          direction: "en-to-l1",
+          prompt: "I love your outfit! That belt goes really well with your bag.",
+          reference: "J'adore ta tenue! Cette ceinture va très bien avec ton sac.",
+          hint: "outfit = tenue; goes well with = va bien avec",
+        },
+      ],
+    },
+  ],
+  checkpoint: {
+    passingPct: 80,
+    questions: [
+      { q: "'Un pantalon' in French is…", options: ["plural like English 'trousers'", "singular", "always feminine", "a type of shoe"], correct: 1 },
+      { q: "'Ça te va bien!' means…", options: ["You go well", "That suits you!", "It's cheap", "Go that way"], correct: 1 },
+      { q: "'Porter' means…", options: ["to carry only", "to wear", "to buy", "to remove"], correct: 1 },
+      { q: "French style ideals favor…", options: ["Flashy logos", "Understated chic and quality", "Bright colors", "Matching everything"], correct: 1 },
+      { q: "'Démodé' means…", options: ["fashionable", "out of fashion / dated", "expensive", "elegant"], correct: 1 },
+      { q: "'Les grandes marques' refers to…", options: ["large sizes", "the big designer brands", "department stores", "the sales"], correct: 1 },
+    ],
+  },
+};

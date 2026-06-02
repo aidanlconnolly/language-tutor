@@ -3,32 +3,34 @@
 import { and, eq } from "drizzle-orm";
 import { nanoid } from "nanoid";
 import { db, schema } from "@/lib/db/client";
-import { lookupItalianWord } from "@/lib/anthropic";
+import { lookupWord as claudeLookup } from "@/lib/anthropic";
 import { requireAuth, getSession } from "@/lib/auth";
 import type { Word } from "@/lib/db/schema";
+import type { Lang } from "@/lib/lang";
 
 export type LookupResult =
   | { ok: true; word: Word; cached: boolean; isSaved: boolean }
   | { ok: false; error: string };
 
 /**
- * Look up an Italian word. Cache-first: hits Claude only on a lemma miss.
- * The `words` table is a shared global dictionary — no userId filter here.
- * Only the `cards` table (which records whether *this user* saved the word)
- * is per-user.
+ * Look up a word in the specified language. Cache-first: hits Claude only on a lemma miss.
+ * The `words` table is scoped by language — one entry per (language, lemma) pair.
+ * Only the `cards` table (which records whether *this user* saved the word) is per-user.
  */
 export async function lookupWord(args: {
   surface: string;
   sentence: string;
+  lang: Lang;
 }): Promise<LookupResult> {
+  const { lang } = args;
   const surface = args.surface.normalize("NFC");
   const sentence = args.sentence.normalize("NFC");
 
   try {
     const userId = await requireAuth();
 
-    // Shortcut: have we seen this exact surface form before (in the global dict)?
-    const all = await db.select().from(schema.words);
+    // Shortcut: have we seen this exact surface form before (in this language's dict)?
+    const all = await db.select().from(schema.words).where(eq(schema.words.language, lang));
     const surfaceMatch = all.find(
       (w) =>
         w.lemma === surface ||
@@ -40,7 +42,7 @@ export async function lookupWord(args: {
     }
 
     // Cache miss → ask Claude
-    const lookup = await lookupItalianWord({ surface, sentence });
+    const lookup = await claudeLookup({ surface, sentence, lang });
     const lemma = lookup.lemma.normalize("NFC");
 
     const existing = all.find((w) => w.lemma === lemma);
@@ -62,6 +64,7 @@ export async function lookupWord(args: {
       surface.toLowerCase() === lemma.toLowerCase() ? [] : [surface];
     const newWord: typeof schema.words.$inferInsert = {
       id,
+      language: lang,
       lemma,
       surfaceSeen,
       pos: lookup.pos,
@@ -104,15 +107,15 @@ async function wordIsSaved(wordId: string, userId: string): Promise<boolean> {
 }
 
 /**
- * Returns the set of word IDs that have a card for the current user.
+ * Returns the set of word IDs that have a card for the current user in the given language.
  * Used by the Reader to render "already saved" styling on TappableWord.
  */
-export async function getSavedWordIds(): Promise<Set<string>> {
+export async function getSavedWordIds(lang: Lang): Promise<Set<string>> {
   const session = await getSession();
   if (!session) return new Set();
   const rows = await db
     .select({ wordId: schema.cards.wordId })
     .from(schema.cards)
-    .where(eq(schema.cards.userId, session.userId));
+    .where(and(eq(schema.cards.userId, session.userId), eq(schema.cards.language, lang)));
   return new Set(rows.map((r) => r.wordId));
 }

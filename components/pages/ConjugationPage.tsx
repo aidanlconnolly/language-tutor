@@ -19,7 +19,7 @@ export function ConjugationPage({
     <div className="space-y-4">
       <h2 className="text-2xl font-bold tracking-tight">{page.heading}</h2>
       <div className="flex items-baseline gap-2">
-        <span className="font-serif text-xl font-semibold" lang="it">
+        <span className="font-serif text-xl font-semibold" lang="auto">
           {page.verb}
         </span>
         <span className="text-sm italic text-zinc-500">— {page.meaning}</span>
@@ -44,7 +44,7 @@ export function ConjugationPage({
                       {f.person}
                     </td>
                     <td className="py-2 pr-2">
-                      <span className="font-serif font-medium" lang="it">
+                      <span className="font-serif font-medium" lang="auto">
                         {f.form}
                       </span>
                     </td>

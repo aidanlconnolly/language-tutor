@@ -61,7 +61,7 @@ export function FillBlankPage({
             key={i}
             className="rounded-lg border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-950"
           >
-            <div className="font-serif text-base" lang="it">
+            <div className="font-serif text-base" lang="auto">
               {before}
               <span
                 className={[
@@ -112,7 +112,7 @@ export function FillBlankPage({
                     className="flex gap-2"
                   >
                     <input
-                      lang="it"
+                      lang="auto"
                       value={answers[i]}
                       onChange={(e) =>
                         setAnswers((prev) => {

@@ -1,0 +1,208 @@
+import type { Unit } from "../../types";
+
+export const UNIT_SHOPPING: Unit = {
+  slug: "shopping",
+  stage: 6,
+  order: 25,
+  icon: "🛍️",
+  title: "Money & shopping",
+  tagline: "Combien ça coûte, réduction, payer par carte?",
+  lessons: [
+    {
+      slug: "shopping-main",
+      title: "Shopping in France",
+      estMinutes: 9,
+      pages: [
+        {
+          type: "intro",
+          heading: "Shopping culture in France",
+          body: [
+            "France is famous for its shopping — from the grands magasins (department stores) like Galeries Lafayette and Le Bon Marché to the small boutiques in the Marais and Saint-Germain.",
+            "The <em>soldes</em> (sales) happen twice a year by law: January–February (winter sales) and July–August (summer sales). Discounts of 30–70% are genuine. Outside soldes, French shops rarely negotiate on price — haggling is not the norm.",
+            "Card payment is widely accepted but some smaller cafés and markets still prefer cash. It's worth having a few euros on you.",
+          ],
+        },
+        {
+          type: "vocab",
+          heading: "Shopping vocabulary",
+          items: [
+            { l1: "Combien ça coûte? / C'est combien?", en: "How much does it cost?" },
+            { l1: "C'est (trop) cher.", en: "It's (too) expensive." },
+            { l1: "C'est bon marché / pas cher.", en: "It's cheap / not expensive." },
+            { l1: "les soldes", en: "the sales", note: "twice a year in France by law" },
+            { l1: "une réduction / un rabais", en: "a discount" },
+            { l1: "Je peux essayer?", en: "Can I try it on?", note: "for clothes" },
+            { l1: "la cabine d'essayage", en: "the fitting room" },
+            { l1: "la taille / la pointure", en: "the size (clothing) / the size (shoes)" },
+            { l1: "Vous avez ça en…?", en: "Do you have it in…? (color/size)" },
+            { l1: "Je le prends / Je vais le prendre.", en: "I'll take it." },
+            { l1: "Vous acceptez les cartes?", en: "Do you take cards?" },
+            { l1: "le reçu / la facture", en: "the receipt / the invoice" },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "In a clothing shop",
+          lines: [
+            { speaker: "You", l1: "Bonjour. Je cherche une veste pour l'été.", en: "Hello. I'm looking for a jacket for the summer." },
+            { speaker: "Assistant", l1: "Voilà nos nouveautés. Vous faites quelle taille?", en: "Here are our new arrivals. What size do you take?" },
+            { speaker: "You", l1: "Du 40. Est-ce que je peux essayer celle-ci?", en: "Size 40. Can I try this one on?" },
+            { speaker: "Assistant", l1: "Bien sûr! La cabine est au fond à droite.", en: "Of course! The fitting room is at the back on the right." },
+            { speaker: "You", l1: "C'est un peu grand. Vous avez ça en 38?", en: "It's a bit big. Do you have it in 38?" },
+            { speaker: "Assistant", l1: "Je vais vérifier.", en: "I'll check." },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate",
+          direction: "en-to-l1",
+          prompt: "How much is this scarf? Do you have a discount?",
+          reference: "Combien coûte cette écharpe? Vous avez une réduction?",
+          hint: "écharpe = scarf; cette = this (f); combien coûte = how much costs (formal order)",
+        },
+      ],
+    },
+    {
+      slug: "shopping-vetements",
+      title: "Clothing, sizes & fit",
+      estMinutes: 8,
+      pages: [
+        {
+          type: "intro",
+          heading: "Naming clothes and saying how they fit",
+          body: [
+            "To shop for clothes you need the items, the sizes, and the fit words. French clothing sizes differ from US/UK — a French 38 is roughly a US 8 for women — so it's often easier to try on (<em>essayer</em>) than to convert.",
+            "The key fit phrase is <em>aller</em> used for clothes: <em>Ça vous va bien</em> (it suits you / it fits you well), <em>Ça ne me va pas</em> (it doesn't fit/suit me).",
+            "Describe the problem with <em>trop</em>: <em>trop grand / petit / serré / large</em> (too big / small / tight / loose).",
+          ],
+          keyPoint: "Try on = essayer. Fit/suit = aller: ça vous va bien. Problems: trop grand / petit / serré / large.",
+        },
+        {
+          type: "vocab",
+          heading: "Clothing & fit",
+          items: [
+            { l1: "un pantalon / un jean", en: "trousers / jeans" },
+            { l1: "une robe / une jupe", en: "a dress / a skirt" },
+            { l1: "une chemise / un pull", en: "a shirt / a sweater" },
+            { l1: "un manteau / une veste", en: "a coat / a jacket" },
+            { l1: "des chaussures", en: "shoes" },
+            { l1: "Ça vous va bien.", en: "It suits/fits you well." },
+            { l1: "Ça ne me va pas.", en: "It doesn't fit/suit me." },
+            { l1: "trop serré / trop large", en: "too tight / too loose" },
+            { l1: "Vous avez la taille au-dessus?", en: "Do you have the next size up?" },
+            { l1: "en quelle couleur?", en: "in which colour?" },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "Trying things on",
+          lines: [
+            { speaker: "Vendeur", l1: "Cette chemise vous plaît?", en: "Do you like this shirt?" },
+            { speaker: "You", l1: "Oui, mais elle est un peu trop serrée. Vous avez la taille au-dessus?", en: "Yes, but it's a bit too tight. Do you have the next size up?" },
+            { speaker: "Vendeur", l1: "Bien sûr. Et en quelle couleur la préférez-vous?", en: "Of course. And in which colour do you prefer it?" },
+            { speaker: "You", l1: "En bleu, si possible.", en: "In blue, if possible." },
+            { speaker: "Vendeur", l1: "Voilà. Essayez celle-ci.", en: "Here. Try this one." },
+            { speaker: "You", l1: "Parfait, ça me va bien. Je la prends.", en: "Perfect, it fits well. I'll take it." },
+          ],
+        },
+        {
+          type: "fillBlank",
+          heading: "Talking about fit",
+          items: [
+            { template: "Ce pantalon est trop ___. (tight)", answer: "serré", en: "These trousers are too tight.", options: ["serré", "large", "court", "grand"] },
+            { template: "Cette robe vous ___ très bien. (suits)", answer: "va", en: "This dress suits you very well." },
+            { template: "Je peux ___ ces chaussures? (try on)", answer: "essayer", en: "Can I try on these shoes?" },
+            { template: "Vous avez la taille au-___? (next size up)", answer: "dessus", en: "Do you have the next size up?" },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate",
+          direction: "en-to-l1",
+          prompt: "This jacket is too big. Do you have a smaller size?",
+          reference: "Cette veste est trop grande. Vous avez une taille en dessous?",
+          hint: "too big = trop grande; smaller size = une taille en dessous (or plus petite)",
+        },
+      ],
+    },
+    {
+      slug: "shopping-retours",
+      title: "Paying, returns & complaints",
+      estMinutes: 8,
+      pages: [
+        {
+          type: "intro",
+          heading: "After the purchase",
+          body: [
+            "Sometimes things go back. To return or exchange, you'll use <em>rendre</em> / <em>rapporter</em> (to bring back), <em>échanger</em> (to exchange), and <em>rembourser</em> (to refund). Keep <em>le ticket de caisse</em> (the receipt) — you usually need it.",
+            "Note: many French shops offer <em>un avoir</em> (store credit) rather than a cash refund, especially outside the legal return window. Sale items (<em>en solde</em>) may not be returnable at all.",
+            "To raise a problem politely: <em>Il y a un problème avec…</em> and <em>Je voudrais échanger ceci, s'il vous plaît.</em>",
+          ],
+          keyPoint: "Return/exchange/refund = rendre / échanger / rembourser. Keep le ticket de caisse. Store credit = un avoir.",
+        },
+        {
+          type: "vocab",
+          heading: "Returns & paying vocabulary",
+          items: [
+            { l1: "le ticket de caisse", en: "the receipt" },
+            { l1: "échanger", en: "to exchange" },
+            { l1: "rembourser", en: "to refund" },
+            { l1: "rapporter / rendre", en: "to bring back / return" },
+            { l1: "un avoir", en: "store credit / credit note" },
+            { l1: "en solde", en: "on sale", note: "often non-returnable" },
+            { l1: "Il y a un défaut.", en: "There's a defect/fault." },
+            { l1: "payer en espèces / par carte", en: "to pay in cash / by card" },
+            { l1: "la caisse", en: "the checkout / till" },
+            { l1: "la garantie", en: "the warranty" },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "Returning an item",
+          lines: [
+            { speaker: "You", l1: "Bonjour, je voudrais échanger ce pull. Il y a un petit défaut.", en: "Hello, I'd like to exchange this sweater. There's a small defect." },
+            { speaker: "Vendeuse", l1: "Vous avez le ticket de caisse?", en: "Do you have the receipt?" },
+            { speaker: "You", l1: "Oui, le voici. Est-ce que vous pouvez le rembourser?", en: "Yes, here it is. Can you refund it?" },
+            { speaker: "Vendeuse", l1: "Pour un défaut, oui. Sinon, on fait un avoir.", en: "For a defect, yes. Otherwise, we do store credit." },
+            { speaker: "You", l1: "Très bien, un remboursement alors. Merci.", en: "Very well, a refund then. Thanks." },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "Returns check",
+          questions: [
+            {
+              q: "'Un avoir' is…",
+              options: ["a cash refund", "store credit", "a receipt", "a warranty"],
+              correct: 1,
+              fb: "'Un avoir' is a credit note to spend in the same shop, common instead of cash refunds.",
+            },
+            {
+              q: "What do you usually need to return an item?",
+              options: ["la garantie", "le ticket de caisse (receipt)", "un avoir", "la caisse"],
+              correct: 1,
+              fb: "Keep your receipt (le ticket de caisse) — it's normally required for returns.",
+            },
+            {
+              q: "'Rembourser' means…",
+              options: ["to exchange", "to refund", "to wrap", "to discount"],
+              correct: 1,
+              fb: "'Rembourser' = to refund (give the money back).",
+            },
+          ],
+        },
+      ],
+    },
+  ],
+  checkpoint: {
+    passingPct: 80,
+    questions: [
+      { q: "The French 'soldes' happen…", options: ["All year round", "Twice a year (Jan-Feb and Jul-Aug)", "Only in December", "Only in Paris"], correct: 1 },
+      { q: "'La cabine d'essayage' is…", options: ["The checkout", "The fitting room", "The changing area for swimwear only", "The storage room"], correct: 1 },
+      { q: "'C'est bon marché' means…", options: ["Good quality", "Cheap / good price", "Too expensive", "Not available"], correct: 1 },
+      { q: "How do you ask 'Do you have it in size 40?'", options: ["Avez-vous 40?", "Vous avez ça en 40?", "Je veux 40.", "Donnez-moi la taille 40."], correct: 1 },
+      { q: "'La pointure' refers to…", options: ["Clothing size", "Shoe size", "Quality rating", "Price label"], correct: 1 },
+      { q: "Haggling in French shops is…", options: ["Common and expected", "Not the norm — prices are fixed", "Only at markets", "Illegal"], correct: 1 },
+    ],
+  },
+};

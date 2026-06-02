@@ -5,6 +5,8 @@ import type { ReviewRow } from "@/lib/actions/review";
 import { rateCard } from "@/lib/actions/review";
 import { RATING_LABELS, type Rating1to4 } from "@/lib/srs";
 import { SpeakButton } from "./SpeakButton";
+import type { Lang } from "@/lib/lang";
+import { LANG_SPEECH_CODE } from "@/lib/lang";
 
 type Phase = "front" | "back";
 
@@ -15,7 +17,8 @@ const RATING_CLASSES: Record<Rating1to4, string> = {
   4: "bg-sky-600 hover:bg-sky-700 text-white",
 };
 
-export function ReviewSession({ initial }: { initial: ReviewRow[] }) {
+export function ReviewSession({ initial, lang }: { initial: ReviewRow[]; lang: Lang }) {
+  const langCode = LANG_SPEECH_CODE[lang];
   const [queue, setQueue] = useState<ReviewRow[]>(initial);
   const [index, setIndex] = useState(0);
   const [phase, setPhase] = useState<Phase>("front");
@@ -128,7 +131,7 @@ export function ReviewSession({ initial }: { initial: ReviewRow[] }) {
               <div className="font-serif text-3xl font-semibold">
                 {word.lemma}
               </div>
-              <SpeakButton text={word.lemma} size="md" />
+              <SpeakButton text={word.lemma} size="md" langCode={langCode} />
               <span className="text-[10px] font-medium uppercase tracking-wider text-zinc-400">
                 {word.pos}
                 {word.gender ? ` · ${word.gender}` : ""}
@@ -150,8 +153,8 @@ export function ReviewSession({ initial }: { initial: ReviewRow[] }) {
                 {word.examples.map((ex, i) => (
                   <div key={i} className="text-xs">
                     <div className="flex items-start gap-1.5 font-serif italic text-zinc-800 dark:text-zinc-200">
-                      <span className="flex-1">{ex.it}</span>
-                      <SpeakButton text={ex.it} />
+                      <span className="flex-1">{ex.l1}</span>
+                      <SpeakButton text={ex.l1} langCode={langCode} />
                     </div>
                     <div className="mt-0.5 text-zinc-500">{ex.en}</div>
                   </div>

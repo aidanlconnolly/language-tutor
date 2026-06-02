@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import type { Pronounce } from "@/lib/content/types";
 import { speak, speechAvailable } from "@/lib/speech";
+import { useLangSpeechCode } from "@/lib/lang-context";
 
 export function PronouncePage({
   page,
@@ -11,6 +12,7 @@ export function PronouncePage({
   page: Pronounce;
   setDone: (b: boolean) => void;
 }) {
+  const langCode = useLangSpeechCode();
   const [confirmed, setConfirmed] = useState<Set<number>>(new Set());
   const [available, setAvailable] = useState(false);
 
@@ -50,12 +52,12 @@ export function PronouncePage({
               ].join(" ")}
             >
               <div className="flex items-baseline gap-3">
-                <span className="font-serif text-xl font-semibold" lang="it">
-                  {it.it}
+                <span className="font-serif text-xl font-semibold" lang="auto">
+                  {it.l1}
                 </span>
                 <button
                   type="button"
-                  onClick={() => speak(it.it)}
+                  onClick={() => speak(it.l1, langCode)}
                   className="rounded-full bg-amber-600 px-3 py-1 text-xs font-semibold text-white hover:bg-amber-700"
                 >
                   🔊 Play

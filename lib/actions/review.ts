@@ -11,6 +11,7 @@ import {
   ratingFromInt,
   type Rating1to4,
 } from "@/lib/srs";
+import type { Lang } from "@/lib/lang";
 
 export type ReviewRow = {
   card: Card;
@@ -19,10 +20,10 @@ export type ReviewRow = {
 };
 
 /**
- * Cards due now (fsrs_due <= now) for the current user.
+ * Cards due now (fsrs_due <= now) for the current user in the given language.
  * Includes joined word + predicted intervals for each of the 4 ratings.
  */
-export async function getDueCards(limit = 50): Promise<ReviewRow[]> {
+export async function getDueCards(lang: Lang, limit = 50): Promise<ReviewRow[]> {
   const userId = await requireAuth();
   const now = Date.now();
   const rows = await db
@@ -30,7 +31,11 @@ export async function getDueCards(limit = 50): Promise<ReviewRow[]> {
     .from(schema.cards)
     .innerJoin(schema.words, eq(schema.cards.wordId, schema.words.id))
     .where(
-      and(eq(schema.cards.userId, userId), lte(schema.cards.fsrsDue, now)),
+      and(
+        eq(schema.cards.userId, userId),
+        eq(schema.cards.language, lang),
+        lte(schema.cards.fsrsDue, now),
+      ),
     )
     .orderBy(asc(schema.cards.fsrsDue))
     .limit(limit);
@@ -97,8 +102,8 @@ export async function rateCard(args: {
   }
 }
 
-/** Counts for the home dashboard (scoped to current user). */
-export async function getDailyStats(): Promise<{
+/** Counts for the home dashboard (scoped to current user + language). */
+export async function getDailyStats(lang: Lang): Promise<{
   dueNow: number;
   reviewedToday: number;
   deckSize: number;
@@ -114,7 +119,7 @@ export async function getDailyStats(): Promise<{
   const allCards = await db
     .select()
     .from(schema.cards)
-    .where(eq(schema.cards.userId, userId));
+    .where(and(eq(schema.cards.userId, userId), eq(schema.cards.language, lang)));
   const dueNow = allCards.filter((c) => c.fsrsDue <= now).length;
 
   // Reviews are linked to cards; filter via join
@@ -125,7 +130,7 @@ export async function getDailyStats(): Promise<{
     })
     .from(schema.reviews)
     .innerJoin(schema.cards, eq(schema.reviews.cardId, schema.cards.id))
-    .where(eq(schema.cards.userId, userId));
+    .where(and(eq(schema.cards.userId, userId), eq(schema.cards.language, lang)));
 
   const reviewedToday = recentReviews.filter((r) => r.reviewedAt >= startMs).length;
   const last7 = recentReviews.filter((r) => r.reviewedAt >= sevenDaysAgo);
@@ -145,6 +150,6 @@ export async function getDailyStats(): Promise<{
 /**
  * Convenience: serve everything the /review page needs in one round trip.
  */
-export async function fetchInitialReviewBatch(): Promise<ReviewRow[]> {
-  return getDueCards(50);
+export async function fetchInitialReviewBatch(lang: Lang): Promise<ReviewRow[]> {
+  return getDueCards(lang, 50);
 }

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import type { Listen } from "@/lib/content/types";
 import { speak, speechAvailable } from "@/lib/speech";
+import { useLangSpeechCode } from "@/lib/lang-context";
 
 export function ListenPage({
   page,
@@ -11,6 +12,7 @@ export function ListenPage({
   page: Listen;
   setDone: (b: boolean) => void;
 }) {
+  const langCode = useLangSpeechCode();
   const [answers, setAnswers] = useState<(number | null)[]>(() =>
     page.items.map(() => null),
   );
@@ -52,7 +54,7 @@ export function ListenPage({
             <div className="flex items-center gap-3">
               <button
                 type="button"
-                onClick={() => speak(it.it)}
+                onClick={() => speak(it.l1, langCode)}
                 className="rounded-full bg-amber-600 px-4 py-2 text-sm font-semibold text-white hover:bg-amber-700"
               >
                 🔊 Play
@@ -86,7 +88,7 @@ export function ListenPage({
                             ? "border-rose-500 bg-rose-50 text-rose-900 dark:bg-rose-950/40 dark:text-rose-200"
                             : "border-zinc-300 bg-white hover:border-amber-400 dark:border-zinc-700 dark:bg-zinc-900",
                       ].join(" ")}
-                      lang="it"
+                      lang="auto"
                     >
                       {opt}
                     </button>

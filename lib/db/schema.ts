@@ -17,13 +17,14 @@ export const users = sqliteTable("users", {
   createdAt: integer("created_at").notNull(),
 });
 
-/* ─────────── Shared word dictionary (no userId — global cache) ─────────── */
+/* ─────────── Shared word dictionary (per-language global cache) ─────────── */
 
 export const words = sqliteTable(
   "words",
   {
     id: text("id").primaryKey(),
-    lemma: text("lemma").notNull().unique(),
+    language: text("language").notNull().default("italian"),
+    lemma: text("lemma").notNull(),
     surfaceSeen: text("surface_seen", { mode: "json" })
       .$type<string[]>()
       .notNull()
@@ -36,13 +37,16 @@ export const words = sqliteTable(
       Record<string, Record<string, string>>
     >(),
     examples: text("examples", { mode: "json" })
-      .$type<Array<{ it: string; en: string }>>()
+      .$type<Array<{ l1: string; en: string }>>()
       .notNull()
       .default([]),
     grammarNotes: text("grammar_notes"),
     lookedUpAt: integer("looked_up_at").notNull(),
   },
-  (t) => [index("words_lemma_idx").on(t.lemma)],
+  (t) => [
+    uniqueIndex("words_lang_lemma_idx").on(t.language, t.lemma),
+    index("words_lemma_idx").on(t.lemma),
+  ],
 );
 
 export const texts = sqliteTable("texts", {
@@ -58,8 +62,8 @@ export const cards = sqliteTable(
   "cards",
   {
     id: text("id").primaryKey(),
-    // userId: defaults to '__legacy__' so existing rows survive drizzle-kit push
     userId: text("user_id").notNull().default("__legacy__"),
+    language: text("language").notNull().default("italian"),
     wordId: text("word_id")
       .notNull()
       .references(() => words.id, { onDelete: "cascade" }),
@@ -75,9 +79,10 @@ export const cards = sqliteTable(
     createdAt: integer("created_at").notNull(),
   },
   (t) => [
-    // Composite unique: one card per word per user
+    // Composite unique: one card per word per user (word_id implies language)
     uniqueIndex("cards_user_word_idx").on(t.userId, t.wordId),
     index("cards_fsrs_due_idx").on(t.fsrsDue),
+    index("cards_user_lang_idx").on(t.userId, t.language),
   ],
 );
 
@@ -101,13 +106,14 @@ export const lessonProgress = sqliteTable(
   {
     id: text("id").primaryKey(),
     userId: text("user_id").notNull().default("__legacy__"),
+    language: text("language").notNull().default("italian"),
     lessonSlug: text("lesson_slug").notNull(),
     unitSlug: text("unit_slug").notNull(),
     completedAt: integer("completed_at").notNull(),
     score: integer("score").notNull().default(100),
   },
   (t) => [
-    uniqueIndex("lesson_progress_user_lesson_idx").on(t.userId, t.lessonSlug),
+    uniqueIndex("lesson_progress_user_lesson_lang_idx").on(t.userId, t.lessonSlug, t.language),
     index("lesson_progress_unit_idx").on(t.unitSlug),
   ],
 );
@@ -117,6 +123,7 @@ export const checkpointAttempts = sqliteTable(
   {
     id: text("id").primaryKey(),
     userId: text("user_id").notNull().default("__legacy__"),
+    language: text("language").notNull().default("italian"),
     unitSlug: text("unit_slug").notNull(),
     score: integer("score").notNull(),
     passed: integer("passed", { mode: "boolean" }).notNull(),
@@ -130,12 +137,13 @@ export const readProgress = sqliteTable(
   {
     id: text("id").primaryKey(),
     userId: text("user_id").notNull().default("__legacy__"),
+    language: text("language").notNull().default("italian"),
     readSlug: text("read_slug").notNull(),
     completedAt: integer("completed_at").notNull(),
     comprehensionScore: integer("comprehension_score").notNull().default(0),
   },
   (t) => [
-    uniqueIndex("read_progress_user_read_idx").on(t.userId, t.readSlug),
+    uniqueIndex("read_progress_user_read_lang_idx").on(t.userId, t.readSlug, t.language),
   ],
 );
 
@@ -143,12 +151,13 @@ export const streaks = sqliteTable(
   "streaks",
   {
     userId: text("user_id").notNull().default("__legacy__"),
+    language: text("language").notNull().default("italian"),
     kind: text("kind").notNull(),
     current: integer("current").notNull().default(0),
     longest: integer("longest").notNull().default(0),
     lastDay: text("last_day"),
   },
-  (t) => [primaryKey({ columns: [t.userId, t.kind] })],
+  (t) => [primaryKey({ columns: [t.userId, t.language, t.kind] })],
 );
 
 /* ─────────── Relations ─────────── */

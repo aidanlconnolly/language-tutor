@@ -5,6 +5,7 @@ import { lookupWord, type LookupResult } from "@/lib/actions/lookup";
 import { saveCardForWord, type SaveResult } from "@/lib/actions/save";
 import { SpeakButton } from "./SpeakButton";
 import type { Word } from "@/lib/db/schema";
+import type { Lang } from "@/lib/lang";
 
 export type PopoverState = {
   surface: string;
@@ -17,10 +18,12 @@ const MOBILE_BREAKPOINT = 640;
 
 export function WordPopover({
   state,
+  lang,
   onClose,
   onSaved,
 }: {
   state: PopoverState;
+  lang: Lang;
   onClose: () => void;
   onSaved?: (word: Word) => void;
 }) {
@@ -34,7 +37,7 @@ export function WordPopover({
   // so a new tap remounts (no stale state to worry about).
   useEffect(() => {
     let cancelled = false;
-    lookupWord({ surface: state.surface, sentence: state.sentence }).then(
+    lookupWord({ surface: state.surface, sentence: state.sentence, lang }).then(
       (r) => {
         if (cancelled) return;
         setResult(r);
@@ -90,6 +93,7 @@ export function WordPopover({
         wordId: word.id,
         sourceSurface: state.surface,
         sourceSentence: state.sentence,
+        lang,
       });
       if (res.ok) {
         setSaved(true);
@@ -196,8 +200,8 @@ function Body({
           {w.examples.map((ex, i) => (
             <div key={i} className="text-xs">
               <div className="flex items-start gap-1.5 font-serif italic text-zinc-800 dark:text-zinc-200">
-                <span className="flex-1">{ex.it}</span>
-                <SpeakButton text={ex.it} />
+                <span className="flex-1">{ex.l1}</span>
+                <SpeakButton text={ex.l1} />
               </div>
               <div className="mt-0.5 text-zinc-500">{ex.en}</div>
             </div>

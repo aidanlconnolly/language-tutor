@@ -6,10 +6,11 @@ import type { DailyRead } from "@/lib/content/types";
 import { markReadDone } from "@/lib/actions/progress";
 import { speak, speechAvailable } from "@/lib/speech";
 import { TappableSentence } from "./TappableSentence";
+import type { Lang } from "@/lib/lang";
 
 type Step = "read" | "comprehension" | "done";
 
-export function DailyReadView({ read }: { read: DailyRead }) {
+export function DailyReadView({ read, lang }: { read: DailyRead; lang: Lang }) {
   const [showEn, setShowEn] = useState(true);
   const [step, setStep] = useState<Step>("read");
   const [playing, setPlaying] = useState(false);
@@ -51,10 +52,10 @@ export function DailyReadView({ read }: { read: DailyRead }) {
         return;
       }
       const p = read.paragraphs[i];
-      speak(p.it);
+      speak(p.l1);
       // Wait roughly ~ characters/12ms before next; let utterance end handler chain it via timeout fallback
       // (we use a simple timeout — Web Speech onend isn't surfaced by our wrapper)
-      const approx = Math.max(2500, p.it.length * 65);
+      const approx = Math.max(2500, p.l1.length * 65);
       ttsTimeoutRef.current = window.setTimeout(() => {
         i++;
         queue();
@@ -80,6 +81,7 @@ export function DailyReadView({ read }: { read: DailyRead }) {
       await markReadDone({
         readSlug: read.slug,
         comprehensionScore: pct,
+        lang,
       });
       setStep("done");
     });
@@ -97,7 +99,7 @@ export function DailyReadView({ read }: { read: DailyRead }) {
         </p>
         <div className="mt-8 flex flex-col items-center gap-3">
           <Link
-            href="/"
+            href={`/${lang}`}
             className="rounded-lg bg-amber-600 px-6 py-3 text-sm font-semibold text-white hover:bg-amber-700"
           >
             ← Back to roadmap
@@ -195,12 +197,12 @@ export function DailyReadView({ read }: { read: DailyRead }) {
             <span>Daily read · ~10 minutes</span>
             <DifficultyBadge value={read.difficulty} />
           </div>
-          <h1 className="font-serif text-3xl font-bold tracking-tight" lang="it">
-            {read.titleIt}
+          <h1 className="font-serif text-3xl font-bold tracking-tight" lang="auto">
+            {read.titleL1}
           </h1>
           <div className="text-sm italic text-zinc-500">{read.titleEn}</div>
         </div>
-        <Link href="/" className="text-xs text-zinc-500 hover:text-zinc-700">
+        <Link href={`/${lang}`} className="text-xs text-zinc-500 hover:text-zinc-700">
           ← Roadmap
         </Link>
       </header>
@@ -240,7 +242,7 @@ export function DailyReadView({ read }: { read: DailyRead }) {
             ].join(" ")}
           >
             <div className="font-serif text-base leading-loose sm:text-lg sm:leading-relaxed">
-              <TappableSentence text={p.it} />
+              <TappableSentence text={p.l1} lang={lang} />
             </div>
             {showEn && (
               <div className="border-l-2 border-zinc-200 pl-3 text-sm italic text-zinc-600 dark:border-zinc-700 dark:text-zinc-400 sm:pl-4 sm:text-base">
@@ -259,8 +261,8 @@ export function DailyReadView({ read }: { read: DailyRead }) {
           <ul className="mt-2 grid grid-cols-1 gap-2 text-sm sm:grid-cols-2">
             {read.vocabSpotlight.map((v, i) => (
               <li key={i} className="flex items-baseline justify-between gap-2">
-                <span className="font-serif font-semibold" lang="it">
-                  {v.it}
+                <span className="font-serif font-semibold" lang="auto">
+                  {v.l1}
                 </span>
                 <span className="text-zinc-600 dark:text-zinc-400">{v.en}</span>
               </li>

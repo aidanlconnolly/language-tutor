@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useCallback, useEffect, useState, useTransition } from "react";
 import type { Lesson, LessonPage, Unit } from "@/lib/content/types";
 import { markLessonDone } from "@/lib/actions/progress";
+import type { Lang } from "@/lib/lang";
+import { LangProvider } from "@/lib/lang-context";
 
 function lessonProgressKey(slug: string): string {
   return `lesson-progress:${slug}`;
@@ -60,10 +62,12 @@ export function LessonPlayer({
   unit,
   lesson,
   nextLessonSlug,
+  lang,
 }: {
   unit: Unit;
   lesson: Lesson;
   nextLessonSlug: string | null;
+  lang: Lang;
 }) {
   const [pageIdx, setPageIdx] = useState(0);
   const [pageDone, setPageDone] = useState<boolean[]>(() =>
@@ -120,6 +124,7 @@ export function LessonPlayer({
           unitSlug: unit.slug,
           lessonSlug: lesson.slug,
           score: 100,
+          lang,
         });
         try {
           localStorage.removeItem(lessonProgressKey(lesson.slug));
@@ -153,21 +158,21 @@ export function LessonPlayer({
         <div className="mt-8 flex flex-col items-center gap-3">
           {nextLessonSlug ? (
             <Link
-              href={`/lesson/${nextLessonSlug}`}
+              href={nextLessonSlug}
               className="rounded-lg bg-amber-600 px-6 py-3 text-sm font-semibold text-white hover:bg-amber-700"
             >
               Next lesson →
             </Link>
           ) : (
             <Link
-              href={`/checkpoint/${unit.slug}`}
+              href={`/${lang}/checkpoint/${unit.slug}`}
               className="rounded-lg bg-emerald-600 px-6 py-3 text-sm font-semibold text-white hover:bg-emerald-700"
             >
               Take unit checkpoint →
             </Link>
           )}
           <Link
-            href="/"
+            href={`/${lang}`}
             className="text-xs text-zinc-500 hover:text-zinc-700"
           >
             ← Back to roadmap
@@ -178,6 +183,7 @@ export function LessonPlayer({
   }
 
   return (
+    <LangProvider lang={lang}>
     <div className="flex h-screen flex-col font-sans">
       {/* Header */}
       <header
@@ -185,7 +191,7 @@ export function LessonPlayer({
         style={{ paddingTop: "calc(env(safe-area-inset-top) + 0.625rem)" }}
       >
         <Link
-          href="/"
+          href={`/${lang}`}
           className="shrink-0 text-sm font-semibold text-amber-400 hover:text-amber-300"
         >
           ← <span className="hidden sm:inline">Roadmap</span>
@@ -272,5 +278,6 @@ export function LessonPlayer({
         </div>
       </footer>
     </div>
+    </LangProvider>
   );
 }

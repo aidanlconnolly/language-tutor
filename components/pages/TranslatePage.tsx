@@ -3,6 +3,8 @@
 import { useEffect, useState, useTransition } from "react";
 import type { Translate } from "@/lib/content/types";
 import { gradeTranslationAction, type GradeResult } from "@/lib/actions/grade";
+import { LANG_LABELS, LANG_SPEECH_CODE } from "@/lib/lang";
+import { useLang } from "@/lib/lang-context";
 
 export function TranslatePage({
   page,
@@ -11,6 +13,7 @@ export function TranslatePage({
   page: Translate;
   setDone: (b: boolean) => void;
 }) {
+  const lang = useLang();
   const [answer, setAnswer] = useState("");
   const [result, setResult] = useState<GradeResult | null>(null);
   const [pending, startTransition] = useTransition();
@@ -31,13 +34,16 @@ export function TranslatePage({
         prompt: page.prompt,
         reference: page.reference,
         learner: answer,
+        lang,
       });
       setResult(res);
     });
   }
 
-  const fromLabel = page.direction === "en-to-it" ? "English" : "Italian";
-  const toLabel = page.direction === "en-to-it" ? "Italian" : "English";
+  const langLabel = LANG_LABELS[lang];
+  const langCode = LANG_SPEECH_CODE[lang];
+  const fromLabel = page.direction === "en-to-l1" ? "English" : langLabel;
+  const toLabel = page.direction === "en-to-l1" ? langLabel : "English";
 
   return (
     <div className="space-y-4">
@@ -53,9 +59,9 @@ export function TranslatePage({
         <div
           className={[
             "mt-1 text-lg",
-            page.direction === "it-to-en" ? "font-serif" : "font-sans",
+            page.direction === "l1-to-en" ? "font-serif" : "font-sans",
           ].join(" ")}
-          lang={page.direction === "it-to-en" ? "it" : "en"}
+          lang={page.direction === "l1-to-en" ? langCode : "en"}
         >
           {page.prompt}
         </div>
@@ -72,7 +78,7 @@ export function TranslatePage({
         value={answer}
         onChange={(e) => setAnswer(e.target.value)}
         rows={3}
-        lang={page.direction === "en-to-it" ? "it" : "en"}
+        lang={page.direction === "en-to-l1" ? langCode : "en"}
         spellCheck={false}
         placeholder={`Your ${toLabel} translation…`}
         className="w-full rounded-lg border border-zinc-300 bg-white p-3 font-serif text-base dark:border-zinc-700 dark:bg-zinc-950"
@@ -135,7 +141,7 @@ export function TranslatePage({
           </div>
           <div
             className="mt-1 font-serif italic"
-            lang={page.direction === "en-to-it" ? "it" : "en"}
+            lang={page.direction === "en-to-l1" ? langCode : "en"}
           >
             {page.reference}
           </div>

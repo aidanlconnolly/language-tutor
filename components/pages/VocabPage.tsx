@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import type { Vocab } from "@/lib/content/types";
 import { SpeakButton } from "../SpeakButton";
+import { useLangSpeechCode } from "@/lib/lang-context";
 
 export function VocabPage({
   page,
@@ -11,6 +12,7 @@ export function VocabPage({
   page: Vocab;
   setDone: (b: boolean) => void;
 }) {
+  const langCode = useLangSpeechCode();
   const [revealed, setRevealed] = useState<Set<number>>(new Set());
 
   useEffect(() => {
@@ -60,10 +62,10 @@ export function VocabPage({
                 ].join(" ")}
               >
                 <div className="flex items-baseline justify-between gap-2">
-                  <span className="font-serif text-lg font-semibold" lang="it">
-                    {it.it}
+                  <span className="font-serif text-lg font-semibold" lang="auto">
+                    {it.l1}
                   </span>
-                  <SpeakButton text={it.it} />
+                  <SpeakButton text={it.l1} langCode={langCode} />
                 </div>
                 {flipped ? (
                   <>

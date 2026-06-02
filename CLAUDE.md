@@ -4,104 +4,123 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-An Italian-learning web app for A2–B1 English speakers. **Multi-user with email/password auth (open signup)** — each account's progress is fully isolated; the shared word dictionary is the one thing all users draw from (see "Per-user auth" below). Two loops: **Read** (paste Italian text → tap unknown words → save with their source sentence) and **Review** (FSRS-scheduled flashcards built from those saves). Live at `https://italian-tutor-rho.vercel.app` (push to `main` on `aidanlconnolly/italian-tutor` auto-deploys via Vercel).
+A combined Italian + French language-learning web app (A0–B1). **Multi-user with email/password auth.** Three learning loops per language: **Roadmap** (35 units × 8 stages with lessons and checkpoint quizzes), **Daily Read** (8 graded stories with comprehension questions), **Review** (FSRS spaced-repetition flashcard deck). Spanish is a planned third language (4-step extension — see below).
 
 ## Stack
 
-- **Next.js 16.2** (App Router) — `create-next-app` shipped v16 despite the plan saying "15". App Router model is unchanged for our needs, but `AGENTS.md` warns that some APIs/conventions differ from training data. Consult `node_modules/next/dist/docs/` rather than memory for any version-sensitive API.
-- React 19, TypeScript strict, Tailwind v4 (config lives in `app/globals.css` via `@theme` — no `tailwind.config.ts`).
-- **Turso (libSQL) + Drizzle ORM** for persistence. Edge-compatible.
-- **`ts-fsrs`** for spaced-repetition scheduling.
-- **Anthropic SDK** (`claude-haiku-4-5`) for word lookups via tool-use structured output.
-- **`jose`** (HS256 JWT in an httpOnly cookie) + **`bcryptjs`** for auth. No NextAuth.
-- Web Speech API for Italian pronunciation.
+**Next.js 16.2** (App Router), React 19, TypeScript strict, Tailwind v4 (config in `app/globals.css` via `@theme` — no `tailwind.config.ts`), **Turso (libSQL) + Drizzle ORM**, `ts-fsrs`, Anthropic SDK (`claude-haiku-4-5`), `jose` HS256 JWT + `bcryptjs`. No NextAuth.
 
 ## Common commands
 
 ```bash
-# All node commands need this PATH prefix (homebrew node isn't on $PATH)
-PATH=/opt/homebrew/bin:$PATH npm run dev         # Turbopack dev server, port 5600 via .claude/launch.json
-PATH=/opt/homebrew/bin:$PATH npm run build       # production build (catches TS errors)
-PATH=/opt/homebrew/bin:$PATH npm run lint        # ESLint (strict; no `any`, no setState-in-effect)
+# node is at /opt/homebrew/bin/node — prefix all npm/npx commands
+PATH=/opt/homebrew/bin:$PATH npm run dev     # Turbopack dev server, port 5620
+PATH=/opt/homebrew/bin:$PATH npm run build   # catches TS errors
+PATH=/opt/homebrew/bin:$PATH npm run lint
 
-# DB ops (env vars must be sourced)
+# DB (source env first)
 set -a && source .env.local && set +a
-PATH=/opt/homebrew/bin:$PATH npx drizzle-kit push   # apply schema diff to Turso
-PATH=/opt/homebrew/bin:$PATH npx drizzle-kit studio # GUI to browse DB
+PATH=/opt/homebrew/bin:$PATH npx drizzle-kit push    # apply schema to Turso
+PATH=/opt/homebrew/bin:$PATH npx drizzle-kit studio  # GUI browser
 
-# Turso CLI (installed at ~/.turso/turso)
+# Turso CLI
 export PATH="$HOME/.turso:$PATH"
-turso db shell italian-tutor                         # interactive SQL
-turso db tokens create italian-tutor                 # rotate auth token
+turso db shell language-tutor
+
+# One-time Italian data migration
+set -a && source .env.local && source .env.migrate && set +a
+PATH=/opt/homebrew/bin:$PATH npx tsx scripts/migrate-italian.ts
 ```
 
-There are no tests in this project.
+There are no tests.
 
-## Architecture (the parts that span multiple files)
+## Architecture
 
-### Per-user auth (who-sees-what)
+### Auth
 
-The data model splits into **global** vs **per-user**:
+- `proxy.ts` (Next 16's `middleware` — **export must be named `proxy`**) redirects unauthenticated requests to `/login`, allowing only `/login` and `/register` through.
+- `lib/auth.ts` — `createSession` / `getSession` / `deleteSession` / `requireAuth()`. JWT stored in `__session` httpOnly cookie, 30-day expiry.
+- `lib/actions/auth.ts` — `registerAction` / `loginAction` / `logoutAction` / `changePasswordAction` (all `useActionState`-driven).
+- **Every per-user Server Action calls `await requireAuth()` first.** The middleware is defense-in-depth, not the sole gate.
 
-- **Global (shared, no `userId`):** the `words` dictionary. It's a cost-control cache — one Claude call per new lemma *ever, across all users*. Never scope it per user. (`texts` and `reviews` are also unscoped — they're reachable only through a user's own `cards` via join.)
-- **Per-user (`userId` column):** `cards`, `lesson_progress`, `checkpoint_attempts`, `read_progress`, `streaks`. Old single-column UNIQUE constraints are now composite — e.g. `cards (user_id, word_id)`, `streaks` PK is `(user_id, kind)`.
+### Language routing
 
-Mechanics:
-- `lib/auth.ts` — `createSession`/`getSession`/`deleteSession` (signed JWT, 30d) and `requireAuth()` which returns the userId or throws.
-- `proxy.ts` (Next 16's renamed `middleware`; the export **must** be named `proxy`) — redirects any request without a valid session cookie to `/login`, allowlisting only `/login` and `/register`.
-- `lib/actions/auth.ts` — `registerAction` / `loginAction` / `logoutAction` / `changePasswordAction` (all `useActionState`-driven from `app/{login,register,account}/page.tsx`).
-- **Every per-user Server Action calls `await requireAuth()` first** and filters/inserts with that `userId`. The proxy is defense-in-depth, not the only gate — keep the action-level checks. Helpers that may run pre-login (e.g. `getSavedWordIds`) use `getSession()` and return empty when null.
-- DB migrations that add `userId` default it to `'__legacy__'` so existing rows survive; reassign them to a real account with `UPDATE <table> SET user_id='<id>' WHERE user_id='__legacy__'`.
+All language-specific pages live under `app/[lang]/`. `lib/lang.ts` defines `Lang = 'italian' | 'french'`, `SUPPORTED_LANGS`, flag/label/speech-code maps, and `isValidLang()`. Each `[lang]` page calls `isValidLang(langParam)` and returns `notFound()` for invalid values.
 
-### Data flow: tap → Claude → DB → UI
+### Content
 
-A word tap in `<Reader>` opens `<WordPopover>`, which calls the `lookupWord` Server Action (`lib/actions/lookup.ts`). That action runs a **two-tier cache** before ever hitting Claude:
+All curriculum is hand-authored TypeScript under `lib/content/` — no CMS.
 
-1. **Surface hit** — scan `words` for any row whose `lemma === surface` *or* whose `surface_seen` JSON array contains `surface`. Match → return immediately.
-2. **Lemma hit** — Claude returns the canonical `lemma`; if a row already exists with that lemma, append the new surface to its `surface_seen` and return.
-3. **Cold miss** — insert a new `words` row.
+```
+lib/content/
+  types.ts        ← discriminated-union LessonPage types; target-language fields use l1: (not it:/fr:)
+  index.ts        ← language dispatcher: getUnits/getReads/getStages/getUnitOutline/findUnit/findLesson/findRead/pickTodaysRead(lang, ...)
+  italian/        ← units/ (35 files), reads/ (8 files), stages.ts
+  french/         ← units/ (35 files), reads/ (8 files), stages.ts
+```
 
-This is the heart of the cost-control story: one Claude call per *new lemma encountered, ever.* Don't reintroduce per-tap calls without a very good reason.
+### Database schema
 
-### Lemma-only deck (enforced at the DB)
+All per-user tables have a `language TEXT NOT NULL` column scoping rows to a specific language. Key constraints:
+- `words` — UNIQUE `(language, lemma)`; **global cost-control cache** — one Claude call per new lemma per language, ever, across all users. Never scope `words` per user.
+- `cards` — UNIQUE `(user_id, word_id)`; `word_id` FK already implies language.
+- `lesson_progress` — UNIQUE `(user_id, lesson_slug, language)`
+- `read_progress` — UNIQUE `(user_id, read_slug, language)`
+- `streaks` — PK `(user_id, language, kind)`
 
-`cards` has a **composite UNIQUE constraint on `(user_id, word_id)`**. Saving any form of a lemma already in *this user's* deck is a no-op that preserves the original `source_sentence`. `<TappableWord>`'s green-underline state is driven by `savedSurfaces: Set<string>` in `<Reader>`, seeded from `getSavedSurfaces()` (server-loaded on page mount) and augmented in-place when the popover signals a save. So the underline jumps to other inflected forms of a just-saved lemma immediately.
+### Server Actions
 
-### FSRS serialization shim
+All backend logic lives in `lib/actions/*.ts` (`"use server"`). No `app/api/` routes. Every action that touches per-user data takes a `lang: Lang` argument and passes it to DB queries. The split:
 
-`ts-fsrs` uses `Date` objects; SQLite stores text/integers. `lib/srs.ts` is the only file that knows about `Card` (with Dates) vs `FsrsCardState` (the ISO-string JSON we persist). `cards.fsrs_due` is denormalized to an `integer` column for cheap `WHERE due <= now` queries. The four-button rating (1=Again, 4=Easy) maps to `Grade` (a subset of `Rating` excluding `Manual`).
+| File | Responsibility |
+|------|---------------|
+| `auth.ts` | register / login / logout / change-password |
+| `lookup.ts` | word lookup with 2-tier cache (surface hit → lemma hit → cold Claude call) |
+| `save.ts` | save card to FSRS deck |
+| `progress.ts` | lesson/checkpoint/read progress, streaks, `getRoadmapSummary(lang)` |
+| `review.ts` | FSRS due cards, `rateCard`, daily stats |
+| `deck.ts` | saved surfaces, all cards, delete card |
+| `grade.ts` | Claude-graded translation exercises |
 
-### Server Actions over API routes
+### Word lookup cost control
 
-All backend lives in `lib/actions/*.ts`, each with `"use server"` at the top. No `app/api/*` route handlers exist — Server Actions cover lookup, save, deck queries, FSRS rating, dashboard stats, and auth (register/login/logout/change-password). `proxy.ts` is the only non-action backend file. If you add streaming (e.g. Claude SSE), that's the case where a route handler becomes justified.
+`lookupWord({ surface, sentence, lang })` runs a **two-tier cache** before hitting Claude:
+1. Surface hit — scan `words` for `lemma === surface` or surface in `surfaceSeen` JSON array → return immediately.
+2. Lemma hit — Claude returns the canonical lemma; if a `words` row already exists for that lemma, append the new surface to `surfaceSeen` and return.
+3. Cold miss — insert a new `words` row.
+
+### React lang context
+
+`lib/lang-context.tsx` exports `LangProvider` / `useLang()` / `useLangSpeechCode()`. `LessonPlayer` wraps its entire subtree in `<LangProvider lang={lang}>` so page components (`TranslatePage`, `VocabPage`, `ListenPage`, `PronouncePage`, `TipPage`, `DialoguePage`) can call `useLang()` without prop drilling.
+
+### FSRS serialization
+
+`ts-fsrs` uses `Date` objects; SQLite stores text. `lib/srs.ts` is the only file that knows about the `Card` (Dates) ↔ `FsrsCardState` (ISO-string JSON) conversion. `cards.fsrs_due` is denormalized to an integer column for cheap `WHERE fsrs_due <= now` queries.
 
 ### Lazy DB client
 
-`lib/db/client.ts` uses a `Proxy` to defer `TURSO_DATABASE_URL` validation until first use. This is deliberate — Next.js's build-time route discovery imports server files even when `dynamic = "force-dynamic"` is set, and a throw at module load would break `next build` on Vercel before env vars resolve.
+`lib/db/client.ts` uses a `Proxy` to defer `TURSO_DATABASE_URL` validation until first use — Next.js build-time route discovery imports server files even with `dynamic = "force-dynamic"`, and a throw at module load would break `next build` on Vercel before env vars resolve.
 
-### Popover state via remount key
+### Adding Spanish (4 steps)
 
-`<WordPopover>` is keyed on `${surface}|${sentence}` from `<Reader>`. Tapping a new word remounts the popover, so we don't need a state-reset effect (and don't trigger the `react-hooks/set-state-in-effect` lint rule).
-
-## Critical conventions
-
-- **All Italian text gets `.normalize("NFC")`** before storage or tokenization. Diacritics (`à è é ì ò ù`) must round-trip.
-- **Definitions are English**, examples stay Italian (with English translations alongside). The tool schema in `lib/anthropic.ts` enforces this contract — change it carefully.
-- **Server Components by default.** Add `"use client"` only when you need state, refs, or browser APIs.
-- **No `any`** — use `unknown` and narrow.
-- **Tokenizer regex** (`lib/italian.ts`): `\p{L}+'(?=\p{L})|\p{L}+'?` — elides `l'amico` into two tokens, keeps `po'` as one. Don't simplify without testing both cases.
+1. Add `'spanish'` to `Lang` in `lib/lang.ts` with label, flag, and speech code (`es-ES`)
+2. Create `lib/content/spanish/units/` (35 unit files), `reads/` (8 reads), `stages.ts` — use `l1:` field names throughout
+3. Register all three in `lib/content/index.ts` dispatchers
+4. Spanish card appears on the home dashboard automatically (`app/page.tsx` maps over `SUPPORTED_LANGS`)
 
 ## Environment variables
 
-All four are required in `.env.local` (template in `.env.local.example`) and in Vercel Project Settings → Environment Variables → production. All four are already configured for production. Note: an env-var change in Vercel only takes effect on a **fresh deploy** (`vercel redeploy <domain>`) — adding `AUTH_SECRET` without redeploying is what caused the post-login 500 once.
+Required in `.env.local` and Vercel project settings:
 
-- `ANTHROPIC_API_KEY`
-- `TURSO_DATABASE_URL` — `libsql://italian-tutor-aidanlconnolly.turso.io`
-- `TURSO_AUTH_TOKEN`
-- `AUTH_SECRET` — JWT signing key; generate with `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`. Must match between local and prod for cookies to verify.
+```
+ANTHROPIC_API_KEY
+TURSO_DATABASE_URL=libsql://language-tutor-aidanlconnolly.aws-us-east-2.turso.io
+TURSO_AUTH_TOKEN
+AUTH_SECRET    # node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+```
 
-## Token-conscious workflow (per the user)
-
-- Output diffs / changed sections, not whole-file rewrites.
-- Prefer editing existing files over creating new ones.
-- Ask before adding dependencies.
+Migration only (`.env.migrate`, not committed):
+```
+OLD_TURSO_DATABASE_URL=libsql://italian-tutor-aidanlconnolly.aws-us-east-2.turso.io
+OLD_TURSO_AUTH_TOKEN=...
+```

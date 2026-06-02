@@ -4,13 +4,16 @@ import Link from "next/link";
 import { useState, useTransition } from "react";
 import type { Unit } from "@/lib/content/types";
 import { recordCheckpoint } from "@/lib/actions/progress";
+import type { Lang } from "@/lib/lang";
 
 export function CheckpointRunner({
   unit,
   nextUnitSlug,
+  lang,
 }: {
   unit: Unit;
   nextUnitSlug: string | null;
+  lang: Lang;
 }) {
   const total = unit.checkpoint.questions.length;
   const [qi, setQi] = useState(0);
@@ -44,7 +47,7 @@ export function CheckpointRunner({
       const score = Math.round((correct / total) * 100);
       const passed = score >= unit.checkpoint.passingPct;
       startTransition(async () => {
-        await recordCheckpoint({ unitSlug: unit.slug, score });
+        await recordCheckpoint({ unitSlug: unit.slug, score, lang });
         setResult({ score, passed });
         setSubmitted(true);
       });
@@ -80,14 +83,14 @@ export function CheckpointRunner({
           )}
           {result.passed && nextUnitSlug ? (
             <Link
-              href={`/`}
+              href={`/${lang}`}
               className="rounded-lg bg-emerald-600 px-6 py-3 text-sm font-semibold text-white hover:bg-emerald-700"
             >
               Continue to next unit →
             </Link>
           ) : result.passed ? (
             <Link
-              href="/"
+              href={`/${lang}`}
               className="rounded-lg bg-emerald-600 px-6 py-3 text-sm font-semibold text-white hover:bg-emerald-700"
             >
               ← Back to roadmap
@@ -102,7 +105,7 @@ export function CheckpointRunner({
                 Try again
               </button>
               <Link
-                href="/"
+                href={`/${lang}`}
                 className="text-xs text-zinc-500 hover:text-zinc-700"
               >
                 ← Back to roadmap
@@ -121,7 +124,7 @@ export function CheckpointRunner({
         style={{ paddingTop: "calc(env(safe-area-inset-top) + 0.625rem)" }}
       >
         <Link
-          href="/"
+          href={`/${lang}`}
           className="shrink-0 text-sm font-semibold text-emerald-400 hover:text-emerald-300"
         >
           ← Exit
@@ -149,9 +152,9 @@ export function CheckpointRunner({
             Question {qi + 1} of {total}
           </div>
           <h2 className="mt-1 text-2xl font-bold tracking-tight">{cur.q}</h2>
-          {cur.qIt && (
-            <p className="mt-2 font-serif text-lg italic" lang="it">
-              {cur.qIt}
+          {cur.qL1 && (
+            <p className="mt-2 font-serif text-lg italic" lang="auto">
+              {cur.qL1}
             </p>
           )}
           <ul className="mt-6 space-y-3">

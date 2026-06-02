@@ -1,25 +1,37 @@
 "use client";
 
 import Link from "next/link";
-import { STAGES, UNIT_OUTLINE, type UnitPreview } from "@/lib/content/stages";
-import { UNITS } from "@/lib/content/units";
+import type { Stage, Unit, UnitPreview } from "@/lib/content/types";
+import type { Lang } from "@/lib/lang";
 
 type RoadmapData = {
   unitsCompleted: string[];
   lessonsCompleted: string[];
 };
 
-export function Roadmap({ data }: { data: RoadmapData }) {
+export function Roadmap({
+  data,
+  lang,
+  stages,
+  unitOutline,
+  builtUnits,
+}: {
+  data: RoadmapData;
+  lang: Lang;
+  stages: Stage[];
+  unitOutline: UnitPreview[];
+  builtUnits: Unit[];
+}) {
   const completedUnits = new Set(data.unitsCompleted);
   const completedLessons = new Set(data.lessonsCompleted);
-  const builtSlugs = new Set(UNITS.map((u) => u.slug));
+  const builtSlugs = new Set(builtUnits.map((u) => u.slug));
 
   // Stage unlock: stage N is unlocked when (N-1) is fully complete OR N === 1
   const stageUnlocked: Record<number, boolean> = { 1: true };
-  for (const stage of STAGES) {
+  for (const stage of stages) {
     if (stage.number === 1) continue;
     const prev = stage.number - 1;
-    const prevUnits = UNIT_OUTLINE.filter((u) => u.stage === prev);
+    const prevUnits = unitOutline.filter((u) => u.stage === prev);
     stageUnlocked[stage.number] = prevUnits.every((u) =>
       completedUnits.has(u.slug),
     );
@@ -27,8 +39,8 @@ export function Roadmap({ data }: { data: RoadmapData }) {
 
   return (
     <div className="space-y-12">
-      {STAGES.map((stage) => {
-        const units = UNIT_OUTLINE.filter((u) => u.stage === stage.number);
+      {stages.map((stage) => {
+        const units = unitOutline.filter((u) => u.stage === stage.number);
         const unlocked = stageUnlocked[stage.number];
         return (
           <section key={stage.number}>
@@ -61,6 +73,8 @@ export function Roadmap({ data }: { data: RoadmapData }) {
                     isCompleted={completedUnits.has(u.slug)}
                     isUnlocked={unlocked && (i === 0 || prevUnitDone(units, i, completedUnits))}
                     completedLessons={completedLessons}
+                    builtUnits={builtUnits}
+                    lang={lang}
                   />
                 ))}
               </ul>
@@ -88,6 +102,8 @@ function UnitNode({
   isCompleted,
   isUnlocked,
   completedLessons,
+  builtUnits,
+  lang,
 }: {
   unit: UnitPreview;
   side: "left" | "right";
@@ -95,9 +111,11 @@ function UnitNode({
   isCompleted: boolean;
   isUnlocked: boolean;
   completedLessons: Set<string>;
+  builtUnits: Unit[];
+  lang: Lang;
 }) {
   const built = isBuilt
-    ? UNITS.find((bu) => bu.slug === unit.slug)
+    ? builtUnits.find((bu) => bu.slug === unit.slug)
     : undefined;
   const lessons = built?.lessons ?? [];
   const dotCount = built?.lessons.length ?? 0;
@@ -216,17 +234,17 @@ function UnitNode({
   if (isBuilt && isUnlocked && built) {
     if (isCompleted) {
       // Unit done — link back to first lesson for review
-      href = `/lesson/${unit.slug}/${lessons[0].slug}`;
+      href = `/${lang}/lesson/${unit.slug}/${lessons[0].slug}`;
     } else {
       const allLessonsDone = lessons.every((l) => completedLessons.has(l.slug));
       if (allLessonsDone) {
         // All lessons done — send straight to checkpoint
-        href = `/checkpoint/${unit.slug}`;
+        href = `/${lang}/checkpoint/${unit.slug}`;
       } else {
         const nextLesson =
           lessons.find((l) => !completedLessons.has(l.slug)) ??
           lessons[lessons.length - 1];
-        href = `/lesson/${unit.slug}/${nextLesson.slug}`;
+        href = `/${lang}/lesson/${unit.slug}/${nextLesson.slug}`;
       }
     }
   }

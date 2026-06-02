@@ -1,0 +1,213 @@
+import type { Unit } from "../../types";
+
+export const UNIT_RESTAURANT: Unit = {
+  slug: "restaurant",
+  stage: 4,
+  order: 16,
+  icon: "🍽️",
+  title: "At the restaurant",
+  tagline: "Entrée → dessert, commander, l'addition, pourboire.",
+  lessons: [
+    {
+      slug: "restaurant-main",
+      title: "Dining in a French restaurant",
+      estMinutes: 10,
+      pages: [
+        {
+          type: "intro",
+          heading: "The French meal structure",
+          body: [
+            "A full French meal follows: <em>l'apéritif</em> (pre-dinner drinks) → <em>l'entrée</em> (starter — not the main course!) → <em>le plat principal</em> (main course) → <em>le fromage</em> (cheese) → <em>le dessert</em> → <em>le café</em>.",
+            "Note: in French, <em>l'entrée</em> is the starter, not the main. This trips up Americans constantly. When the menu says <em>entrée</em>, it means the first course.",
+            "A <em>formule</em> or <em>menu</em> (set menu) gives you entrée + plat or plat + dessert at a fixed price — usually better value than ordering à la carte. Ask: <em>Vous avez un menu?</em>",
+          ],
+          tip: {
+            label: "Don't ask for a doggy bag",
+            body: "Asking to take leftovers home is unusual in French restaurants and considered slightly gauche. French law now requires restaurants to offer it on request, but don't expect it to be offered proactively.",
+          },
+        },
+        {
+          type: "vocab",
+          heading: "Restaurant vocabulary",
+          items: [
+            { l1: "une table pour deux", en: "a table for two" },
+            { l1: "la carte / le menu", en: "the à la carte menu / the set menu" },
+            { l1: "l'entrée", en: "the starter / first course", note: "NOT the main course!" },
+            { l1: "le plat (principal)", en: "the main course" },
+            { l1: "le dessert", en: "dessert" },
+            { l1: "le fromage", en: "cheese course" },
+            { l1: "le serveur / la serveuse", en: "the waiter / waitress" },
+            { l1: "la formule", en: "the set-price menu", note: "e.g. entrée + plat = €16" },
+            { l1: "À point / Bien cuit / Saignant", en: "Medium / Well done / Rare (for steak)" },
+            { l1: "Je suis végétarien/ne.", en: "I'm vegetarian." },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "At the restaurant",
+          lines: [
+            { speaker: "Waiter", l1: "Bonsoir. Vous avez réservé?", en: "Good evening. Do you have a reservation?" },
+            { speaker: "You", l1: "Oui, une table au nom de Martin.", en: "Yes, a table under the name Martin." },
+            { speaker: "Waiter", l1: "Par ici, s'il vous plaît. Voilà la carte.", en: "This way please. Here is the menu." },
+            { speaker: "You", l1: "Vous avez une formule ce soir?", en: "Do you have a set menu tonight?" },
+            { speaker: "Waiter", l1: "Oui, entrée + plat pour vingt euros.", en: "Yes, starter + main for twenty euros." },
+            { speaker: "You", l1: "Parfait. Je prends la soupe et le steak, s'il vous plaît.", en: "Perfect. I'll have the soup and the steak, please." },
+            { speaker: "Waiter", l1: "Votre steak, vous le voulez comment?", en: "How would you like your steak?" },
+            { speaker: "You", l1: "À point, s'il vous plaît.", en: "Medium, please." },
+          ],
+        },
+        {
+          type: "vocab",
+          heading: "Useful dining phrases",
+          items: [
+            { l1: "Excusez-moi, monsieur/madame!", en: "Excuse me! (to get waiter's attention)", note: "Say this loudly if needed" },
+            { l1: "Qu'est-ce que vous recommandez?", en: "What do you recommend?" },
+            { l1: "C'est compris?", en: "Is service included?", note: "Almost always yes in France" },
+            { l1: "L'addition, s'il vous plaît.", en: "The bill, please." },
+            { l1: "Vous acceptez les cartes?", en: "Do you accept cards?" },
+            { l1: "C'était délicieux!", en: "It was delicious!" },
+            { l1: "Je n'ai pas commandé ça.", en: "I didn't order that." },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate",
+          direction: "en-to-l1",
+          prompt: "Excuse me, what do you recommend for the main course?",
+          reference: "Excusez-moi, qu'est-ce que vous recommandez comme plat principal?",
+          hint: "comme = as/for; plat principal = main course",
+        },
+      ],
+    },
+    {
+      slug: "restaurant-reserver",
+      title: "Reserving & asking about the menu",
+      estMinutes: 8,
+      pages: [
+        {
+          type: "intro",
+          heading: "Booking ahead and decoding the menu",
+          body: [
+            "Good Paris restaurants fill up — book with <em>Je voudrais réserver une table pour … personnes, à … heures</em>. They'll ask <em>C'est à quel nom?</em> (Under what name?) and maybe <em>en terrasse ou à l'intérieur?</em>",
+            "Once seated, you'll often need to ask what a dish actually is. Key questions: <em>Qu'est-ce que c'est?</em> (What is it?), <em>Qu'est-ce qu'il y a dedans?</em> (What's in it?), <em>C'est épicé?</em> (Is it spicy?).",
+            "The dish of the day is <em>le plat du jour</em>, and <em>une suggestion du chef</em> is the chef's special — both usually fresh and good value.",
+          ],
+          keyPoint: "Book: réserver une table pour X personnes à Y heures. Ask: Qu'est-ce que c'est? / Qu'est-ce qu'il y a dedans?",
+        },
+        {
+          type: "vocab",
+          heading: "Reserving & menu questions",
+          items: [
+            { l1: "réserver une table pour quatre", en: "to book a table for four" },
+            { l1: "C'est à quel nom?", en: "Under what name?" },
+            { l1: "en terrasse / à l'intérieur", en: "on the terrace / inside" },
+            { l1: "le plat du jour", en: "the dish of the day" },
+            { l1: "la suggestion du chef", en: "the chef's special" },
+            { l1: "Qu'est-ce que c'est?", en: "What is it?" },
+            { l1: "Qu'est-ce qu'il y a dedans?", en: "What's in it?" },
+            { l1: "C'est épicé / pimenté?", en: "Is it spicy?" },
+            { l1: "C'est servi avec quoi?", en: "What's it served with?" },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "Booking by phone",
+          lines: [
+            { speaker: "Restaurant", l1: "Le Petit Marché, bonjour.", en: "Le Petit Marché, hello." },
+            { speaker: "You", l1: "Bonjour, je voudrais réserver une table pour deux, ce soir à vingt heures.", en: "Hello, I'd like to book a table for two, tonight at 8 pm." },
+            { speaker: "Restaurant", l1: "Très bien. C'est à quel nom?", en: "Very good. Under what name?" },
+            { speaker: "You", l1: "Au nom de Dubois. En terrasse, si possible.", en: "Under the name Dubois. On the terrace, if possible." },
+            { speaker: "Restaurant", l1: "C'est noté. À ce soir!", en: "Noted. See you tonight!" },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "Menu questions check",
+          questions: [
+            {
+              q: "How do you ask 'What's in it?'",
+              options: ["C'est combien?", "Qu'est-ce qu'il y a dedans?", "C'est à quel nom?", "Qu'est-ce que vous voulez?"],
+              correct: 1,
+              fb: "'Qu'est-ce qu'il y a dedans?' = What's in it? ('dedans' = inside).",
+            },
+            {
+              q: "'Le plat du jour' is…",
+              options: ["the most expensive dish", "the dish of the day", "the dessert menu", "the wine pairing"],
+              correct: 1,
+              fb: "'Le plat du jour' is the daily special — usually fresh and good value.",
+            },
+            {
+              q: "The host asks 'C'est à quel nom?' — they want…",
+              options: ["the time of your booking", "the name for the reservation", "the number of guests", "your phone number"],
+              correct: 1,
+              fb: "'À quel nom?' = under what name (for the booking).",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      slug: "restaurant-addition",
+      title: "Water, the bill & splitting",
+      estMinutes: 8,
+      pages: [
+        {
+          type: "intro",
+          heading: "Free water and how to pay",
+          body: [
+            "You never have to pay for water in a French restaurant: ask for <em>une carafe d'eau</em> (a jug of tap water) — it's free and totally normal. Bottled water (<em>une bouteille d'eau, plate ou gazeuse</em>) is the paid option.",
+            "Service is included by law (<em>service compris</em>), so a tip (<em>un pourboire</em>) is optional — rounding up or leaving a euro or two for good service is plenty.",
+            "To split: <em>On partage</em> (we'll share it) or <em>chacun paie sa part</em> (each pays their share). To pay together, <em>tout ensemble</em>. And always: <em>L'addition, s'il vous plaît</em>.",
+          ],
+          keyPoint: "Free tap water = une carafe d'eau. service compris = tip optional. Split = on partage / chacun sa part.",
+        },
+        {
+          type: "vocab",
+          heading: "Water, bill & paying",
+          items: [
+            { l1: "une carafe d'eau", en: "a jug of tap water (free)" },
+            { l1: "une bouteille d'eau plate / gazeuse", en: "a bottle of still / sparkling water" },
+            { l1: "L'addition, s'il vous plaît.", en: "The bill, please." },
+            { l1: "service compris", en: "service (tip) included" },
+            { l1: "un pourboire", en: "a tip" },
+            { l1: "On partage.", en: "We'll split it." },
+            { l1: "chacun paie sa part", en: "each pays their share" },
+            { l1: "tout ensemble", en: "all together (one bill)" },
+            { l1: "Vous acceptez la carte?", en: "Do you take card?" },
+            { l1: "Gardez la monnaie.", en: "Keep the change." },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "Settling up",
+          lines: [
+            { speaker: "You", l1: "L'addition, s'il vous plaît. Et une carafe d'eau.", en: "The bill, please. And a jug of water." },
+            { speaker: "Serveur", l1: "Tout de suite. Vous payez ensemble ou séparément?", en: "Right away. Are you paying together or separately?" },
+            { speaker: "You", l1: "On partage. Vous acceptez la carte?", en: "We'll split it. Do you take card?" },
+            { speaker: "Serveur", l1: "Bien sûr. Le service est compris.", en: "Of course. Service is included." },
+            { speaker: "You", l1: "Parfait, c'était délicieux. Gardez la monnaie.", en: "Perfect, it was delicious. Keep the change." },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate",
+          direction: "en-to-l1",
+          prompt: "A jug of water, please. And the bill — we'll split it.",
+          reference: "Une carafe d'eau, s'il vous plaît. Et l'addition — on partage.",
+          hint: "free tap water = une carafe d'eau; 'we'll split it' = on partage",
+        },
+      ],
+    },
+  ],
+  checkpoint: {
+    passingPct: 80,
+    questions: [
+      { q: "In French, 'l'entrée' is…", options: ["The main course", "The starter / first course", "Dessert", "The set menu"], correct: 1 },
+      { q: "'À point' for a steak means…", options: ["Rare", "Well done", "Medium", "Blue"], correct: 2 },
+      { q: "How do you ask for the bill?", options: ["Merci beaucoup!", "L'addition s'il vous plaît.", "Je n'ai pas commandé ça.", "La formule?"], correct: 1 },
+      { q: "A 'formule' at a French restaurant is…", options: ["A formula for the chef", "A fixed-price set menu", "A special dessert", "The wine list"], correct: 1 },
+      { q: "Service is included in French restaurants…", options: ["Never", "Only at expensive restaurants", "Almost always by law", "Only if you tip"], correct: 2 },
+      { q: "'C'était délicieux!' means…", options: ["It's delicious!", "It was delicious!", "That's my order!", "Can I have more?"], correct: 1 },
+    ],
+  },
+};

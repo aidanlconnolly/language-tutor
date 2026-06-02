@@ -1,4 +1,22 @@
 import Anthropic from "@anthropic-ai/sdk";
+import type { Lang } from "./lang";
+
+const LANG_NAMES: Record<Lang, string> = {
+  italian: "Italian",
+  french: "French",
+};
+
+const LANG_DIACRITICS: Record<Lang, string> = {
+  italian: "à è é ì ò ù",
+  french: "à â é è ê ë î ï ô ù û ü ç",
+};
+
+const LANG_CONJUGATION_NOTE: Record<Lang, string> = {
+  italian:
+    "Keys are tenses ('presente', 'passato prossimo', 'imperfetto', 'futuro'). Each value is an object keyed by person ('io', 'tu', 'lui/lei', 'noi', 'voi', 'loro'). For 'passato prossimo' include the auxiliary.",
+  french:
+    "Keys are tenses ('présent', 'passé composé', 'imparfait', 'futur simple'). Each value is an object keyed by person ('je', 'tu', 'il/elle', 'nous', 'vous', 'ils/elles'). For 'passé composé' include the auxiliary (avoir/être).",
+};
 
 /**
  * Single shared client. Reads ANTHROPIC_API_KEY at first use.
@@ -18,7 +36,7 @@ function client(): Anthropic {
 }
 
 /**
- * Shape we get back from Claude for an Italian word lookup. Mirrors the
+ * Shape we get back from Claude for a word lookup. Mirrors the
  * input_schema below — keep them in sync.
  */
 export type WordLookup = {
@@ -39,95 +57,100 @@ export type WordLookup = {
   translation: string;
   definition: string;
   conjugation?: Record<string, Record<string, string>>;
-  examples: Array<{ it: string; en: string }>;
+  examples: Array<{ l1: string; en: string }>;
   grammar_notes?: string;
 };
 
-const WORD_TOOL = {
-  name: "record_word_definition",
-  description:
-    "Record the lemma, part of speech, English translation, definition, conjugation table (for verbs), example sentences, and grammar notes for the given Italian word.",
-  input_schema: {
-    type: "object" as const,
-    properties: {
-      lemma: {
-        type: "string",
-        description:
-          "Canonical dictionary form. Verbs in the infinitive (e.g. 'andare', not 'vado'). Nouns in the masculine singular for both-gendered, otherwise singular. Adjectives in masculine singular.",
-      },
-      pos: {
-        type: "string",
-        enum: [
-          "verb",
-          "noun",
-          "adjective",
-          "adverb",
-          "pronoun",
-          "preposition",
-          "conjunction",
-          "article",
-          "interjection",
-          "phrase",
-          "other",
-        ],
-      },
-      gender: {
-        type: "string",
-        enum: ["m", "f"],
-        description: "Grammatical gender. Only set for nouns.",
-      },
-      translation: {
-        type: "string",
-        description:
-          "Concise English gloss (1–6 words). For verbs, include 'to' (e.g. 'to go').",
-      },
-      definition: {
-        type: "string",
-        description:
-          "Fuller English-language definition, 1–2 sentences. Mention any common idiomatic uses.",
-      },
-      conjugation: {
-        type: "object",
-        description:
-          "Required for verbs only. Keys are tenses ('presente', 'passato prossimo', 'imperfetto', 'futuro'). Each value is an object keyed by person ('io', 'tu', 'lui/lei', 'noi', 'voi', 'loro') with the conjugated form as the value. For 'passato prossimo' include the auxiliary (e.g. 'sono andato/a').",
-        additionalProperties: {
-          type: "object",
-          additionalProperties: { type: "string" },
+function makeWordTool(lang: Lang) {
+  const name = LANG_NAMES[lang];
+  return {
+    name: "record_word_definition",
+    description: `Record the lemma, part of speech, English translation, definition, conjugation table (for verbs), example sentences, and grammar notes for the given ${name} word.`,
+    input_schema: {
+      type: "object" as const,
+      properties: {
+        lemma: {
+          type: "string",
+          description:
+            `Canonical dictionary form. Verbs in the infinitive. Nouns in the singular. Adjectives in the base form.`,
         },
-      },
-      examples: {
-        type: "array",
-        description:
-          "Exactly 2 example sentences. Each has an Italian sentence using a common form of the word and an English translation. Keep sentences A2–B1 friendly.",
-        items: {
+        pos: {
+          type: "string",
+          enum: [
+            "verb",
+            "noun",
+            "adjective",
+            "adverb",
+            "pronoun",
+            "preposition",
+            "conjunction",
+            "article",
+            "interjection",
+            "phrase",
+            "other",
+          ],
+        },
+        gender: {
+          type: "string",
+          enum: ["m", "f"],
+          description: "Grammatical gender. Only set for nouns.",
+        },
+        translation: {
+          type: "string",
+          description:
+            "Concise English gloss (1–6 words). For verbs, include 'to' (e.g. 'to go').",
+        },
+        definition: {
+          type: "string",
+          description:
+            "Fuller English-language definition, 1–2 sentences. Mention any common idiomatic uses.",
+        },
+        conjugation: {
           type: "object",
-          properties: {
-            it: { type: "string" },
-            en: { type: "string" },
+          description: `Required for verbs only. ${LANG_CONJUGATION_NOTE[lang]}`,
+          additionalProperties: {
+            type: "object",
+            additionalProperties: { type: "string" },
           },
-          required: ["it", "en"],
         },
-        minItems: 2,
-        maxItems: 2,
+        examples: {
+          type: "array",
+          description: `Exactly 2 example sentences. Each has a ${name} sentence (l1) using a common form of the word and an English translation (en). Keep sentences A2–B1 friendly.`,
+          items: {
+            type: "object",
+            properties: {
+              l1: { type: "string", description: `The ${name} sentence` },
+              en: { type: "string", description: "English translation" },
+            },
+            required: ["l1", "en"],
+          },
+          minItems: 2,
+          maxItems: 2,
+        },
+        grammar_notes: {
+          type: "string",
+          description:
+            "Brief English-language note about quirks: irregular forms, false friends, register, etc. Omit if nothing noteworthy.",
+        },
       },
-      grammar_notes: {
-        type: "string",
-        description:
-          "Brief English-language note about quirks: irregular plurals, takes essere in compound tenses, false friend, register, etc. Omit if nothing noteworthy.",
-      },
+      required: ["lemma", "pos", "translation", "definition", "examples"],
     },
-    required: ["lemma", "pos", "translation", "definition", "examples"],
-  },
-};
+  };
+}
 
-const SYSTEM = `You are a meticulous Italian-language reference for an A2–B1 English-speaking learner. Always respond by calling the record_word_definition tool. Be concise but accurate. Lemmatize: if given an inflected form, report the dictionary lemma. Italian text uses correct diacritics (à è é ì ò ù).`;
-
-export async function lookupItalianWord(args: {
+export async function lookupWord(args: {
   surface: string;
   sentence: string;
+  lang: Lang;
 }): Promise<WordLookup> {
-  const { surface, sentence } = args;
-  const userMsg = `Italian word as encountered: "${surface}"
+  const { surface, sentence, lang } = args;
+  const name = LANG_NAMES[lang];
+  const diacritics = LANG_DIACRITICS[lang];
+  const tool = makeWordTool(lang);
+
+  const system = `You are a meticulous ${name}-language reference for an A2–B1 English-speaking learner. Always respond by calling the record_word_definition tool. Be concise but accurate. Lemmatize: if given an inflected form, report the dictionary lemma. ${name} text uses correct diacritics (${diacritics}).`;
+
+  const userMsg = `${name} word as encountered: "${surface}"
 Source sentence: "${sentence}"
 
 Record the lemma and its English-language reference info via the tool.`;
@@ -135,9 +158,9 @@ Record the lemma and its English-language reference info via the tool.`;
   const response = await client().messages.create({
     model: "claude-haiku-4-5",
     max_tokens: 2048,
-    system: SYSTEM,
-    tools: [WORD_TOOL],
-    tool_choice: { type: "tool", name: WORD_TOOL.name },
+    system,
+    tools: [tool],
+    tool_choice: { type: "tool", name: tool.name },
     messages: [{ role: "user", content: userMsg }],
   });
 
@@ -162,7 +185,7 @@ export type TranslationGrade = {
 const GRADE_TOOL = {
   name: "grade_translation",
   description:
-    "Grade a learner's translation between English and Italian. Return a 0-2 score, a corrected version if needed, plain-English feedback, and up to 5 Italian lemmas the learner appears to be weak on.",
+    "Grade a learner's translation. Return a 0-2 score, a corrected version if needed, plain-English feedback, and up to 5 target-language lemmas the learner appears to be weak on.",
   input_schema: {
     type: "object" as const,
     properties: {
@@ -175,7 +198,7 @@ const GRADE_TOOL = {
       corrected: {
         type: "string",
         description:
-          "Cleaned-up Italian (or English) version of the learner's answer. Only fill in if score < 2.",
+          "Cleaned-up version of the learner's answer in the target language (or English). Only fill in if score < 2.",
       },
       feedback: {
         type: "string",
@@ -186,7 +209,7 @@ const GRADE_TOOL = {
         type: "array",
         items: { type: "string" },
         description:
-          "Up to 5 Italian lemmas the learner likely needs more practice on. Empty if score is 2.",
+          "Up to 5 target-language lemmas the learner likely needs more practice on. Empty if score is 2.",
         maxItems: 5,
       },
     },
@@ -194,16 +217,21 @@ const GRADE_TOOL = {
   },
 };
 
-const GRADE_SYSTEM = `You are an Italian tutor grading a single translation by an A1-B1 English-speaking learner. Always call the grade_translation tool. Be lenient on word order and stylistic synonyms when meaning is preserved. Be strict on conjugation, gender agreement, and article choice. Feedback should be encouraging but specific.`;
-
 export async function gradeTranslation(args: {
-  direction: "it-to-en" | "en-to-it";
+  direction: "l1-to-en" | "en-to-l1";
   prompt: string;
   reference: string;
   learner: string;
+  lang: Lang;
 }): Promise<TranslationGrade> {
-  const { direction, prompt, reference, learner } = args;
-  const userMsg = `Direction: ${direction === "en-to-it" ? "English → Italian" : "Italian → English"}
+  const { direction, prompt, reference, learner, lang } = args;
+  const name = LANG_NAMES[lang];
+
+  const gradeSystem = `You are a ${name} tutor grading a single translation by an A1-B1 English-speaking learner. Always call the grade_translation tool. Be lenient on word order and stylistic synonyms when meaning is preserved. Be strict on conjugation, gender agreement, and article choice. Feedback should be encouraging but specific.`;
+
+  const dirLabel =
+    direction === "en-to-l1" ? `English → ${name}` : `${name} → English`;
+  const userMsg = `Direction: ${dirLabel}
 Source: "${prompt}"
 Reference good answer: "${reference}"
 Learner answer: "${learner}"
@@ -213,7 +241,7 @@ Grade via grade_translation.`;
   const response = await client().messages.create({
     model: "claude-haiku-4-5",
     max_tokens: 1024,
-    system: GRADE_SYSTEM,
+    system: gradeSystem,
     tools: [GRADE_TOOL],
     tool_choice: { type: "tool", name: GRADE_TOOL.name },
     messages: [{ role: "user", content: userMsg }],

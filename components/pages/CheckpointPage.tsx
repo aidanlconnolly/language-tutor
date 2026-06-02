@@ -47,9 +47,9 @@ export function CheckpointPage({
               Question {qi + 1} of {page.questions.length}
             </div>
             <div className="mt-1 text-base font-medium">{q.q}</div>
-            {q.qIt && (
-              <div className="mt-1 font-serif italic" lang="it">
-                {q.qIt}
+            {q.qL1 && (
+              <div className="mt-1 font-serif italic" lang="auto">
+                {q.qL1}
               </div>
             )}
             <ul className="mt-3 space-y-2">

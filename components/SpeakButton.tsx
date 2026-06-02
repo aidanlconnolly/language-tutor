@@ -5,9 +5,11 @@ import { speak, speechAvailable } from "@/lib/speech";
 
 export function SpeakButton({
   text,
+  langCode = "it-IT",
   size = "sm",
 }: {
   text: string;
+  langCode?: string;
   size?: "sm" | "md";
 }) {
   // Avoid SSR/CSR mismatch: speechSynthesis is browser-only, so the button
@@ -30,10 +32,10 @@ export function SpeakButton({
       type="button"
       onClick={(e) => {
         e.stopPropagation();
-        speak(text);
+        speak(text, langCode);
       }}
       aria-label={`Speak: ${text}`}
-      title="Speak (Italian)"
+      title="Speak"
       className={`${cls} rounded text-zinc-400 hover:text-amber-600 hover:bg-amber-50 dark:hover:bg-amber-950/40 transition-colors`}
     >
       🔊

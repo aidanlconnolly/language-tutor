@@ -1,7 +1,8 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { tokenize } from "@/lib/italian";
+import { tokenize } from "@/lib/tokenize";
+import type { Lang } from "@/lib/lang";
 import { TappableWord, type WordTapData } from "./TappableWord";
 import { WordPopover, type PopoverState } from "./WordPopover";
 import type { Word } from "@/lib/db/schema";
@@ -12,8 +13,10 @@ Mi piace molto bere il caffè al bar sotto casa con l'amico di mio fratello. Dop
 
 export function Reader({
   initialSavedSurfaces,
+  lang,
 }: {
   initialSavedSurfaces: string[];
+  lang: Lang;
 }) {
   const [draft, setDraft] = useState(SAMPLE);
   const [text, setText] = useState<string | null>(null);
@@ -24,7 +27,7 @@ export function Reader({
     () => new Set(initialSavedSurfaces),
   );
 
-  const tokens = useMemo(() => (text ? tokenize(text) : []), [text]);
+  const tokens = useMemo(() => (text ? tokenize(lang, text) : []), [lang, text]);
 
   function handleSaved(word: Word) {
     setSavedSurfaces((prev) => {
@@ -99,6 +102,7 @@ export function Reader({
         <WordPopover
           key={`${popover.surface}|${popover.sentence}`}
           state={popover}
+          lang={lang}
           onClose={() => setPopover(null)}
           onSaved={handleSaved}
         />

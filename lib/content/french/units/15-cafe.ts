@@ -1,0 +1,215 @@
+import type { Unit } from "../../types";
+
+export const UNIT_CAFE: Unit = {
+  slug: "cafe",
+  stage: 4,
+  order: 15,
+  icon: "☕",
+  title: "At the café",
+  tagline: "Culture du café, comptoir vs terrasse, un café serré.",
+  lessons: [
+    {
+      slug: "cafe-main",
+      title: "French café culture",
+      estMinutes: 9,
+      pages: [
+        {
+          type: "intro",
+          heading: "The café as social institution",
+          body: [
+            "The French café is not Starbucks. It's a social space where you can sit for hours over one coffee without being rushed. A waiter will rarely bring your bill unprompted — you must ask: <em>L'addition, s'il vous plaît.</em>",
+            "<strong>Comptoir vs en salle vs en terrasse</strong>: Standing at the bar (<em>au comptoir</em>) is cheaper than sitting at a table inside (<em>en salle</em>), which may be cheaper than sitting outside (<em>en terrasse</em>). Prices vary by venue and are posted by law.",
+            "Coffee in France defaults to a small, strong espresso (<em>un café</em>). If you want a long black, ask for <em>un café allongé</em>. <em>Un café crème</em> or <em>un cappuccino</em> is the closest to a latte. Ordering a 'café au lait' marks you as a tourist.",
+          ],
+          tip: {
+            label: "Tipping at cafés",
+            body: "Service is included by law in France (15%). There's no obligation to tip, but leaving the small change (50 cents to 1 euro for a coffee) is a nice gesture. Never feel obligated to tip 15–20% as in the US.",
+          },
+        },
+        {
+          type: "vocab",
+          heading: "Café drinks",
+          items: [
+            { l1: "un café (un expresso)", en: "an espresso", note: "the default 'coffee' in France" },
+            { l1: "un café allongé", en: "a long black / Americano", note: "diluted espresso" },
+            { l1: "un café crème / un crème", en: "espresso with hot milk (like a cappuccino)" },
+            { l1: "un café noisette", en: "espresso with a dash of milk", note: "noisette = hazelnut (color)" },
+            { l1: "un thé (au citron / au lait)", en: "tea (with lemon / with milk)" },
+            { l1: "un jus d'orange pressé", en: "freshly squeezed orange juice" },
+            { l1: "une eau plate / gazeuse", en: "still / sparkling water" },
+            { l1: "un chocolat chaud", en: "a hot chocolate" },
+            { l1: "une bière pression", en: "a draught beer", note: "'pression' literally means pressure" },
+            { l1: "un verre de vin rouge/blanc/rosé", en: "a glass of red/white/rosé wine" },
+          ],
+        },
+        {
+          type: "vocab",
+          heading: "Café food & phrases",
+          items: [
+            { l1: "un croissant", en: "a croissant", note: "plain or au beurre (buttery)" },
+            { l1: "une tartine", en: "buttered toast / bread slice", note: "common breakfast order" },
+            { l1: "un croque-monsieur", en: "a grilled ham and cheese sandwich", note: "croque-madame = with a fried egg" },
+            { l1: "Qu'est-ce que vous désirez?", en: "What would you like? (waiter to customer)" },
+            { l1: "Je prends…", en: "I'll have… (literally: I take)", note: "casual ordering phrase" },
+            { l1: "Pour moi, ce sera…", en: "For me, it will be…", note: "slightly more formal" },
+            { l1: "L'addition, s'il vous plaît.", en: "The bill, please." },
+            { l1: "Gardez la monnaie.", en: "Keep the change." },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "Ordering at a Paris café",
+          lines: [
+            { speaker: "Waiter", l1: "Bonjour! Qu'est-ce que vous désirez?", en: "Good morning! What would you like?" },
+            { speaker: "You", l1: "Bonjour. Je prends un café crème et une tartine, s'il vous plaît.", en: "Good morning. I'll have a café crème and a tartine, please." },
+            { speaker: "Waiter", l1: "Très bien. En salle ou en terrasse?", en: "Very good. Inside or on the terrace?" },
+            { speaker: "You", l1: "En terrasse, s'il vous plaît.", en: "On the terrace, please." },
+            { speaker: "Waiter", l1: "Voilà votre commande. Bon appétit!", en: "Here is your order. Enjoy!" },
+            { speaker: "You", l1: "Merci. L'addition quand vous aurez le temps.", en: "Thank you. The bill whenever you have a moment." },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate",
+          direction: "en-to-l1",
+          prompt: "Two espressos and a croissant, please. How much is that?",
+          reference: "Deux cafés et un croissant, s'il vous plaît. C'est combien?",
+          hint: "deux = two; c'est combien? = how much is that?",
+        },
+      ],
+    },
+    {
+      slug: "cafe-petit-dejeuner",
+      title: "Breakfast & light bites",
+      estMinutes: 8,
+      pages: [
+        {
+          type: "intro",
+          heading: "Le petit-déjeuner, French style",
+          body: [
+            "French breakfast is light and sweet: <em>une viennoiserie</em> (croissant, pain au chocolat) with <em>un café</em> or <em>un chocolat chaud</em>. A classic café formula is <em>la formule petit-déjeuner</em> — a set price for a hot drink, juice, and bread or pastry.",
+            "You'll choose <em>sur place</em> (to have here) or <em>à emporter</em> (to take away). Bakeries (<em>boulangeries</em>) are often better and cheaper than cafés for the pastries themselves.",
+            "Don't confuse the meals: <em>le petit-déjeuner</em> = breakfast, <em>le déjeuner</em> = lunch, <em>le dîner</em> = dinner. And <em>le goûter</em> is the afternoon snack, sacred to French children.",
+          ],
+          keyPoint: "sur place = eat in. à emporter = take away. petit-déj / déjeuner / dîner = breakfast / lunch / dinner.",
+        },
+        {
+          type: "vocab",
+          heading: "Breakfast items",
+          items: [
+            { l1: "une viennoiserie", en: "a pastry (croissant family)" },
+            { l1: "un pain au chocolat", en: "a chocolate-filled pastry", note: "called 'chocolatine' in SW France" },
+            { l1: "une baguette / une demi-baguette", en: "a baguette / half-baguette" },
+            { l1: "du beurre / de la confiture", en: "butter / jam" },
+            { l1: "un œuf à la coque", en: "a soft-boiled egg" },
+            { l1: "un yaourt", en: "a yogurt" },
+            { l1: "la formule petit-déjeuner", en: "the breakfast set/combo" },
+            { l1: "sur place ou à emporter?", en: "eat in or take away?" },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "Ordering breakfast",
+          lines: [
+            { speaker: "Serveur", l1: "Bonjour! Vous prenez la formule petit-déjeuner?", en: "Hello! Will you have the breakfast set?" },
+            { speaker: "You", l1: "Oui, avec un café crème et un pain au chocolat.", en: "Yes, with a café crème and a pain au chocolat." },
+            { speaker: "Serveur", l1: "Très bien. Et un jus de fruit avec?", en: "Very good. And a fruit juice with it?" },
+            { speaker: "You", l1: "Un jus d'orange, s'il vous plaît.", en: "An orange juice, please." },
+            { speaker: "Serveur", l1: "Sur place ou à emporter?", en: "Eat in or take away?" },
+            { speaker: "You", l1: "Sur place, merci.", en: "Eat in, thanks." },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "Breakfast check",
+          questions: [
+            {
+              q: "'À emporter' means…",
+              options: ["to eat in", "to take away", "without sugar", "the set menu"],
+              correct: 1,
+              fb: "'à emporter' = take away; 'sur place' = eat in.",
+            },
+            {
+              q: "'Le déjeuner' is…",
+              options: ["breakfast", "lunch", "dinner", "a snack"],
+              correct: 1,
+              fb: "le petit-déjeuner = breakfast, le déjeuner = lunch, le dîner = dinner.",
+            },
+            {
+              q: "A 'viennoiserie' is…",
+              options: ["a savoury sandwich", "a pastry like a croissant", "a hot drink", "a type of bread roll only"],
+              correct: 1,
+              fb: "Viennoiseries are the buttery/sweet pastries: croissants, pains au chocolat, etc.",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      slug: "cafe-apero",
+      title: "Apéro & drinks culture",
+      estMinutes: 8,
+      pages: [
+        {
+          type: "intro",
+          heading: "L'apéro — the French ritual",
+          body: [
+            "<em>L'apéritif</em> ('l'apéro') is a pre-dinner drink with light snacks, often shared with friends after work or before a meal. It's as much about socializing as drinking.",
+            "When clinking glasses, French people say <em>Santé!</em> or <em>Tchin-tchin!</em> and make eye contact — look the other person in the eye, or superstition says bad luck. The verb is <em>trinquer</em> (to clink glasses / toast).",
+            "Beer comes in sizes: <em>un demi</em> is the standard ~25cl draught (not a half-litre!). For wine you might hear <em>un ballon de rouge</em> (a round glass of red). And <em>c'est ma tournée</em> means 'this round's on me.'",
+          ],
+          tip: {
+            label: "Un demi ≠ a half-litre",
+            body: "'Un demi' is the classic small draught beer, around 25cl. The name is historical, not a measure of what's in the glass. Order 'une pinte' if you want a full pint.",
+          },
+        },
+        {
+          type: "vocab",
+          heading: "Apéro & drinks vocabulary",
+          items: [
+            { l1: "l'apéritif (l'apéro)", en: "the pre-dinner drink/gathering" },
+            { l1: "trinquer", en: "to clink glasses / toast" },
+            { l1: "Santé! / Tchin-tchin!", en: "Cheers!" },
+            { l1: "un demi", en: "a small draught beer (~25cl)" },
+            { l1: "une pinte", en: "a pint" },
+            { l1: "un kir", en: "white wine with blackcurrant liqueur", note: "classic apéro" },
+            { l1: "des amuse-bouches / des cacahuètes", en: "nibbles / peanuts" },
+            { l1: "C'est ma tournée.", en: "This round's on me." },
+            { l1: "avec modération", en: "in moderation", note: "the legally required drink-aware tagline" },
+            { l1: "Tu prends quoi?", en: "What are you having?" },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "Meeting friends for an apéro",
+          lines: [
+            { speaker: "Sophie", l1: "On prend l'apéro? Tu prends quoi?", en: "Shall we have an apéro? What are you having?" },
+            { speaker: "You", l1: "Un demi, s'il te plaît. Et toi?", en: "A small beer, please. And you?" },
+            { speaker: "Sophie", l1: "Un kir pour moi. C'est ma tournée!", en: "A kir for me. This round's on me!" },
+            { speaker: "You", l1: "Merci! Santé!", en: "Thanks! Cheers!" },
+            { speaker: "Sophie", l1: "Tchin-tchin! Regarde-moi dans les yeux, hein!", en: "Cheers! Look me in the eyes, eh!" },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate",
+          direction: "en-to-l1",
+          prompt: "Shall we have an apéro? A small beer for me, please. Cheers!",
+          reference: "On prend l'apéro? Un demi pour moi, s'il te plaît. Santé!",
+          hint: "'shall we have' = on prend; small draught beer = un demi; cheers = Santé!",
+        },
+      ],
+    },
+  ],
+  checkpoint: {
+    passingPct: 80,
+    questions: [
+      { q: "In French cafés, ordering 'un café' gets you…", options: ["a large filter coffee", "an espresso", "a coffee with milk", "a decaf"], correct: 1 },
+      { q: "'Au comptoir' means…", options: ["on the terrace", "at the bar / counter", "inside the café", "at a table"], correct: 1 },
+      { q: "How do you ask for the bill?", options: ["Merci beaucoup!", "Gardez la monnaie.", "L'addition, s'il vous plaît.", "Bonne journée!"], correct: 2 },
+      { q: "'Un café allongé' is…", options: ["an espresso", "a diluted espresso / long black", "coffee with milk", "iced coffee"], correct: 1 },
+      { q: "Prices in French cafés can vary because…", options: ["It's random", "Standing at the bar (comptoir) is cheaper than sitting", "It depends on the waiter", "Tourists pay more"], correct: 1 },
+      { q: "'Gardez la monnaie' means…", options: ["The bill please", "Keep the change", "Thank you very much", "Here's the menu"], correct: 1 },
+    ],
+  },
+};

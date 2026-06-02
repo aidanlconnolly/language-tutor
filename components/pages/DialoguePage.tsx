@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import type { Dialogue } from "@/lib/content/types";
 import { SpeakButton } from "../SpeakButton";
+import { useLang, useLangSpeechCode } from "@/lib/lang-context";
 import { TappableSentence } from "../TappableSentence";
 
 export function DialoguePage({
@@ -12,6 +13,8 @@ export function DialoguePage({
   page: Dialogue;
   setDone: (b: boolean) => void;
 }) {
+  const lang = useLang();
+  const langCode = useLangSpeechCode();
   useEffect(() => {
     setDone(true);
   }, [setDone]);
@@ -33,9 +36,9 @@ export function DialoguePage({
             </div>
             <div className="mt-0.5 flex items-start gap-2">
               <div className="flex-1 text-base leading-relaxed">
-                <TappableSentence text={line.it} />
+                <TappableSentence text={line.l1} lang={lang} />
               </div>
-              <SpeakButton text={line.it} />
+              <SpeakButton text={line.l1} langCode={langCode} />
             </div>
             <div className="mt-0.5 text-xs italic text-zinc-500">{line.en}</div>
           </li>

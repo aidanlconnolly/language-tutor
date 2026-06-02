@@ -16,10 +16,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Italian Tutor",
-  description: "Personal Italian reading + spaced repetition (A2–B1).",
+  title: "Language Tutor",
+  description: "Italian, French & Spanish — A0 to B1, ten minutes a day.",
   appleWebApp: {
-    title: "Italiano",
+    title: "Language Tutor",
     capable: true,
     statusBarStyle: "default",
   },
@@ -49,20 +49,20 @@ export default async function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         {session && (
-          <div className="border-b border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950">
+          <div className="border-b border-slate-800 bg-slate-900">
             <div className="mx-auto flex max-w-3xl items-center justify-between px-4 py-2 sm:px-6">
-              <span className="text-xs text-zinc-400">{session.email}</span>
+              <span className="text-xs text-slate-400">{session.email}</span>
               <div className="flex items-center gap-4">
                 <Link
                   href="/account"
-                  className="text-xs text-zinc-400 hover:text-amber-700 dark:hover:text-amber-500"
+                  className="text-xs text-slate-400 hover:text-sky-400"
                 >
                   Account
                 </Link>
                 <form action={logoutAction}>
                   <button
                     type="submit"
-                    className="text-xs text-zinc-400 hover:text-amber-700 dark:hover:text-amber-500"
+                    className="text-xs text-slate-400 hover:text-sky-400"
                   >
                     Sign out
                   </button>
