@@ -111,6 +111,54 @@ export const UNIT_LANDMARKS: Unit = {
         },
       ],
     },
+    {
+      slug: "landmarks-history",
+      title: "Discussing Spanish history",
+      estMinutes: 7,
+      pages: [
+        {
+          type: "vocab",
+          heading: "Historical vocabulary",
+          items: [
+            { l1: "los Reyes Católicos", en: "the Catholic Monarchs (Ferdinand & Isabella)" },
+            { l1: "la Reconquista", en: "the Reconquista (722–1492)" },
+            { l1: "el siglo de oro", en: "the Golden Age (16th–17th century)" },
+            { l1: "la guerra civil", en: "the Civil War (1936–39)" },
+            { l1: "la transición", en: "the Transition to democracy (1975–78)" },
+            { l1: "fue construido en el siglo XVI", en: "it was built in the 16th century" },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "Talking about a monument",
+          lines: [
+            { speaker: "Guide", l1: "Este palacio fue construido en el siglo XVII.", en: "This palace was built in the 17th century." },
+            { speaker: "Visitor", l1: "¿Quién lo mandó construir?", en: "Who commissioned it?" },
+            { speaker: "Guide", l1: "Felipe IV. Fue una época de gran esplendor.", en: "Felipe IV. It was a period of great splendour." },
+            { speaker: "Visitor", l1: "¿Y cuánto tiempo tardaron en construirlo?", en: "And how long did it take to build?" },
+            { speaker: "Guide", l1: "Casi cincuenta años.", en: "Almost fifty years." },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "History check",
+          questions: [
+            {
+              q: "La Reconquista refers to…",
+              options: ["Spanish colonial expansion", "The Christian reconquest of the Iberian Peninsula", "The Spanish Civil War", "The transition to democracy"],
+              correct: 1,
+              fb: "La Reconquista = the centuries-long process by which Christian kingdoms retook the Iberian Peninsula from Moorish rule, culminating in 1492.",
+            },
+            {
+              q: "'Fue construido en el siglo XVI' means…",
+              options: ["It will be built in the 16th century", "It was built in the 16th century", "It is being built", "Construction began in the 6th century"],
+              correct: 1,
+              fb: "Fue construido = was built (passive, indefinido of ser + past participle).",
+            },
+          ],
+        },
+      ],
+    }
   ],
   checkpoint: {
     passingPct: 80,

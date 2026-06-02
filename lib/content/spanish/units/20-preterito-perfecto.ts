@@ -138,6 +138,54 @@ export const UNIT_PRETERITO_PERFECTO: Unit = {
         },
       ],
     },
+    {
+      slug: "preterito-perfecto-experiences",
+      title: "Talking about experiences",
+      estMinutes: 7,
+      pages: [
+        {
+          type: "dialogue",
+          heading: "Have you ever been to…?",
+          lines: [
+            { speaker: "Ana", l1: "¿Has ido alguna vez a Granada?", en: "Have you ever been to Granada?" },
+            { speaker: "Tom", l1: "Sí, he ido dos veces. Es preciosa.", en: "Yes, I've been twice. It's beautiful." },
+            { speaker: "Ana", l1: "¿Has visitado la Alhambra?", en: "Have you visited the Alhambra?" },
+            { speaker: "Tom", l1: "Claro, es increíble. Nunca he visto algo tan impresionante.", en: "Of course, it's incredible. I've never seen anything so impressive." },
+            { speaker: "Ana", l1: "Yo todavía no he ido. Me han dicho que hay que reservar con antelación.", en: "I still haven't been. I've been told you have to book in advance." },
+          ],
+        },
+        {
+          type: "vocab",
+          heading: "Experience phrases with perfecto",
+          items: [
+            { l1: "¿Has ido alguna vez a…?", en: "Have you ever been to…?" },
+            { l1: "Nunca he…", en: "I've never…" },
+            { l1: "Ya he…", en: "I've already…" },
+            { l1: "Todavía no he…", en: "I still haven't…" },
+            { l1: "He ido una/dos veces", en: "I've been once/twice" },
+            { l1: "Me han dicho que…", en: "I've been told that…" },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "Perfecto experiences",
+          questions: [
+            {
+              q: "How do you say 'I've never been to Barcelona'?",
+              options: ["Nunca fui a Barcelona", "Nunca he ido a Barcelona", "No he ido nunca a Barcelona", "Both B and C"],
+              correct: 3,
+              fb: "Both are correct: Nunca he ido and No he ido nunca. Nunca goes before or after the verb.",
+            },
+            {
+              q: "'Ya he comido' means…",
+              options: ["I haven't eaten yet", "I've already eaten", "I'm eating now", "I'll eat soon"],
+              correct: 1,
+              fb: "Ya = already. Ya he comido = I've already eaten.",
+            },
+          ],
+        },
+      ],
+    }
   ],
   checkpoint: {
     passingPct: 80,

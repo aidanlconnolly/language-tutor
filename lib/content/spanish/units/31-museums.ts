@@ -109,6 +109,54 @@ export const UNIT_MUSEUMS: Unit = {
         },
       ],
     },
+    {
+      slug: "museums-guided-tour",
+      title: "On a museum guided tour",
+      estMinutes: 7,
+      pages: [
+        {
+          type: "dialogue",
+          heading: "During a guided tour",
+          lines: [
+            { speaker: "Guide", l1: "Este cuadro fue pintado por Goya entre 1820 y 1823.", en: "This painting was painted by Goya between 1820 and 1823." },
+            { speaker: "Visitor", l1: "¿Por qué se llaman 'las pinturas negras'?", en: "Why are they called 'the Black Paintings'?" },
+            { speaker: "Guide", l1: "Por su temática oscura y los colores que Goya usó.", en: "Because of their dark subject matter and the colours Goya used." },
+            { speaker: "Visitor", l1: "¿Cuál es la más famosa?", en: "Which is the most famous?" },
+            { speaker: "Guide", l1: "Probablemente 'Saturno devorando a su hijo'. Es muy perturbadora.", en: "Probably 'Saturn Devouring His Son'. It's very disturbing." },
+          ],
+        },
+        {
+          type: "vocab",
+          heading: "Talking about paintings and style",
+          items: [
+            { l1: "fue pintado por", en: "was painted by (passive)" },
+            { l1: "la temática", en: "the subject matter / theme" },
+            { l1: "el estilo barroco / romántico", en: "the Baroque / Romantic style" },
+            { l1: "la técnica", en: "the technique" },
+            { l1: "perturbador/a", en: "disturbing" },
+            { l1: "conmovedor/a", en: "moving / touching" },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "Art vocabulary",
+          questions: [
+            {
+              q: "'Fue pintado por Goya' is what construction?",
+              options: ["Active voice", "Passive voice with ser", "Imperfect tense", "Reflexive verb"],
+              correct: 1,
+              fb: "Fue pintado por = was painted by. Passive: ser (indefinido) + past participle + por.",
+            },
+            {
+              q: "'Conmovedor' describes art that is…",
+              options: ["Strange and unusual", "Technically perfect", "Emotionally moving/touching", "Very old"],
+              correct: 2,
+              fb: "Conmovedor = moving / touching (from conmover = to move emotionally).",
+            },
+          ],
+        },
+      ],
+    }
   ],
   checkpoint: {
     passingPct: 80,

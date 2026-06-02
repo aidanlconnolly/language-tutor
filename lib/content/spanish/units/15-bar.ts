@@ -112,6 +112,55 @@ export const UNIT_BAR: Unit = {
         },
       ],
     },
+    {
+      slug: "bar-full-visit",
+      title: "A complete bar experience",
+      estMinutes: 7,
+      pages: [
+        {
+          type: "dialogue",
+          heading: "Sunday vermut",
+          lines: [
+            { speaker: "You", l1: "Ponme un vermut con hielo y naranja.", en: "Give me a vermouth with ice and orange." },
+            { speaker: "Barman", l1: "¿Con aceituna o sin?", en: "With olive or without?" },
+            { speaker: "You", l1: "Con aceituna, por favor. ¿Hay algo de comer?", en: "With olive, please. Is there anything to eat?" },
+            { speaker: "Barman", l1: "Tortilla, jamón, patatas bravas…", en: "Omelette, cured ham, patatas bravas…" },
+            { speaker: "You", l1: "Una ración de patatas bravas.", en: "A portion of patatas bravas." },
+            { speaker: "Barman", l1: "En seguida.", en: "Right away." },
+          ],
+        },
+        {
+          type: "vocab",
+          heading: "Ordering portions and quantities",
+          items: [
+            { l1: "una ración de", en: "a full portion of" },
+            { l1: "una media ración de", en: "a half portion of" },
+            { l1: "un pincho de", en: "a small individual snack of" },
+            { l1: "otro/a igual", en: "another one the same" },
+            { l1: "la misma cosa", en: "the same thing" },
+            { l1: "¿Cómo se llama este plato?", en: "What is this dish called?" },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "Bar portions",
+          questions: [
+            {
+              q: "The difference between una ración and una media ración is…",
+              options: ["They're the same", "Ración is full size, media ración is half", "Ración is cheaper", "Media ración is for sharing"],
+              correct: 1,
+              fb: "Ración = full portion. Media ración = half portion. Good for sampling more dishes.",
+            },
+            {
+              q: "'Otro igual' at the bar means…",
+              options: ["I'd like to pay", "Another of the same", "Something different", "The bill"],
+              correct: 1,
+              fb: "Otro igual = another one the same. The quickest reorder phrase.",
+            },
+          ],
+        },
+      ],
+    }
   ],
   checkpoint: {
     passingPct: 80,

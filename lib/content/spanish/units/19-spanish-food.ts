@@ -123,6 +123,55 @@ export const UNIT_SPANISH_FOOD: Unit = {
         },
       ],
     },
+    {
+      slug: "spanish-food-conversation",
+      title: "Talking about food and cuisine",
+      estMinutes: 7,
+      pages: [
+        {
+          type: "dialogue",
+          heading: "Discussing Spanish food",
+          lines: [
+            { speaker: "Maria", l1: "¿Has probado la tortilla española?", en: "Have you tried Spanish omelette?" },
+            { speaker: "Tom", l1: "Sí, me encanta. La probé ayer en un bar.", en: "Yes, I love it. I tried it yesterday at a bar." },
+            { speaker: "Maria", l1: "¿La prefieres con cebolla o sin cebolla?", en: "Do you prefer it with onion or without onion?" },
+            { speaker: "Tom", l1: "Con cebolla, es más jugosa.", en: "With onion, it's juicier." },
+            { speaker: "Maria", l1: "Exacto. Y es mejor cuando está poco hecha.", en: "Exactly. And it's better when it's slightly undercooked." },
+          ],
+        },
+        {
+          type: "vocab",
+          heading: "Evaluating food",
+          items: [
+            { l1: "jugoso/a", en: "juicy / moist" },
+            { l1: "seco/a", en: "dry" },
+            { l1: "sabroso/a", en: "tasty / flavoursome" },
+            { l1: "soso/a", en: "bland / tasteless" },
+            { l1: "demasiado salado", en: "too salty" },
+            { l1: "en su punto", en: "perfectly cooked" },
+            { l1: "me ha dejado con hambre", en: "it left me hungry (too small)" },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "Food evaluation",
+          questions: [
+            {
+              q: "'Está soso' means the food is…",
+              options: ["Too spicy", "Too salty", "Bland / tasteless", "Too sweet"],
+              correct: 2,
+              fb: "Soso = bland / tasteless. The opposite of sabroso (tasty).",
+            },
+            {
+              q: "'Está en su punto' means the food is…",
+              options: ["Undercooked", "Overcooked", "Perfectly cooked", "Too hot"],
+              correct: 2,
+              fb: "En su punto = at its point / perfectly cooked. A great compliment.",
+            },
+          ],
+        },
+      ],
+    }
   ],
   checkpoint: {
     passingPct: 80,

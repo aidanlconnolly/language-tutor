@@ -106,6 +106,54 @@ export const UNIT_TRANSIT: Unit = {
         },
       ],
     },
+    {
+      slug: "transit-full-journey",
+      title: "Planning and making a journey",
+      estMinutes: 7,
+      pages: [
+        {
+          type: "dialogue",
+          heading: "Buying a metro ticket",
+          lines: [
+            { speaker: "Tourist", l1: "Perdona, ¿cómo puedo ir a la estación de Atocha?", en: "Excuse me, how can I get to Atocha station?" },
+            { speaker: "Local", l1: "Coge la línea uno dirección Vallecas. Son cuatro paradas.", en: "Take line one towards Vallecas. It's four stops." },
+            { speaker: "Tourist", l1: "¿Y tengo que hacer algún trasbordo?", en: "And do I need to change?" },
+            { speaker: "Local", l1: "No, es directo. Tarda unos ocho minutos.", en: "No, it's direct. It takes about eight minutes." },
+            { speaker: "Tourist", l1: "Perfecto. Muchas gracias.", en: "Perfect. Many thanks." },
+          ],
+        },
+        {
+          type: "vocab",
+          heading: "Reading transport signs",
+          items: [
+            { l1: "Dirección / Destino", en: "Direction / Destination" },
+            { l1: "Próxima parada", en: "Next stop" },
+            { l1: "Fin de línea", en: "End of the line" },
+            { l1: "Transbordo", en: "Transfer / change" },
+            { l1: "Última parada", en: "Last stop" },
+            { l1: "Salida de emergencia", en: "Emergency exit" },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "Journey planning",
+          questions: [
+            {
+              q: "'Coge la línea uno' means…",
+              options: ["The line one is closed", "Take line one", "Line one is next", "Change to line one"],
+              correct: 1,
+              fb: "Coger (Spain) = to take. Coge la línea uno = take line one.",
+            },
+            {
+              q: "'Fin de línea' means…",
+              options: ["Change here", "Exit here", "End of the line", "Wait here"],
+              correct: 2,
+              fb: "Fin = end. Fin de línea = end of the line. The train terminates here.",
+            },
+          ],
+        },
+      ],
+    }
   ],
   checkpoint: {
     passingPct: 80,

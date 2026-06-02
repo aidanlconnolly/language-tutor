@@ -124,6 +124,50 @@ export const UNIT_ARTICLES: Unit = {
         },
       ],
     },
+    {
+      slug: "articles-practice",
+      title: "Articles in real sentences",
+      estMinutes: 7,
+      pages: [
+        {
+          type: "vocab",
+          heading: "Adjective agreement with nouns",
+          intro: "Adjectives must match the gender and number of the noun they describe.",
+          items: [
+            { l1: "el libro rojo", en: "the red book (masc. sing.)" },
+            { l1: "la mesa roja", en: "the red table (fem. sing.)" },
+            { l1: "los libros rojos", en: "the red books (masc. pl.)" },
+            { l1: "las mesas rojas", en: "the red tables (fem. pl.)" },
+            { l1: "un café solo", en: "a black coffee (masc.)" },
+            { l1: "una ciudad bonita", en: "a pretty city (fem.)" },
+          ],
+        },
+        {
+          type: "tip",
+          heading: "Omitting the article",
+          body: "Spanish omits the article in a few key situations: after <strong>ser</strong> for professions (<em>Soy médico</em>), with some quantities, and in certain fixed expressions. But in general, Spanish uses articles more consistently than English.",
+          example: { l1: "Soy profesora. / Tengo coche.", en: "I'm a teacher. / I have a car. (no article)" },
+        },
+        {
+          type: "multipleChoice",
+          heading: "Article and adjective agreement",
+          questions: [
+            {
+              q: "How do you say 'the pretty cities'?",
+              options: ["los ciudades bonitos", "las ciudades bonitas", "las ciudades bonitos", "unos ciudades bonitas"],
+              correct: 1,
+              fb: "Ciudad is feminine → las, bonitas (feminine plural adjective).",
+            },
+            {
+              q: "Which is correct: 'I'm a doctor'?",
+              options: ["Soy un médico", "Soy médico", "Estoy médico", "Soy el médico"],
+              correct: 1,
+              fb: "No article after ser for professions: Soy médico.",
+            },
+          ],
+        },
+      ],
+    }
   ],
   checkpoint: {
     passingPct: 80,

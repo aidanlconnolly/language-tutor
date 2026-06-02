@@ -137,6 +137,45 @@ export const UNIT_PRETERITO_INDEFINIDO: Unit = {
         },
       ],
     },
+    {
+      slug: "preterito-indefinido-narrative",
+      title: "Telling a story in the past",
+      estMinutes: 7,
+      pages: [
+        {
+          type: "dialogue",
+          heading: "What did you do last weekend?",
+          lines: [
+            { speaker: "Lucía", l1: "¿Qué hiciste el fin de semana?", en: "What did you do at the weekend?" },
+            { speaker: "Carlos", l1: "Fui a Segovia con unos amigos.", en: "I went to Segovia with some friends." },
+            { speaker: "Lucía", l1: "¿Y qué visitasteis?", en: "And what did you visit?" },
+            { speaker: "Carlos", l1: "El acueducto romano, claro. También comimos cochinillo.", en: "The Roman aqueduct, of course. We also ate suckling pig." },
+            { speaker: "Lucía", l1: "¡Qué envidia! ¿Cuándo volvisteis?", en: "How jealous! When did you come back?" },
+            { speaker: "Carlos", l1: "El domingo por la noche. Llegué a casa agotado.", en: "Sunday night. I arrived home exhausted." },
+          ],
+        },
+        {
+          type: "vocab",
+          heading: "Useful time expressions with indefinido",
+          items: [
+            { l1: "el fin de semana pasado", en: "last weekend" },
+            { l1: "el verano pasado", en: "last summer" },
+            { l1: "de pequeño / cuando era niño/a", en: "as a child" },
+            { l1: "en aquella época", en: "in those days / at that time" },
+            { l1: "al día siguiente", en: "the next day" },
+            { l1: "de repente", en: "suddenly" },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate this past tense sentence",
+          direction: "en-to-l1",
+          prompt: "Last year I went to Barcelona and ate paella.",
+          reference: "El año pasado fui a Barcelona y comí paella.",
+          hint: "fui (ir) + comí (comer) — both indefinido",
+        },
+      ],
+    }
   ],
   checkpoint: {
     passingPct: 80,

@@ -142,6 +142,55 @@ export const UNIT_QUESTIONS: Unit = {
         },
       ],
     },
+    {
+      slug: "questions-conversation",
+      title: "Asking questions in real situations",
+      estMinutes: 7,
+      pages: [
+        {
+          type: "dialogue",
+          heading: "Asking for information at a tourist office",
+          lines: [
+            { speaker: "Tourist", l1: "Perdona, ¿dónde está el Museo del Prado?", en: "Excuse me, where is the Prado Museum?" },
+            { speaker: "Staff", l1: "Está en el Paseo del Prado. ¿Sabe cómo llegar?", en: "It's on the Paseo del Prado. Do you know how to get there?" },
+            { speaker: "Tourist", l1: "No, ¿cuánto tiempo se tarda en metro?", en: "No, how long does it take by metro?" },
+            { speaker: "Staff", l1: "Unos diez minutos. ¿Quiere un mapa?", en: "About ten minutes. Would you like a map?" },
+            { speaker: "Tourist", l1: "Sí, por favor. ¿A qué hora abre el museo?", en: "Yes, please. What time does the museum open?" },
+            { speaker: "Staff", l1: "A las diez de la mañana.", en: "At ten in the morning." },
+          ],
+        },
+        {
+          type: "vocab",
+          heading: "More question patterns",
+          items: [
+            { l1: "¿Cuánto tiempo se tarda?", en: "How long does it take?" },
+            { l1: "¿Con qué frecuencia?", en: "How often?" },
+            { l1: "¿Para qué?", en: "What for? / Why?" },
+            { l1: "¿A partir de cuándo?", en: "From when?" },
+            { l1: "¿Hasta cuándo?", en: "Until when?" },
+            { l1: "¿Cuántas veces?", en: "How many times?" },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "Questions in context",
+          questions: [
+            {
+              q: "'¿Cuánto tiempo se tarda en tren?' asks about…",
+              options: ["The cost of the train", "How long the train journey takes", "How often trains run", "The train schedule"],
+              correct: 1,
+              fb: "Tardarse = to take (time). ¿Cuánto tiempo se tarda? = How long does it take?",
+            },
+            {
+              q: "'¿Con qué frecuencia?' asks about…",
+              options: ["The price", "The location", "How often something happens", "The quality"],
+              correct: 2,
+              fb: "Frecuencia = frequency. ¿Con qué frecuencia? = How often?",
+            },
+          ],
+        },
+      ],
+    }
   ],
   checkpoint: {
     passingPct: 80,

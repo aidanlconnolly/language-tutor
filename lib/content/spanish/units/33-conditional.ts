@@ -132,6 +132,44 @@ export const UNIT_CONDITIONAL: Unit = {
         },
       ],
     },
+    {
+      slug: "conditional-advice",
+      title: "Giving advice and making wishes",
+      estMinutes: 7,
+      pages: [
+        {
+          type: "vocab",
+          heading: "Giving advice with conditional",
+          items: [
+            { l1: "Yo en tu lugar…", en: "If I were you…" },
+            { l1: "Yo que tú, iría al médico.", en: "If I were you, I'd go to the doctor." },
+            { l1: "Te recomendaría que…", en: "I would recommend that you…" },
+            { l1: "Lo haría de otra manera.", en: "I would do it differently." },
+            { l1: "Si fuera tú, no lo haría.", en: "If I were you, I wouldn't do it." },
+            { l1: "¿Qué harías en mi lugar?", en: "What would you do in my position?" },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "Asking for and giving advice",
+          lines: [
+            { speaker: "Pablo", l1: "Tengo un problema con mi jefe. ¿Qué harías tú?", en: "I have a problem with my boss. What would you do?" },
+            { speaker: "Sara", l1: "Yo que tú, hablaría directamente con él.", en: "If I were you, I'd speak to him directly." },
+            { speaker: "Pablo", l1: "¿Y si no funcionara?", en: "And if that didn't work?" },
+            { speaker: "Sara", l1: "Entonces hablaría con recursos humanos.", en: "Then I'd speak to human resources." },
+            { speaker: "Pablo", l1: "Tienes razón. Lo intentaré mañana.", en: "You're right. I'll try tomorrow." },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Give advice in Spanish",
+          direction: "en-to-l1",
+          prompt: "If I were you, I would look for another job.",
+          reference: "Yo en tu lugar, buscaría otro trabajo.",
+          hint: "Yo en tu lugar + conditional (buscar → buscaría)",
+        },
+      ],
+    }
   ],
   checkpoint: {
     passingPct: 80,

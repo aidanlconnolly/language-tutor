@@ -125,6 +125,55 @@ export const UNIT_LIKES_WANTS: Unit = {
         },
       ],
     },
+    {
+      slug: "likes-wants-extended",
+      title: "Expressing preferences in conversation",
+      estMinutes: 7,
+      pages: [
+        {
+          type: "vocab",
+          heading: "More ways to express preferences",
+          items: [
+            { l1: "Me apetece…", en: "I feel like… / I fancy…", note: "Common in Spain for immediate desires" },
+            { l1: "Tengo ganas de…", en: "I feel like… / I want to…" },
+            { l1: "No me apetece nada.", en: "I don't feel like it at all." },
+            { l1: "Me da igual.", en: "I don't mind / It's all the same to me." },
+            { l1: "Me da lo mismo.", en: "It's all the same to me." },
+            { l1: "Depende.", en: "It depends." },
+            { l1: "No sé si…", en: "I'm not sure if…" },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "Planning an evening",
+          lines: [
+            { speaker: "Javi", l1: "¿Te apetece salir esta noche?", en: "Do you feel like going out tonight?" },
+            { speaker: "Ana", l1: "No sé… estoy un poco cansada. ¿Adónde quieres ir?", en: "I don't know… I'm a bit tired. Where do you want to go?" },
+            { speaker: "Javi", l1: "Tengo ganas de ir a ese nuevo bar de tapas.", en: "I feel like going to that new tapas bar." },
+            { speaker: "Ana", l1: "Me da igual, pero no quiero llegar tarde.", en: "I don't mind, but I don't want to get home late." },
+            { speaker: "Javi", l1: "Perfecto. Quedamos a las ocho.", en: "Perfect. We'll meet at eight." },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "Preferences check",
+          questions: [
+            {
+              q: "'Me apetece' is particularly common in…",
+              options: ["Latin America", "Spain", "Formal contexts", "Writing only"],
+              correct: 1,
+              fb: "Me apetece (I feel like) is very common in Spain for expressing immediate desires or appetites.",
+            },
+            {
+              q: "'Me da igual' means…",
+              options: ["I like it", "I don't care / It's the same to me", "I don't like it", "It's equal"],
+              correct: 1,
+              fb: "Me da igual = I don't mind / it's all the same. Used when you have no preference.",
+            },
+          ],
+        },
+      ],
+    }
   ],
   checkpoint: {
     passingPct: 80,

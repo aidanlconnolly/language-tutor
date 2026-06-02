@@ -174,6 +174,52 @@ export const UNIT_SER_ESTAR: Unit = {
         },
       ],
     },
+    {
+      slug: "ser-estar-complex",
+      title: "Ser and estar — tricky cases",
+      estMinutes: 7,
+      pages: [
+        {
+          type: "intro",
+          heading: "When both ser and estar are possible — with different meanings",
+          body: [
+            "Some adjectives can go with either verb but mean something different. <em>Es aburrido</em> = he's a boring person (character). <em>Está aburrido</em> = he's bored right now (state). <em>Es malo</em> = he's bad/evil. <em>Está malo</em> = he's ill.",
+            "Location is almost always <em>estar</em> — but not for events! <em>La fiesta es en el jardín</em> = the party is (takes place) in the garden. The location of an event uses <em>ser</em>.",
+          ],
+          keyPoint: "Character/identity → ser. Current state → estar. Events: ser. Location of things: estar.",
+        },
+        {
+          type: "vocab",
+          heading: "Adjectives that change meaning with ser/estar",
+          items: [
+            { l1: "es aburrido / está aburrido", en: "he's boring (character) / he's bored (now)" },
+            { l1: "es malo / está malo", en: "he's evil/bad / he's ill" },
+            { l1: "es bueno / está bueno", en: "he's good (character) / it tastes good (food)" },
+            { l1: "es listo / está listo", en: "he's clever / he's ready" },
+            { l1: "es seguro / está seguro", en: "it's safe / he's sure/certain" },
+            { l1: "es vivo / está vivo", en: "he's sharp/clever / he's alive" },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "Ser or estar — tricky cases",
+          questions: [
+            {
+              q: "'La conferencia es en Madrid' uses ser because…",
+              options: ["Madrid is a city", "It's the location of an event", "Conferencia is feminine", "It's a permanent fact"],
+              correct: 1,
+              fb: "The location of events and meetings uses ser, not estar.",
+            },
+            {
+              q: "'Está listo' means…",
+              options: ["He's clever", "He's ready", "He's tired", "It's done"],
+              correct: 1,
+              fb: "Listo with estar = ready. Listo with ser = clever/smart.",
+            },
+          ],
+        },
+      ],
+    }
   ],
   checkpoint: {
     passingPct: 80,

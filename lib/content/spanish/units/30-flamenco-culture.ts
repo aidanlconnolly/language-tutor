@@ -108,6 +108,54 @@ export const UNIT_FLAMENCO_CULTURE: Unit = {
         },
       ],
     },
+    {
+      slug: "culture-conversation",
+      title: "Discussing Spanish culture",
+      estMinutes: 7,
+      pages: [
+        {
+          type: "dialogue",
+          heading: "Talking about flamenco",
+          lines: [
+            { speaker: "Tourist", l1: "¿Has visto algún espectáculo de flamenco?", en: "Have you seen a flamenco show?" },
+            { speaker: "María", l1: "Sí, fui a un tablao en Triana. Fue impresionante.", en: "Yes, I went to a tablao in Triana. It was impressive." },
+            { speaker: "Tourist", l1: "¿Es muy distinto del flamenco para turistas?", en: "Is it very different from tourist flamenco?" },
+            { speaker: "María", l1: "Completamente. El auténtico tiene una intensidad que no puedes explicar.", en: "Completely. The authentic kind has an intensity you can't explain." },
+            { speaker: "Tourist", l1: "¿Eso es el duende?", en: "Is that the duende?" },
+            { speaker: "María", l1: "Exactamente. Cuando está presente, todos lo sienten.", en: "Exactly. When it's present, everyone feels it." },
+          ],
+        },
+        {
+          type: "vocab",
+          heading: "Discussing culture and traditions",
+          items: [
+            { l1: "Es una tradición muy arraigada.", en: "It's a deeply rooted tradition." },
+            { l1: "Forma parte de la identidad española.", en: "It's part of Spanish identity." },
+            { l1: "Ha evolucionado con el tiempo.", en: "It has evolved over time." },
+            { l1: "Es difícil de explicar a quien no lo ha vivido.", en: "It's hard to explain to someone who hasn't experienced it." },
+            { l1: "Hay que verlo en directo.", en: "You have to see it live." },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "Culture discussion",
+          questions: [
+            {
+              q: "'Hay que verlo en directo' means…",
+              options: ["You have to see it on TV", "You have to see it live", "You should watch a video", "It's directed by someone good"],
+              correct: 1,
+              fb: "En directo = live (not recorded). Hay que = you have to / one must.",
+            },
+            {
+              q: "'Es una tradición muy arraigada' means…",
+              options: ["It's a very new tradition", "It's a deeply rooted tradition", "It's a very strange tradition", "It's a fading tradition"],
+              correct: 1,
+              fb: "Arraigado = deeply rooted (from raíz = root). Very common when describing strong cultural traditions.",
+            },
+          ],
+        },
+      ],
+    }
   ],
   checkpoint: {
     passingPct: 80,

@@ -108,6 +108,45 @@ export const UNIT_NARRATE_TRIP: Unit = {
         },
       ],
     },
+    {
+      slug: "narrate-trip-oral",
+      title: "Telling your story aloud",
+      estMinutes: 7,
+      pages: [
+        {
+          type: "dialogue",
+          heading: "Telling someone about a trip",
+          lines: [
+            { speaker: "Friend", l1: "¿Cómo te fue en Sevilla?", en: "How did it go in Seville?" },
+            { speaker: "You", l1: "Genial. El primer día hacía mucho calor, pero no importó.", en: "Great. The first day it was very hot, but it didn't matter." },
+            { speaker: "You", l1: "Visité la Giralda y el Alcázar. Los dos son impresionantes.", en: "I visited the Giralda and the Alcázar. Both are impressive." },
+            { speaker: "Friend", l1: "¿Y comiste bien?", en: "And did you eat well?" },
+            { speaker: "You", l1: "Muy bien. Probé el gazpacho auténtico y el salmorejo. Son completamente distintos a lo de aquí.", en: "Very well. I tried authentic gazpacho and salmorejo. They're completely different to what we have here." },
+            { speaker: "Friend", l1: "¡Qué envidia! ¿Cuándo vuelves?", en: "How jealous! When are you going back?" },
+          ],
+        },
+        {
+          type: "vocab",
+          heading: "Trip narrative vocabulary",
+          items: [
+            { l1: "¿Cómo te fue?", en: "How did it go? / How was it for you?" },
+            { l1: "Lo pasé genial / fenomenal", en: "I had a great time" },
+            { l1: "Lo mejor del viaje fue…", en: "The best part of the trip was…" },
+            { l1: "Lo único malo fue…", en: "The only bad thing was…" },
+            { l1: "Merece la pena ir.", en: "It's worth going." },
+            { l1: "Lo recomiendo totalmente.", en: "I totally recommend it." },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Describe your trip",
+          direction: "en-to-l1",
+          prompt: "The best part of the trip was the food.",
+          reference: "Lo mejor del viaje fue la comida.",
+          hint: "Lo mejor del viaje fue + noun",
+        },
+      ],
+    }
   ],
   checkpoint: {
     passingPct: 80,

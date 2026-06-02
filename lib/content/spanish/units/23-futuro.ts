@@ -129,6 +129,54 @@ export const UNIT_FUTURO: Unit = {
         },
       ],
     },
+    {
+      slug: "futuro-predictions",
+      title: "Predictions and plans",
+      estMinutes: 7,
+      pages: [
+        {
+          type: "dialogue",
+          heading: "Making plans for next year",
+          lines: [
+            { speaker: "You", l1: "El año que viene voy a aprender más español.", en: "Next year I'm going to learn more Spanish." },
+            { speaker: "Friend", l1: "¿Y qué harás con el español?", en: "And what will you do with the Spanish?" },
+            { speaker: "You", l1: "Viajaré a Sudamérica. Quiero recorrer Argentina y Chile.", en: "I'll travel to South America. I want to travel through Argentina and Chile." },
+            { speaker: "Friend", l1: "¡Qué plan más emocionante! ¿Cuánto tiempo estarás?", en: "What an exciting plan! How long will you be there?" },
+            { speaker: "You", l1: "Probablemente un mes. Depende del dinero.", en: "Probably a month. It depends on the money." },
+          ],
+        },
+        {
+          type: "vocab",
+          heading: "Expressing future uncertainty",
+          items: [
+            { l1: "probablemente / quizás / tal vez", en: "probably / perhaps / maybe" },
+            { l1: "supongo que", en: "I suppose / I assume" },
+            { l1: "puede que + subjunctive", en: "it may / it might" },
+            { l1: "depende de", en: "it depends on" },
+            { l1: "si todo va bien", en: "if all goes well" },
+            { l1: "tarde o temprano", en: "sooner or later" },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "Future expressions",
+          questions: [
+            {
+              q: "'Probablemente vendré' expresses…",
+              options: ["Certainty about coming", "Uncertainty — probably coming", "A past event", "A wish"],
+              correct: 1,
+              fb: "Probablemente + future = probably will. The futuro simple here shows probability, not certainty.",
+            },
+            {
+              q: "'Tarde o temprano' means…",
+              options: ["Late or early", "Sooner or later", "Sometimes", "Eventually (uncertain)"],
+              correct: 1,
+              fb: "Tarde o temprano = sooner or later. A fixed Spanish phrase.",
+            },
+          ],
+        },
+      ],
+    }
   ],
   checkpoint: {
     passingPct: 80,

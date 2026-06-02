@@ -101,6 +101,55 @@ export const UNIT_COMPLAINTS: Unit = {
         },
       ],
     },
+    {
+      slug: "complaints-full-scenario",
+      title: "A complete complaint resolution",
+      estMinutes: 7,
+      pages: [
+        {
+          type: "dialogue",
+          heading: "Returning a faulty item",
+          lines: [
+            { speaker: "You", l1: "Buenas tardes. Compré este cargador hace tres días y no funciona.", en: "Good afternoon. I bought this charger three days ago and it doesn't work." },
+            { speaker: "Staff", l1: "¿Tiene el recibo?", en: "Do you have the receipt?" },
+            { speaker: "You", l1: "Sí, aquí lo tiene.", en: "Yes, here it is." },
+            { speaker: "Staff", l1: "¿Prefiere cambiarlo por otro o le devolvemos el dinero?", en: "Do you prefer to exchange it for another or shall we refund you?" },
+            { speaker: "You", l1: "Prefiero el reembolso, si es posible.", en: "I prefer a refund, if possible." },
+            { speaker: "Staff", l1: "Por supuesto. En un momento le tramitamos la devolución.", en: "Of course. We'll process the return right away." },
+          ],
+        },
+        {
+          type: "vocab",
+          heading: "Formal complaint vocabulary",
+          items: [
+            { l1: "tramitar una devolución", en: "to process a return" },
+            { l1: "el servicio postventa", en: "after-sales service" },
+            { l1: "el plazo de devolución", en: "the return period" },
+            { l1: "fuera de plazo", en: "out of time / past the deadline" },
+            { l1: "presentar una queja formal", en: "to lodge a formal complaint" },
+            { l1: "resolver el problema", en: "to resolve the problem" },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "Complaint vocabulary",
+          questions: [
+            {
+              q: "'¿Prefiere cambiarlo o le devolvemos el dinero?' is asking…",
+              options: ["If you like the item", "If you want an exchange or a refund", "If you have the receipt", "If the item is broken"],
+              correct: 1,
+              fb: "Cambiar = to exchange. Devolver el dinero = to refund. A standard retail question.",
+            },
+            {
+              q: "'Fuera de plazo' means…",
+              options: ["On time", "Outside the return window / past the deadline", "In a rush", "Too slow"],
+              correct: 1,
+              fb: "Fuera de plazo = outside the time limit. Important to know when making returns.",
+            },
+          ],
+        },
+      ],
+    }
   ],
   checkpoint: {
     passingPct: 80,

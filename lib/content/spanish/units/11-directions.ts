@@ -104,6 +104,55 @@ export const UNIT_DIRECTIONS: Unit = {
         },
       ],
     },
+    {
+      slug: "directions-full-route",
+      title: "Following a full set of directions",
+      estMinutes: 7,
+      pages: [
+        {
+          type: "dialogue",
+          heading: "Getting directions to the market",
+          lines: [
+            { speaker: "You", l1: "Perdona, ¿sabe dónde está el Mercado de San Miguel?", en: "Excuse me, do you know where the San Miguel Market is?" },
+            { speaker: "Local", l1: "Sí, claro. Siga todo recto por esta calle.", en: "Yes, of course. Go straight ahead along this street." },
+            { speaker: "Local", l1: "Gire a la izquierda en el semáforo.", en: "Turn left at the traffic light." },
+            { speaker: "Local", l1: "Después cruce la plaza y el mercado está a su derecha.", en: "Then cross the square and the market is on your right." },
+            { speaker: "You", l1: "¿Está muy lejos?", en: "Is it very far?" },
+            { speaker: "Local", l1: "No, a unos cinco minutos andando.", en: "No, about five minutes on foot." },
+          ],
+        },
+        {
+          type: "vocab",
+          heading: "On foot vs by transport",
+          items: [
+            { l1: "a pie / andando", en: "on foot" },
+            { l1: "en metro / en autobús", en: "by metro / by bus" },
+            { l1: "a unos cinco minutos", en: "about five minutes (away)" },
+            { l1: "cruzar la calle", en: "to cross the street" },
+            { l1: "seguir adelante", en: "to continue forward" },
+            { l1: "pasar por delante de", en: "to pass in front of" },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "Directions check",
+          questions: [
+            {
+              q: "'A pie' means…",
+              options: ["By car", "On foot", "By bike", "By taxi"],
+              correct: 1,
+              fb: "A pie = on foot. Also 'andando' (walking). Both are very common.",
+            },
+            {
+              q: "'Cruce la plaza' means…",
+              options: ["Turn at the square", "Cross the square", "Stop at the square", "Go around the square"],
+              correct: 1,
+              fb: "Cruzar = to cross. Cruce (formal imperative) = cross. Cruce la plaza.",
+            },
+          ],
+        },
+      ],
+    }
   ],
   checkpoint: {
     passingPct: 80,

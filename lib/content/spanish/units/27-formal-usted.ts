@@ -99,6 +99,53 @@ export const UNIT_FORMAL_USTED: Unit = {
         },
       ],
     },
+    {
+      slug: "formal-professional",
+      title: "Formal language in professional contexts",
+      estMinutes: 7,
+      pages: [
+        {
+          type: "vocab",
+          heading: "Business and formal Spanish",
+          items: [
+            { l1: "Estimado/a señor/señora", en: "Dear Mr./Ms. (letter/email opening)" },
+            { l1: "Me dirijo a usted para…", en: "I am writing to you to…" },
+            { l1: "Le agradezco de antemano su atención.", en: "I thank you in advance for your attention." },
+            { l1: "En espera de su respuesta…", en: "Awaiting your reply…" },
+            { l1: "Atentamente / Un cordial saludo", en: "Yours sincerely / Kind regards" },
+            { l1: "¿Podría concertar una cita?", en: "Could I arrange an appointment?" },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "Making a formal appointment",
+          lines: [
+            { speaker: "You", l1: "Buenos días. Quisiera hablar con el señor Gómez.", en: "Good morning. I'd like to speak with Mr Gómez." },
+            { speaker: "Receptionist", l1: "¿De parte de quién?", en: "Who shall I say is calling?" },
+            { speaker: "You", l1: "De Tom Williams, de la empresa Johnson & Co.", en: "Tom Williams, from Johnson & Co." },
+            { speaker: "Receptionist", l1: "Un momento, por favor. Le paso.", en: "One moment, please. I'll put you through." },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "Formal Spanish check",
+          questions: [
+            {
+              q: "'¿De parte de quién?' on the phone means…",
+              options: ["Who do you want to speak to?", "Who shall I say is calling?", "What is it about?", "Can you hold?"],
+              correct: 1,
+              fb: "¿De parte de quién? = on behalf of whom? Standard phone phrase when connecting a call.",
+            },
+            {
+              q: "A formal email in Spanish closes with…",
+              options: ["Hasta luego", "Atentamente / Un cordial saludo", "Con amor", "Besos"],
+              correct: 1,
+              fb: "Atentamente = yours sincerely / faithfully. Un cordial saludo = kind regards. Both are standard formal closings.",
+            },
+          ],
+        },
+      ],
+    }
   ],
   checkpoint: {
     passingPct: 80,

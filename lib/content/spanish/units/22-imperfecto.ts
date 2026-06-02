@@ -124,6 +124,54 @@ export const UNIT_IMPERFECTO: Unit = {
         },
       ],
     },
+    {
+      slug: "imperfecto-childhood",
+      title: "Childhood memories",
+      estMinutes: 7,
+      pages: [
+        {
+          type: "vocab",
+          heading: "Talking about your childhood",
+          items: [
+            { l1: "De pequeño/a…", en: "As a child… (when I was small)" },
+            { l1: "Cuando era niño/a…", en: "When I was a child…" },
+            { l1: "Solía + infinitive", en: "I used to… (habitual action)" },
+            { l1: "Vivíamos en…", en: "We used to live in…" },
+            { l1: "Todos los veranos íbamos a…", en: "Every summer we went to…" },
+            { l1: "Mi abuela siempre hacía…", en: "My grandmother always used to make…" },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "Childhood memories",
+          lines: [
+            { speaker: "Elena", l1: "¿Dónde vivías de pequeña?", en: "Where did you live as a child?" },
+            { speaker: "Sara", l1: "Vivía en un pueblo pequeño en Galicia. Éramos seis en casa.", en: "I lived in a small village in Galicia. There were six of us at home." },
+            { speaker: "Elena", l1: "¿Cómo era la vida allí?", en: "What was life like there?" },
+            { speaker: "Sara", l1: "Muy tranquila. Jugábamos en la calle hasta que oscurecía.", en: "Very quiet. We used to play in the street until it got dark." },
+            { speaker: "Elena", l1: "¡Qué bonito!", en: "How lovely!" },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "Childhood imperfecto",
+          questions: [
+            {
+              q: "'Solía ir al cine los sábados' means…",
+              options: ["I went to the cinema one Saturday", "I used to go to the cinema on Saturdays", "I'm going to the cinema Saturday", "I should go to the cinema"],
+              correct: 1,
+              fb: "Soler + infinitive in imperfecto = used to. Solía ir = I used to go.",
+            },
+            {
+              q: "'¿Cómo era la vida allí?' is asking about…",
+              options: ["A single event", "The ongoing character of life there", "Future plans", "A specific day"],
+              correct: 1,
+              fb: "Era (imperfecto of ser) = was (ongoing state). Asking about the general character of life.",
+            },
+          ],
+        },
+      ],
+    }
   ],
   checkpoint: {
     passingPct: 80,

@@ -100,6 +100,55 @@ export const UNIT_SMALL_TALK: Unit = {
         },
       ],
     },
+    {
+      slug: "small-talk-sustained",
+      title: "Sustaining a conversation",
+      estMinutes: 7,
+      pages: [
+        {
+          type: "vocab",
+          heading: "Keeping the conversation going",
+          items: [
+            { l1: "¡No me digas!", en: "You don't say! / No way!" },
+            { l1: "¡Qué interesante!", en: "How interesting!" },
+            { l1: "¡Qué casualidad!", en: "What a coincidence!" },
+            { l1: "Por cierto…", en: "By the way…" },
+            { l1: "A propósito…", en: "By the way / On that note…" },
+            { l1: "Hablando de…", en: "Speaking of…" },
+            { l1: "¿Y qué me cuentas de…?", en: "And what can you tell me about…?" },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "A sustained small talk conversation",
+          lines: [
+            { speaker: "Marta", l1: "¿Cómo te va el trabajo?", en: "How's work going?" },
+            { speaker: "You", l1: "Bien, bastante ocupado. Por cierto, ¿sigues en la misma empresa?", en: "Good, quite busy. By the way, are you still at the same company?" },
+            { speaker: "Marta", l1: "No, cambié en enero. ¡Fue un gran cambio!", en: "No, I changed in January. It was a big change!" },
+            { speaker: "You", l1: "¡No me digas! ¿Y estás contenta?", en: "You don't say! And are you happy?" },
+            { speaker: "Marta", l1: "Mucho más. Hablando de trabajo, ¿has pensado en el cambio del que me hablaste?", en: "Much more. Speaking of work, have you thought about the change you mentioned?" },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "Small talk tools",
+          questions: [
+            {
+              q: "'Por cierto' introduces…",
+              options: ["A conclusion", "A topic change or additional point (by the way)", "A complaint", "A formal request"],
+              correct: 1,
+              fb: "Por cierto = by the way. Used to introduce a new topic or add something relevant.",
+            },
+            {
+              q: "'¡No me digas!' expresses…",
+              options: ["Disbelief or pleasant surprise", "Disagreement", "Boredom", "A command not to speak"],
+              correct: 0,
+              fb: "¡No me digas! = you don't say! / really?! Shows surprise or interest in what was just said.",
+            },
+          ],
+        },
+      ],
+    }
   ],
   checkpoint: {
     passingPct: 80,

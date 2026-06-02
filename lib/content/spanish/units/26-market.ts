@@ -105,6 +105,55 @@ export const UNIT_MARKET: Unit = {
         },
       ],
     },
+    {
+      slug: "market-full-visit",
+      title: "A full market visit",
+      estMinutes: 7,
+      pages: [
+        {
+          type: "dialogue",
+          heading: "At the fruit and vegetable stall",
+          lines: [
+            { speaker: "You", l1: "Buenos días. ¿Están maduras estas fresas?", en: "Good morning. Are these strawberries ripe?" },
+            { speaker: "Vendor", l1: "Sí, llegaron esta mañana. Son de Huelva.", en: "Yes, they arrived this morning. They're from Huelva." },
+            { speaker: "You", l1: "Me pone medio kilo, por favor.", en: "Give me half a kilo, please." },
+            { speaker: "Vendor", l1: "¿Algo más?", en: "Anything else?" },
+            { speaker: "You", l1: "Sí, un kilo de tomates y una lechuga.", en: "Yes, a kilo of tomatoes and a lettuce." },
+            { speaker: "Vendor", l1: "Son cuatro euros con veinte en total.", en: "That's four euros twenty in total." },
+          ],
+        },
+        {
+          type: "vocab",
+          heading: "Market numbers and transactions",
+          items: [
+            { l1: "Son cuatro euros con veinte.", en: "That's €4.20." },
+            { l1: "Llegaron esta mañana.", en: "They arrived this morning. (very fresh)" },
+            { l1: "Son de Huelva / de la zona.", en: "They're from Huelva / from around here." },
+            { l1: "¿Los tienen más pequeños?", en: "Do you have smaller ones?" },
+            { l1: "¿A cómo el kilo?", en: "How much per kilo?" },
+            { l1: "Llévese estos, que están mejor.", en: "Take these, they're better." },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "Market conversation",
+          questions: [
+            {
+              q: "'Son de Huelva' at a market stall means…",
+              options: ["They cost from Huelva", "They come from Huelva (origin)", "They're on sale from Huelva", "They're Huelva brand"],
+              correct: 1,
+              fb: "Ser de = to be from. Origin is a selling point at Spanish markets.",
+            },
+            {
+              q: "'¿A cómo el kilo?' means…",
+              options: ["How many kilos?", "How heavy is it?", "How much per kilo?", "Can I have a kilo?"],
+              correct: 2,
+              fb: "¿A cómo? = at what price? ¿A cómo el kilo? = how much per kilo?",
+            },
+          ],
+        },
+      ],
+    }
   ],
   checkpoint: {
     passingPct: 80,

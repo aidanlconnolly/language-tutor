@@ -98,6 +98,55 @@ export const UNIT_HOTEL: Unit = {
         },
       ],
     },
+    {
+      slug: "hotel-full-conversation",
+      title: "A complete hotel check-in",
+      estMinutes: 7,
+      pages: [
+        {
+          type: "dialogue",
+          heading: "Checking in at the hotel",
+          lines: [
+            { speaker: "Guest", l1: "Buenas tardes. Tengo una reserva a nombre de Johnson.", en: "Good afternoon. I have a reservation in the name of Johnson." },
+            { speaker: "Receptionist", l1: "Sí, señor Johnson. Una habitación doble para tres noches.", en: "Yes, Mr Johnson. A double room for three nights." },
+            { speaker: "Guest", l1: "Correcto. ¿Está incluido el desayuno?", en: "Correct. Is breakfast included?" },
+            { speaker: "Receptionist", l1: "Sí, el desayuno se sirve de siete a diez.", en: "Yes, breakfast is served from seven to ten." },
+            { speaker: "Guest", l1: "¿Y hay wifi en las habitaciones?", en: "And is there wifi in the rooms?" },
+            { speaker: "Receptionist", l1: "Sí, gratuito. Aquí tiene su llave. Habitación 304, tercera planta.", en: "Yes, free of charge. Here is your key. Room 304, third floor." },
+          ],
+        },
+        {
+          type: "vocab",
+          heading: "Hotel amenities",
+          items: [
+            { l1: "el wifi / la conexión a internet", en: "wifi / internet connection" },
+            { l1: "el servicio de habitaciones", en: "room service" },
+            { l1: "la caja fuerte", en: "the safe (in the room)" },
+            { l1: "la lavandería", en: "the laundry service" },
+            { l1: "el gimnasio", en: "the gym" },
+            { l1: "¿Tiene servicio de recogida en el aeropuerto?", en: "Do you have an airport pickup service?" },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "Hotel check",
+          questions: [
+            {
+              q: "'El desayuno se sirve de siete a diez' means…",
+              options: ["Breakfast costs between 7 and 10 euros", "Breakfast is served from 7 to 10", "Breakfast is on the 7th to 10th floor", "Breakfast is at room 7 to 10"],
+              correct: 1,
+              fb: "Servirse = to be served. De siete a diez = from seven to ten (time).",
+            },
+            {
+              q: "'La caja fuerte' in a hotel room is…",
+              options: ["The minibar", "The strong box / safe", "The wardrobe", "The balcony"],
+              correct: 1,
+              fb: "La caja fuerte = the safe. Caja = box, fuerte = strong/safe.",
+            },
+          ],
+        },
+      ],
+    }
   ],
   checkpoint: {
     passingPct: 80,

@@ -103,6 +103,54 @@ export const UNIT_DIET_WINE: Unit = {
         },
       ],
     },
+    {
+      slug: "diet-wine-conversation",
+      title: "Talking about wine and diet in context",
+      estMinutes: 7,
+      pages: [
+        {
+          type: "dialogue",
+          heading: "Ordering wine at a restaurant",
+          lines: [
+            { speaker: "Waiter", l1: "¿Desean algo de beber?", en: "Would you like something to drink?" },
+            { speaker: "Guest", l1: "¿Qué vino tinto recomienda de la zona?", en: "What red wine from the area do you recommend?" },
+            { speaker: "Waiter", l1: "El Ribera del Duero que tenemos está muy bien.", en: "The Ribera del Duero we have is very good." },
+            { speaker: "Guest", l1: "Perfecto. Una botella, por favor. Y para mi amiga, ¿tienen algo sin alcohol?", en: "Perfect. A bottle, please. And for my friend, do you have anything non-alcoholic?" },
+            { speaker: "Waiter", l1: "Sí, tenemos agua, refrescos y zumos.", en: "Yes, we have water, soft drinks and juices." },
+          ],
+        },
+        {
+          type: "vocab",
+          heading: "Dietary conversation starters",
+          items: [
+            { l1: "¿Esto lleva lácteos?", en: "Does this contain dairy?" },
+            { l1: "¿Es apto para celíacos?", en: "Is it suitable for coeliacs?" },
+            { l1: "sin gluten", en: "gluten-free" },
+            { l1: "sin lactosa", en: "lactose-free" },
+            { l1: "¿Tiene opciones veganas?", en: "Do you have vegan options?" },
+            { l1: "¿Puede hacerlo sin mantequilla?", en: "Can you make it without butter?" },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "Dietary needs check",
+          questions: [
+            {
+              q: "'¿Es apto para celíacos?' means…",
+              options: ["Is it vegetarian?", "Is it suitable for coeliacs?", "Does it contain gluten?", "Is it vegan?"],
+              correct: 1,
+              fb: "Apto = suitable. Celíaco = coeliac. ¿Es apto para celíacos? = suitable for coeliacs?",
+            },
+            {
+              q: "How do you ask if something is vegan?",
+              options: ["¿Es vegano?", "¿Tiene opciones veganas?", "¿Lleva carne o pescado?", "All of the above can work"],
+              correct: 3,
+              fb: "All three work. ¿Es vegano? (is it vegan?), ¿Tiene opciones veganas? (do you have vegan options?), ¿Lleva carne o pescado? (does it contain meat or fish?) are all useful.",
+            },
+          ],
+        },
+      ],
+    }
   ],
   checkpoint: {
     passingPct: 80,

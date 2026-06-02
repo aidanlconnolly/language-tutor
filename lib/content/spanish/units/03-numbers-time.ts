@@ -137,6 +137,61 @@ export const UNIT_NUMBERS_TIME: Unit = {
         },
       ],
     },
+    {
+      slug: "numbers-time-practical",
+      title: "Numbers in everyday life",
+      estMinutes: 7,
+      pages: [
+        {
+          type: "vocab",
+          heading: "Months and dates",
+          items: [
+            { l1: "enero, febrero, marzo", en: "January, February, March" },
+            { l1: "abril, mayo, junio", en: "April, May, June" },
+            { l1: "julio, agosto, septiembre", en: "July, August, September" },
+            { l1: "octubre, noviembre, diciembre", en: "October, November, December" },
+            { l1: "el dos de mayo", en: "the second of May (day + de + month)" },
+            { l1: "el quince de agosto de 2024", en: "15 August 2024" },
+          ],
+        },
+        {
+          type: "vocab",
+          heading: "Useful number expressions",
+          items: [
+            { l1: "mil euros", en: "one thousand euros" },
+            { l1: "un millón", en: "one million" },
+            { l1: "el número de teléfono", en: "the phone number" },
+            { l1: "la planta baja / el primer piso", en: "ground floor / first floor" },
+            { l1: "el tercer piso", en: "the third floor (ordinal numbers)" },
+            { l1: "cuesta tres con cincuenta", en: "it costs €3.50 (currency)" },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "Dates and numbers check",
+          questions: [
+            {
+              q: "How do you say 'the 5th of March'?",
+              options: ["el cinco marzo", "el cinco de marzo", "cinco marzo", "el quinto de marzo"],
+              correct: 1,
+              fb: "Day + de + month. El cinco de marzo. Only 'primero' (1st) uses an ordinal.",
+            },
+            {
+              q: "'Cuesta tres con cincuenta' means it costs…",
+              options: ["€3.15", "€3.50", "€13.50", "€35.00"],
+              correct: 1,
+              fb: "Con = point (in prices). Tres con cincuenta = €3.50.",
+            },
+            {
+              q: "How do you say 'first floor' (above ground)?",
+              options: ["la planta baja", "el piso cero", "el primer piso", "el piso uno"],
+              correct: 2,
+              fb: "El primer piso = first floor (above ground). La planta baja = ground floor.",
+            },
+          ],
+        },
+      ],
+    },
   ],
   checkpoint: {
     passingPct: 80,

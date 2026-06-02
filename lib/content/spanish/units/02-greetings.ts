@@ -127,6 +127,64 @@ export const UNIT_GREETINGS: Unit = {
         },
       ],
     },
+    {
+      slug: "greetings-real-conversation",
+      title: "Real greetings in context",
+      estMinutes: 7,
+      pages: [
+        {
+          type: "dialogue",
+          heading: "Meeting someone for the first time",
+          lines: [
+            { speaker: "Ana", l1: "Buenos días. ¿Cómo se llama usted?", en: "Good morning. What is your name?" },
+            { speaker: "Tom", l1: "Me llamo Tom. ¿Y usted?", en: "My name is Tom. And you?" },
+            { speaker: "Ana", l1: "Soy Ana Martínez. Encantada.", en: "I'm Ana Martínez. Pleased to meet you." },
+            { speaker: "Tom", l1: "Encantado. ¿De dónde es usted?", en: "Pleased to meet you. Where are you from?" },
+            { speaker: "Ana", l1: "Soy de Madrid. ¿Y usted?", en: "I'm from Madrid. And you?" },
+            { speaker: "Tom", l1: "Soy inglés, de Londres.", en: "I'm English, from London." },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "Greeting a friend",
+          lines: [
+            { speaker: "Carlos", l1: "¡Hola, Lucía! ¿Qué tal?", en: "Hi, Lucía! How's it going?" },
+            { speaker: "Lucía", l1: "¡Bien, gracias! ¿Y tú?", en: "Fine, thanks! And you?" },
+            { speaker: "Carlos", l1: "Regular. Estoy un poco cansado.", en: "So-so. I'm a bit tired." },
+            { speaker: "Lucía", l1: "Vaya. Bueno, hasta luego.", en: "Oh dear. Well, see you later." },
+            { speaker: "Carlos", l1: "¡Hasta pronto!", en: "See you soon!" },
+          ],
+        },
+        {
+          type: "pronounce",
+          heading: "Greetings to practise aloud",
+          items: [
+            { l1: "Buenos días", en: "Good morning", tip: "BWEH-nos DEE-as" },
+            { l1: "Buenas tardes", en: "Good afternoon", tip: "BWEH-nas TAR-des" },
+            { l1: "Mucho gusto", en: "Pleased to meet you", tip: "MOO-cho GOOS-to" },
+            { l1: "Hasta luego", en: "See you later", tip: "AS-ta LWEH-go" },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "Conversation check",
+          questions: [
+            {
+              q: "You're meeting a client for the first time. You say…",
+              options: ["¿Qué tal, tío?", "Encantado/a de conocerle.", "Hola, ¿qué pasa?", "¡Buenas!"],
+              correct: 1,
+              fb: "Encantado/a de conocerle = pleased to meet you (formal). The correct register for a client.",
+            },
+            {
+              q: "Your friend asks '¿Qué tal?' and you're feeling tired. You say…",
+              options: ["Muy bien, gracias", "Regular, un poco cansado/a", "Encantado/a", "Buenos días"],
+              correct: 1,
+              fb: "Regular = so-so. Un poco cansado/a = a bit tired. Honest and natural.",
+            },
+          ],
+        },
+      ],
+    },
   ],
   checkpoint: {
     passingPct: 80,

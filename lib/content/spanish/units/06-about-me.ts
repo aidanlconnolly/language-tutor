@@ -125,6 +125,56 @@ export const UNIT_ABOUT_ME: Unit = {
         },
       ],
     },
+    {
+      slug: "about-me-conversation",
+      title: "Talking about yourself",
+      estMinutes: 7,
+      pages: [
+        {
+          type: "vocab",
+          heading: "Age and personal details",
+          items: [
+            { l1: "¿Cuántos años tienes?", en: "How old are you?" },
+            { l1: "Tengo treinta años.", en: "I'm thirty (years old).", note: "tener + años for age" },
+            { l1: "¿Dónde vives?", en: "Where do you live?" },
+            { l1: "Vivo en el centro.", en: "I live in the centre." },
+            { l1: "¿A qué te dedicas?", en: "What do you do for work?" },
+            { l1: "Trabajo en una empresa de tecnología.", en: "I work in a tech company." },
+            { l1: "Soy autónomo/a.", en: "I'm self-employed." },
+            { l1: "Estoy en paro.", en: "I'm unemployed." },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "Getting to know someone",
+          lines: [
+            { speaker: "Sara", l1: "¿De dónde eres?", en: "Where are you from?" },
+            { speaker: "Mark", l1: "Soy irlandés, de Dublín. ¿Y tú?", en: "I'm Irish, from Dublin. And you?" },
+            { speaker: "Sara", l1: "Yo soy de Sevilla. ¿Cuánto tiempo llevas en Madrid?", en: "I'm from Seville. How long have you been in Madrid?" },
+            { speaker: "Mark", l1: "Llevo dos años aquí. Trabajo como diseñador.", en: "I've been here two years. I work as a designer." },
+            { speaker: "Sara", l1: "¡Qué interesante!", en: "How interesting!" },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "Personal details check",
+          questions: [
+            {
+              q: "How do you say 'I'm 25 years old'?",
+              options: ["Soy 25 años", "Tengo 25 años", "Estoy 25 años", "Hay 25 años"],
+              correct: 1,
+              fb: "Age uses tener: Tengo 25 años. Never 'soy' or 'estoy' for age.",
+            },
+            {
+              q: "'Llevo dos años aquí' means…",
+              options: ["I came here two years ago", "I've been here for two years", "I lived here for two years", "Two years from now"],
+              correct: 1,
+              fb: "Llevar + time + gerund/location = to have been doing/here for. Very common in Spanish.",
+            },
+          ],
+        },
+      ],
+    }
   ],
   checkpoint: {
     passingPct: 80,

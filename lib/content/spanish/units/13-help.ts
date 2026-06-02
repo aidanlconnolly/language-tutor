@@ -106,6 +106,55 @@ export const UNIT_HELP: Unit = {
         },
       ],
     },
+    {
+      slug: "help-pharmacy",
+      title: "At the pharmacy",
+      estMinutes: 7,
+      pages: [
+        {
+          type: "dialogue",
+          heading: "Getting help at a pharmacy",
+          lines: [
+            { speaker: "You", l1: "Buenos días. Me duele la cabeza. ¿Qué me recomienda?", en: "Good morning. I have a headache. What do you recommend?" },
+            { speaker: "Pharmacist", l1: "¿Hace cuánto le duele?", en: "How long has it been hurting?" },
+            { speaker: "You", l1: "Desde esta mañana. También tengo un poco de fiebre.", en: "Since this morning. I also have a slight fever." },
+            { speaker: "Pharmacist", l1: "Le doy ibuprofeno. Tome uno cada ocho horas con comida.", en: "I'll give you ibuprofen. Take one every eight hours with food." },
+            { speaker: "You", l1: "¿Puedo tomarlo con el estómago vacío?", en: "Can I take it on an empty stomach?" },
+            { speaker: "Pharmacist", l1: "Mejor no. Siempre con comida.", en: "Better not. Always with food." },
+          ],
+        },
+        {
+          type: "vocab",
+          heading: "Medical vocabulary",
+          items: [
+            { l1: "el ibuprofeno / el paracetamol", en: "ibuprofen / paracetamol" },
+            { l1: "una receta", en: "a prescription" },
+            { l1: "con/sin receta", en: "prescription-only / over the counter" },
+            { l1: "cada ocho horas", en: "every eight hours" },
+            { l1: "con el estómago vacío", en: "on an empty stomach" },
+            { l1: "los efectos secundarios", en: "the side effects" },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "Pharmacy check",
+          questions: [
+            {
+              q: "'Sin receta' means a medicine is…",
+              options: ["Dangerous", "Prescription-only", "Over-the-counter (no prescription needed)", "Expired"],
+              correct: 2,
+              fb: "Sin receta = without prescription = over the counter. Con receta = prescription required.",
+            },
+            {
+              q: "'Tome uno cada ocho horas' means…",
+              options: ["Take one at 8am", "Take one every eight hours", "Take eight per day", "Take one with 8 glasses of water"],
+              correct: 1,
+              fb: "Cada = every. Cada ocho horas = every eight hours.",
+            },
+          ],
+        },
+      ],
+    }
   ],
   checkpoint: {
     passingPct: 80,

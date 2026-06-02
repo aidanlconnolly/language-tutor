@@ -116,6 +116,55 @@ export const UNIT_RESTAURANT: Unit = {
         },
       ],
     },
+    {
+      slug: "restaurant-full-conversation",
+      title: "A full restaurant experience",
+      estMinutes: 7,
+      pages: [
+        {
+          type: "dialogue",
+          heading: "From arrival to dessert",
+          lines: [
+            { speaker: "Waiter", l1: "Buenas tardes. ¿Tienen reserva?", en: "Good afternoon. Do you have a reservation?" },
+            { speaker: "Guest", l1: "No, ¿tienen mesa para dos?", en: "No, do you have a table for two?" },
+            { speaker: "Waiter", l1: "Sí, síganme por favor.", en: "Yes, follow me please." },
+            { speaker: "Guest", l1: "¿Nos recomienda algo de hoy?", en: "Do you recommend anything from today's menu?" },
+            { speaker: "Waiter", l1: "El bacalao al horno está muy bueno hoy.", en: "The baked cod is very good today." },
+            { speaker: "Guest", l1: "Perfecto. Lo ponemos de segundo.", en: "Perfect. We'll have that as our main." },
+          ],
+        },
+        {
+          type: "vocab",
+          heading: "Specific ordering phrases",
+          items: [
+            { l1: "¿Tienen mesa libre?", en: "Do you have a free table?" },
+            { l1: "Síganme / Pase por aquí.", en: "Follow me / Come this way." },
+            { l1: "¿Nos recomienda algo?", en: "Do you recommend anything?" },
+            { l1: "Lo ponemos de segundo.", en: "We'll have that as our main." },
+            { l1: "¿Qué viene con el plato?", en: "What comes with the dish?" },
+            { l1: "¿Podemos pedir ya?", en: "Can we order now?" },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "Restaurant language",
+          questions: [
+            {
+              q: "'¿Tienen mesa libre?' means…",
+              options: ["Is the table free? (one specific table)", "Do you have a free table?", "Is this seat taken?", "Can I sit anywhere?"],
+              correct: 1,
+              fb: "¿Tienen mesa libre? = do you have a free/available table? The standard question on arrival.",
+            },
+            {
+              q: "'Lo ponemos de segundo' means…",
+              options: ["We'll have it as our starter", "We'll have it as our main", "We'll have two of it", "We'll have it second time around"],
+              correct: 1,
+              fb: "De segundo = as the main course. Lo ponemos = we'll have it (lit. we put it as).",
+            },
+          ],
+        },
+      ],
+    }
   ],
   checkpoint: {
     passingPct: 80,

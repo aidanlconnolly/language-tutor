@@ -55,17 +55,6 @@ export default async function Home() {
           {langStats.map((s) => (
             <LangCard key={s.lang} stats={s} />
           ))}
-
-          {/* Spanish coming soon */}
-          <div className="rounded-2xl border border-slate-800 bg-slate-900 p-6 opacity-50">
-            <div className="flex items-center gap-4">
-              <div className="text-4xl">🇪🇸</div>
-              <div className="flex-1">
-                <div className="font-semibold text-white text-lg">Spanish</div>
-                <div className="text-slate-400 text-sm mt-0.5">Coming soon</div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </main>

@@ -130,6 +130,44 @@ export const UNIT_OPINIONS: Unit = {
         },
       ],
     },
+    {
+      slug: "opinions-full-debate",
+      title: "A full opinion exchange",
+      estMinutes: 7,
+      pages: [
+        {
+          type: "dialogue",
+          heading: "Debating a topic",
+          lines: [
+            { speaker: "Alicia", l1: "En mi opinión, el turismo masivo es perjudicial para las ciudades.", en: "In my opinion, mass tourism is harmful for cities." },
+            { speaker: "Bruno", l1: "Entiendo tu punto de vista, pero hay que tener en cuenta los beneficios económicos.", en: "I understand your point of view, but you have to take into account the economic benefits." },
+            { speaker: "Alicia", l1: "Es cierto, pero por otro lado destruye la identidad local.", en: "That's true, but on the other hand it destroys local identity." },
+            { speaker: "Bruno", l1: "Tienes razón en eso. Lo que es innegable es que se necesita regulación.", en: "You're right about that. What is undeniable is that regulation is needed." },
+            { speaker: "Alicia", l1: "Exactamente. A fin de cuentas, hay que encontrar un equilibrio.", en: "Exactly. When all is said and done, we need to find a balance." },
+          ],
+        },
+        {
+          type: "vocab",
+          heading: "Advanced opinion vocabulary",
+          items: [
+            { l1: "desde mi perspectiva", en: "from my perspective" },
+            { l1: "perjudicial para", en: "harmful to / detrimental to" },
+            { l1: "hay que encontrar un equilibrio", en: "we need to find a balance" },
+            { l1: "no cabe duda de que", en: "there's no doubt that" },
+            { l1: "es preciso que + subjunctive", en: "it is necessary that…" },
+            { l1: "en términos generales", en: "generally speaking" },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Express this opinion in Spanish",
+          direction: "en-to-l1",
+          prompt: "In my opinion, we need to find a balance.",
+          reference: "En mi opinión, hay que encontrar un equilibrio.",
+          hint: "en mi opinión + hay que + infinitive",
+        },
+      ],
+    }
   ],
   checkpoint: {
     passingPct: 80,

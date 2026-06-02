@@ -106,6 +106,55 @@ export const UNIT_FOOD_VOCAB: Unit = {
         },
       ],
     },
+    {
+      slug: "food-vocab-shopping",
+      title: "Food shopping phrases",
+      estMinutes: 7,
+      pages: [
+        {
+          type: "vocab",
+          heading: "At the deli and cheese counter",
+          items: [
+            { l1: "¿De qué es este queso?", en: "What is this cheese made from?" },
+            { l1: "de leche de vaca / oveja / cabra", en: "from cow's / sheep's / goat's milk" },
+            { l1: "curado / semicurado / fresco", en: "mature / semi-cured / fresh" },
+            { l1: "¿Tiene más picante?", en: "Do you have something spicier?" },
+            { l1: "¿Puede cortarlo en lonchas?", en: "Can you slice it?" },
+            { l1: "sin sal", en: "without salt / unsalted" },
+          ],
+        },
+        {
+          type: "vocab",
+          heading: "Describing dishes",
+          items: [
+            { l1: "asado/a", en: "roasted" },
+            { l1: "estofado/a", en: "stewed" },
+            { l1: "rehogado/a", en: "sautéed" },
+            { l1: "empanado/a", en: "breaded" },
+            { l1: "a la romana", en: "in batter (fried)" },
+            { l1: "en adobo", en: "marinated" },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "Food preparation check",
+          questions: [
+            {
+              q: "'Asado' means…",
+              options: ["fried", "boiled", "roasted", "raw"],
+              correct: 2,
+              fb: "Asado = roasted. Un pollo asado = a roast chicken.",
+            },
+            {
+              q: "'A la romana' means…",
+              options: ["Roman-style salad", "In batter (fried)", "With tomato sauce", "Grilled Roman-style"],
+              correct: 1,
+              fb: "A la romana = coated in batter and fried. Calamares a la romana = battered squid rings.",
+            },
+          ],
+        },
+      ],
+    }
   ],
   checkpoint: {
     passingPct: 80,

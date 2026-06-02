@@ -127,6 +127,57 @@ export const UNIT_CONNECTORS: Unit = {
         },
       ],
     },
+    {
+      slug: "connectors-paragraph",
+      title: "Building longer texts",
+      estMinutes: 6,
+      pages: [
+        {
+          type: "vocab",
+          heading: "Sequencing and structuring ideas",
+          items: [
+            { l1: "primero / en primer lugar", en: "first / in the first place" },
+            { l1: "luego / después", en: "then / afterwards" },
+            { l1: "finalmente / por último", en: "finally / lastly" },
+            { l1: "por ejemplo", en: "for example" },
+            { l1: "es decir", en: "that is to say / i.e." },
+            { l1: "en cambio", en: "on the other hand / instead" },
+            { l1: "no obstante", en: "however / nevertheless" },
+            { l1: "en conclusión", en: "in conclusion" },
+          ],
+        },
+        {
+          type: "vocab",
+          heading: "A connected paragraph",
+          intro: "Notice how connectors make this flow naturally.",
+          items: [
+            { l1: "Primero, visité el Prado.", en: "First, I visited the Prado." },
+            { l1: "Después, fui a comer tapas.", en: "Then, I went to eat tapas." },
+            { l1: "Sin embargo, hacía mucho calor.", en: "However, it was very hot." },
+            { l1: "Por eso, volví pronto al hotel.", en: "That's why I returned to the hotel early." },
+            { l1: "En resumen, fue un día estupendo.", en: "In summary, it was a great day." },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "Connectors check",
+          questions: [
+            {
+              q: "'En cambio' is closest in meaning to…",
+              options: ["Also", "On the other hand / instead", "Because of that", "In conclusion"],
+              correct: 1,
+              fb: "En cambio = on the other hand / instead. Contrasts two different situations.",
+            },
+            {
+              q: "'Es decir' is used to…",
+              options: ["Introduce a new topic", "Clarify or rephrase what was just said", "Conclude an argument", "Add an example"],
+              correct: 1,
+              fb: "Es decir = that is to say / i.e. Used to clarify or rephrase.",
+            },
+          ],
+        },
+      ],
+    }
   ],
   checkpoint: {
     passingPct: 80,

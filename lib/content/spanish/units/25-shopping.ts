@@ -98,6 +98,55 @@ export const UNIT_SHOPPING: Unit = {
         },
       ],
     },
+    {
+      slug: "shopping-full-scenario",
+      title: "A complete shopping trip",
+      estMinutes: 7,
+      pages: [
+        {
+          type: "dialogue",
+          heading: "Buying clothes",
+          lines: [
+            { speaker: "You", l1: "Buenas. ¿Tienen esta camiseta en azul?", en: "Hello. Do you have this t-shirt in blue?" },
+            { speaker: "Staff", l1: "Sí, claro. ¿Qué talla usa?", en: "Yes, of course. What size do you take?" },
+            { speaker: "You", l1: "La M normalmente, pero depende.", en: "M usually, but it depends." },
+            { speaker: "Staff", l1: "Pruébese esta. El probador está al fondo a la derecha.", en: "Try this one. The fitting room is at the back on the right." },
+            { speaker: "You", l1: "Me queda un poco grande. ¿Tiene la S?", en: "It's a bit big on me. Do you have the S?" },
+            { speaker: "Staff", l1: "Lo siento, en azul solo tenemos la M y la L.", en: "I'm sorry, in blue we only have M and L." },
+          ],
+        },
+        {
+          type: "vocab",
+          heading: "Online and sales vocabulary",
+          items: [
+            { l1: "el probador", en: "the fitting room" },
+            { l1: "¿Tienen en otro color?", en: "Do you have it in another colour?" },
+            { l1: "lo siento, está agotado", en: "I'm sorry, it's sold out" },
+            { l1: "¿Puedo pedirlo por internet?", en: "Can I order it online?" },
+            { l1: "la talla única", en: "one size fits all" },
+            { l1: "queda bien / mal", en: "it suits you / doesn't suit you" },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "Shopping scenario",
+          questions: [
+            {
+              q: "'Está agotado' means…",
+              options: ["It's on sale", "It's sold out", "It's exhausting", "It's defective"],
+              correct: 1,
+              fb: "Agotado = sold out (lit. exhausted). Stock is exhausted.",
+            },
+            {
+              q: "'Te queda bien' means…",
+              options: ["You keep it well", "It suits/fits you well", "It's the right size for you", "Both B and C"],
+              correct: 3,
+              fb: "Quedar bien = to suit/fit well. Te queda bien = it suits you / it fits you well.",
+            },
+          ],
+        },
+      ],
+    }
   ],
   checkpoint: {
     passingPct: 80,

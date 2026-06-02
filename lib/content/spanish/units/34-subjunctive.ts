@@ -131,6 +131,49 @@ export const UNIT_SUBJUNCTIVE: Unit = {
         },
       ],
     },
+    {
+      slug: "subjunctive-in-use",
+      title: "Subjunctive in natural conversation",
+      estMinutes: 7,
+      pages: [
+        {
+          type: "vocab",
+          heading: "More subjunctive trigger phrases",
+          items: [
+            { l1: "Que te mejores.", en: "Get well soon. (lit. may you get better — wishes)" },
+            { l1: "Que descanses.", en: "Rest well / sleep well." },
+            { l1: "Que te lo pases bien.", en: "Have a good time." },
+            { l1: "Busco una persona que sepa cocinar.", en: "I'm looking for someone who can cook. (relative clause + unknown referent)" },
+            { l1: "Cuando llegues, llámame.", en: "When you arrive, call me. (future event + subjunctive)" },
+            { l1: "Para que entiendas…", en: "So that you understand… (purpose clause)" },
+          ],
+        },
+        {
+          type: "tip",
+          heading: "Que + subjunctive = wishes and toasts",
+          body: "Short phrases starting with <em>Que</em> + subjunctive are common social formulae. They express a wish for someone. <em>¡Que te vaya bien!</em> (may things go well for you) <em>¡Que aproveche!</em> (enjoy your meal) <em>¡Que cumplas muchos más!</em> (many happy returns).",
+          example: { l1: "¡Que te mejores pronto!", en: "Get well soon! (lit. may you get better soon)" },
+        },
+        {
+          type: "multipleChoice",
+          heading: "Subjunctive in real life",
+          questions: [
+            {
+              q: "'Cuando llegues' uses subjunctive because…",
+              options: ["Llegar is irregular", "'Cuando' always takes subjunctive", "It refers to a future event that hasn't happened yet", "It's a wish"],
+              correct: 2,
+              fb: "Cuando + future action = subjunctive. The arrival hasn't happened yet. Once it happens, you'd use indicative: cuando llegué (when I arrived — definite past).",
+            },
+            {
+              q: "'Busco una persona que sepa cocinar' uses subjunctive because…",
+              options: ["Buscar is special", "The person is hypothetical / not specific yet", "Cocinar is irregular", "It's a command"],
+              correct: 1,
+              fb: "Unknown/hypothetical referent → subjunctive. If you knew a specific person: busco a María, que sabe cocinar (indicative).",
+            },
+          ],
+        },
+      ],
+    }
   ],
   checkpoint: {
     passingPct: 80,

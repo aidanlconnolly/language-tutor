@@ -106,6 +106,55 @@ export const UNIT_IDIOMS: Unit = {
         },
       ],
     },
+    {
+      slug: "idioms-in-conversation",
+      title: "Using idioms naturally",
+      estMinutes: 7,
+      pages: [
+        {
+          type: "dialogue",
+          heading: "A conversation full of Spanish expressions",
+          lines: [
+            { speaker: "Javi", l1: "Oye, ¿qué tal el concierto?", en: "Hey, how was the concert?" },
+            { speaker: "Ana", l1: "¡Una pasada! Me flipó totalmente.", en: "Amazing! It totally blew my mind." },
+            { speaker: "Javi", l1: "¿En serio? Yo no fui. ¡Qué rollo!", en: "Seriously? I didn't go. What a shame!" },
+            { speaker: "Ana", l1: "Es que surgió a última hora. Pero mola mazo. Tienes que verlos.", en: "It came up at the last minute. But it's mega cool. You have to see them." },
+            { speaker: "Javi", l1: "Venga, la próxima vez avísame.", en: "OK, next time let me know." },
+            { speaker: "Ana", l1: "¡Claro que sí, tío!", en: "Of course, mate!" },
+          ],
+        },
+        {
+          type: "vocab",
+          heading: "More Spanish expressions",
+          items: [
+            { l1: "¡Una pasada!", en: "Amazing! / What a thing!" },
+            { l1: "surgir a última hora", en: "to come up at the last minute" },
+            { l1: "avisar", en: "to let someone know / to warn" },
+            { l1: "¡Claro que sí!", en: "Of course! / Absolutely!" },
+            { l1: "ni idea", en: "no idea" },
+            { l1: "me importa un pimiento", en: "I don't care one bit (lit. a pepper)" },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "Expressions in context",
+          questions: [
+            {
+              q: "'¡Una pasada!' expresses…",
+              options: ["Disappointment", "Admiration / amazement", "Confusion", "Indifference"],
+              correct: 1,
+              fb: "Una pasada = something amazing / outstanding. ¡Qué pasada! / ¡Una pasada! = wow, amazing!",
+            },
+            {
+              q: "'Me importa un pimiento' means…",
+              options: ["I love peppers", "I care a lot about it", "I don't care one bit", "It matters to me"],
+              correct: 2,
+              fb: "Me importa un pimiento = I couldn't care less. One of many colourful Spanish ways to express indifference.",
+            },
+          ],
+        },
+      ],
+    }
   ],
   checkpoint: {
     passingPct: 80,
