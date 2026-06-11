@@ -1,0 +1,45 @@
+{
+  "expo": {
+    "name": "Language Tutor",
+    "slug": "language-tutor",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#1e293b"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.languagetutor.app",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false,
+        "NSSpeechRecognitionUsageDescription": "Used for pronunciation practice feedback",
+        "NSMicrophoneUsageDescription": "Used for pronunciation practice"
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#1e293b"
+      },
+      "package": "com.languagetutor.app"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-secure-store"
+    ],
+    "scheme": "language-tutor",
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": ""
+      }
+    }
+  }
+}

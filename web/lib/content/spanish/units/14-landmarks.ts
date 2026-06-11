@@ -1,0 +1,178 @@
+import type { Unit } from "../../types";
+
+export const UNIT_LANDMARKS: Unit = {
+  slug: "landmarks",
+  stage: 3,
+  order: 14,
+  icon: "🏛️",
+  title: "Spanish landmarks",
+  tagline: "El Prado, el Retiro, la Sagrada Família, history talk.",
+  badge: "culture",
+  lessons: [
+    {
+      slug: "landmarks-madrid",
+      title: "Madrid's highlights",
+      estMinutes: 8,
+      pages: [
+        {
+          type: "intro",
+          heading: "Madrid — cultural capital of Spain",
+          body: [
+            "Madrid is home to some of the world's greatest art museums: el Prado, el Reina Sofía, and el Thyssen-Bornemisza — the so-called 'Golden Triangle of Art'. The city also boasts the vast Parque del Retiro and the historic Plaza Mayor.",
+            "Spain's capital was established by Felipe II in 1561. It sits at the geographic centre of the Iberian Peninsula at 667 m above sea level — the highest capital in the EU.",
+          ],
+          tip: {
+            label: "Free museum hours",
+            body: "El Prado is free Monday–Saturday after 6pm and all day Sunday. Reina Sofía is free Monday and Wednesday–Saturday after 7pm, and Sunday until 2:30pm.",
+          },
+        },
+        {
+          type: "vocab",
+          heading: "Madrid landmarks",
+          items: [
+            { l1: "el Museo del Prado", en: "the Prado Museum (world-class art collection)" },
+            { l1: "el Museo Reina Sofía", en: "modern art museum — Picasso's Guernica" },
+            { l1: "el Parque del Retiro", en: "Madrid's great park — rowing lake, glasshouse" },
+            { l1: "la Plaza Mayor", en: "historic central square — cafés, events" },
+            { l1: "la Puerta del Sol", en: "Madrid's symbolic centre — km 0 of Spain" },
+            { l1: "el Palacio Real", en: "the Royal Palace" },
+            { l1: "el barrio de Lavapiés", en: "multicultural, artsy neighbourhood" },
+            { l1: "el Rastro", en: "Sunday flea market — largest in Spain" },
+          ],
+        },
+        {
+          type: "vocab",
+          heading: "Talking about sights",
+          items: [
+            { l1: "¿Cuánto cuesta la entrada?", en: "How much is the entrance fee?" },
+            { l1: "¿Hay descuento para estudiantes?", en: "Is there a student discount?" },
+            { l1: "¿A qué hora cierra?", en: "What time does it close?" },
+            { l1: "¿Está permitido hacer fotos?", en: "Is it permitted to take photos?" },
+            { l1: "Es impresionante.", en: "It's impressive." },
+            { l1: "Vale la pena.", en: "It's worth it." },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "Landmarks check",
+          questions: [
+            {
+              q: "Picasso's Guernica is in…",
+              options: ["El Prado", "El Reina Sofía", "El Thyssen", "El Retiro"],
+              correct: 1,
+              fb: "Guernica has been at the Museo Reina Sofía since 1992.",
+            },
+            {
+              q: "La Puerta del Sol is significant because…",
+              options: ["It's the royal palace", "It's km 0 of Spain's road network", "It's the oldest church", "It's the main train station"],
+              correct: 1,
+              fb: "La Puerta del Sol is the symbolic centre of Spain and km 0 of the national road network.",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      slug: "landmarks-spain",
+      title: "Landmarks beyond Madrid",
+      estMinutes: 7,
+      pages: [
+        {
+          type: "vocab",
+          heading: "Spain's iconic sights",
+          items: [
+            { l1: "la Sagrada Família", en: "Gaudí's unfinished basilica in Barcelona" },
+            { l1: "la Alhambra", en: "Moorish palace complex in Granada" },
+            { l1: "el Camino de Santiago", en: "pilgrimage route to Santiago de Compostela" },
+            { l1: "la Mezquita de Córdoba", en: "mosque-cathedral in Córdoba" },
+            { l1: "el barrio Gótico", en: "Gothic Quarter of Barcelona" },
+            { l1: "el Parque Güell", en: "Gaudí park in Barcelona" },
+            { l1: "la Torre del Oro", en: "12th-century tower in Seville" },
+            { l1: "las Ramblas", en: "Barcelona's famous boulevard" },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "Spain geography",
+          questions: [
+            {
+              q: "La Alhambra is in…",
+              options: ["Madrid", "Barcelona", "Granada", "Seville"],
+              correct: 2,
+              fb: "La Alhambra is the iconic Moorish palace in Granada, southern Spain.",
+            },
+            {
+              q: "'Vale la pena' means…",
+              options: ["It has a fine", "It's worth it", "It's expensive", "It costs a lot"],
+              correct: 1,
+              fb: "Valer la pena = to be worth it. ¡Vale la pena! is a common expression of enthusiasm.",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      slug: "landmarks-history",
+      title: "Discussing Spanish history",
+      estMinutes: 7,
+      pages: [
+        {
+          type: "vocab",
+          heading: "Historical vocabulary",
+          items: [
+            { l1: "los Reyes Católicos", en: "the Catholic Monarchs (Ferdinand & Isabella)" },
+            { l1: "la Reconquista", en: "the Reconquista (722–1492)" },
+            { l1: "el siglo de oro", en: "the Golden Age (16th–17th century)" },
+            { l1: "la guerra civil", en: "the Civil War (1936–39)" },
+            { l1: "la transición", en: "the Transition to democracy (1975–78)" },
+            { l1: "fue construido en el siglo XVI", en: "it was built in the 16th century" },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "Talking about a monument",
+          lines: [
+            { speaker: "Guide", l1: "Este palacio fue construido en el siglo XVII.", en: "This palace was built in the 17th century." },
+            { speaker: "Visitor", l1: "¿Quién lo mandó construir?", en: "Who commissioned it?" },
+            { speaker: "Guide", l1: "Felipe IV. Fue una época de gran esplendor.", en: "Felipe IV. It was a period of great splendour." },
+            { speaker: "Visitor", l1: "¿Y cuánto tiempo tardaron en construirlo?", en: "And how long did it take to build?" },
+            { speaker: "Guide", l1: "Casi cincuenta años.", en: "Almost fifty years." },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "History check",
+          questions: [
+            {
+              q: "La Reconquista refers to…",
+              options: ["Spanish colonial expansion", "The Christian reconquest of the Iberian Peninsula", "The Spanish Civil War", "The transition to democracy"],
+              correct: 1,
+              fb: "La Reconquista = the centuries-long process by which Christian kingdoms retook the Iberian Peninsula from Moorish rule, culminating in 1492.",
+            },
+            {
+              q: "'Fue construido en el siglo XVI' means…",
+              options: ["It will be built in the 16th century", "It was built in the 16th century", "It is being built", "Construction began in the 6th century"],
+              correct: 1,
+              fb: "Fue construido = was built (passive, indefinido of ser + past participle).",
+            },
+          ],
+        },
+      ],
+    }
+  ],
+  checkpoint: {
+    passingPct: 80,
+    questions: [
+      { q: "Which museum has Picasso's Guernica?", options: ["El Prado", "El Thyssen", "El Reina Sofía", "El Retiro"], correct: 2 },
+      { q: "La Puerta del Sol is…", options: ["A gate to the city", "Spain's symbolic km 0", "Madrid's main park", "The royal palace"], correct: 1 },
+      { q: "La Alhambra is located in…", options: ["Madrid", "Barcelona", "Seville", "Granada"], correct: 3 },
+      { q: "'¿Cuánto cuesta la entrada?' means…", options: ["When does it open?", "How much is the entrance?", "Is it free?", "Where is the ticket office?"], correct: 1 },
+      { q: "'Vale la pena' means…", options: ["It costs a lot", "It's worth it", "It has a fine", "Pay the penalty"], correct: 1 },
+      { q: "The 'Golden Triangle of Art' in Madrid includes El Prado, El Reina Sofía and…", options: ["El Retiro", "El Palacio Real", "El Thyssen-Bornemisza", "El Rastro"], correct: 2 },
+      { q: "The Sagrada Família is in…", options: ["Madrid", "Granada", "Seville", "Barcelona"], correct: 3 },
+      { q: "El Rastro is…", options: ["A nightclub", "A Sunday flea market", "A river", "A food market"], correct: 1 },
+      { q: "'¿Está permitido hacer fotos?' means…", options: ["Are photos expensive?", "Is it permitted to take photos?", "Where are the photos?", "Are photos included?"], correct: 1 },
+      { q: "'Es impresionante' means…", options: ["It's complicated", "It's impressive", "It's important", "It's interesting"], correct: 1 },
+    ],
+  },
+};

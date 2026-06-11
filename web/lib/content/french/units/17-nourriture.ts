@@ -1,0 +1,238 @@
+import type { Unit } from "../../types";
+
+export const UNIT_NOURRITURE: Unit = {
+  slug: "nourriture",
+  stage: 4,
+  order: 17,
+  icon: "🥖",
+  title: "Food vocab deep dive",
+  tagline: "Fromages, vins, légumes, viandes, verbes de cuisine.",
+  lessons: [
+    {
+      slug: "nourriture-main",
+      title: "French food vocabulary",
+      estMinutes: 10,
+      pages: [
+        {
+          type: "intro",
+          heading: "France and food — a serious relationship",
+          body: [
+            "France has ~1,200 named cheeses, 14 wine regions, and the first modern restaurant (Paris, 1765). Food is deeply tied to French identity — discussing what you're eating, where ingredients come from, and how something was prepared is normal dinner conversation.",
+            "French has precise vocabulary for cooking: <em>mijoter</em> (to simmer), <em>saisir</em> (to sear), <em>émincer</em> (to slice thinly), <em>battre</em> (to beat). Menus often describe preparation methods, so this vocabulary helps.",
+          ],
+        },
+        {
+          type: "vocab",
+          heading: "Vegetables & fruits",
+          items: [
+            { l1: "les légumes", en: "vegetables" },
+            { l1: "la pomme de terre", en: "the potato", note: "literally 'apple of the earth'" },
+            { l1: "la tomate", en: "the tomato" },
+            { l1: "les haricots verts", en: "green beans" },
+            { l1: "la salade / la laitue", en: "salad greens / lettuce" },
+            { l1: "les champignons", en: "mushrooms" },
+            { l1: "les fruits", en: "fruit" },
+            { l1: "la pomme / la poire / la pêche", en: "apple / pear / peach" },
+            { l1: "le raisin", en: "grapes (also: le raisin sec = raisins)" },
+            { l1: "la fraise / la framboise", en: "strawberry / raspberry" },
+          ],
+        },
+        {
+          type: "vocab",
+          heading: "Meat, fish & dairy",
+          items: [
+            { l1: "le bœuf", en: "beef" },
+            { l1: "le poulet", en: "chicken" },
+            { l1: "le porc", en: "pork" },
+            { l1: "l'agneau", en: "lamb" },
+            { l1: "le saumon / le thon / la sole", en: "salmon / tuna / sole (fish)" },
+            { l1: "les fruits de mer", en: "seafood" },
+            { l1: "le fromage", en: "cheese" },
+            { l1: "le beurre", en: "butter" },
+            { l1: "la crème fraîche", en: "crème fraîche (thick soured cream)" },
+            { l1: "les œufs", en: "eggs" },
+          ],
+        },
+        {
+          type: "vocab",
+          heading: "Cooking methods",
+          items: [
+            { l1: "cuit au four", en: "baked / roasted (in the oven)" },
+            { l1: "grillé/e", en: "grilled" },
+            { l1: "à la vapeur", en: "steamed" },
+            { l1: "frit/e", en: "fried" },
+            { l1: "mijoté/e", en: "simmered / slow-cooked" },
+            { l1: "cru/e", en: "raw" },
+            { l1: "bien cuit / saignant / à point", en: "well done / rare / medium" },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "Food vocab check",
+          questions: [
+            {
+              q: "'La pomme de terre' literally means…",
+              options: ["apple of the earth (potato)", "apple tree", "stone fruit", "earth apple (same)"],
+              correct: 0,
+              fb: "Literally 'apple of the earth' — that's the French word for potato!",
+            },
+            {
+              q: "'Mijoté' on a menu means…",
+              options: ["grilled", "simmered / slow-cooked", "raw", "fried"],
+              correct: 1,
+              fb: "Mijoté = simmered slowly. Often used for stews and braises.",
+            },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate",
+          direction: "l1-to-en",
+          prompt: "Je voudrais le poulet grillé avec des haricots verts, s'il vous plaît.",
+          reference: "I'd like the grilled chicken with green beans, please.",
+        },
+      ],
+    },
+    {
+      slug: "nourriture-gout",
+      title: "Describing taste & texture",
+      estMinutes: 8,
+      pages: [
+        {
+          type: "intro",
+          heading: "Talking about how food tastes",
+          body: [
+            "The French love to describe food, and a small set of adjectives covers most of it. The five basic tastes: <em>sucré</em> (sweet), <em>salé</em> (salty), <em>acide</em> (sour/acidic), <em>amer</em> (bitter), and the savoury <em>umami</em>.",
+            "Texture matters as much as taste: <em>croustillant</em> (crunchy), <em>fondant</em> (melting/soft), <em>moelleux</em> (moist and soft, like good cake), <em>tendre</em> (tender), <em>dur</em> (hard/tough).",
+            "Reactions run from <em>délicieux</em> (delicious) and <em>savoureux</em> (tasty) to the polite negatives <em>fade</em> (bland) and <em>trop cuit</em> (overcooked).",
+          ],
+          keyPoint: "Tastes: sucré, salé, acide, amer. Textures: croustillant, fondant, moelleux, tendre. Bland = fade.",
+        },
+        {
+          type: "vocab",
+          heading: "Taste & texture words",
+          items: [
+            { l1: "sucré / salé", en: "sweet / salty" },
+            { l1: "acide / amer", en: "sour / bitter" },
+            { l1: "épicé / pimenté", en: "spiced / hot (chili)" },
+            { l1: "croustillant", en: "crunchy, crispy" },
+            { l1: "fondant", en: "melting, meltingly soft" },
+            { l1: "moelleux", en: "moist and soft (e.g. cake)" },
+            { l1: "tendre / dur", en: "tender / tough, hard" },
+            { l1: "savoureux / délicieux", en: "tasty / delicious" },
+            { l1: "fade", en: "bland, tasteless" },
+            { l1: "frais / fraîche", en: "fresh" },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "Reacting to a meal",
+          lines: [
+            { speaker: "Hôte", l1: "Alors, ça te plaît?", en: "So, do you like it?" },
+            { speaker: "You", l1: "C'est délicieux! La viande est très tendre.", en: "It's delicious! The meat is very tender." },
+            { speaker: "Hôte", l1: "Et le dessert? Pas trop sucré?", en: "And the dessert? Not too sweet?" },
+            { speaker: "You", l1: "Non, parfait. Et le gâteau est très moelleux.", en: "No, perfect. And the cake is very moist." },
+            { speaker: "Hôte", l1: "Merci! C'est une recette de ma grand-mère.", en: "Thanks! It's my grandmother's recipe." },
+          ],
+        },
+        {
+          type: "fillBlank",
+          heading: "Choose the right word",
+          items: [
+            { template: "Ce citron est très ___. (sour)", answer: "acide", en: "This lemon is very sour.", options: ["sucré", "acide", "salé", "tendre"] },
+            { template: "Le pain est ___. (crunchy)", answer: "croustillant", en: "The bread is crunchy.", options: ["fondant", "croustillant", "fade", "amer"] },
+            { template: "La soupe est ___, ajoute du sel. (bland)", answer: "fade", en: "The soup is bland, add salt.", options: ["savoureuse", "épicée", "fade", "sucrée"] },
+            { template: "Ce steak est trop ___. (tough)", answer: "dur", en: "This steak is too tough.", options: ["tendre", "dur", "frais", "moelleux"] },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "Taste check",
+          questions: [
+            {
+              q: "'Moelleux' describes something that is…",
+              options: ["crunchy", "moist and soft", "bitter", "spicy"],
+              correct: 1,
+              fb: "'Moelleux' = soft and moist, the prized texture for cakes and bread.",
+            },
+            {
+              q: "If a dish is 'fade', it is…",
+              options: ["too spicy", "bland / tasteless", "too sweet", "burnt"],
+              correct: 1,
+              fb: "'Fade' = bland. The opposite of 'savoureux' (tasty).",
+            },
+            {
+              q: "'Amer' means…",
+              options: ["sweet", "salty", "bitter", "sour"],
+              correct: 2,
+              fb: "'Amer' = bitter (like dark chocolate or strong coffee).",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      slug: "nourriture-cuisine",
+      title: "Cooking & recipes",
+      estMinutes: 8,
+      pages: [
+        {
+          type: "intro",
+          heading: "Reading a recipe",
+          body: [
+            "Recipes (<em>une recette</em>) are written in the infinitive or the imperative: <em>couper les légumes</em> (cut the vegetables) or <em>coupez les légumes</em>. Knowing the action verbs lets you follow any French recipe or cooking show.",
+            "Core verbs: <em>couper</em> (to cut), <em>mélanger</em> (to mix), <em>ajouter</em> (to add), <em>verser</em> (to pour), <em>cuire</em> (to cook), <em>faire bouillir</em> (to boil).",
+            "Quantities in cooking use <em>une cuillère à soupe</em> (tablespoon), <em>une cuillère à café</em> (teaspoon), <em>une pincée</em> (a pinch), and weights in grams: <em>200 g de farine</em>.",
+          ],
+          keyPoint: "Recipe verbs: couper, mélanger, ajouter, verser, cuire. Measures: cuillère à soupe/à café, une pincée.",
+        },
+        {
+          type: "vocab",
+          heading: "Kitchen verbs & measures",
+          items: [
+            { l1: "une recette", en: "a recipe" },
+            { l1: "couper / émincer", en: "to cut / to slice thinly" },
+            { l1: "mélanger", en: "to mix" },
+            { l1: "ajouter", en: "to add" },
+            { l1: "verser", en: "to pour" },
+            { l1: "cuire / faire bouillir", en: "to cook / to boil" },
+            { l1: "une cuillère à soupe / à café", en: "a tablespoon / a teaspoon" },
+            { l1: "une pincée de sel", en: "a pinch of salt" },
+            { l1: "200 g de farine", en: "200 g of flour" },
+            { l1: "un four / une poêle / une casserole", en: "an oven / a frying pan / a saucepan" },
+          ],
+        },
+        {
+          type: "orderWords",
+          heading: "Follow the recipe",
+          intro: "Put the recipe step in order.",
+          items: [
+            { tokens: ["Coupez", "les", "tomates", "en", "morceaux."], en: "Cut the tomatoes into pieces." },
+            { tokens: ["Ajoutez", "une", "pincée", "de", "sel."], en: "Add a pinch of salt." },
+            { tokens: ["Mélangez", "bien", "et", "versez", "dans", "la", "poêle."], en: "Mix well and pour into the pan." },
+            { tokens: ["Faites", "cuire", "pendant", "vingt", "minutes."], en: "Cook for twenty minutes." },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate",
+          direction: "en-to-l1",
+          prompt: "Add two tablespoons of oil and mix well.",
+          reference: "Ajoutez deux cuillères à soupe d'huile et mélangez bien.",
+          hint: "tablespoon = cuillère à soupe; 'of oil' = d'huile; mix = mélanger",
+        },
+      ],
+    },
+  ],
+  checkpoint: {
+    passingPct: 80,
+    questions: [
+      { q: "'Les haricots verts' are…", options: ["dried beans", "lentils", "green beans", "peas"], correct: 2 },
+      { q: "'Cru' means…", options: ["cooked", "raw", "grilled", "baked"], correct: 1 },
+      { q: "'Les fruits de mer' are…", options: ["fresh fruits", "sea fruits (seafood)", "dried fruits", "fruit desserts"], correct: 1 },
+      { q: "'Le bœuf' is…", options: ["lamb", "pork", "beef", "chicken"], correct: 2 },
+      { q: "'Cuit au four' means…", options: ["steamed", "fried", "baked / roasted in the oven", "grilled"], correct: 2 },
+      { q: "'La crème fraîche' is…", options: ["fresh cream = whipped cream", "thick soured cream", "ice cream", "yogurt"], correct: 1 },
+    ],
+  },
+};

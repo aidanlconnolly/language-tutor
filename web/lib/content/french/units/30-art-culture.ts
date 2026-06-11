@@ -1,0 +1,206 @@
+import type { Unit } from "../../types";
+
+export const UNIT_ART_CULTURE: Unit = {
+  slug: "art-culture",
+  stage: 7,
+  order: 30,
+  icon: "🖼️",
+  title: "Art & culture",
+  tagline: "Musée, exposition, cinéma, grève — c'est magnifique.",
+  lessons: [
+    {
+      slug: "art-culture-main",
+      title: "Talking about art, cinema & culture",
+      estMinutes: 9,
+      pages: [
+        {
+          type: "intro",
+          heading: "Culture is central to French identity",
+          body: [
+            "France treats culture as a public good. The state subsidizes cinema, theater, museums, and the arts heavily. The <em>Ministère de la Culture</em> protects the French language and cultural production.",
+            "French cinema is world-renowned — the <em>Nouvelle Vague</em> (New Wave) of the 1950s–60s (Godard, Truffaut) reshaped film globally. Going to <em>le cinéma</em> remains popular, and Paris has dozens of small art-house theaters.",
+            "One cultural note: <strong>la grève</strong> (the strike) is a frequent feature of French life. Transport strikes, museum closures, and demonstrations are common. Checking ahead saves frustration.",
+          ],
+        },
+        {
+          type: "vocab",
+          heading: "Art & museum vocabulary",
+          items: [
+            { l1: "le musée", en: "the museum" },
+            { l1: "l'exposition (l'expo)", en: "the exhibition" },
+            { l1: "le tableau / la peinture", en: "the painting" },
+            { l1: "la sculpture", en: "the sculpture" },
+            { l1: "l'œuvre (d'art)", en: "the (art)work" },
+            { l1: "le peintre / l'artiste", en: "the painter / the artist" },
+            { l1: "l'impressionnisme", en: "Impressionism", note: "Monet, Renoir, Degas" },
+            { l1: "C'est magnifique / impressionnant.", en: "It's magnificent / impressive." },
+            { l1: "Ça ne me dit rien.", en: "It does nothing for me / I'm not into it." },
+          ],
+        },
+        {
+          type: "vocab",
+          heading: "Cinema & culture vocabulary",
+          items: [
+            { l1: "le cinéma / le film", en: "the cinema / the film" },
+            { l1: "une séance", en: "a screening / showing" },
+            { l1: "en version originale (VO)", en: "in the original language (subtitled)", note: "VOST = with subtitles" },
+            { l1: "doublé/e", en: "dubbed" },
+            { l1: "le théâtre / la pièce", en: "the theater / the play" },
+            { l1: "le réalisateur", en: "the director (of a film)" },
+            { l1: "la grève", en: "the strike", note: "frequent in France" },
+            { l1: "la manifestation (la manif)", en: "the demonstration / protest" },
+            { l1: "Qu'est-ce que tu en penses?", en: "What do you think of it?" },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "Discussing an exhibition",
+          lines: [
+            { speaker: "Sophie", l1: "Tu as vu l'exposition Monet au musée d'Orsay?", en: "Did you see the Monet exhibition at the Orsay?" },
+            { speaker: "You", l1: "Oui, hier. C'était magnifique!", en: "Yes, yesterday. It was magnificent!" },
+            { speaker: "Sophie", l1: "Qu'est-ce que tu as préféré?", en: "What did you prefer?" },
+            { speaker: "You", l1: "Les Nymphéas. Les couleurs sont impressionnantes.", en: "The Water Lilies. The colors are impressive." },
+            { speaker: "Sophie", l1: "Je suis d'accord. On va au cinéma ce soir? Il y a un bon film en VO.", en: "I agree. Shall we go to the cinema tonight? There's a good film in the original language." },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate",
+          direction: "en-to-l1",
+          prompt: "What do you think of this painting? I find it very impressive.",
+          reference: "Qu'est-ce que tu penses de ce tableau? Je le trouve très impressionnant.",
+          hint: "je le trouve = I find it; impressionnant = impressive",
+        },
+      ],
+    },
+    {
+      slug: "art-culture-sorties",
+      title: "Music, books & going out",
+      estMinutes: 8,
+      pages: [
+        {
+          type: "intro",
+          heading: "An evening out, French style",
+          body: [
+            "Beyond museums, French cultural life means <em>les concerts</em>, <em>les spectacles</em> (shows), and a strong reading culture. Booking is <em>réserver une place</em> (book a seat); the listings magazine tradition lives on in apps and <em>l'Officiel des spectacles</em>.",
+            "Music genres you'll hear named: <em>la chanson française</em> (the classic French song tradition — Brel, Piaf, Brassens), <em>le rap</em> (France has a huge scene), <em>le jazz</em>, <em>la musique classique</em>.",
+            "For reading: <em>un roman</em> (a novel), <em>une BD</em> (<em>bande dessinée</em> — the beloved French comic/graphic-novel form), <em>un polar</em> (a crime novel). The <em>librairie</em> is the bookshop (not the library — that's <em>la bibliothèque</em>).",
+          ],
+          keyPoint: "Book a seat = réserver une place. un roman/une BD/un polar = novel/comic/crime novel. librairie = bookshop.",
+        },
+        {
+          type: "vocab",
+          heading: "Music, books & outings",
+          items: [
+            { l1: "un concert / un spectacle", en: "a concert / a show" },
+            { l1: "réserver une place", en: "to book a seat" },
+            { l1: "la chanson française", en: "the French song tradition" },
+            { l1: "un groupe / un chanteur", en: "a band / a singer" },
+            { l1: "un roman", en: "a novel" },
+            { l1: "une BD (bande dessinée)", en: "a comic / graphic novel" },
+            { l1: "un polar", en: "a crime novel / thriller" },
+            { l1: "la librairie / la bibliothèque", en: "the bookshop / the library" },
+            { l1: "Ça te dit d'aller à un concert?", en: "Do you fancy going to a concert?" },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "Planning an outing",
+          lines: [
+            { speaker: "Théo", l1: "Ça te dit d'aller à un concert de jazz vendredi?", en: "Do you fancy going to a jazz concert on Friday?" },
+            { speaker: "You", l1: "Bonne idée! Il faut réserver des places?", en: "Good idea! Do we need to book seats?" },
+            { speaker: "Théo", l1: "Oui, c'est plus sûr. Au fait, tu as lu le dernier roman de Nothomb?", en: "Yes, it's safer. By the way, have you read Nothomb's latest novel?" },
+            { speaker: "You", l1: "Pas encore. Je préfère les BD, en ce moment.", en: "Not yet. I prefer comics at the moment." },
+            { speaker: "Théo", l1: "On peut passer à la librairie avant, alors.", en: "We can stop by the bookshop first, then." },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "Outings check",
+          questions: [
+            {
+              q: "'La librairie' is…",
+              options: ["the library", "the bookshop", "the newsstand", "the printer"],
+              correct: 1,
+              fb: "'La librairie' = bookshop (you buy). 'La bibliothèque' = library (you borrow).",
+            },
+            {
+              q: "'Une BD' is…",
+              options: ["a database", "a comic / graphic novel", "a crime novel", "a song"],
+              correct: 1,
+              fb: "BD = bande dessinée, a major French art form.",
+            },
+            {
+              q: "'Réserver une place' means…",
+              options: ["to find a place", "to book a seat", "to leave a place", "to clean a place"],
+              correct: 1,
+              fb: "'Une place' here = a seat/spot; réserver = to book.",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      slug: "art-culture-opinions",
+      title: "Giving your opinion on a film or book",
+      estMinutes: 8,
+      pages: [
+        {
+          type: "intro",
+          heading: "Saying what you thought",
+          body: [
+            "To share an opinion, lead with <em>Je trouve que…</em> (I find that…), <em>À mon avis…</em> (In my opinion…), or <em>Je pense que…</em> (I think that…). For a reaction to something you watched/read: <em>Ça m'a plu</em> (I liked it) / <em>Ça ne m'a pas plu</em> (I didn't like it).",
+            "Useful nouns for talking about a film or book: <em>le scénario</em> (the script/plot), <em>l'intrigue</em> (the storyline), <em>les acteurs</em> / <em>le jeu d'acteur</em> (the acting), <em>la fin</em> (the ending).",
+            "To agree or push back: <em>Je suis d'accord</em> (I agree), <em>Je ne suis pas d'accord</em> (I disagree), <em>Ça dépend</em> (It depends).",
+          ],
+          keyPoint: "Opinion: Je trouve que… / À mon avis… Reaction: ça m'a plu / ça ne m'a pas plu. Agree: je suis (pas) d'accord.",
+        },
+        {
+          type: "vocab",
+          heading: "Opinion vocabulary",
+          items: [
+            { l1: "Je trouve que…", en: "I find that…" },
+            { l1: "À mon avis…", en: "In my opinion…" },
+            { l1: "Ça m'a plu / Ça ne m'a pas plu.", en: "I liked it / I didn't like it." },
+            { l1: "le scénario / l'intrigue", en: "the script / the storyline" },
+            { l1: "le jeu d'acteur", en: "the acting" },
+            { l1: "la fin", en: "the ending" },
+            { l1: "Je suis (tout à fait) d'accord.", en: "I (completely) agree." },
+            { l1: "Je ne suis pas d'accord.", en: "I disagree." },
+            { l1: "C'était surfait / décevant.", en: "It was overrated / disappointing." },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "Debating a film",
+          lines: [
+            { speaker: "Inès", l1: "Alors, ce film, ça t'a plu?", en: "So, this film, did you like it?" },
+            { speaker: "You", l1: "Bof. À mon avis, le scénario était un peu faible.", en: "Meh. In my opinion, the script was a bit weak." },
+            { speaker: "Inès", l1: "Ah bon? Moi, j'ai adoré le jeu d'acteur.", en: "Oh really? Me, I loved the acting." },
+            { speaker: "You", l1: "Ça, je suis d'accord. Mais je trouve que la fin était décevante.", en: "On that, I agree. But I find the ending was disappointing." },
+            { speaker: "Inès", l1: "Ça dépend des goûts!", en: "It depends on taste!" },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate",
+          direction: "en-to-l1",
+          prompt: "In my opinion, the storyline was good but the ending was disappointing.",
+          reference: "À mon avis, l'intrigue était bonne mais la fin était décevante.",
+          hint: "In my opinion = À mon avis; storyline = l'intrigue; disappointing = décevante",
+        },
+      ],
+    },
+  ],
+  checkpoint: {
+    passingPct: 80,
+    questions: [
+      { q: "'En version originale (VO)' means a film is…", options: ["dubbed", "in the original language with subtitles", "silent", "remade"], correct: 1 },
+      { q: "'La grève' means…", options: ["the museum", "the strike", "the gallery", "the demonstration"], correct: 1 },
+      { q: "Impressionism is associated with…", options: ["Picasso", "Monet, Renoir, Degas", "Da Vinci", "Rodin"], correct: 1 },
+      { q: "'Une exposition' is…", options: ["a play", "an exhibition", "a screening", "a strike"], correct: 1 },
+      { q: "'Le réalisateur' is…", options: ["the actor", "the painter", "the film director", "the producer"], correct: 2 },
+      { q: "'Ça ne me dit rien' means…", options: ["It says nothing to me / I'm not into it", "It's silent", "I don't understand", "It's forbidden"], correct: 0 },
+    ],
+  },
+};

@@ -1,0 +1,237 @@
+import type { Unit } from "../../types";
+
+export const UNIT_TRANSPORT: Unit = {
+  slug: "transport",
+  stage: 3,
+  order: 10,
+  icon: "🚇",
+  title: "Getting around",
+  tagline: "Métro, bus, RER, tickets, composter, correspondance.",
+  lessons: [
+    {
+      slug: "transport-metro",
+      title: "Paris public transport",
+      estMinutes: 10,
+      pages: [
+        {
+          type: "intro",
+          heading: "The Paris metro — efficient but requires prep",
+          body: [
+            "Paris has one of the world's best metro systems: 16 lines, 300+ stations, running from ~5:30 am to ~1 am (2 am weekends). Lines are numbered and color-coded. Know your destination's <em>terminus</em> (end station) to know which direction to take.",
+            "<strong>Composter son billet</strong> — validating your ticket — is essential. You must stamp your ticket before boarding. On the metro you do this at the turnstile; on suburban trains (RER, Transilien) there are separate stamping machines. Failure to validate means a fine.",
+            "The <em>carnet</em> (book of 10 tickets) used to be the cheapest option; it was discontinued in 2021. Now the best value for visitors is the <em>Navigo Easy</em> rechargeable card or the <em>Navigo Découverte</em> weekly pass.",
+          ],
+          tip: {
+            label: "Navigo vs t+ ticket",
+            body: "A single t+ ticket covers any journey on metro, bus, tram (not RER outside zones 1-5). For 3+ days, a Navigo weekly pass (lundi–dimanche) usually beats buying individual tickets.",
+          },
+        },
+        {
+          type: "vocab",
+          heading: "Transport vocabulary",
+          items: [
+            { l1: "le métro", en: "the metro / subway" },
+            { l1: "le bus", en: "the bus" },
+            { l1: "le RER", en: "the suburban express train", note: "runs through Paris center and out to suburbs" },
+            { l1: "le tramway (le tram)", en: "the tram" },
+            { l1: "un ticket / un billet", en: "a ticket", note: "ticket = metro/bus; billet = train" },
+            { l1: "composter", en: "to validate / stamp a ticket", note: "MUST do before boarding" },
+            { l1: "la correspondance", en: "the connection / transfer" },
+            { l1: "le terminus", en: "the end of the line / terminus" },
+            { l1: "la direction", en: "direction (line name)", note: "take the direction 'Châtelet'" },
+            { l1: "le quai", en: "the platform" },
+            { l1: "la sortie", en: "the exit" },
+            { l1: "l'entrée", en: "the entrance" },
+          ],
+        },
+        {
+          type: "vocab",
+          heading: "Useful phrases",
+          items: [
+            { l1: "Quelle ligne prend-on pour aller à…?", en: "Which line do we take to get to…?" },
+            { l1: "C'est quelle direction?", en: "Which direction is it?" },
+            { l1: "Je dois changer à…?", en: "Do I need to change at…?" },
+            { l1: "Ça prend combien de temps?", en: "How long does it take?" },
+            { l1: "Le prochain métro est dans combien de temps?", en: "How long until the next metro?" },
+            { l1: "Est-ce que ce train va à…?", en: "Does this train go to…?" },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "At the metro station",
+          setup: "You approach a staff member at Châtelet.",
+          lines: [
+            { speaker: "You", l1: "Excusez-moi. Je voudrais aller à la Tour Eiffel. C'est quelle ligne?", en: "Excuse me. I'd like to go to the Eiffel Tower. Which line is it?" },
+            { speaker: "Agent", l1: "Prenez la ligne 9 direction Pont de Sèvres, et changez à Trocadéro.", en: "Take line 9 direction Pont de Sèvres, and change at Trocadéro." },
+            { speaker: "You", l1: "Je dois composter mon billet?", en: "Do I need to validate my ticket?" },
+            { speaker: "Agent", l1: "Oui, au tourniquet avant de descendre.", en: "Yes, at the turnstile before going down." },
+            { speaker: "You", l1: "Merci! Ça prend combien de temps?", en: "Thank you! How long does it take?" },
+            { speaker: "Agent", l1: "Environ vingt minutes.", en: "About twenty minutes." },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "Transport check",
+          questions: [
+            {
+              q: "What does 'composter son billet' mean?",
+              options: ["Buy a ticket", "Validate / stamp your ticket", "Check the timetable", "Find the platform"],
+              correct: 1,
+              fb: "You must validate your ticket before boarding — stamp it at the turnstile or machine.",
+            },
+            {
+              q: "To know which direction to take on the metro, you look for…",
+              options: ["The line color", "The terminus (end station)", "The ticket price", "The station name"],
+              correct: 1,
+              fb: "Paris metro directions are labelled by the terminus — the last station on the line in that direction.",
+            },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate",
+          direction: "en-to-l1",
+          prompt: "Excuse me, does this bus go to the Louvre?",
+          reference: "Excusez-moi, est-ce que ce bus va au Louvre?",
+          hint: "au = à + le; va = goes (aller conjugated)",
+        },
+      ],
+    },
+    {
+      slug: "transport-billets",
+      title: "Buying tickets & the Navigo",
+      estMinutes: 8,
+      pages: [
+        {
+          type: "intro",
+          heading: "Tickets, passes & the machines",
+          body: [
+            "Since the paper <em>carnet</em> was retired, visitors usually buy a single <em>ticket t+</em> or load a rechargeable <strong>Navigo Easy</strong> card. For a week or more, the <strong>Navigo Découverte</strong> weekly pass (valid Monday–Sunday) is the best value.",
+            "You buy and reload at the green-and-grey machines (<em>les distributeurs</em>) or at a staffed window (<em>le guichet</em>). Machines have an English option, but knowing the French helps when one is broken and you need a person.",
+            "Key vocabulary: <em>recharger</em> (to top up), <em>valable</em> (valid), <em>la zone</em> (fare zone), <em>le forfait</em> (the pass/plan). Paris intra-muros is zones 1–2; the airports and Versailles are further out.",
+          ],
+          keyPoint: "Single = ticket t+. Top-up card = Navigo Easy. Weekly pass = Navigo Découverte (Mon–Sun). recharger = top up.",
+        },
+        {
+          type: "vocab",
+          heading: "Ticket vocabulary",
+          items: [
+            { l1: "un ticket t+", en: "a single metro/bus ticket" },
+            { l1: "un carnet (de tickets)", en: "a book of tickets", note: "historic term; mostly retired now" },
+            { l1: "le distributeur", en: "the ticket machine" },
+            { l1: "le guichet", en: "the ticket window / counter" },
+            { l1: "recharger", en: "to top up / reload", note: "recharger sa carte Navigo" },
+            { l1: "un forfait", en: "a travel pass / plan" },
+            { l1: "valable", en: "valid", note: "valable une semaine = valid one week" },
+            { l1: "la zone", en: "the fare zone" },
+            { l1: "un aller simple / un aller-retour", en: "a one-way / a round trip", note: "for trains (RER, SNCF)" },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "At the ticket window",
+          setup: "You're at the guichet at Gare du Nord.",
+          lines: [
+            { speaker: "You", l1: "Bonjour. Je voudrais recharger ma carte Navigo, s'il vous plaît.", en: "Hello. I'd like to top up my Navigo card, please." },
+            { speaker: "Agent", l1: "Bien sûr. Quel forfait? La semaine ou un carnet?", en: "Of course. Which pass? The weekly or a book of tickets?" },
+            { speaker: "You", l1: "Le forfait semaine. C'est valable jusqu'à quand?", en: "The weekly pass. Until when is it valid?" },
+            { speaker: "Agent", l1: "Jusqu'à dimanche soir. Ça fait trente euros.", en: "Until Sunday evening. That's thirty euros." },
+            { speaker: "You", l1: "Très bien. Vous acceptez la carte?", en: "Great. Do you take card?" },
+            { speaker: "Agent", l1: "Oui, par ici.", en: "Yes, over here." },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "Tickets check",
+          questions: [
+            {
+              q: "'Recharger sa carte' means…",
+              options: ["To buy a new card", "To top up / reload the card", "To validate the card", "To return the card"],
+              correct: 1,
+              fb: "'Recharger' = to top up. You recharge a Navigo at machines or the guichet.",
+            },
+            {
+              q: "The Navigo Découverte weekly pass runs…",
+              options: ["Any 7 days from purchase", "Monday to Sunday", "Saturday to Friday", "A calendar month"],
+              correct: 1,
+              fb: "The weekly forfait is fixed Monday–Sunday, so buying it late in the week is poor value.",
+            },
+            {
+              q: "'Le guichet' is…",
+              options: ["The platform", "The staffed ticket window", "The turnstile", "The exit"],
+              correct: 1,
+              fb: "'Le guichet' is the counter/window with a person; 'le distributeur' is the machine.",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      slug: "transport-taxi-velo",
+      title: "Taxis, bikes & ride-hailing",
+      estMinutes: 8,
+      pages: [
+        {
+          type: "intro",
+          heading: "Beyond the metro",
+          body: [
+            "Above ground, Paris offers taxis, ride-hailing apps (VTC — <em>voiture de transport avec chauffeur</em>, like Uber), and the <strong>Vélib'</strong> public bike-share with stations all over the city.",
+            "Official taxis have a roof light: <em>libre</em> (green/lit) means available, <em>occupé</em> means taken. You can hail one, find a <em>station de taxis</em>, or book by phone/app. Always check the meter (<em>le compteur</em>) is running.",
+            "Useful structures: <em>Déposez-moi à…</em> (Drop me at…), <em>C'est combien pour aller à…?</em> (How much to get to…?), and <em>Gardez la monnaie</em> (Keep the change).",
+          ],
+          tip: {
+            label: "Vélib' in one line",
+            body: "Unlock a bike at a borne (terminal) with the app, ride, then dock it at any station. The first 30 minutes on a classic bike are cheap — great for short hops the metro doesn't cover well.",
+          },
+        },
+        {
+          type: "vocab",
+          heading: "Taxi & bike vocabulary",
+          items: [
+            { l1: "un taxi", en: "a taxi" },
+            { l1: "une station de taxis", en: "a taxi rank" },
+            { l1: "libre / occupé", en: "available / taken", note: "the taxi roof light" },
+            { l1: "le compteur", en: "the meter" },
+            { l1: "Déposez-moi à / au…", en: "Drop me off at…" },
+            { l1: "C'est combien pour aller à…?", en: "How much to get to…?" },
+            { l1: "Gardez la monnaie.", en: "Keep the change." },
+            { l1: "le Vélib'", en: "the Paris bike-share" },
+            { l1: "une borne / une station", en: "a docking terminal / station" },
+            { l1: "la piste cyclable", en: "the bike lane" },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "Taking a taxi",
+          lines: [
+            { speaker: "You", l1: "Bonsoir. Vous êtes libre?", en: "Good evening. Are you free?" },
+            { speaker: "Chauffeur", l1: "Oui, montez. Vous allez où?", en: "Yes, get in. Where are you going?" },
+            { speaker: "You", l1: "À la gare de Lyon, s'il vous plaît. C'est combien environ?", en: "To Gare de Lyon, please. Roughly how much is it?" },
+            { speaker: "Chauffeur", l1: "Avec le compteur, environ quinze euros.", en: "With the meter, about fifteen euros." },
+            { speaker: "You", l1: "Parfait. Déposez-moi devant l'entrée principale.", en: "Perfect. Drop me in front of the main entrance." },
+            { speaker: "Chauffeur", l1: "Très bien.", en: "Very well." },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate",
+          direction: "en-to-l1",
+          prompt: "How much is it to get to the airport? Drop me at terminal 2, please.",
+          reference: "C'est combien pour aller à l'aéroport? Déposez-moi au terminal 2, s'il vous plaît.",
+          hint: "'how much to get to' = c'est combien pour aller à; 'drop me at' = déposez-moi à/au",
+        },
+      ],
+    },
+  ],
+  checkpoint: {
+    passingPct: 80,
+    questions: [
+      { q: "'Composter son billet' means…", options: ["Buy a ticket", "Validate your ticket", "Lose your ticket", "Check in"], correct: 1 },
+      { q: "The end station of a metro line is called…", options: ["la correspondance", "le quai", "le terminus", "la direction"], correct: 2 },
+      { q: "'La correspondance' means…", options: ["the exit", "the transfer/connection", "the timetable", "the ticket"], correct: 1 },
+      { q: "'La sortie' means…", options: ["the entrance", "the exit", "the platform", "the delay"], correct: 1 },
+      { q: "The RER is…", options: ["A bus line", "A suburban express train", "A tram", "A taxi service"], correct: 1 },
+      { q: "How do you ask 'How long does it take?'", options: ["Combien ça coûte?", "Ça prend combien de temps?", "À quelle heure part-il?", "Où est la gare?"], correct: 1 },
+    ],
+  },
+};

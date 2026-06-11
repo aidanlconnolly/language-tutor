@@ -1,0 +1,303 @@
+import type { Unit } from "../../types";
+
+export const UNIT_SALUTATIONS: Unit = {
+  slug: "salutations",
+  stage: 1,
+  order: 2,
+  icon: "👋",
+  title: "Greetings & politeness",
+  tagline: "Bonjour, bonsoir, salut — and when to use which.",
+  badge: "core",
+  lessons: [
+    {
+      slug: "salutations-basics",
+      title: "Hello, goodbye & basic courtesy",
+      estMinutes: 8,
+      pages: [
+        {
+          type: "intro",
+          heading: "Bonjour is everything",
+          body: [
+            "In France, not saying <em>bonjour</em> when entering a shop, café, or any space is considered rude — more than you might expect. Before asking for anything, always greet. This applies to bakeries, pharmacies, restaurant servers, and shopkeepers.",
+            "<em>Bonjour</em> (good day) is the universal safe greeting until late afternoon, when <em>bonsoir</em> (good evening) takes over. <em>Salut</em> is informal — fine with friends, awkward with a stranger.",
+            "The formal/informal split runs through all of French. <em>Vous</em> (you, formal) vs <em>tu</em> (you, informal) affects greetings, requests — everything. When in doubt with adults you don't know: <em>vous</em>.",
+          ],
+          tip: {
+            label: "The Paris rule",
+            body: "Say 'Bonjour' before anything else — before ordering coffee, before asking a question, before saying 'Parlez-vous anglais?' Getting this right makes a visible difference in how Parisians respond.",
+          },
+        },
+        {
+          type: "vocab",
+          heading: "Essential greetings",
+          items: [
+            { l1: "Bonjour", en: "Hello / Good day", note: "Use until ~6 pm. Always first." },
+            { l1: "Bonsoir", en: "Good evening", note: "From late afternoon onward." },
+            { l1: "Salut", en: "Hi / Bye (informal)", note: "Friends and peers only." },
+            { l1: "Bonne nuit", en: "Good night", note: "Only when leaving for bed — not a greeting." },
+            { l1: "Au revoir", en: "Goodbye", note: "Standard. Formal contexts." },
+            { l1: "À bientôt", en: "See you soon", note: "Friendly goodbye." },
+            { l1: "À plus tard / À plus", en: "See you later", note: "'À plus' is very informal." },
+            { l1: "Ciao", en: "Bye (very informal)", note: "Borrowed from Italian. Common among young people." },
+          ],
+        },
+        {
+          type: "vocab",
+          heading: "Politeness essentials",
+          items: [
+            { l1: "S'il vous plaît", en: "Please (formal)", note: "Use with vous — strangers, shopkeepers." },
+            { l1: "S'il te plaît", en: "Please (informal)", note: "Use with tu — friends, family." },
+            { l1: "Merci", en: "Thank you", note: "Universally safe." },
+            { l1: "Merci beaucoup", en: "Thank you very much", note: "" },
+            { l1: "De rien", en: "You're welcome", note: "Casual. Also: 'avec plaisir' (more warm)." },
+            { l1: "Je vous en prie", en: "You're welcome (formal)", note: "More polite than 'de rien'." },
+            { l1: "Excusez-moi", en: "Excuse me (formal)", note: "To get someone's attention." },
+            { l1: "Pardon", en: "Sorry / Excuse me", note: "When bumping into someone." },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "At the bakery",
+          setup: "You walk into a boulangerie. The baker looks up.",
+          lines: [
+            { speaker: "You", l1: "Bonjour, madame.", en: "Hello, ma'am." },
+            { speaker: "Baker", l1: "Bonjour! Je vous aide?", en: "Hello! Can I help you?" },
+            { speaker: "You", l1: "Oui, une baguette, s'il vous plaît.", en: "Yes, a baguette, please." },
+            { speaker: "Baker", l1: "Voilà. C'est tout?", en: "Here you go. Is that all?" },
+            { speaker: "You", l1: "C'est tout, merci.", en: "That's all, thank you." },
+            { speaker: "Baker", l1: "Bonne journée!", en: "Have a good day!" },
+            { speaker: "You", l1: "Merci, vous aussi!", en: "Thank you, you too!" },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "When to say what",
+          questions: [
+            {
+              q: "You walk into a pharmacy at 3 pm. What do you say first?",
+              options: ["Salut!", "Je voudrais…", "Bonjour!", "Au revoir"],
+              correct: 2,
+              fb: "Always 'Bonjour' first. In France, starting a transaction without a greeting is considered abrupt.",
+            },
+            {
+              q: "Your friend texts you. You want to say 'bye'. Which is right?",
+              options: ["Au revoir", "Bonne nuit", "Salut!", "Bonjour"],
+              correct: 2,
+              fb: "'Salut' doubles as both 'hi' and 'bye' in informal contexts.",
+            },
+            {
+              q: "'De rien' means…",
+              options: ["Please", "Sorry", "You're welcome", "Thank you"],
+              correct: 2,
+              fb: "'De rien' = 'It's nothing / You're welcome'. The more polite formal version is 'je vous en prie'.",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      slug: "salutations-howru",
+      title: "How are you? & small introductions",
+      estMinutes: 7,
+      pages: [
+        {
+          type: "vocab",
+          heading: "Asking how someone is",
+          items: [
+            { l1: "Comment allez-vous?", en: "How are you? (formal)", note: "Literal: 'How do you go?'" },
+            { l1: "Comment vas-tu?", en: "How are you? (informal)", note: "" },
+            { l1: "Ça va?", en: "How's it going? (informal)", note: "Very common. Literally 'it goes?'" },
+            { l1: "Ça va (bien), merci.", en: "I'm fine, thanks.", note: "Standard positive reply." },
+            { l1: "Très bien, merci.", en: "Very well, thank you.", note: "Polite positive reply." },
+            { l1: "Pas mal.", en: "Not bad.", note: "Neutral — common honest answer." },
+            { l1: "Comme ci, comme ça.", en: "So-so.", note: "When things are middling." },
+            { l1: "Et vous? / Et toi?", en: "And you? (formal/informal)", note: "Always ask back." },
+          ],
+        },
+        {
+          type: "vocab",
+          heading: "Introducing yourself",
+          items: [
+            { l1: "Je m'appelle…", en: "My name is…", note: "Literally 'I call myself…'" },
+            { l1: "Je suis…", en: "I am…", note: "For nationality/profession" },
+            { l1: "Je suis américain/e.", en: "I'm American.", note: "Add -e for feminine." },
+            { l1: "J'habite à Paris.", en: "I live in Paris.", note: "" },
+            { l1: "Enchanté/e.", en: "Nice to meet you.", note: "Add -e if you're female." },
+            { l1: "Ravi/e de vous rencontrer.", en: "Delighted to meet you (formal).", note: "" },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "Meeting someone",
+          setup: "At a Paris dinner party — a new acquaintance approaches.",
+          lines: [
+            { speaker: "Hélène", l1: "Bonsoir! Je m'appelle Hélène. Et vous?", en: "Good evening! My name is Hélène. And you?" },
+            { speaker: "You", l1: "Bonsoir. Je m'appelle [your name]. Enchanté/e.", en: "Good evening. My name is [your name]. Nice to meet you." },
+            { speaker: "Hélène", l1: "Comment allez-vous?", en: "How are you?" },
+            { speaker: "You", l1: "Très bien, merci. Et vous?", en: "Very well, thank you. And you?" },
+            { speaker: "Hélène", l1: "Ça va bien. Vous êtes américain?", en: "I'm fine. Are you American?" },
+            { speaker: "You", l1: "Oui, je suis américain. J'habite à New York.", en: "Yes, I'm American. I live in New York." },
+          ],
+        },
+        {
+          type: "orderWords",
+          heading: "Build the sentence",
+          intro: "Put the words in the right order.",
+          items: [
+            { tokens: ["Je", "m'appelle", "Marie."], en: "My name is Marie." },
+            { tokens: ["Comment", "allez-vous?"], en: "How are you? (formal)" },
+            { tokens: ["Très", "bien,", "merci."], en: "Very well, thank you." },
+            { tokens: ["Je", "suis", "américain."], en: "I am American." },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Try it yourself",
+          direction: "en-to-l1",
+          prompt: "Good evening! My name is Jean. Nice to meet you.",
+          reference: "Bonsoir! Je m'appelle Jean. Enchanté.",
+          hint: "Start with 'Bonsoir!' then 'Je m'appelle…' then 'Enchanté.'",
+        },
+      ],
+    },
+    {
+      slug: "salutations-tu-vous",
+      title: "Tu or vous & everyday politeness",
+      estMinutes: 8,
+      pages: [
+        {
+          type: "intro",
+          heading: "Tu and vous — the choice that's always there",
+          body: [
+            "French forces a choice every time you say 'you'. <strong>Vous</strong> is formal or plural; <strong>tu</strong> is informal and singular. Picking the wrong one can feel either cold or overly familiar, so it's worth getting a feel for it.",
+            "Default to <em>vous</em> with: shopkeepers, waiters, officials, older people, and anyone you've just met. Use <em>tu</em> with: friends, children, family, pets, and peers your own age in casual settings.",
+            "The verbs that go with each are different (<em>tu as</em> vs <em>vous avez</em>), and so are the words for 'your' (<em>ton/ta</em> vs <em>votre</em>) and 'please' (<em>s'il te plaît</em> vs <em>s'il vous plaît</em>). When unsure, start with vous — no one is offended by politeness.",
+          ],
+          tip: {
+            label: "On se tutoie?",
+            body: "When a French person feels the relationship has warmed up, they may ask 'On se tutoie?' (Shall we use tu?). Saying yes is a small, friendly milestone. Let the older person or the host propose it.",
+          },
+        },
+        {
+          type: "vocab",
+          heading: "Well-wishing expressions",
+          intro: "France has a 'bonne…' for almost every occasion — used constantly when parting.",
+          items: [
+            { l1: "Bonne journée!", en: "Have a good day!", note: "Said when leaving during the day." },
+            { l1: "Bonne soirée!", en: "Have a good evening!", note: "From late afternoon on." },
+            { l1: "Bon week-end!", en: "Have a good weekend!" },
+            { l1: "Bon appétit!", en: "Enjoy your meal!", note: "Said before eating — even to strangers." },
+            { l1: "Bon courage!", en: "Hang in there! / Good luck (with effort)", note: "For someone facing a hard task." },
+            { l1: "Bonne chance!", en: "Good luck!", note: "For luck, not effort." },
+            { l1: "Bon voyage!", en: "Have a good trip!" },
+            { l1: "Santé! / À votre santé!", en: "Cheers! / To your health!", note: "When toasting." },
+          ],
+        },
+        {
+          type: "vocab",
+          heading: "Softening requests",
+          intro: "Politeness in French leans on the conditional and a few set phrases.",
+          items: [
+            { l1: "Je voudrais…", en: "I would like…", note: "Softer than 'je veux' (I want)." },
+            { l1: "Pourriez-vous…?", en: "Could you…? (formal)", note: "Very polite request." },
+            { l1: "Est-ce que je peux…?", en: "May I…? / Can I…?" },
+            { l1: "Auriez-vous…?", en: "Would you have…?", note: "e.g. asking if a shop has something." },
+            { l1: "Désolé / Désolée", en: "Sorry", note: "Add -e if you're female." },
+            { l1: "Je suis désolé de vous déranger.", en: "I'm sorry to bother you.", note: "Great opener to a stranger." },
+            { l1: "Ce n'est pas grave.", en: "It's no big deal. / No worries." },
+            { l1: "Avec plaisir.", en: "With pleasure. / Gladly.", note: "Warm reply to thanks." },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "Switching to tu",
+          setup: "You've chatted with a neighbour, Thomas, a few times now.",
+          lines: [
+            { speaker: "Thomas", l1: "On se connaît bien maintenant. On se tutoie?", en: "We know each other well now. Shall we use tu?" },
+            { speaker: "You", l1: "Avec plaisir! Tu habites dans l'immeuble depuis longtemps?", en: "Gladly! Have you lived in the building long?" },
+            { speaker: "Thomas", l1: "Depuis cinq ans. Et toi, tu viens d'arriver?", en: "For five years. And you, did you just arrive?" },
+            { speaker: "You", l1: "Oui, le mois dernier. Bonne soirée, Thomas!", en: "Yes, last month. Have a good evening, Thomas!" },
+            { speaker: "Thomas", l1: "Merci, toi aussi!", en: "Thanks, you too!" },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "Politeness check",
+          questions: [
+            {
+              q: "You meet your friend's grandmother for the first time. You should use…",
+              options: ["tu", "vous", "on", "either is fine"],
+              correct: 1,
+              fb: "Vous with someone older you've just met. Wait for her to propose tu, if ever.",
+            },
+            {
+              q: "What do you say to someone about to start a tough exam?",
+              options: ["Bon appétit!", "Bonne chance / Bon courage!", "Santé!", "Bon voyage!"],
+              correct: 1,
+              fb: "'Bon courage' for effort/hardship, 'bonne chance' for luck — both fit an exam.",
+            },
+            {
+              q: "'Je voudrais' is preferred over 'je veux' because…",
+              options: ["It's grammatically required", "It's softer and more polite", "It means something different", "Je veux is wrong"],
+              correct: 1,
+              fb: "'Je voudrais' (I would like) is the polite, conditional form. 'Je veux' (I want) can sound blunt.",
+            },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate",
+          direction: "en-to-l1",
+          prompt: "Excuse me, could you help me, please?",
+          reference: "Excusez-moi, pourriez-vous m'aider, s'il vous plaît?",
+          hint: "Formal 'could you' = pourriez-vous; 'help me' = m'aider",
+        },
+      ],
+    },
+  ],
+  checkpoint: {
+    passingPct: 80,
+    questions: [
+      {
+        q: "What should you say when entering a shop in France?",
+        options: ["Excusez-moi", "Bonjour", "Salut", "Merci"],
+        correct: 1,
+      },
+      {
+        q: "'Bonsoir' is used…",
+        options: ["In the morning", "With close friends", "From late afternoon onward", "Only at night before sleep"],
+        correct: 2,
+      },
+      {
+        q: "'Ça va?' means…",
+        options: ["Goodbye", "Thank you", "How's it going?", "Excuse me"],
+        correct: 2,
+      },
+      {
+        q: "The polite/formal version of 'you're welcome' is…",
+        options: ["De rien", "Merci", "Je vous en prie", "Enchanté"],
+        correct: 2,
+      },
+      {
+        q: "'Enchanté/e' means…",
+        options: ["I am happy", "Nice to meet you", "Good evening", "I understand"],
+        correct: 1,
+      },
+      {
+        q: "'Je m'appelle' literally means…",
+        options: ["I am called", "I call myself", "My name is (idiomatic)", "I speak"],
+        correct: 1,
+      },
+      {
+        q: "'Pardon' is used when…",
+        options: ["You want to say thank you", "You bump into someone or need to pass", "You say goodbye", "You don't understand"],
+        correct: 1,
+      },
+      {
+        q: "'Salut' is appropriate with…",
+        options: ["A shopkeeper", "A police officer", "A friend your own age", "Your doctor"],
+        correct: 2,
+      },
+    ],
+  },
+};

@@ -1,0 +1,213 @@
+import type { Unit } from "../../types";
+
+export const UNIT_OPINIONS: Unit = {
+  slug: "opinions",
+  stage: 8,
+  order: 35,
+  icon: "🗣️",
+  title: "Opinions & debate",
+  tagline: "Selon moi, je suis d'accord, cependant, débattre.",
+  lessons: [
+    {
+      slug: "opinions-main",
+      title: "Expressing opinions & debating",
+      estMinutes: 10,
+      pages: [
+        {
+          type: "intro",
+          heading: "Debate is a French pastime",
+          body: [
+            "The French enjoy a good <em>débat</em>. Discussing politics, philosophy, food, and culture — often with strong opinions — is a social pleasure, not a faux pas. Disagreement is fine as long as it's articulate.",
+            "Key opinion phrases: <em>Selon moi / À mon avis</em> (in my opinion), <em>Je pense que / Je crois que</em> (I think that), <em>Je trouve que</em> (I find that). For agreement: <em>Je suis d'accord</em>; disagreement: <em>Je ne suis pas d'accord / Je ne pense pas</em>.",
+            "Note: verbs of opinion in the negative or interrogative often trigger the subjunctive: <em>Je ne pense pas qu'il ait raison</em> (I don't think he's right). But in the affirmative, they take the indicative: <em>Je pense qu'il a raison.</em>",
+          ],
+          keyPoint: "Affirmative opinion (je pense que) → indicative. Negative/doubtful (je ne pense pas que) → subjunctive.",
+        },
+        {
+          type: "vocab",
+          heading: "Expressing opinions",
+          items: [
+            { l1: "À mon avis / Selon moi", en: "In my opinion" },
+            { l1: "Je pense que / Je crois que", en: "I think that / I believe that" },
+            { l1: "Je trouve que", en: "I find that" },
+            { l1: "Il me semble que", en: "It seems to me that" },
+            { l1: "Je suis d'accord (avec toi).", en: "I agree (with you)." },
+            { l1: "Je ne suis pas d'accord.", en: "I disagree." },
+            { l1: "Tu as raison / tort.", en: "You're right / wrong." },
+            { l1: "Ça dépend.", en: "It depends." },
+            { l1: "Exactement! / Tout à fait!", en: "Exactly! / Absolutely!" },
+          ],
+        },
+        {
+          type: "vocab",
+          heading: "Debating & nuance",
+          items: [
+            { l1: "cependant / pourtant", en: "however / yet" },
+            { l1: "d'une part… d'autre part", en: "on one hand… on the other hand" },
+            { l1: "en revanche / par contre", en: "on the other hand / by contrast" },
+            { l1: "d'ailleurs", en: "besides / moreover" },
+            { l1: "au contraire", en: "on the contrary" },
+            { l1: "c'est-à-dire", en: "that is to say / i.e." },
+            { l1: "en fait", en: "in fact / actually" },
+            { l1: "en conclusion / pour conclure", en: "in conclusion" },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "A friendly debate",
+          lines: [
+            { speaker: "Marc", l1: "À mon avis, Paris est la plus belle ville du monde.", en: "In my opinion, Paris is the most beautiful city in the world." },
+            { speaker: "You", l1: "Je suis d'accord, mais je trouve qu'elle est trop touristique.", en: "I agree, but I find it's too touristy." },
+            { speaker: "Marc", l1: "C'est vrai. Cependant, il y a des quartiers calmes et authentiques.", en: "That's true. However, there are quiet, authentic neighborhoods." },
+            { speaker: "You", l1: "Exactement. D'ailleurs, j'adore le Marais le matin, quand il n'y a personne.", en: "Exactly. Besides, I love the Marais in the morning, when there's no one around." },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate",
+          direction: "en-to-l1",
+          prompt: "In my opinion, you're right. However, I think it depends.",
+          reference: "À mon avis, tu as raison. Cependant, je pense que ça dépend.",
+          hint: "à mon avis = in my opinion; cependant = however; ça dépend = it depends",
+        },
+        {
+          type: "translate",
+          heading: "Final challenge",
+          direction: "en-to-l1",
+          prompt: "I don't think that he's right. On the other hand, I understand his point of view.",
+          reference: "Je ne pense pas qu'il ait raison. En revanche, je comprends son point de vue.",
+          hint: "negative opinion → subjunctive 'qu'il ait raison'; en revanche = on the other hand",
+        },
+      ],
+    },
+    {
+      slug: "opinions-structurer",
+      title: "Structuring an argument",
+      estMinutes: 9,
+      pages: [
+        {
+          type: "intro",
+          heading: "Building a point, French-style",
+          body: [
+            "The French education system drills structured argument, and it shows in conversation. A clear opinion has a shape: state it, support it with reasons and examples, then conclude.",
+            "Ordering words give that shape: <em>premièrement / d'abord</em> (firstly), <em>deuxièmement / ensuite</em> (secondly), <em>enfin</em> (finally). To introduce support: <em>par exemple</em> (for example), <em>en effet</em> (indeed), <em>c'est pourquoi</em> (that's why).",
+            "To wrap up: <em>en conclusion</em>, <em>pour conclure</em>, <em>finalement</em>, or the very common spoken <em>du coup</em> (so, as a result).",
+          ],
+          keyPoint: "Shape it: d'abord / ensuite / enfin. Support: par exemple, en effet. Conclude: en conclusion, pour conclure.",
+        },
+        {
+          type: "vocab",
+          heading: "Structuring words",
+          items: [
+            { l1: "premièrement / d'abord", en: "firstly / first" },
+            { l1: "deuxièmement / ensuite", en: "secondly / next" },
+            { l1: "enfin", en: "finally, lastly" },
+            { l1: "par exemple", en: "for example" },
+            { l1: "en effet", en: "indeed (confirming)" },
+            { l1: "c'est pourquoi", en: "that's why" },
+            { l1: "d'une part… d'autre part", en: "on one hand… on the other" },
+            { l1: "en conclusion / pour conclure", en: "in conclusion" },
+          ],
+        },
+        {
+          type: "orderWords",
+          heading: "Order the argument",
+          intro: "Arrange the words into a well-structured sentence.",
+          items: [
+            { tokens: ["D'abord,", "le", "métro", "est", "rapide", "et", "pratique."], en: "Firstly, the metro is fast and practical." },
+            { tokens: ["Ensuite,", "il", "est", "moins", "cher", "que", "le", "taxi."], en: "Secondly, it's cheaper than a taxi." },
+            { tokens: ["Par", "exemple,", "un", "ticket", "coûte", "deux", "euros."], en: "For example, a ticket costs two euros." },
+            { tokens: ["En", "conclusion,", "je", "préfère", "le", "métro."], en: "In conclusion, I prefer the metro." },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate",
+          direction: "en-to-l1",
+          prompt: "Firstly, it's cheaper. Secondly, it's faster. That's why I prefer the train.",
+          reference: "Premièrement, c'est moins cher. Deuxièmement, c'est plus rapide. C'est pourquoi je préfère le train.",
+          hint: "firstly = premièrement; secondly = deuxièmement; that's why = c'est pourquoi",
+        },
+      ],
+    },
+    {
+      slug: "opinions-nuancer",
+      title: "Disagreeing & nuancing politely",
+      estMinutes: 8,
+      pages: [
+        {
+          type: "intro",
+          heading: "How to disagree without a fight",
+          body: [
+            "Debate is welcome in France, but skilled speakers nuance rather than bulldoze. The move is to <strong>concede</strong> a point, then <strong>pivot</strong>: <em>Certes, … mais …</em> (Admittedly, … but …), <em>Tu as raison, cependant …</em>",
+            "To soften disagreement: <em>Je comprends, mais je ne suis pas tout à fait d'accord</em> (I understand, but I don't entirely agree), <em>Je ne suis pas sûr(e)</em> (I'm not sure), <em>C'est discutable</em> (That's debatable).",
+            "To agree partially: <em>Dans une certaine mesure</em> (To some extent), <em>Ça se peut</em> (That may be), <em>Oui et non</em> (Yes and no).",
+          ],
+          keyPoint: "Concede then pivot: Certes… mais… Soften: Je ne suis pas sûr / C'est discutable. Partial: dans une certaine mesure.",
+        },
+        {
+          type: "vocab",
+          heading: "Nuancing phrases",
+          items: [
+            { l1: "Certes, … mais …", en: "Admittedly, … but …" },
+            { l1: "Je comprends, mais…", en: "I understand, but…" },
+            { l1: "Je ne suis pas tout à fait d'accord.", en: "I don't entirely agree." },
+            { l1: "Je ne suis pas sûr(e).", en: "I'm not sure." },
+            { l1: "C'est discutable.", en: "That's debatable." },
+            { l1: "Dans une certaine mesure.", en: "To some extent." },
+            { l1: "Ça se peut.", en: "That may be / possibly." },
+            { l1: "Oui et non.", en: "Yes and no." },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "A nuanced disagreement",
+          lines: [
+            { speaker: "Hugo", l1: "La voiture, c'est quand même plus pratique que le métro.", en: "The car is still more practical than the metro." },
+            { speaker: "You", l1: "Certes, mais en ville, c'est souvent plus lent à cause des bouchons.", en: "Admittedly, but in the city it's often slower because of traffic jams." },
+            { speaker: "Hugo", l1: "C'est vrai. Pourtant, avec des enfants, c'est plus simple.", en: "That's true. Yet with children, it's simpler." },
+            { speaker: "You", l1: "Dans une certaine mesure, oui. Mais ça coûte cher.", en: "To some extent, yes. But it's expensive." },
+            { speaker: "Hugo", l1: "Là, je suis d'accord avec toi.", en: "On that, I agree with you." },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "Nuance check",
+          questions: [
+            {
+              q: "'Certes, mais…' is used to…",
+              options: ["fully agree", "concede a point before disagreeing", "change the subject", "end the debate"],
+              correct: 1,
+              fb: "'Certes… mais…' concedes (admittedly) then pivots to your counterpoint.",
+            },
+            {
+              q: "A polite way to push back is…",
+              options: ["Tu as tort!", "N'importe quoi!", "Je ne suis pas tout à fait d'accord.", "C'est faux."],
+              correct: 2,
+              fb: "'Je ne suis pas tout à fait d'accord' softens disagreement (not entirely).",
+            },
+            {
+              q: "'Dans une certaine mesure' means…",
+              options: ["completely", "to some extent", "not at all", "on the contrary"],
+              correct: 1,
+              fb: "It signals partial agreement: to some extent / up to a point.",
+            },
+          ],
+        },
+      ],
+    },
+  ],
+  checkpoint: {
+    passingPct: 80,
+    questions: [
+      { q: "'À mon avis' means…", options: ["I agree", "In my opinion", "On the contrary", "It depends"], correct: 1 },
+      { q: "After 'Je ne pense pas que…' the verb is in the…", options: ["indicative", "subjunctive", "conditional", "future"], correct: 1 },
+      { q: "'Je suis d'accord' means…", options: ["I disagree", "I agree", "I'm confused", "I'm in charge"], correct: 1 },
+      { q: "'Cependant' is closest to…", options: ["because", "however", "therefore", "for example"], correct: 1 },
+      { q: "'Tu as tort' means…", options: ["You're right", "You're wrong", "You're late", "You're tired"], correct: 1 },
+      { q: "'Je pense qu'il a raison' (affirmative) uses…", options: ["the subjunctive", "the indicative", "the conditional", "the imperative"], correct: 1 },
+      { q: "'En revanche' means…", options: ["in revenge", "on the other hand / by contrast", "in conclusion", "moreover"], correct: 1 },
+      { q: "'D'une part… d'autre part' is used to…", options: ["agree strongly", "present two sides of an argument", "end a conversation", "ask a question"], correct: 1 },
+    ],
+  },
+};

@@ -1,0 +1,215 @@
+import type { Unit } from "../../types";
+
+export const UNIT_RACONTER: Unit = {
+  slug: "raconter",
+  stage: 5,
+  order: 24,
+  icon: "📖",
+  title: "Narrating a trip",
+  tagline: "Combine tenses to tell your Paris story.",
+  lessons: [
+    {
+      slug: "raconter-main",
+      title: "Putting the past tenses together",
+      estMinutes: 10,
+      pages: [
+        {
+          type: "intro",
+          heading: "Imparfait vs passé composé — the storyteller's choice",
+          body: [
+            "Real narration combines both tenses. The imparfait sets the scene, describes weather, background, and states. The passé composé moves the story forward with specific events.",
+            "Think of a film: the imparfait is the ambient soundtrack and set design; the passé composé is each plot event.",
+            "Common discourse markers for narration: <em>d'abord</em> (first), <em>puis / ensuite</em> (then), <em>soudain / tout à coup</em> (suddenly), <em>enfin</em> (finally), <em>après ça</em> (after that).",
+          ],
+          keyPoint: "Imparfait = background/scene/state. Passé composé = event/action. Mix freely in the same paragraph.",
+        },
+        {
+          type: "vocab",
+          heading: "Narrative discourse markers",
+          items: [
+            { l1: "d'abord", en: "first" },
+            { l1: "puis / ensuite", en: "then / next" },
+            { l1: "soudain / tout à coup", en: "suddenly" },
+            { l1: "à ce moment-là", en: "at that moment" },
+            { l1: "après (ça)", en: "after (that)" },
+            { l1: "enfin", en: "finally" },
+            { l1: "le lendemain", en: "the next day" },
+            { l1: "la veille", en: "the day before" },
+            { l1: "ce matin-là / ce soir-là", en: "that morning / that evening" },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "A story about Paris",
+          setup: "Telling a friend about your trip.",
+          lines: [
+            { speaker: "You", l1: "Il faisait beau ce matin-là. Je suis sorti tôt.", en: "The weather was nice that morning. I went out early." },
+            { speaker: "You", l1: "J'ai marché jusqu'à la Seine. C'était magnifique.", en: "I walked to the Seine. It was magnificent." },
+            { speaker: "You", l1: "Soudain, j'ai vu une marchande de fleurs.", en: "Suddenly I saw a flower seller." },
+            { speaker: "You", l1: "J'ai acheté des roses pour ma femme.", en: "I bought roses for my wife." },
+            { speaker: "Friend", l1: "C'est romantique! Et ensuite?", en: "How romantic! And then?" },
+            { speaker: "You", l1: "Ensuite on a déjeuné dans une petite brasserie. On a bu un verre de bordeaux.", en: "Then we had lunch in a small brasserie. We drank a glass of Bordeaux." },
+          ],
+        },
+        {
+          type: "fillBlank",
+          heading: "Imparfait or passé composé?",
+          intro: "Choose the correct form for each blank.",
+          items: [
+            { template: "Il ___ (pleuvoir) quand je ___ (arriver).", answer: "pleuvait", en: "It was raining when I arrived.", options: ["a plu", "pleuvait", "pleuvra", "pleurait"] },
+            { template: "Elle ___ (être) fatiguée, donc elle ___ (rester) à l'hôtel.", answer: "était", en: "She was tired, so she stayed at the hotel.", options: ["a été", "était", "est", "sera"] },
+            { template: "Tous les jours, nous ___ (prendre) le métro.", answer: "prenions", en: "Every day, we took the metro.", options: ["avons pris", "prenions", "prendrons", "pris"] },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Narrate a moment",
+          direction: "en-to-l1",
+          prompt: "It was raining. I was walking along the Seine when suddenly I saw the Eiffel Tower.",
+          reference: "Il pleuvait. Je marchais le long de la Seine quand soudain j'ai vu la Tour Eiffel.",
+          hint: "pleuvait = was raining (imparfait); marchais = was walking (imparfait); j'ai vu = I saw (passé composé)",
+        },
+      ],
+    },
+    {
+      slug: "raconter-anecdote",
+      title: "An anecdote: when things went wrong",
+      estMinutes: 9,
+      pages: [
+        {
+          type: "intro",
+          heading: "Every good travel story has a small disaster",
+          body: [
+            "Mishaps make the best anecdotes — and they're great tense practice, because the setup is imparfait (background) and the problem is passé composé (the event that broke the routine).",
+            "Two adverbs colour the story: <em>heureusement</em> (luckily) and <em>malheureusement</em> (unfortunately). And <em>finalement</em> / <em>au final</em> wraps it up (in the end…).",
+            "Useful mishap vocabulary: <em>rater / manquer le train</em> (to miss the train), <em>se perdre</em> (to get lost), <em>oublier</em> (to forget), <em>tomber en panne</em> (to break down).",
+          ],
+          keyPoint: "Setup = imparfait, problem = passé composé. Colour it: heureusement / malheureusement / finalement.",
+        },
+        {
+          type: "vocab",
+          heading: "Mishap vocabulary",
+          items: [
+            { l1: "rater / manquer le train", en: "to miss the train" },
+            { l1: "se perdre", en: "to get lost" },
+            { l1: "oublier", en: "to forget" },
+            { l1: "tomber en panne", en: "to break down" },
+            { l1: "être en retard", en: "to be late" },
+            { l1: "heureusement", en: "luckily, fortunately" },
+            { l1: "malheureusement", en: "unfortunately" },
+            { l1: "finalement / au final", en: "in the end" },
+            { l1: "par chance", en: "by luck, as luck would have it" },
+            { l1: "Quelle galère!", en: "What a hassle / nightmare!" },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "The day I missed the train",
+          lines: [
+            { speaker: "You", l1: "Ce matin-là, j'étais en retard et il pleuvait.", en: "That morning, I was late and it was raining." },
+            { speaker: "You", l1: "Je suis arrivé à la gare, mais j'ai raté le train!", en: "I got to the station, but I missed the train!" },
+            { speaker: "Ami", l1: "Oh non! Et alors?", en: "Oh no! And then?" },
+            { speaker: "You", l1: "Heureusement, il y avait un autre train une heure après.", en: "Luckily, there was another train an hour later." },
+            { speaker: "You", l1: "Finalement, je suis arrivé à l'heure pour le rendez-vous.", en: "In the end, I arrived on time for the meeting." },
+            { speaker: "Ami", l1: "Ouf! Quelle galère quand même.", en: "Phew! What a hassle though." },
+          ],
+        },
+        {
+          type: "fillBlank",
+          heading: "Build the anecdote",
+          items: [
+            { template: "Il ___ (faire) nuit et je ___ (être) fatigué. (background)", answer: "faisait", en: "It was dark and I was tired." },
+            { template: "Soudain, j'___ (perdre) mon téléphone. (event)", answer: "ai perdu", en: "Suddenly, I lost my phone." },
+            { template: "Heureusement, quelqu'un l'___ (trouver). (event)", answer: "a trouvé", en: "Luckily, someone found it." },
+            { template: "Finalement, tout ___ (aller) bien. (event)", answer: "est allé", en: "In the end, everything went well." },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate",
+          direction: "en-to-l1",
+          prompt: "I was lost and it was raining. Luckily, a woman helped me.",
+          reference: "Je m'étais perdu(e)… j'étais perdu(e) et il pleuvait. Heureusement, une femme m'a aidé(e).",
+          hint: "background imparfait: j'étais perdu(e), il pleuvait; event passé composé: m'a aidé(e)",
+        },
+      ],
+    },
+    {
+      slug: "raconter-reactions",
+      title: "Reacting to a story",
+      estMinutes: 7,
+      pages: [
+        {
+          type: "intro",
+          heading: "Being a good listener in French",
+          body: [
+            "Conversation is two-way: when someone tells you something, French expects little reactions that show you're following — the equivalents of 'Really?', 'No way!', 'And then?'.",
+            "Keep them ready: <em>Ah bon?</em> (Oh really?), <em>C'est pas vrai!</em> (No way!), <em>Et alors?</em> (And then? / So?), <em>Qu'est-ce qui s'est passé?</em> (What happened?).",
+            "To show empathy: <em>Quel dommage!</em> (What a shame!), <em>Tant mieux!</em> (Good!/All the better!), <em>Heureusement!</em> (Thank goodness!).",
+          ],
+          keyPoint: "React: Ah bon? / C'est pas vrai! / Et alors? / Qu'est-ce qui s'est passé? Empathy: Quel dommage! / Tant mieux!",
+        },
+        {
+          type: "vocab",
+          heading: "Reaction phrases",
+          items: [
+            { l1: "Ah bon?", en: "Oh really?" },
+            { l1: "C'est pas vrai!", en: "No way! / You're kidding!" },
+            { l1: "Et alors?", en: "And then? / So?" },
+            { l1: "Qu'est-ce qui s'est passé?", en: "What happened?" },
+            { l1: "Quel dommage!", en: "What a shame!" },
+            { l1: "Tant mieux! / Tant pis!", en: "All the better! / Too bad!" },
+            { l1: "Je n'en reviens pas!", en: "I can't believe it!" },
+            { l1: "Ça alors!", en: "Well, well! / Goodness!" },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "Listening and reacting",
+          lines: [
+            { speaker: "Marie", l1: "Hier, j'ai perdu mon portefeuille dans le métro.", en: "Yesterday I lost my wallet on the metro." },
+            { speaker: "You", l1: "Ah bon? Et alors, qu'est-ce qui s'est passé?", en: "Oh really? And then, what happened?" },
+            { speaker: "Marie", l1: "Quelqu'un l'a rapporté au commissariat!", en: "Someone returned it to the police station!" },
+            { speaker: "You", l1: "C'est pas vrai! Tant mieux!", en: "No way! All the better!" },
+            { speaker: "Marie", l1: "Oui, avec tout l'argent dedans.", en: "Yes, with all the money inside." },
+            { speaker: "You", l1: "Ça alors! Je n'en reviens pas.", en: "Goodness! I can't believe it." },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "Reactions check",
+          questions: [
+            {
+              q: "Your friend says their flight was cancelled. A fitting reaction:",
+              options: ["Tant mieux!", "Quel dommage!", "Bon appétit!", "Ça marche."],
+              correct: 1,
+              fb: "'Quel dommage!' (What a shame!) fits bad news. 'Tant mieux' is for good news.",
+            },
+            {
+              q: "'C'est pas vrai!' expresses…",
+              options: ["a factual correction", "surprise/disbelief ('No way!')", "agreement", "a goodbye"],
+              correct: 1,
+              fb: "It's an idiom of surprise — not literally 'that's not true'.",
+            },
+            {
+              q: "To prompt someone to continue their story, you say…",
+              options: ["Et alors?", "Au revoir!", "S'il vous plaît", "D'accord, fini."],
+              correct: 0,
+              fb: "'Et alors?' = And then? / So? — invites them to go on.",
+            },
+          ],
+        },
+      ],
+    },
+  ],
+  checkpoint: {
+    passingPct: 80,
+    questions: [
+      { q: "Imparfait is used for…", options: ["Specific sudden events", "Background states and descriptions", "Future plans", "Questions"], correct: 1 },
+      { q: "'Tout à coup' means…", options: ["all together", "suddenly", "after that", "the next day"], correct: 1 },
+      { q: "In 'Il pleuvait quand je suis arrivé', which is the background?", options: ["Je suis arrivé", "Il pleuvait", "Both are events", "Neither"], correct: 1 },
+      { q: "'Le lendemain' means…", options: ["yesterday", "the day before", "the next day", "that evening"], correct: 2 },
+      { q: "Which tense tells us a habitual past action?", options: ["Passé composé", "Futur simple", "Imparfait", "Présent"], correct: 2 },
+    ],
+  },
+};

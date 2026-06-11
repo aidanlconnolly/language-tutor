@@ -1,0 +1,223 @@
+import type { Unit } from "../../types";
+
+export const UNIT_MONUMENTS: Unit = {
+  slug: "monuments",
+  stage: 3,
+  order: 14,
+  icon: "🗼",
+  title: "Parisian landmarks",
+  tagline: "Tour Eiffel, Louvre, Marais, Montmartre, histoire.",
+  lessons: [
+    {
+      slug: "monuments-main",
+      title: "Key Paris landmarks & vocabulary",
+      estMinutes: 9,
+      pages: [
+        {
+          type: "intro",
+          heading: "Paris — a city of monuments",
+          body: [
+            "Paris is divided into 20 <em>arrondissements</em> (districts) arranged in a clockwise spiral from the center. The 1st (Louvre, Île de la Cité) is the historic heart; the Marais spans the 3rd and 4th; Montmartre is in the 18th.",
+            "The Seine divides the city into <em>la Rive Gauche</em> (Left Bank — intellectual, cafés, Latin Quarter) and <em>la Rive Droite</em> (Right Bank — commerce, Opéra, the Marais). Île de la Cité (Notre-Dame) sits in the middle.",
+            "Entry to most national museums is free for EU residents under 26 and free on the first Sunday of the month for all. Book tickets online to skip queues — particularly for the Louvre and the Tour Eiffel.",
+          ],
+          tip: {
+            label: "Book ahead",
+            body: "The Louvre gets ~10,000 visitors a day. Without online tickets you may wait 2+ hours. The Torre Eiffel lift can be booked weeks in advance in summer. Musée d'Orsay is often quieter in the morning.",
+          },
+        },
+        {
+          type: "vocab",
+          heading: "Famous Paris places",
+          items: [
+            { l1: "la Tour Eiffel", en: "the Eiffel Tower", note: "7th arr. — views from 2nd or 3rd floor" },
+            { l1: "le Louvre", en: "the Louvre", note: "1st arr. — world's largest museum" },
+            { l1: "le musée d'Orsay", en: "the Orsay Museum", note: "impressionists — Monet, Renoir, Van Gogh" },
+            { l1: "Notre-Dame de Paris", en: "Notre-Dame Cathedral", note: "Île de la Cité — reopened 2024 after fire" },
+            { l1: "le Sacré-Cœur", en: "Sacré-Cœur Basilica", note: "Montmartre — 18th arr." },
+            { l1: "le Marais", en: "the Marais", note: "3rd/4th arr. — historic Jewish quarter, trendy cafés" },
+            { l1: "Montmartre", en: "Montmartre", note: "artists' quarter, panoramic views of Paris" },
+            { l1: "les Champs-Élysées", en: "the Champs-Élysées", note: "grand avenue — touristy but iconic" },
+            { l1: "le Quartier Latin", en: "the Latin Quarter", note: "5th/6th arr. — students, bookshops" },
+            { l1: "le Centre Pompidou", en: "the Pompidou Centre", note: "modern art — controversial architecture" },
+          ],
+        },
+        {
+          type: "vocab",
+          heading: "Museum & sightseeing vocabulary",
+          items: [
+            { l1: "le billet / l'entrée", en: "the ticket / the entry" },
+            { l1: "le tarif réduit", en: "the reduced price", note: "for students, seniors, EU under 26" },
+            { l1: "l'exposition (temporaire)", en: "the (temporary) exhibition" },
+            { l1: "la visite guidée", en: "the guided tour" },
+            { l1: "le tableau / la peinture", en: "the painting" },
+            { l1: "la sculpture", en: "the sculpture" },
+            { l1: "chef-d'œuvre", en: "masterpiece" },
+            { l1: "Quelle vue magnifique!", en: "What a magnificent view!" },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "Planning a day out",
+          lines: [
+            { speaker: "Éric", l1: "Tu es déjà allé au Louvre?", en: "Have you already been to the Louvre?" },
+            { speaker: "You", l1: "Non, pas encore. C'est ouvert aujourd'hui?", en: "No, not yet. Is it open today?" },
+            { speaker: "Éric", l1: "Oui, mais il faut réserver en ligne. La queue peut être très longue.", en: "Yes, but you need to book online. The queue can be very long." },
+            { speaker: "You", l1: "Et le musée d'Orsay, c'est bien aussi?", en: "And the Orsay museum, is that good too?" },
+            { speaker: "Éric", l1: "J'adore! Les impressionnistes sont extraordinaires.", en: "I love it! The impressionists are extraordinary." },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate",
+          direction: "en-to-l1",
+          prompt: "Do you have a map of Paris? I'd like to visit the Louvre.",
+          reference: "Avez-vous un plan de Paris? Je voudrais visiter le Louvre.",
+          hint: "un plan = a map (of a city); visiter = to visit",
+        },
+      ],
+    },
+    {
+      slug: "monuments-musee",
+      title: "At the museum: tickets & visiting",
+      estMinutes: 8,
+      pages: [
+        {
+          type: "intro",
+          heading: "Getting in and getting around",
+          body: [
+            "At the counter you'll buy <em>un billet</em> (or use a pre-booked <em>e-billet</em>), maybe ask for <em>le tarif réduit</em> (reduced rate) with ID, and pick up <em>un audioguide</em>. Big museums make you check bags at <em>le vestiaire</em> (cloakroom).",
+            "Practical questions: <em>À quelle heure ça ferme?</em> (What time does it close?), <em>Où est l'entrée?</em>, and <em>On peut prendre des photos?</em> — flash is usually <em>interdit</em> (forbidden).",
+            "<em>Il faut</em> (it's necessary to / you have to) is everywhere here: <em>Il faut réserver</em>, <em>Il faut montrer une pièce d'identité</em>. Learn it as a fixed phrase — <em>il faut</em> + infinitive.",
+          ],
+          keyPoint: "tarif réduit (with ID), audioguide, vestiaire (cloakroom). 'Il faut' + infinitive = you have to…",
+        },
+        {
+          type: "vocab",
+          heading: "Museum-visit vocabulary",
+          items: [
+            { l1: "un billet / un e-billet", en: "a ticket / an e-ticket" },
+            { l1: "le tarif plein / réduit", en: "full / reduced price" },
+            { l1: "une pièce d'identité", en: "a piece of ID" },
+            { l1: "un audioguide", en: "an audio guide" },
+            { l1: "le vestiaire", en: "the cloakroom" },
+            { l1: "le plan du musée", en: "the museum map" },
+            { l1: "À quelle heure ça ferme?", en: "What time does it close?" },
+            { l1: "Il faut réserver?", en: "Do you have to book?" },
+            { l1: "interdit", en: "forbidden", note: "photos interdites = no photos" },
+            { l1: "la sortie / l'entrée", en: "the exit / the entrance" },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "At the ticket counter",
+          lines: [
+            { speaker: "You", l1: "Bonjour, deux billets, s'il vous plaît. Il y a un tarif réduit pour étudiants?", en: "Hello, two tickets, please. Is there a student rate?" },
+            { speaker: "Caissier", l1: "Oui, avec une pièce d'identité. C'est moitié prix.", en: "Yes, with ID. It's half price." },
+            { speaker: "You", l1: "Parfait. On peut prendre des photos à l'intérieur?", en: "Perfect. Can we take photos inside?" },
+            { speaker: "Caissier", l1: "Oui, mais sans flash. Le flash est interdit.", en: "Yes, but no flash. Flash is forbidden." },
+            { speaker: "You", l1: "D'accord. Et à quelle heure ça ferme?", en: "Okay. And what time does it close?" },
+            { speaker: "Caissier", l1: "À dix-huit heures. Le vestiaire est à droite.", en: "At six pm. The cloakroom is on the right." },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "Museum check",
+          questions: [
+            {
+              q: "'Le vestiaire' is where you…",
+              options: ["buy tickets", "check your coat and bags", "see the paintings", "exit"],
+              correct: 1,
+              fb: "'Le vestiaire' is the cloakroom for coats and bags.",
+            },
+            {
+              q: "'Il faut réserver' means…",
+              options: ["It's closed", "You have to book", "It's free", "The reservation is cancelled"],
+              correct: 1,
+              fb: "'Il faut' + infinitive = you have to / it's necessary to.",
+            },
+            {
+              q: "You get 'le tarif réduit' by showing…",
+              options: ["a credit card", "une pièce d'identité (ID)", "an audio guide", "a museum map"],
+              correct: 1,
+              fb: "The reduced rate usually requires ID proving you qualify (student, age, etc.).",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      slug: "monuments-reactions",
+      title: "Reacting to what you see",
+      estMinutes: 8,
+      pages: [
+        {
+          type: "intro",
+          heading: "Sharing your impressions",
+          body: [
+            "Half the fun of sightseeing is saying what you think. Keep it simple with <em>C'est…</em> + adjective: <em>C'est magnifique!</em>, <em>C'est impressionnant!</em>, or the very French understatement <em>C'est pas mal</em> (it's not bad = pretty good).",
+            "To compare, use <em>plus … que</em> (more … than), <em>moins … que</em> (less … than), and <em>aussi … que</em> (as … as): <em>Le Sacré-Cœur est plus haut que je pensais</em>.",
+            "To recommend, use <em>Il faut voir…</em> (you must see…) or <em>Je te/vous recommande…</em>. These make small talk with locals flow naturally.",
+          ],
+          keyPoint: "C'est + adjective for reactions. Comparisons: plus/moins/aussi … que. Recommend: il faut voir… / je recommande…",
+        },
+        {
+          type: "vocab",
+          heading: "Reaction adjectives & phrases",
+          items: [
+            { l1: "magnifique", en: "magnificent, gorgeous" },
+            { l1: "impressionnant(e)", en: "impressive" },
+            { l1: "incroyable", en: "incredible" },
+            { l1: "ennuyeux / ennuyeuse", en: "boring" },
+            { l1: "C'est pas mal.", en: "It's pretty good. (understatement)" },
+            { l1: "Quelle vue!", en: "What a view!" },
+            { l1: "Ça vaut le coup.", en: "It's worth it." },
+            { l1: "Il faut absolument voir…", en: "You absolutely must see…" },
+            { l1: "Je te recommande…", en: "I recommend… (informal)" },
+            { l1: "plus … que / moins … que", en: "more … than / less … than" },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "After a visit",
+          lines: [
+            { speaker: "Léa", l1: "Alors, le Sacré-Cœur, ça t'a plu?", en: "So, the Sacré-Cœur, did you like it?" },
+            { speaker: "You", l1: "Oui, c'est magnifique! Et la vue est incroyable.", en: "Yes, it's magnificent! And the view is incredible." },
+            { speaker: "Léa", l1: "C'est plus beau que la Tour Eiffel, non?", en: "It's more beautiful than the Eiffel Tower, isn't it?" },
+            { speaker: "You", l1: "Différent, mais ça vaut le coup. Qu'est-ce que tu recommandes après?", en: "Different, but it's worth it. What do you recommend next?" },
+            { speaker: "Léa", l1: "Il faut absolument voir le Marais!", en: "You absolutely must see the Marais!" },
+          ],
+        },
+        {
+          type: "fillBlank",
+          heading: "Complete the reaction",
+          items: [
+            { template: "C'est ___! (magnificent)", answer: "magnifique", en: "It's magnificent!" },
+            { template: "La cathédrale est ___ grande ___ je pensais. (bigger than)", answer: "plus", en: "The cathedral is bigger than I thought.", options: ["plus", "moins", "aussi", "très"] },
+            { template: "Ça ___ le coup de monter. (is worth it)", answer: "vaut", en: "It's worth going up." },
+            { template: "Il ___ absolument voir Montmartre. (you must)", answer: "faut", en: "You absolutely must see Montmartre." },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate",
+          direction: "en-to-l1",
+          prompt: "It's incredible! The view is more beautiful than I thought.",
+          reference: "C'est incroyable! La vue est plus belle que je pensais.",
+          hint: "C'est + adjective; 'more beautiful than' = plus belle que",
+        },
+      ],
+    },
+  ],
+  checkpoint: {
+    passingPct: 80,
+    questions: [
+      { q: "The Louvre is in which arrondissement?", options: ["5th", "1st", "18th", "8th"], correct: 1 },
+      { q: "'La Rive Gauche' refers to…", options: ["The Right Bank", "The Left Bank", "The islands", "Montmartre"], correct: 1 },
+      { q: "'Le tarif réduit' means…", options: ["The full price", "The reduced price", "Free entry", "The night rate"], correct: 1 },
+      { q: "Notre-Dame Cathedral is on…", options: ["Montmartre", "Île de la Cité", "the Left Bank", "the Marais"], correct: 1 },
+      { q: "How do you say 'Have you already visited…?'", options: ["Tu visites déjà?", "Tu es déjà allé à…?", "Tu veux aller à…?", "Tu connais…?"], correct: 1 },
+      { q: "'Chef-d'œuvre' means…", options: ["guided tour", "masterpiece", "temporary exhibition", "entrance ticket"], correct: 1 },
+    ],
+  },
+};
