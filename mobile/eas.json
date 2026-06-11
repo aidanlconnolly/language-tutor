@@ -31,7 +31,8 @@
     "production": {
       "ios": {
         "appleId": "aidanlconnolly@gmail.com",
-        "appleTeamId": "RZ9JCVD6GW"
+        "appleTeamId": "RZ9JCVD6GW",
+        "ascAppId": "6779423192"
       }
     }
   }
