@@ -38,8 +38,9 @@
         "origin": false
       },
       "eas": {
-        "projectId": ""
+        "projectId": "d3727c11-822b-43fe-9760-009151ce5690"
       }
-    }
+    },
+    "owner": "aidanlconnolly"
   }
 }
