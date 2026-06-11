@@ -12,6 +12,14 @@ const PUBLIC_PATHS = ["/login", "/register"];
 export async function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
+  // REST API routes (used by the mobile app) authenticate via an
+  // Authorization: Bearer header inside each route, not the __session cookie.
+  // The cookie middleware must not touch them, or every mobile call would be
+  // redirected to /login.
+  if (pathname.startsWith("/api/")) {
+    return NextResponse.next();
+  }
+
   // Let public auth pages through
   if (PUBLIC_PATHS.some((p) => pathname === p || pathname.startsWith(p + "/"))) {
     return NextResponse.next();
