@@ -28,6 +28,11 @@
     }
   },
   "submit": {
-    "production": {}
+    "production": {
+      "ios": {
+        "appleId": "aidanlconnolly@gmail.com",
+        "appleTeamId": "RZ9JCVD6GW"
+      }
+    }
   }
 }
