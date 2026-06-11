@@ -3,6 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert, ActivityInd
 import { useRouter } from "expo-router";
 import { useAuth } from "../_layout";
 import { getToken, clearAuth } from "@/lib/auth";
+import { apiDeleteAccount } from "@/lib/api";
 
 const API_BASE = process.env.EXPO_PUBLIC_API_BASE ?? "https://language-tutor-silk.vercel.app";
 
@@ -13,6 +14,7 @@ export default function AccountScreen() {
   const [next, setNext] = useState("");
   const [confirm, setConfirm] = useState("");
   const [loading, setLoading] = useState(false);
+  const [deleting, setDeleting] = useState(false);
 
   async function handleChangePassword() {
     if (!current || !next || !confirm) { Alert.alert("Error", "All fields required"); return; }
@@ -42,6 +44,29 @@ export default function AccountScreen() {
     setUser(null);
   }
 
+  function confirmDelete() {
+    Alert.alert(
+      "Delete account?",
+      "This permanently erases your account and all progress — lessons, streaks, saved words, and review history across every language. This cannot be undone.",
+      [
+        { text: "Cancel", style: "cancel" },
+        { text: "Delete account", style: "destructive", onPress: runDelete },
+      ],
+    );
+  }
+
+  async function runDelete() {
+    setDeleting(true);
+    try {
+      await apiDeleteAccount();
+      await clearAuth();
+      setUser(null);
+    } catch (err) {
+      Alert.alert("Error", (err as Error).message);
+      setDeleting(false);
+    }
+  }
+
   return (
     <ScrollView style={s.container} contentContainerStyle={s.content}>
       <Text style={s.title}>Account</Text>
@@ -59,6 +84,16 @@ export default function AccountScreen() {
       <TouchableOpacity style={[s.btn, s.logoutBtn]} onPress={handleLogout}>
         <Text style={s.logoutText}>Sign out</Text>
       </TouchableOpacity>
+
+      <View style={s.dangerZone}>
+        <Text style={s.dangerTitle}>Danger zone</Text>
+        <Text style={s.dangerHint}>
+          Permanently delete your account and all progress. This cannot be undone.
+        </Text>
+        <TouchableOpacity style={s.deleteBtn} onPress={confirmDelete} disabled={deleting}>
+          {deleting ? <ActivityIndicator color="#ef4444" /> : <Text style={s.deleteText}>Delete account</Text>}
+        </TouchableOpacity>
+      </View>
     </ScrollView>
   );
 }
@@ -75,6 +110,11 @@ const s = StyleSheet.create({
   },
   btn: { backgroundColor: "#4f46e5", borderRadius: 10, paddingVertical: 15, alignItems: "center", marginTop: 8 },
   btnText: { color: "#fff", fontSize: 16, fontWeight: "600" },
-  logoutBtn: { backgroundColor: "transparent", borderWidth: 1, borderColor: "#ef4444", marginTop: 40 },
-  logoutText: { color: "#ef4444", fontSize: 16, fontWeight: "600" },
+  logoutBtn: { backgroundColor: "transparent", borderWidth: 1, borderColor: "#475569", marginTop: 40 },
+  logoutText: { color: "#cbd5e1", fontSize: 16, fontWeight: "600" },
+  dangerZone: { marginTop: 48, borderTopWidth: 1, borderTopColor: "#334155", paddingTop: 24 },
+  dangerTitle: { fontSize: 14, fontWeight: "700", color: "#ef4444", marginBottom: 6, textTransform: "uppercase", letterSpacing: 0.5 },
+  dangerHint: { fontSize: 13, color: "#94a3b8", lineHeight: 19, marginBottom: 16 },
+  deleteBtn: { backgroundColor: "#450a0a", borderRadius: 10, paddingVertical: 15, alignItems: "center", borderWidth: 1, borderColor: "#7f1d1d" },
+  deleteText: { color: "#ef4444", fontSize: 16, fontWeight: "700" },
 });

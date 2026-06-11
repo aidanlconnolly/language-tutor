@@ -61,6 +61,11 @@ export async function apiRegister(email: string, password: string) {
   return json as { token: string; user: { id: string; email: string } };
 }
 
+/** Permanently delete the signed-in account and all its data. */
+export async function apiDeleteAccount() {
+  return del<{ ok: true }>(`/api/account`);
+}
+
 /* ─────────── Progress ─────────── */
 
 export type ProgressData = {

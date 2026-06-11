@@ -6,6 +6,7 @@ import { eq } from "drizzle-orm";
 import { redirect } from "next/navigation";
 import { db, schema } from "@/lib/db/client";
 import { createSession, deleteSession } from "@/lib/auth";
+import { deleteUserData } from "@/lib/db/helpers";
 
 export type AuthState = { error: string } | null;
 
@@ -62,6 +63,16 @@ export async function loginAction(
 }
 
 export async function logoutAction(): Promise<void> {
+  await deleteSession();
+  redirect("/login");
+}
+
+export async function deleteAccountAction(): Promise<void> {
+  const { getSession } = await import("@/lib/auth");
+  const session = await getSession();
+  if (!session) redirect("/login");
+
+  await deleteUserData(session.userId);
   await deleteSession();
   redirect("/login");
 }
