@@ -8,7 +8,7 @@ A combined Italian + French + Spanish language-learning app (A0–B1). **Multi-u
 
 **Two platforms sharing one Turso cloud DB:**
 - `web/` — Next.js 16.2 web app, live at **https://language-tutor-silk.vercel.app** (auto-deploys from `main`)
-- `mobile/` — Expo SDK 53 iOS app (Expo Router v4), built with EAS
+- `mobile/` — Expo SDK 53 iOS app (Expo Router v5), built with EAS
 
 ## Folder structure
 
@@ -142,7 +142,7 @@ AUTH_SECRET    # node -e "console.log(require('crypto').randomBytes(32).toString
 ## mobile/ — Expo iOS app
 
 ### Stack
-**Expo SDK 53**, React Native 0.79, Expo Router v4 (file-based routing), TypeScript strict, `expo-speech` (TTS), `expo-secure-store` (JWT storage), `@react-native-async-storage/async-storage`, `ts-fsrs`. All curriculum content files are copied from `web/lib/content/` — pure TS data with no Node.js deps.
+**Expo SDK 53**, React Native 0.79, Expo Router v5 (file-based routing), TypeScript strict, `expo-speech` (TTS), `expo-secure-store` (JWT storage), `@react-native-async-storage/async-storage`, `ts-fsrs`. All curriculum content files are copied from `web/lib/content/` — pure TS data with no Node.js deps.
 
 ### Common commands (run from `mobile/`)
 
@@ -159,7 +159,7 @@ PATH=/opt/homebrew/bin:$PATH npx eas-cli build --profile production --platform i
 
 ### Architecture
 
-- `app/` — Expo Router v4 file-based routing
+- `app/` — Expo Router v5 file-based routing
   - `_layout.tsx` — root layout, `AuthContext`, checks SecureStore on mount
   - `(auth)/login.tsx`, `(auth)/register.tsx` — unauthenticated screens
   - `(app)/index.tsx` — home: 3 language cards
