@@ -13,7 +13,7 @@ export default function RegisterPage() {
         <div className="mb-8 text-center">
           <div className="text-3xl mb-2">🇮🇹 🇫🇷</div>
           <h1 className="text-2xl font-bold tracking-tight text-white">
-            Language Tutor
+            Allora
           </h1>
           <p className="mt-1 text-sm text-slate-400">Create an account to start learning.</p>
         </div>

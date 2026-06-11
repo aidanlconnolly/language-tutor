@@ -31,7 +31,7 @@ export default function LoginScreen() {
   return (
     <KeyboardAvoidingView style={s.container} behavior={Platform.OS === "ios" ? "padding" : undefined}>
       <View style={s.card}>
-        <Text style={s.title}>Language Tutor</Text>
+        <Text style={s.title}>Allora</Text>
         <Text style={s.subtitle}>Sign in to continue</Text>
 
         <TextInput

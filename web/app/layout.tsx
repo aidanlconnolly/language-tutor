@@ -16,10 +16,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Language Tutor",
+  title: "Allora",
   description: "Italian, French & Spanish — A0 to B1, ten minutes a day.",
   appleWebApp: {
-    title: "Language Tutor",
+    title: "Allora",
     capable: true,
     statusBarStyle: "default",
   },

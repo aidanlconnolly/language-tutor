@@ -44,7 +44,7 @@ export default async function Home() {
       <div className="mx-auto max-w-2xl px-4 py-12 sm:px-6">
         <header className="mb-10 text-center">
           <h1 className="text-4xl font-bold tracking-tight text-white">
-            Language Tutor
+            Allora
           </h1>
           <p className="mt-2 text-slate-400 text-sm">
             A0 → B1 in Italian, French and Spanish. Ten minutes a day.
