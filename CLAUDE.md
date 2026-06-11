@@ -8,7 +8,7 @@ A combined Italian + French + Spanish language-learning app (A0–B1). **Multi-u
 
 **Two platforms sharing one Turso cloud DB:**
 - `web/` — Next.js 16.2 web app, live at **https://language-tutor-silk.vercel.app** (auto-deploys from `main`)
-- `mobile/` — Expo SDK 53 iOS app (Expo Router v5), built with EAS
+- `mobile/` — Expo SDK 56 iOS app (Expo Router v6), built with EAS
 
 ## Folder structure
 
@@ -142,7 +142,9 @@ AUTH_SECRET    # node -e "console.log(require('crypto').randomBytes(32).toString
 ## mobile/ — Expo iOS app
 
 ### Stack
-**Expo SDK 53**, React Native 0.79, Expo Router v5 (file-based routing), TypeScript strict, `expo-speech` (TTS), `expo-secure-store` (JWT storage), `@react-native-async-storage/async-storage`, `ts-fsrs`. All curriculum content files are copied from `web/lib/content/` — pure TS data with no Node.js deps.
+**Expo SDK 56**, React Native 0.85, Expo Router v6 (file-based routing), TypeScript strict, `expo-speech` (TTS), `expo-secure-store` (JWT storage), `@react-native-async-storage/async-storage`, `ts-fsrs`. All curriculum content files are copied from `web/lib/content/` — pure TS data with no Node.js deps.
+
+> **iOS 26 SDK requirement**: Apple requires apps built with the iOS 26 SDK (Xcode 26). The production build profile in `eas.json` pins `ios.image` to `macos-tahoe-26.4-xcode-26.4`. SDK 53 (RN 0.79) could **not** compile on Xcode 26 (its bundled `fmt` hit a `consteval` error → ITMS-90725); SDK 56 (RN 0.85.3) fixes it. Reanimated 4 needs `react-native-worklets` and the `react-native-worklets/plugin` Babel plugin (see `babel.config.js`).
 
 ### Common commands (run from `mobile/`)
 
