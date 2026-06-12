@@ -159,6 +159,33 @@ PATH=/opt/homebrew/bin:$PATH npx eas-cli login
 PATH=/opt/homebrew/bin:$PATH npx eas-cli build --profile production --platform ios
 ```
 
+### Shipping changes — OTA-first (READ BEFORE EVERY BUILD)
+
+The EAS **free plan allows only 15 iOS cloud builds/month**. To avoid burning them,
+this app is set up for **EAS Update** (OTA): `expo-updates` is installed, `app.json`
+has `runtimeVersion` (`appVersion` policy) + `updates.url`, and every `eas.json`
+profile has a `channel`. **Default to shipping JS over-the-air, not rebuilding.**
+
+**Decision rule — one question per change: did the NATIVE layer change?**
+EAS prints a **fingerprint** per build; same fingerprint = no native change. (Builds
+#8–10 all shared fingerprint `47ab8d03…` — three cloud builds wasted on JS-only edits.)
+
+| Change type | What to run | Cost |
+|---|---|---|
+| Iterating / testing | `npx expo start --ios` (simulator, Fast Refresh) | free |
+| **JS / TS / `lib/content/` / UI / styling / logic** (no native change) | `npx eas-cli update --channel production --message "…"` | **free, no review** |
+| Native module added/upgraded, `app.json` icon/splash/permissions, Expo SDK bump | `npx eas-cli build --profile production --platform ios --local` then `eas submit` | free (`--local` builds on this Mac, **skips cloud quota**) |
+
+(Prefix every command with `PATH=/opt/homebrew/bin:$PATH` and run from `mobile/`.)
+
+**Baseline build caveat:** `eas update` only reaches installs built **with** `expo-updates`
+— i.e. builds from commit `b70c7ae` (2026-06-11) onward. Builds #1–10 can't receive OTA
+updates; the first build after that commit is the OTA baseline. Install/submit that baseline
+once, then JS changes flow to it via `eas update`.
+
+**Reserve cloud builds (`eas build` without `--local`) for emergencies only** — prefer
+`--local` for native changes so the 15/month quota is never the constraint.
+
 ### Architecture
 
 - `app/` — Expo Router v5 file-based routing
