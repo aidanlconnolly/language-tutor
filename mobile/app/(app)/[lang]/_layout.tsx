@@ -13,7 +13,10 @@ export default function LangLayout() {
         contentStyle: { backgroundColor: "#0f172a" },
       }}
     >
-      <Stack.Screen name="index" options={{ title: label }} />
+      <Stack.Screen
+        name="index"
+        options={{ title: label, headerBackTitle: "Other languages" }}
+      />
       <Stack.Screen name="lesson/[unit]/[lesson]" options={{ title: "Lesson" }} />
       <Stack.Screen name="checkpoint/[unit]" options={{ title: "Unit Checkpoint" }} />
       <Stack.Screen name="read/[slug]" options={{ title: "Daily Read" }} />
