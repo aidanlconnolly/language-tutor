@@ -1,5 +1,6 @@
 import { ScrollView, View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import type { Intro } from "@/lib/content/types";
+import { RichText } from "@/components/shared/RichText";
 import { C } from "@/lib/theme";
 
 export function IntroPage({ page, onNext }: { page: Intro; onNext: () => void }) {
@@ -7,12 +8,12 @@ export function IntroPage({ page, onNext }: { page: Intro; onNext: () => void })
     <ScrollView style={s.container} contentContainerStyle={s.content}>
       <Text style={s.heading}>{page.heading}</Text>
       {page.body.map((line, i) => (
-        <Text key={i} style={s.body}>{line}</Text>
+        <RichText key={i} text={line} style={s.body} />
       ))}
       {page.tip && (
         <View style={s.tip}>
           <Text style={s.tipLabel}>{page.tip.label}</Text>
-          <Text style={s.tipBody}>{page.tip.body}</Text>
+          <RichText text={page.tip.body} style={s.tipBody} />
         </View>
       )}
       {page.keyPoint && (

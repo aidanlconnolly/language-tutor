@@ -2,6 +2,7 @@ import { ScrollView, View, Text, TouchableOpacity, StyleSheet } from "react-nati
 import type { Tip } from "@/lib/content/types";
 import type { Lang } from "@/lib/lang";
 import { SpeakButton } from "@/components/shared/SpeakButton";
+import { RichText } from "@/components/shared/RichText";
 import { C } from "@/lib/theme";
 
 export function TipPage({ page, lang, onNext }: { page: Tip; lang: Lang; onNext: () => void }) {
@@ -10,7 +11,7 @@ export function TipPage({ page, lang, onNext }: { page: Tip; lang: Lang; onNext:
       <Text style={s.chip}>Grammar tip</Text>
       <Text style={s.heading}>{page.heading}</Text>
       <View style={s.bodyBox}>
-        <Text style={s.body}>{page.body}</Text>
+        <RichText text={page.body} style={s.body} />
       </View>
       {page.example && (
         <View style={s.exampleBox}>
