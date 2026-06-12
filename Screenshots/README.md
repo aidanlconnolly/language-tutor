@@ -5,22 +5,25 @@ iPhone screenshots are required.
 
 ## What's here
 
-- **`app-store-ready/`** — formatted **1290 × 2796** PNGs, ready to upload to App
-  Store Connect, numbered in display order:
-  1. `01-languages.png` — home / language picker (Italian · French · Spanish)
-  2. `02-roadmap.png` — Italian home: streak, today's read, roadmap
-  3. `03-lesson.png` — a grammar lesson (the `c`/`g` pronunciation tip)
-  4. `04-listen.png` — a listening lesson (tap-to-reveal vocab + audio)
-  5. `05-daily-read.png` — Daily Read with translations
+- **`app-store-ready/`** — formatted PNGs in two sizes, since App Store Connect
+  has a slot per device size. Same five shots in each, numbered in display order
+  (`01-languages`, `02-roadmap`, `03-lesson`, `04-listen`, `05-daily-read`):
+  - **`iphone-6.9/`** — **1290 × 2796** → iPhone 6.9" slot (preferred; Apple
+    auto-scales this down to the smaller sizes, so this set alone usually suffices)
+  - **`iphone-6.5/`** — **1284 × 2778** → iPhone 6.5" slot
 - **`originals/`** — the raw phone screenshots from build 13.
   (`IMG_4860` is an older build-11 shot — kept for reference, not used.)
 - **`format-screenshots.sh`** — re-runs the formatter on `originals/`.
 
 ## Upload to App Store Connect
 
-App Store Connect → **Allora** → (your version) → **Previews and Screenshots** →
-**iPhone 6.9" Display** → drag in the five `app-store-ready/` files in order.
-You need 3–10 screenshots; you have 5.
+App Store Connect → **Allora** → (your version) → **Previews and Screenshots**.
+Match the folder to the slot's device size:
+- **iPhone 6.9" Display** slot → drag the five `app-store-ready/iphone-6.9/` files.
+- **iPhone 6.5" Display** slot → drag the five `app-store-ready/iphone-6.5/` files.
+
+You need 3–10 per slot; you have 5. Filling the 6.9" slot is usually enough —
+Apple scales it down for the others.
 
 ## Re-formatting (e.g. after retaking on a newer build)
 
