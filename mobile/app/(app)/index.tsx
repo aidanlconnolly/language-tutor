@@ -52,8 +52,17 @@ export default function HomeScreen() {
   return (
     <ScrollView style={s.container} refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={C.primary} />}>
       <View style={s.header}>
-        <Text style={s.greeting}>Welcome back</Text>
-        <Text style={s.email}>{user?.email}</Text>
+        <View style={s.headerText}>
+          <Text style={s.greeting}>Welcome back</Text>
+          <Text style={s.email}>{user?.email}</Text>
+        </View>
+        <TouchableOpacity
+          style={s.accountBtn}
+          onPress={() => router.push("/(app)/account" as never)}
+          accessibilityLabel="Account and settings"
+        >
+          <Text style={s.accountIcon}>👤</Text>
+        </TouchableOpacity>
       </View>
 
       <Text style={s.sectionLabel}>Choose a language</Text>
@@ -101,7 +110,13 @@ function StatChip({ label, value }: { label: string; value: string }) {
 const s = StyleSheet.create({
   container: { flex: 1, backgroundColor: C.bg },
   shadow: { shadowColor: "#000", shadowOpacity: 0.05, shadowRadius: 6, shadowOffset: { width: 0, height: 2 }, elevation: 2 },
-  header: { paddingHorizontal: 20, paddingTop: 60, paddingBottom: 24 },
+  header: { flexDirection: "row", alignItems: "center", paddingHorizontal: 20, paddingTop: 60, paddingBottom: 24 },
+  headerText: { flex: 1 },
+  accountBtn: {
+    width: 44, height: 44, borderRadius: 22, backgroundColor: C.card,
+    borderWidth: 1, borderColor: C.border, alignItems: "center", justifyContent: "center",
+  },
+  accountIcon: { fontSize: 20 },
   greeting: { fontSize: 26, fontWeight: "700", color: C.text },
   email: { fontSize: 14, color: C.textMuted, marginTop: 4 },
   sectionLabel: { fontSize: 13, fontWeight: "600", color: C.textMuted, paddingHorizontal: 20, marginBottom: 12, letterSpacing: 0.5, textTransform: "uppercase" },
