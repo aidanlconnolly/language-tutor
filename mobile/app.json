@@ -42,6 +42,12 @@
         "projectId": "d3727c11-822b-43fe-9760-009151ce5690"
       }
     },
-    "owner": "aidanlconnolly"
+    "owner": "aidanlconnolly",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/d3727c11-822b-43fe-9760-009151ce5690"
+    }
   }
 }
