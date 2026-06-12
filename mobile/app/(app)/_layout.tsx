@@ -1,13 +1,14 @@
 import { Stack } from "expo-router";
+import { C } from "@/lib/theme";
 
 export default function AppLayout() {
   return (
     <Stack
       screenOptions={{
-        headerStyle: { backgroundColor: "#1e293b" },
-        headerTintColor: "#f8fafc",
-        headerTitleStyle: { fontWeight: "600" },
-        contentStyle: { backgroundColor: "#0f172a" },
+        headerStyle: { backgroundColor: C.headerBg },
+        headerTintColor: C.primary,
+        headerTitleStyle: { fontWeight: "600", color: C.text },
+        contentStyle: { backgroundColor: C.bg },
       }}
     >
       {/* Language picker — its own in-page header, no native title bar */}

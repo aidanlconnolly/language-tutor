@@ -1,5 +1,6 @@
 import { Stack, useLocalSearchParams } from "expo-router";
 import { LANG_LABELS, LANG_FLAGS, isValidLang } from "@/lib/lang";
+import { C } from "@/lib/theme";
 
 export default function LangLayout() {
   const { lang } = useLocalSearchParams<{ lang: string }>();
@@ -7,10 +8,10 @@ export default function LangLayout() {
   return (
     <Stack
       screenOptions={{
-        headerStyle: { backgroundColor: "#1e293b" },
-        headerTintColor: "#f8fafc",
-        headerTitleStyle: { fontWeight: "600" },
-        contentStyle: { backgroundColor: "#0f172a" },
+        headerStyle: { backgroundColor: C.headerBg },
+        headerTintColor: C.primary,
+        headerTitleStyle: { fontWeight: "600", color: C.text },
+        contentStyle: { backgroundColor: C.bg },
       }}
     >
       <Stack.Screen

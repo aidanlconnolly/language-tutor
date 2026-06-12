@@ -5,9 +5,8 @@ import { useAuth } from "../_layout";
 import { clearAuth } from "@/lib/auth";
 import { apiGetProgress } from "@/lib/api";
 import { SUPPORTED_LANGS, LANG_LABELS, LANG_FLAGS } from "@/lib/lang";
+import { C } from "@/lib/theme";
 import type { Lang } from "@/lib/lang";
-
-const ACCENT: Record<Lang, string> = { italian: "#f59e0b", french: "#3b82f6", spanish: "#ef4444" };
 
 export default function HomeScreen() {
   const { user, setUser } = useAuth();
@@ -51,7 +50,7 @@ export default function HomeScreen() {
   }
 
   return (
-    <ScrollView style={s.container} refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor="#818cf8" />}>
+    <ScrollView style={s.container} refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={C.primary} />}>
       <View style={s.header}>
         <Text style={s.greeting}>Welcome back</Text>
         <Text style={s.email}>{user?.email}</Text>
@@ -60,12 +59,12 @@ export default function HomeScreen() {
       <Text style={s.sectionLabel}>Choose a language</Text>
 
       {loading ? (
-        <ActivityIndicator color="#818cf8" style={{ marginTop: 40 }} />
+        <ActivityIndicator color={C.primary} style={{ marginTop: 40 }} />
       ) : (
         SUPPORTED_LANGS.map((lang) => {
           const st = stats[lang];
           return (
-            <TouchableOpacity key={lang} style={[s.card, { borderTopColor: ACCENT[lang], borderTopWidth: 3 }]}
+            <TouchableOpacity key={lang} style={[s.card, s.shadow]}
               onPress={() => router.push(`/(app)/${lang}` as never)}>
               <View style={s.cardHeader}>
                 <Text style={s.flag}>{LANG_FLAGS[lang]}</Text>
@@ -100,23 +99,24 @@ function StatChip({ label, value }: { label: string; value: string }) {
 }
 
 const s = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#0f172a" },
+  container: { flex: 1, backgroundColor: C.bg },
+  shadow: { shadowColor: "#000", shadowOpacity: 0.05, shadowRadius: 6, shadowOffset: { width: 0, height: 2 }, elevation: 2 },
   header: { paddingHorizontal: 20, paddingTop: 60, paddingBottom: 24 },
-  greeting: { fontSize: 26, fontWeight: "700", color: "#f8fafc" },
-  email: { fontSize: 14, color: "#94a3b8", marginTop: 4 },
-  sectionLabel: { fontSize: 13, fontWeight: "600", color: "#64748b", paddingHorizontal: 20, marginBottom: 12, letterSpacing: 0.5, textTransform: "uppercase" },
+  greeting: { fontSize: 26, fontWeight: "700", color: C.text },
+  email: { fontSize: 14, color: C.textMuted, marginTop: 4 },
+  sectionLabel: { fontSize: 13, fontWeight: "600", color: C.textMuted, paddingHorizontal: 20, marginBottom: 12, letterSpacing: 0.5, textTransform: "uppercase" },
   card: {
-    backgroundColor: "#1e293b", marginHorizontal: 16, marginBottom: 12,
-    borderRadius: 14, padding: 18, borderWidth: 1, borderColor: "#334155",
-    overflow: "hidden",
+    backgroundColor: C.card, marginHorizontal: 16, marginBottom: 12,
+    borderRadius: 14, padding: 18, borderWidth: 1, borderColor: C.border,
+    borderTopColor: C.accent, borderTopWidth: 3,
   },
   cardHeader: { flexDirection: "row", alignItems: "center", marginBottom: 10 },
   flag: { fontSize: 28, marginRight: 12 },
-  langName: { fontSize: 20, fontWeight: "700", color: "#f8fafc" },
+  langName: { fontSize: 20, fontWeight: "700", color: C.text },
   cardStats: { flexDirection: "row", gap: 8 },
-  cardSub: { fontSize: 14, color: "#64748b" },
-  chip: { backgroundColor: "#0f172a", borderRadius: 20, paddingHorizontal: 10, paddingVertical: 5 },
-  chipText: { fontSize: 13, color: "#94a3b8" },
+  cardSub: { fontSize: 14, color: C.textMuted },
+  chip: { backgroundColor: C.inset, borderRadius: 20, paddingHorizontal: 10, paddingVertical: 5 },
+  chipText: { fontSize: 13, color: C.textSecondary },
   logoutBtn: { margin: 20, marginTop: 8, padding: 16, alignItems: "center" },
-  logoutText: { color: "#ef4444", fontSize: 15 },
+  logoutText: { color: C.danger, fontSize: 15 },
 });

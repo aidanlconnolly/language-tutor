@@ -1,6 +1,7 @@
 import { useState, useCallback } from "react";
 import { ScrollView, View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import type { OrderWords } from "@/lib/content/types";
+import { C } from "@/lib/theme";
 
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr];
@@ -90,20 +91,20 @@ export function OrderWordsPage({ page, onNext }: { page: OrderWords; onNext: () 
 const s = StyleSheet.create({
   container: { flex: 1 },
   content: { padding: 20, paddingBottom: 40 },
-  heading: { fontSize: 20, fontWeight: "700", color: "#f8fafc", marginBottom: 4 },
-  counter: { fontSize: 13, color: "#64748b", marginBottom: 12 },
-  en: { fontSize: 16, color: "#94a3b8", marginBottom: 20, fontStyle: "italic" },
-  pickedBox: { backgroundColor: "#1e293b", borderRadius: 12, minHeight: 60, padding: 12, marginBottom: 16, justifyContent: "center" },
-  placeholder: { color: "#475569", fontSize: 14, textAlign: "center" },
+  heading: { fontSize: 20, fontWeight: "700", color: C.text, marginBottom: 4 },
+  counter: { fontSize: 13, color: C.textMuted, marginBottom: 12 },
+  en: { fontSize: 16, color: C.textMuted, marginBottom: 20, fontStyle: "italic" },
+  pickedBox: { backgroundColor: C.inset, borderRadius: 12, minHeight: 60, padding: 12, marginBottom: 16, justifyContent: "center" },
+  placeholder: { color: C.textFaint, fontSize: 14, textAlign: "center" },
   tokenRow: { flexDirection: "row", flexWrap: "wrap", gap: 8 },
   poolRow: { flexDirection: "row", flexWrap: "wrap", gap: 8, marginBottom: 20 },
-  pickedToken: { backgroundColor: "#4f46e5", borderRadius: 8, paddingHorizontal: 12, paddingVertical: 8 },
-  poolToken: { backgroundColor: "#334155", borderRadius: 8, paddingHorizontal: 12, paddingVertical: 8 },
-  tokenText: { color: "#f8fafc", fontSize: 16, fontWeight: "500" },
+  pickedToken: { backgroundColor: C.selectedBg, borderRadius: 8, paddingHorizontal: 12, paddingVertical: 8 },
+  poolToken: { backgroundColor: C.inset, borderRadius: 8, paddingHorizontal: 12, paddingVertical: 8 },
+  tokenText: { color: C.text, fontSize: 16, fontWeight: "500" },
   feedback: { fontSize: 15, fontWeight: "600", textAlign: "center", marginBottom: 12 },
-  correct: { color: "#22c55e" },
-  wrong: { color: "#ef4444" },
-  btn: { backgroundColor: "#818cf8", borderRadius: 12, paddingVertical: 15, alignItems: "center" },
-  btnDisabled: { backgroundColor: "#334155" },
-  btnText: { color: "#fff", fontSize: 16, fontWeight: "600" },
+  correct: { color: C.correctText },
+  wrong: { color: C.wrongText },
+  btn: { backgroundColor: C.primary, borderRadius: 12, paddingVertical: 15, alignItems: "center" },
+  btnDisabled: { backgroundColor: C.border },
+  btnText: { color: C.primaryText, fontSize: 16, fontWeight: "600" },
 });

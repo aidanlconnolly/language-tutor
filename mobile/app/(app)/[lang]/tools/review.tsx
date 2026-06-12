@@ -6,6 +6,7 @@ import { apiGetReview, apiRateCard } from "@/lib/api";
 import type { ReviewCard, ReviewStats } from "@/lib/api";
 import { SpeakButton } from "@/components/shared/SpeakButton";
 import type { Lang } from "@/lib/lang";
+import { C } from "@/lib/theme";
 
 export default function ReviewScreen() {
   const { lang: langParam } = useLocalSearchParams<{ lang: string }>();
@@ -28,8 +29,8 @@ export default function ReviewScreen() {
     });
   }, [lang]);
 
-  if (!lang) return <Text style={{ color: "#ef4444", padding: 20 }}>Invalid language</Text>;
-  if (loading) return <ActivityIndicator color="#818cf8" style={{ marginTop: 80 }} />;
+  if (!lang) return <Text style={{ color: C.danger, padding: 20 }}>Invalid language</Text>;
+  if (loading) return <ActivityIndicator color={C.primary} style={{ marginTop: 80 }} />;
 
   if (cards.length === 0 || currentIndex >= cards.length) {
     return (
@@ -125,7 +126,7 @@ function ratingLabel(r: number): string {
 }
 
 function ratingColor(r: number): object {
-  const colors = ["#7f1d1d", "#78350f", "#14532d", "#1e3a5f"];
+  const colors = [C.danger, C.accent, C.primary, C.complete];
   return { backgroundColor: colors[r - 1] };
 }
 
@@ -139,38 +140,38 @@ function StatRow({ label, value }: { label: string; value: string }) {
 }
 
 const s = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#0f172a" },
+  container: { flex: 1, backgroundColor: C.bg },
   header: { flexDirection: "row", justifyContent: "space-between", alignItems: "center", padding: 16 },
-  counter: { fontSize: 15, color: "#64748b", fontWeight: "600" },
-  closeBtn: { color: "#94a3b8", fontSize: 20 },
-  progressBar: { height: 3, backgroundColor: "#1e293b", marginHorizontal: 16, borderRadius: 2 },
-  progressFill: { height: 3, backgroundColor: "#818cf8", borderRadius: 2 },
+  counter: { fontSize: 15, color: C.textMuted, fontWeight: "600" },
+  closeBtn: { color: C.textMuted, fontSize: 20 },
+  progressBar: { height: 3, backgroundColor: C.inset, marginHorizontal: 16, borderRadius: 2 },
+  progressFill: { height: 3, backgroundColor: C.primary, borderRadius: 2 },
   cardScroll: { flex: 1 },
   cardContent: { padding: 16 },
-  card: { backgroundColor: "#1e293b", borderRadius: 16, padding: 20, minHeight: 200 },
-  source: { fontSize: 13, color: "#64748b", fontStyle: "italic", marginBottom: 12 },
+  card: { backgroundColor: C.card, borderRadius: 16, padding: 20, minHeight: 200, borderWidth: 1, borderColor: C.border },
+  source: { fontSize: 13, color: C.textMuted, fontStyle: "italic", marginBottom: 12 },
   wordRow: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", marginBottom: 20 },
-  surface: { fontSize: 28, fontWeight: "700", color: "#f8fafc", flex: 1 },
-  revealBtn: { backgroundColor: "#0f172a", borderRadius: 10, paddingVertical: 16, alignItems: "center", borderWidth: 1, borderColor: "#334155" },
-  revealText: { color: "#94a3b8", fontSize: 16 },
-  revealed: { borderTopWidth: 1, borderTopColor: "#334155", paddingTop: 16 },
-  translation: { fontSize: 24, fontWeight: "700", color: "#a5b4fc", marginBottom: 6 },
-  pos: { fontSize: 13, color: "#64748b", marginBottom: 12 },
-  definition: { fontSize: 15, color: "#cbd5e1", lineHeight: 22, marginBottom: 12 },
-  example: { backgroundColor: "#0f172a", borderRadius: 8, padding: 12 },
-  exL1: { fontSize: 14, fontWeight: "600", color: "#e2e8f0", marginBottom: 4 },
-  exEn: { fontSize: 13, color: "#64748b", fontStyle: "italic" },
-  ratingBar: { flexDirection: "row", padding: 12, gap: 8, backgroundColor: "#0f172a" },
+  surface: { fontSize: 28, fontWeight: "700", color: C.text, flex: 1 },
+  revealBtn: { backgroundColor: C.inset, borderRadius: 10, paddingVertical: 16, alignItems: "center", borderWidth: 1, borderColor: C.border },
+  revealText: { color: C.textMuted, fontSize: 16 },
+  revealed: { borderTopWidth: 1, borderTopColor: C.border, paddingTop: 16 },
+  translation: { fontSize: 24, fontWeight: "700", color: C.primary, marginBottom: 6 },
+  pos: { fontSize: 13, color: C.textMuted, marginBottom: 12 },
+  definition: { fontSize: 15, color: C.textSecondary, lineHeight: 22, marginBottom: 12 },
+  example: { backgroundColor: C.inset, borderRadius: 8, padding: 12 },
+  exL1: { fontSize: 14, fontWeight: "600", color: C.text, marginBottom: 4 },
+  exEn: { fontSize: 13, color: C.textMuted, fontStyle: "italic" },
+  ratingBar: { flexDirection: "row", padding: 12, gap: 8, backgroundColor: C.bg },
   rateBtn: { flex: 1, borderRadius: 10, paddingVertical: 12, alignItems: "center" },
-  rateBtnLabel: { color: "#fff", fontSize: 13, fontWeight: "700" },
+  rateBtnLabel: { color: C.primaryText, fontSize: 13, fontWeight: "700" },
   rateInterval: { color: "rgba(255,255,255,0.7)", fontSize: 11, marginTop: 2 },
   empty: { flex: 1, alignItems: "center", justifyContent: "center", padding: 32 },
   emptyEmoji: { fontSize: 56, marginBottom: 16 },
-  emptyTitle: { fontSize: 26, fontWeight: "700", color: "#f8fafc", marginBottom: 24 },
-  statsBox: { backgroundColor: "#1e293b", borderRadius: 12, padding: 16, width: "100%", marginBottom: 24 },
-  statRow: { flexDirection: "row", justifyContent: "space-between", paddingVertical: 8, borderBottomWidth: 1, borderBottomColor: "#334155" },
-  statLabel: { fontSize: 14, color: "#94a3b8" },
-  statValue: { fontSize: 14, fontWeight: "700", color: "#f8fafc" },
-  btn: { backgroundColor: "#818cf8", borderRadius: 12, paddingHorizontal: 40, paddingVertical: 15, alignItems: "center" },
-  btnText: { color: "#fff", fontSize: 16, fontWeight: "600" },
+  emptyTitle: { fontSize: 26, fontWeight: "700", color: C.text, marginBottom: 24 },
+  statsBox: { backgroundColor: C.card, borderRadius: 12, padding: 16, width: "100%", marginBottom: 24, borderWidth: 1, borderColor: C.border },
+  statRow: { flexDirection: "row", justifyContent: "space-between", paddingVertical: 8, borderBottomWidth: 1, borderBottomColor: C.border },
+  statLabel: { fontSize: 14, color: C.textMuted },
+  statValue: { fontSize: 14, fontWeight: "700", color: C.text },
+  btn: { backgroundColor: C.primary, borderRadius: 12, paddingHorizontal: 40, paddingVertical: 15, alignItems: "center" },
+  btnText: { color: C.primaryText, fontSize: 16, fontWeight: "600" },
 });

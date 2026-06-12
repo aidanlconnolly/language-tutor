@@ -5,6 +5,7 @@ import { isValidLang } from "@/lib/lang";
 import { apiLookupWord, apiSaveCard } from "@/lib/api";
 import { SpeakButton } from "@/components/shared/SpeakButton";
 import type { Lang } from "@/lib/lang";
+import { C } from "@/lib/theme";
 
 type WordInfo = { id: string; lemma: string; translation: string; definition: string; pos: string; gender: string | null; examples: { l1: string; en: string }[]; conjugation: Record<string, Record<string, string>> | null };
 
@@ -23,7 +24,7 @@ export default function ReaderScreen() {
   const [looking, setLooking] = useState(false);
   const [saving, setSaving] = useState(false);
 
-  if (!lang) return <Text style={{ color: "#ef4444", padding: 20 }}>Invalid language</Text>;
+  if (!lang) return <Text style={{ color: C.danger, padding: 20 }}>Invalid language</Text>;
 
   function handleLoad() {
     if (rawText.trim()) setTokens(tokenize(rawText));
@@ -61,7 +62,7 @@ export default function ReaderScreen() {
             onChangeText={setRawText}
             multiline
             placeholder="Paste text here..."
-            placeholderTextColor="#475569"
+            placeholderTextColor={C.textFaint}
             autoCapitalize="none"
             autoCorrect={false}
           />
@@ -91,7 +92,7 @@ export default function ReaderScreen() {
         <TouchableOpacity style={s.overlay} activeOpacity={1} onPress={() => setSelected(null)}>
           <View style={s.popover} onStartShouldSetResponder={() => true}>
             {looking ? (
-              <ActivityIndicator color="#818cf8" style={{ padding: 32 }} />
+              <ActivityIndicator color={C.primary} style={{ padding: 32 }} />
             ) : wordInfo ? (
               <>
                 <View style={s.popoverHeader}>
@@ -108,7 +109,7 @@ export default function ReaderScreen() {
                   </View>
                 )}
                 <TouchableOpacity style={[s.saveBtn, isSaved && s.savedBtn]} onPress={handleSave} disabled={isSaved || saving}>
-                  {saving ? <ActivityIndicator color="#fff" size="small" /> : <Text style={s.saveBtnText}>{isSaved ? "✓ Saved" : "Save to deck"}</Text>}
+                  {saving ? <ActivityIndicator color={C.primaryText} size="small" /> : <Text style={[s.saveBtnText, isSaved && s.savedBtnText]}>{isSaved ? "✓ Saved" : "Save to deck"}</Text>}
                 </TouchableOpacity>
               </>
             ) : null}
@@ -120,34 +121,35 @@ export default function ReaderScreen() {
 }
 
 const s = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#0f172a" },
+  container: { flex: 1, backgroundColor: C.bg },
   inputArea: { flex: 1, padding: 20 },
-  hint: { fontSize: 14, color: "#64748b", marginBottom: 12, textAlign: "center" },
+  hint: { fontSize: 14, color: C.textMuted, marginBottom: 12, textAlign: "center" },
   textarea: {
-    flex: 1, backgroundColor: "#1e293b", borderRadius: 12, padding: 16, color: "#f8fafc", fontSize: 16,
-    textAlignVertical: "top", borderWidth: 1, borderColor: "#334155", marginBottom: 16,
+    flex: 1, backgroundColor: C.inset, borderRadius: 12, padding: 16, color: C.text, fontSize: 16,
+    textAlignVertical: "top", borderWidth: 1, borderColor: C.border, marginBottom: 16,
   },
-  loadBtn: { backgroundColor: "#818cf8", borderRadius: 12, paddingVertical: 15, alignItems: "center" },
-  btnDisabled: { backgroundColor: "#334155" },
-  loadBtnText: { color: "#fff", fontSize: 16, fontWeight: "600" },
+  loadBtn: { backgroundColor: C.primary, borderRadius: 12, paddingVertical: 15, alignItems: "center" },
+  btnDisabled: { backgroundColor: C.borderStrong },
+  loadBtnText: { color: C.primaryText, fontSize: 16, fontWeight: "600" },
   textArea: { flex: 1 },
   textContent: { padding: 20 },
   resetBtn: { marginBottom: 16 },
-  resetText: { color: "#818cf8", fontSize: 14 },
+  resetText: { color: C.primary, fontSize: 14 },
   tokenContainer: { flexDirection: "row", flexWrap: "wrap" },
-  token: { fontSize: 18, color: "#94a3b8", lineHeight: 32 },
-  tokenWord: { color: "#f8fafc" },
+  token: { fontSize: 18, color: C.textMuted, lineHeight: 32 },
+  tokenWord: { color: C.text },
   overlay: { flex: 1, backgroundColor: "rgba(0,0,0,0.5)", justifyContent: "flex-end" },
-  popover: { backgroundColor: "#1e293b", borderTopLeftRadius: 20, borderTopRightRadius: 20, padding: 24, maxHeight: "80%" },
+  popover: { backgroundColor: C.card, borderTopLeftRadius: 20, borderTopRightRadius: 20, padding: 24, maxHeight: "80%", borderWidth: 1, borderColor: C.border },
   popoverHeader: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", marginBottom: 4 },
-  popoverLemma: { fontSize: 26, fontWeight: "700", color: "#f8fafc" },
-  popoverPos: { fontSize: 13, color: "#64748b", marginBottom: 8 },
-  popoverTranslation: { fontSize: 20, fontWeight: "600", color: "#a5b4fc", marginBottom: 8 },
-  popoverDef: { fontSize: 15, color: "#cbd5e1", lineHeight: 22, marginBottom: 12 },
-  popoverExample: { backgroundColor: "#0f172a", borderRadius: 8, padding: 12, marginBottom: 16 },
-  exL1: { fontSize: 14, fontWeight: "600", color: "#e2e8f0", marginBottom: 4 },
-  exEn: { fontSize: 13, color: "#64748b", fontStyle: "italic" },
-  saveBtn: { backgroundColor: "#818cf8", borderRadius: 10, paddingVertical: 14, alignItems: "center" },
-  savedBtn: { backgroundColor: "#166534" },
-  saveBtnText: { color: "#fff", fontSize: 16, fontWeight: "600" },
+  popoverLemma: { fontSize: 26, fontWeight: "700", color: C.text },
+  popoverPos: { fontSize: 13, color: C.textMuted, marginBottom: 8 },
+  popoverTranslation: { fontSize: 20, fontWeight: "600", color: C.primary, marginBottom: 8 },
+  popoverDef: { fontSize: 15, color: C.textSecondary, lineHeight: 22, marginBottom: 12 },
+  popoverExample: { backgroundColor: C.inset, borderRadius: 8, padding: 12, marginBottom: 16 },
+  exL1: { fontSize: 14, fontWeight: "600", color: C.text, marginBottom: 4 },
+  exEn: { fontSize: 13, color: C.textMuted, fontStyle: "italic" },
+  saveBtn: { backgroundColor: C.primary, borderRadius: 10, paddingVertical: 14, alignItems: "center" },
+  savedBtn: { backgroundColor: C.completeTint },
+  saveBtnText: { color: C.primaryText, fontSize: 16, fontWeight: "600" },
+  savedBtnText: { color: C.completeText },
 });

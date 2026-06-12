@@ -3,16 +3,17 @@ import { findLesson, findUnit } from "@/lib/content";
 import { isValidLang } from "@/lib/lang";
 import { LessonPlayer } from "@/components/lesson/LessonPlayer";
 import { Text, View } from "react-native";
+import { C } from "@/lib/theme";
 
 export default function LessonScreen() {
   const { lang: langParam, unit: unitSlug, lesson: lessonSlug } = useLocalSearchParams<{ lang: string; unit: string; lesson: string }>();
   const router = useRouter();
   const lang = isValidLang(langParam) ? langParam : null;
 
-  if (!lang) return <Text style={{ color: "#ef4444", padding: 20 }}>Invalid language</Text>;
+  if (!lang) return <Text style={{ color: C.dangerText, padding: 20 }}>Invalid language</Text>;
 
   const found = findLesson(lang, unitSlug, lessonSlug);
-  if (!found) return <Text style={{ color: "#ef4444", padding: 20 }}>Lesson not found</Text>;
+  if (!found) return <Text style={{ color: C.dangerText, padding: 20 }}>Lesson not found</Text>;
 
   const { unit, lessonIndex } = found;
   const lesson = unit.lessons[lessonIndex];

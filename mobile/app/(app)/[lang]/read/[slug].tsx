@@ -5,6 +5,7 @@ import { findRead } from "@/lib/content";
 import { isValidLang } from "@/lib/lang";
 import { apiMarkReadDone } from "@/lib/api";
 import { SpeakButton } from "@/components/shared/SpeakButton";
+import { C } from "@/lib/theme";
 
 export default function ReadScreen() {
   const { lang: langParam, slug } = useLocalSearchParams<{ lang: string; slug: string }>();
@@ -17,7 +18,7 @@ export default function ReadScreen() {
   const [submitted, setSubmitted] = useState(false);
   const [saving, setSaving] = useState(false);
 
-  if (!lang || !read) return <Text style={{ color: "#ef4444", padding: 20 }}>Read not found</Text>;
+  if (!lang || !read) return <Text style={{ color: C.danger, padding: 20 }}>Read not found</Text>;
 
   const score = answers.filter((a, i) => a === read.comprehension[i].correct).length;
   const pct = Math.round((score / read.comprehension.length) * 100);
@@ -93,7 +94,7 @@ export default function ReadScreen() {
         onPress={handleSubmit}
         disabled={!answers.every((a) => a !== null) || saving}
       >
-        {saving ? <ActivityIndicator color="#fff" /> : <Text style={s.btnText}>Submit</Text>}
+        {saving ? <ActivityIndicator color={C.primaryText} /> : <Text style={s.btnText}>Submit</Text>}
       </TouchableOpacity>
       <View style={{ height: 40 }} />
     </ScrollView>
@@ -101,34 +102,34 @@ export default function ReadScreen() {
 }
 
 const s = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#0f172a" },
+  container: { flex: 1, backgroundColor: C.bg },
   content: { padding: 20 },
-  difficulty: { fontSize: 12, color: "#64748b", fontWeight: "600", marginBottom: 4 },
-  titleL1: { fontSize: 24, fontWeight: "700", color: "#f8fafc", marginBottom: 4 },
-  titleEn: { fontSize: 15, color: "#94a3b8", fontStyle: "italic", marginBottom: 8 },
-  intro: { fontSize: 15, color: "#cbd5e1", marginBottom: 20 },
-  toggleBtn: { backgroundColor: "#1e293b", borderRadius: 8, paddingHorizontal: 14, paddingVertical: 8, alignSelf: "flex-start", marginBottom: 20, borderWidth: 1, borderColor: "#334155" },
-  toggleBtnText: { color: "#818cf8", fontSize: 14, fontWeight: "600" },
+  difficulty: { fontSize: 12, color: C.textMuted, fontWeight: "600", marginBottom: 4 },
+  titleL1: { fontSize: 24, fontWeight: "700", color: C.text, marginBottom: 4 },
+  titleEn: { fontSize: 15, color: C.textMuted, fontStyle: "italic", marginBottom: 8 },
+  intro: { fontSize: 15, color: C.textSecondary, marginBottom: 20 },
+  toggleBtn: { backgroundColor: C.card, borderRadius: 8, paddingHorizontal: 14, paddingVertical: 8, alignSelf: "flex-start", marginBottom: 20, borderWidth: 1, borderColor: C.border },
+  toggleBtnText: { color: C.primary, fontSize: 14, fontWeight: "600" },
   para: { marginBottom: 16 },
   paraRow: { flexDirection: "row", alignItems: "flex-start", justifyContent: "space-between", gap: 8 },
-  paraL1: { fontSize: 16, color: "#f8fafc", lineHeight: 26, flex: 1 },
-  paraEn: { fontSize: 14, color: "#64748b", lineHeight: 22, marginTop: 6, fontStyle: "italic" },
-  vocab: { backgroundColor: "#1e293b", borderRadius: 12, padding: 16, marginBottom: 24 },
-  vocabTitle: { fontSize: 13, fontWeight: "700", color: "#818cf8", marginBottom: 10, textTransform: "uppercase" },
-  vocabItem: { fontSize: 15, color: "#cbd5e1", marginBottom: 6 },
-  vocabL1: { fontWeight: "700", color: "#f8fafc" },
-  sectionTitle: { fontSize: 18, fontWeight: "700", color: "#f8fafc", marginBottom: 16 },
+  paraL1: { fontSize: 16, color: C.text, lineHeight: 26, flex: 1 },
+  paraEn: { fontSize: 14, color: C.textMuted, lineHeight: 22, marginTop: 6, fontStyle: "italic" },
+  vocab: { backgroundColor: C.card, borderRadius: 12, padding: 16, marginBottom: 24, borderWidth: 1, borderColor: C.border },
+  vocabTitle: { fontSize: 13, fontWeight: "700", color: C.primary, marginBottom: 10, textTransform: "uppercase" },
+  vocabItem: { fontSize: 15, color: C.textSecondary, marginBottom: 6 },
+  vocabL1: { fontWeight: "700", color: C.text },
+  sectionTitle: { fontSize: 18, fontWeight: "700", color: C.text, marginBottom: 16 },
   question: { marginBottom: 16 },
-  q: { fontSize: 15, fontWeight: "600", color: "#f8fafc", marginBottom: 8 },
-  option: { backgroundColor: "#1e293b", borderRadius: 10, padding: 14, marginBottom: 6, borderWidth: 1, borderColor: "#334155" },
-  optionSelected: { borderColor: "#818cf8", backgroundColor: "#1e1b4b" },
-  optionText: { fontSize: 14, color: "#e2e8f0" },
-  optionTextSelected: { color: "#a5b4fc", fontWeight: "600" },
-  btn: { backgroundColor: "#818cf8", borderRadius: 12, paddingVertical: 15, alignItems: "center", marginTop: 8 },
-  btnDisabled: { backgroundColor: "#334155" },
-  btnText: { color: "#fff", fontSize: 16, fontWeight: "600" },
+  q: { fontSize: 15, fontWeight: "600", color: C.text, marginBottom: 8 },
+  option: { backgroundColor: C.card, borderRadius: 10, padding: 14, marginBottom: 6, borderWidth: 1, borderColor: C.border },
+  optionSelected: { borderColor: C.selectedBorder, backgroundColor: C.selectedBg },
+  optionText: { fontSize: 14, color: C.text },
+  optionTextSelected: { color: C.accentText, fontWeight: "600" },
+  btn: { backgroundColor: C.primary, borderRadius: 12, paddingVertical: 15, alignItems: "center", marginTop: 8 },
+  btnDisabled: { backgroundColor: C.borderStrong },
+  btnText: { color: C.primaryText, fontSize: 16, fontWeight: "600" },
   result: { flex: 1, alignItems: "center", justifyContent: "center", padding: 32 },
   resultEmoji: { fontSize: 56, marginBottom: 16 },
-  resultTitle: { fontSize: 26, fontWeight: "700", color: "#f8fafc", marginBottom: 12 },
-  resultScore: { fontSize: 28, fontWeight: "700", color: "#818cf8" },
+  resultTitle: { fontSize: 26, fontWeight: "700", color: C.text, marginBottom: 12 },
+  resultScore: { fontSize: 28, fontWeight: "700", color: C.primary },
 });

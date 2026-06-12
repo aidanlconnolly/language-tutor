@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView } from "react-na
 import type { Unit, Lesson, LessonPage } from "@/lib/content/types";
 import type { Lang } from "@/lib/lang";
 import { apiMarkLessonDone } from "@/lib/api";
+import { C } from "@/lib/theme";
 import { IntroPage } from "./pages/IntroPage";
 import { VocabPage } from "./pages/VocabPage";
 import { DialoguePage } from "./pages/DialoguePage";
@@ -110,20 +111,20 @@ function PageRenderer({ page, lang, onNext, saving }: { page: LessonPage; lang: 
 }
 
 const s = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#0f172a" },
-  progressBar: { height: 3, backgroundColor: "#1e293b" },
-  progressFill: { height: 3, backgroundColor: "#818cf8" },
+  container: { flex: 1, backgroundColor: C.bg },
+  progressBar: { height: 3, backgroundColor: C.inset },
+  progressFill: { height: 3, backgroundColor: C.primary },
   header: { flexDirection: "row", alignItems: "center", paddingHorizontal: 16, paddingVertical: 12 },
   backBtn: { width: 36, height: 36, alignItems: "center", justifyContent: "center" },
-  backText: { color: "#94a3b8", fontSize: 18 },
-  lessonTitle: { flex: 1, color: "#f8fafc", fontSize: 15, fontWeight: "600", marginHorizontal: 8 },
-  pageCounter: { color: "#64748b", fontSize: 13 },
+  backText: { color: C.textMuted, fontSize: 18 },
+  lessonTitle: { flex: 1, color: C.text, fontSize: 15, fontWeight: "600", marginHorizontal: 8 },
+  pageCounter: { color: C.textMuted, fontSize: 13 },
   completionCard: { flex: 1, alignItems: "center", justifyContent: "center", padding: 32 },
   completionEmoji: { fontSize: 56, marginBottom: 16 },
-  completionTitle: { fontSize: 26, fontWeight: "700", color: "#f8fafc", marginBottom: 8 },
-  completionSub: { fontSize: 15, color: "#94a3b8", marginBottom: 32 },
-  doneBtn: { backgroundColor: "#818cf8", borderRadius: 12, paddingHorizontal: 32, paddingVertical: 16 },
-  doneBtnText: { color: "#fff", fontSize: 16, fontWeight: "600" },
+  completionTitle: { fontSize: 26, fontWeight: "700", color: C.text, marginBottom: 8 },
+  completionSub: { fontSize: 15, color: C.textMuted, marginBottom: 32 },
+  doneBtn: { backgroundColor: C.primary, borderRadius: 12, paddingHorizontal: 32, paddingVertical: 16 },
+  doneBtnText: { color: C.primaryText, fontSize: 16, fontWeight: "600" },
   fallback: { flex: 1, alignItems: "center", justifyContent: "center", gap: 20 },
-  fallbackText: { color: "#94a3b8", fontSize: 16 },
+  fallbackText: { color: C.textMuted, fontSize: 16 },
 });

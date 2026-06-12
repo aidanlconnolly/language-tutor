@@ -2,6 +2,7 @@ import { ScrollView, View, Text, TouchableOpacity, StyleSheet } from "react-nati
 import type { Pronounce } from "@/lib/content/types";
 import type { Lang } from "@/lib/lang";
 import { SpeakButton } from "@/components/shared/SpeakButton";
+import { C } from "@/lib/theme";
 
 export function PronouncePage({ page, lang, onNext }: { page: Pronounce; lang: Lang; onNext: () => void }) {
   return (
@@ -33,15 +34,15 @@ export function PronouncePage({ page, lang, onNext }: { page: Pronounce; lang: L
 const s = StyleSheet.create({
   container: { flex: 1 },
   content: { padding: 20, paddingBottom: 40 },
-  heading: { fontSize: 20, fontWeight: "700", color: "#f8fafc", marginBottom: 8 },
-  intro: { fontSize: 15, color: "#94a3b8", marginBottom: 16 },
-  card: { backgroundColor: "#1e293b", borderRadius: 12, padding: 16, marginBottom: 10 },
+  heading: { fontSize: 20, fontWeight: "700", color: C.text, marginBottom: 8 },
+  intro: { fontSize: 15, color: C.textMuted, marginBottom: 16 },
+  card: { backgroundColor: C.inset, borderRadius: 12, padding: 16, marginBottom: 10 },
   cardTop: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", marginBottom: 6 },
-  l1: { fontSize: 22, fontWeight: "700", color: "#f8fafc", flex: 1 },
-  en: { fontSize: 14, color: "#94a3b8", fontStyle: "italic" },
-  tip: { backgroundColor: "#0f172a", borderRadius: 8, padding: 10, marginTop: 8 },
-  tipText: { fontSize: 13, color: "#94a3b8" },
-  hint: { fontSize: 14, color: "#64748b", textAlign: "center", marginBottom: 16, fontStyle: "italic" },
-  btn: { backgroundColor: "#818cf8", borderRadius: 12, paddingVertical: 15, alignItems: "center" },
-  btnText: { color: "#fff", fontSize: 16, fontWeight: "600" },
+  l1: { fontSize: 22, fontWeight: "700", color: C.text, flex: 1 },
+  en: { fontSize: 14, color: C.textMuted, fontStyle: "italic" },
+  tip: { backgroundColor: C.card, borderRadius: 8, padding: 10, marginTop: 8 },
+  tipText: { fontSize: 13, color: C.textMuted },
+  hint: { fontSize: 14, color: C.textMuted, textAlign: "center", marginBottom: 16, fontStyle: "italic" },
+  btn: { backgroundColor: C.primary, borderRadius: 12, paddingVertical: 15, alignItems: "center" },
+  btnText: { color: C.primaryText, fontSize: 16, fontWeight: "600" },
 });

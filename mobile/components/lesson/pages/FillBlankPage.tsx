@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ScrollView, View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
 import type { FillBlank } from "@/lib/content/types";
+import { C } from "@/lib/theme";
 
 export function FillBlankPage({ page, onNext }: { page: FillBlank; onNext: () => void }) {
   const [answers, setAnswers] = useState<string[]>(page.items.map(() => ""));
@@ -41,7 +42,7 @@ export function FillBlankPage({ page, onNext }: { page: FillBlank; onNext: () =>
                   editable={!submitted}
                   autoCapitalize="none"
                   autoCorrect={false}
-                  placeholderTextColor="#475569"
+                  placeholderTextColor={C.textFaint}
                   placeholder="..."
                 />
               )}
@@ -68,26 +69,26 @@ export function FillBlankPage({ page, onNext }: { page: FillBlank; onNext: () =>
 const s = StyleSheet.create({
   container: { flex: 1 },
   content: { padding: 20, paddingBottom: 40 },
-  heading: { fontSize: 20, fontWeight: "700", color: "#f8fafc", marginBottom: 8 },
-  intro: { fontSize: 15, color: "#94a3b8", marginBottom: 16 },
-  item: { backgroundColor: "#1e293b", borderRadius: 12, padding: 14, marginBottom: 12 },
-  en: { fontSize: 14, color: "#94a3b8", marginBottom: 8, fontStyle: "italic" },
+  heading: { fontSize: 20, fontWeight: "700", color: C.text, marginBottom: 8 },
+  intro: { fontSize: 15, color: C.textMuted, marginBottom: 16 },
+  item: { backgroundColor: C.card, borderRadius: 12, padding: 14, marginBottom: 12 },
+  en: { fontSize: 14, color: C.textMuted, marginBottom: 8, fontStyle: "italic" },
   fillRow: { flexDirection: "row", flexWrap: "wrap", alignItems: "center", gap: 4 },
-  sentence: { fontSize: 16, color: "#f8fafc" },
-  input: { borderBottomWidth: 2, borderBottomColor: "#818cf8", paddingHorizontal: 8, paddingVertical: 4, color: "#f8fafc", fontSize: 16, minWidth: 80 },
-  inputCorrect: { borderBottomColor: "#22c55e" },
-  inputWrong: { borderBottomColor: "#ef4444" },
+  sentence: { fontSize: 16, color: C.text },
+  input: { borderBottomWidth: 2, borderBottomColor: C.primary, paddingHorizontal: 8, paddingVertical: 4, color: C.text, fontSize: 16, minWidth: 80 },
+  inputCorrect: { borderBottomColor: C.correctBorder },
+  inputWrong: { borderBottomColor: C.wrongBorder },
   options: { flexDirection: "row", flexWrap: "wrap", gap: 6, marginTop: 6, width: "100%" },
-  option: { backgroundColor: "#0f172a", borderRadius: 8, paddingHorizontal: 12, paddingVertical: 8, borderWidth: 1, borderColor: "#334155" },
-  optionSelected: { borderColor: "#818cf8", backgroundColor: "#1e1b4b" },
-  optionCorrect: { backgroundColor: "#166534", borderColor: "#22c55e" },
-  optionWrong: { backgroundColor: "#7f1d1d", borderColor: "#ef4444" },
-  optionText: { color: "#e2e8f0", fontSize: 14 },
+  option: { backgroundColor: C.inset, borderRadius: 8, paddingHorizontal: 12, paddingVertical: 8, borderWidth: 1, borderColor: C.border },
+  optionSelected: { borderColor: C.selectedBorder, backgroundColor: C.selectedBg },
+  optionCorrect: { backgroundColor: C.correctBg, borderColor: C.correctBorder },
+  optionWrong: { backgroundColor: C.wrongBg, borderColor: C.wrongBorder },
+  optionText: { color: C.text, fontSize: 14 },
   reveal: { fontSize: 13, fontWeight: "600", marginTop: 8 },
-  correctText: { color: "#22c55e" },
-  wrongText: { color: "#ef4444" },
-  score: { fontSize: 18, fontWeight: "700", color: "#f8fafc", textAlign: "center", marginBottom: 12 },
-  btn: { backgroundColor: "#818cf8", borderRadius: 12, paddingVertical: 15, alignItems: "center", marginTop: 8 },
-  btnDisabled: { backgroundColor: "#334155" },
-  btnText: { color: "#fff", fontSize: 16, fontWeight: "600" },
+  correctText: { color: C.correctText },
+  wrongText: { color: C.wrongText },
+  score: { fontSize: 18, fontWeight: "700", color: C.text, textAlign: "center", marginBottom: 12 },
+  btn: { backgroundColor: C.primary, borderRadius: 12, paddingVertical: 15, alignItems: "center", marginTop: 8 },
+  btnDisabled: { backgroundColor: C.border },
+  btnText: { color: C.primaryText, fontSize: 16, fontWeight: "600" },
 });

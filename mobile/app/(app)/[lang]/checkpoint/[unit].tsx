@@ -4,6 +4,7 @@ import { useLocalSearchParams, useRouter } from "expo-router";
 import { findUnit } from "@/lib/content";
 import { isValidLang } from "@/lib/lang";
 import { apiRecordCheckpoint } from "@/lib/api";
+import { C } from "@/lib/theme";
 
 export default function CheckpointScreen() {
   const { lang: langParam, unit: unitSlug } = useLocalSearchParams<{ lang: string; unit: string }>();
@@ -16,7 +17,7 @@ export default function CheckpointScreen() {
   const [passed, setPassed] = useState<boolean | null>(null);
   const [saving, setSaving] = useState(false);
 
-  if (!lang || !unit) return <Text style={{ color: "#ef4444", padding: 20 }}>Unit not found</Text>;
+  if (!lang || !unit) return <Text style={{ color: C.dangerText, padding: 20 }}>Unit not found</Text>;
 
   const allAnswered = answers.every((a) => a !== null);
   const score = answers.filter((a, i) => a === unit.checkpoint.questions[i].correct).length;
@@ -66,7 +67,7 @@ export default function CheckpointScreen() {
       ))}
 
       <TouchableOpacity style={[s.btn, (!allAnswered || saving) && s.btnDisabled]} onPress={handleSubmit} disabled={!allAnswered || saving}>
-        {saving ? <ActivityIndicator color="#fff" /> : <Text style={s.btnText}>Submit checkpoint</Text>}
+        {saving ? <ActivityIndicator color={C.primaryText} /> : <Text style={s.btnText}>Submit checkpoint</Text>}
       </TouchableOpacity>
       <View style={{ height: 40 }} />
     </ScrollView>
@@ -74,23 +75,23 @@ export default function CheckpointScreen() {
 }
 
 const s = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#0f172a" },
+  container: { flex: 1, backgroundColor: C.bg },
   content: { padding: 20 },
-  title: { fontSize: 22, fontWeight: "700", color: "#f8fafc", marginBottom: 4 },
-  subtitle: { fontSize: 14, color: "#64748b", marginBottom: 24 },
+  title: { fontSize: 22, fontWeight: "700", color: C.text, marginBottom: 4 },
+  subtitle: { fontSize: 14, color: C.textMuted, marginBottom: 24 },
   question: { marginBottom: 20 },
-  q: { fontSize: 16, fontWeight: "600", color: "#f8fafc", marginBottom: 4 },
-  qL1: { fontSize: 14, color: "#94a3b8", marginBottom: 8, fontStyle: "italic" },
-  option: { backgroundColor: "#1e293b", borderRadius: 10, padding: 14, marginBottom: 8, borderWidth: 1, borderColor: "#334155" },
-  optionSelected: { borderColor: "#818cf8", backgroundColor: "#1e1b4b" },
-  optionText: { fontSize: 15, color: "#e2e8f0" },
-  optionTextSelected: { color: "#a5b4fc", fontWeight: "600" },
-  btn: { backgroundColor: "#818cf8", borderRadius: 12, paddingVertical: 15, alignItems: "center", marginTop: 8 },
-  btnDisabled: { backgroundColor: "#334155" },
-  btnText: { color: "#fff", fontSize: 16, fontWeight: "600" },
+  q: { fontSize: 16, fontWeight: "600", color: C.text, marginBottom: 4 },
+  qL1: { fontSize: 14, color: C.textMuted, marginBottom: 8, fontStyle: "italic" },
+  option: { backgroundColor: C.inset, borderRadius: 10, padding: 14, marginBottom: 8, borderWidth: 1, borderColor: C.border },
+  optionSelected: { borderColor: C.selectedBorder, backgroundColor: C.selectedBg },
+  optionText: { fontSize: 15, color: C.text },
+  optionTextSelected: { color: C.accentText, fontWeight: "600" },
+  btn: { backgroundColor: C.primary, borderRadius: 12, paddingVertical: 15, alignItems: "center", marginTop: 8 },
+  btnDisabled: { backgroundColor: C.borderStrong },
+  btnText: { color: C.primaryText, fontSize: 16, fontWeight: "600" },
   result: { flex: 1, alignItems: "center", justifyContent: "center", padding: 32 },
   resultEmoji: { fontSize: 56, marginBottom: 16 },
-  resultTitle: { fontSize: 26, fontWeight: "700", color: "#f8fafc", marginBottom: 12 },
-  resultScore: { fontSize: 36, fontWeight: "700", color: "#818cf8" },
-  resultSub: { fontSize: 14, color: "#64748b", marginTop: 4 },
+  resultTitle: { fontSize: 26, fontWeight: "700", color: C.text, marginBottom: 12 },
+  resultScore: { fontSize: 36, fontWeight: "700", color: C.primary },
+  resultSub: { fontSize: 14, color: C.textMuted, marginTop: 4 },
 });

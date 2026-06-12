@@ -4,6 +4,7 @@ import type { Translate } from "@/lib/content/types";
 import type { Lang } from "@/lib/lang";
 import { apiGrade } from "@/lib/api";
 import { SpeakButton } from "@/components/shared/SpeakButton";
+import { C } from "@/lib/theme";
 
 export function TranslatePage({ page, lang, onNext }: { page: Translate; lang: Lang; onNext: () => void }) {
   const [answer, setAnswer] = useState("");
@@ -26,7 +27,7 @@ export function TranslatePage({ page, lang, onNext }: { page: Translate; lang: L
     }
   }
 
-  const scoreColor = result?.score === 2 ? "#22c55e" : result?.score === 1 ? "#f59e0b" : "#ef4444";
+  const scoreColor = result?.score === 2 ? C.completeText : result?.score === 1 ? C.accentText : C.dangerText;
 
   return (
     <ScrollView style={s.container} contentContainerStyle={s.content}>
@@ -44,7 +45,7 @@ export function TranslatePage({ page, lang, onNext }: { page: Translate; lang: L
       <TextInput
         style={s.input}
         placeholder="Type your translation..."
-        placeholderTextColor="#475569"
+        placeholderTextColor={C.textFaint}
         value={answer}
         onChangeText={setAnswer}
         multiline
@@ -55,7 +56,7 @@ export function TranslatePage({ page, lang, onNext }: { page: Translate; lang: L
 
       {!result ? (
         <TouchableOpacity style={[s.btn, (!answer.trim() || loading) && s.btnDisabled]} onPress={handleGrade} disabled={!answer.trim() || loading}>
-          {loading ? <ActivityIndicator color="#fff" /> : <Text style={s.btnText}>Grade →</Text>}
+          {loading ? <ActivityIndicator color={C.primaryText} /> : <Text style={s.btnText}>Grade →</Text>}
         </TouchableOpacity>
       ) : (
         <View>
@@ -79,22 +80,22 @@ export function TranslatePage({ page, lang, onNext }: { page: Translate; lang: L
 const s = StyleSheet.create({
   container: { flex: 1 },
   content: { padding: 20, paddingBottom: 40 },
-  heading: { fontSize: 20, fontWeight: "700", color: "#f8fafc", marginBottom: 4 },
-  dirLabel: { fontSize: 13, color: "#64748b", marginBottom: 16, textTransform: "uppercase", letterSpacing: 0.5, fontWeight: "600" },
-  promptBox: { backgroundColor: "#1e293b", borderRadius: 12, padding: 16, marginBottom: 16 },
+  heading: { fontSize: 20, fontWeight: "700", color: C.text, marginBottom: 4 },
+  dirLabel: { fontSize: 13, color: C.textMuted, marginBottom: 16, textTransform: "uppercase", letterSpacing: 0.5, fontWeight: "600" },
+  promptBox: { backgroundColor: C.inset, borderRadius: 12, padding: 16, marginBottom: 16 },
   promptRow: { flexDirection: "row", alignItems: "center", justifyContent: "space-between" },
-  prompt: { fontSize: 20, fontWeight: "700", color: "#f8fafc", flex: 1 },
-  hint: { fontSize: 13, color: "#64748b", marginTop: 8, fontStyle: "italic" },
+  prompt: { fontSize: 20, fontWeight: "700", color: C.text, flex: 1 },
+  hint: { fontSize: 13, color: C.textMuted, marginTop: 8, fontStyle: "italic" },
   input: {
-    backgroundColor: "#1e293b", borderRadius: 12, padding: 16, color: "#f8fafc", fontSize: 16,
-    minHeight: 100, textAlignVertical: "top", borderWidth: 1, borderColor: "#334155", marginBottom: 16,
+    backgroundColor: C.inset, borderRadius: 12, padding: 16, color: C.text, fontSize: 16,
+    minHeight: 100, textAlignVertical: "top", borderWidth: 1, borderColor: C.border, marginBottom: 16,
   },
-  btn: { backgroundColor: "#818cf8", borderRadius: 12, paddingVertical: 15, alignItems: "center" },
-  btnDisabled: { backgroundColor: "#334155" },
-  btnText: { color: "#fff", fontSize: 16, fontWeight: "600" },
+  btn: { backgroundColor: C.primary, borderRadius: 12, paddingVertical: 15, alignItems: "center" },
+  btnDisabled: { backgroundColor: C.border },
+  btnText: { color: C.primaryText, fontSize: 16, fontWeight: "600" },
   resultBox: { borderRadius: 12, borderWidth: 1, padding: 16, marginBottom: 16 },
   scoreLabel: { fontSize: 18, fontWeight: "700", marginBottom: 8 },
-  feedback: { fontSize: 15, color: "#cbd5e1", lineHeight: 22, marginBottom: 8 },
-  corrected: { fontSize: 14, color: "#f59e0b", fontStyle: "italic", marginBottom: 8 },
-  reference: { fontSize: 13, color: "#64748b", fontStyle: "italic" },
+  feedback: { fontSize: 15, color: C.textSecondary, lineHeight: 22, marginBottom: 8 },
+  corrected: { fontSize: 14, color: C.accentText, fontStyle: "italic", marginBottom: 8 },
+  reference: { fontSize: 13, color: C.textMuted, fontStyle: "italic" },
 });

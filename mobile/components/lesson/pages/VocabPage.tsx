@@ -3,6 +3,7 @@ import { ScrollView, View, Text, TouchableOpacity, StyleSheet } from "react-nati
 import type { Vocab } from "@/lib/content/types";
 import type { Lang } from "@/lib/lang";
 import { SpeakButton } from "@/components/shared/SpeakButton";
+import { C } from "@/lib/theme";
 
 export function VocabPage({ page, lang, onNext }: { page: Vocab; lang: Lang; onNext: () => void }) {
   const [flipped, setFlipped] = useState<Set<number>>(new Set());
@@ -53,16 +54,16 @@ export function VocabPage({ page, lang, onNext }: { page: Vocab; lang: Lang; onN
 const s = StyleSheet.create({
   container: { flex: 1 },
   content: { padding: 20, paddingBottom: 40 },
-  heading: { fontSize: 20, fontWeight: "700", color: "#f8fafc", marginBottom: 8 },
-  intro: { fontSize: 15, color: "#94a3b8", marginBottom: 16 },
-  card: { backgroundColor: "#1e293b", borderRadius: 12, padding: 20, marginBottom: 10, borderWidth: 1, borderColor: "#334155" },
-  cardFlipped: { borderColor: "#818cf8" },
+  heading: { fontSize: 20, fontWeight: "700", color: C.text, marginBottom: 8 },
+  intro: { fontSize: 15, color: C.textMuted, marginBottom: 16 },
+  card: { backgroundColor: C.card, borderRadius: 12, padding: 20, marginBottom: 10, borderWidth: 1, borderColor: C.border },
+  cardFlipped: { borderColor: C.primary },
   cardFrontRow: { flexDirection: "row", alignItems: "center", justifyContent: "space-between" },
-  cardL1: { fontSize: 22, fontWeight: "700", color: "#f8fafc", flex: 1 },
-  cardFront: { fontSize: 18, color: "#a5b4fc", fontWeight: "600" },
-  note: { fontSize: 13, color: "#64748b", marginTop: 4, fontStyle: "italic" },
-  cardHint: { fontSize: 11, color: "#475569", marginTop: 8 },
-  btn: { backgroundColor: "#818cf8", borderRadius: 12, paddingVertical: 15, alignItems: "center", marginTop: 16 },
-  btnDisabled: { backgroundColor: "#334155" },
-  btnText: { color: "#fff", fontSize: 16, fontWeight: "600" },
+  cardL1: { fontSize: 22, fontWeight: "700", color: C.text, flex: 1 },
+  cardFront: { fontSize: 18, color: C.primary, fontWeight: "600" },
+  note: { fontSize: 13, color: C.textMuted, marginTop: 4, fontStyle: "italic" },
+  cardHint: { fontSize: 11, color: C.textFaint, marginTop: 8 },
+  btn: { backgroundColor: C.primary, borderRadius: 12, paddingVertical: 15, alignItems: "center", marginTop: 16 },
+  btnDisabled: { backgroundColor: C.border },
+  btnText: { color: C.primaryText, fontSize: 16, fontWeight: "600" },
 });

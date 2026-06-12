@@ -4,6 +4,7 @@ import { useRouter } from "expo-router";
 import { useAuth } from "../_layout";
 import { getToken, clearAuth } from "@/lib/auth";
 import { apiDeleteAccount } from "@/lib/api";
+import { C } from "@/lib/theme";
 
 const API_BASE = process.env.EXPO_PUBLIC_API_BASE ?? "https://language-tutor-silk.vercel.app";
 
@@ -73,12 +74,12 @@ export default function AccountScreen() {
       <Text style={s.email}>{user?.email}</Text>
 
       <Text style={s.sectionTitle}>Change password</Text>
-      <TextInput style={s.input} placeholder="Current password" value={current} onChangeText={setCurrent} secureTextEntry placeholderTextColor="#94a3b8" />
-      <TextInput style={s.input} placeholder="New password" value={next} onChangeText={setNext} secureTextEntry placeholderTextColor="#94a3b8" />
-      <TextInput style={s.input} placeholder="Confirm new password" value={confirm} onChangeText={setConfirm} secureTextEntry placeholderTextColor="#94a3b8" />
+      <TextInput style={s.input} placeholder="Current password" value={current} onChangeText={setCurrent} secureTextEntry placeholderTextColor={C.textMuted} />
+      <TextInput style={s.input} placeholder="New password" value={next} onChangeText={setNext} secureTextEntry placeholderTextColor={C.textMuted} />
+      <TextInput style={s.input} placeholder="Confirm new password" value={confirm} onChangeText={setConfirm} secureTextEntry placeholderTextColor={C.textMuted} />
 
       <TouchableOpacity style={s.btn} onPress={handleChangePassword} disabled={loading}>
-        {loading ? <ActivityIndicator color="#fff" /> : <Text style={s.btnText}>Update password</Text>}
+        {loading ? <ActivityIndicator color={C.primaryText} /> : <Text style={s.btnText}>Update password</Text>}
       </TouchableOpacity>
 
       <TouchableOpacity style={[s.btn, s.logoutBtn]} onPress={handleLogout}>
@@ -91,7 +92,7 @@ export default function AccountScreen() {
           Permanently delete your account and all progress. This cannot be undone.
         </Text>
         <TouchableOpacity style={s.deleteBtn} onPress={confirmDelete} disabled={deleting}>
-          {deleting ? <ActivityIndicator color="#ef4444" /> : <Text style={s.deleteText}>Delete account</Text>}
+          {deleting ? <ActivityIndicator color={C.danger} /> : <Text style={s.deleteText}>Delete account</Text>}
         </TouchableOpacity>
       </View>
     </ScrollView>
@@ -99,22 +100,22 @@ export default function AccountScreen() {
 }
 
 const s = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#0f172a" },
+  container: { flex: 1, backgroundColor: C.bg },
   content: { padding: 24, paddingTop: 60 },
-  title: { fontSize: 26, fontWeight: "700", color: "#f8fafc", marginBottom: 4 },
-  email: { fontSize: 14, color: "#94a3b8", marginBottom: 32 },
-  sectionTitle: { fontSize: 16, fontWeight: "600", color: "#e2e8f0", marginBottom: 16 },
+  title: { fontSize: 26, fontWeight: "700", color: C.text, marginBottom: 4 },
+  email: { fontSize: 14, color: C.textMuted, marginBottom: 32 },
+  sectionTitle: { fontSize: 16, fontWeight: "600", color: C.text, marginBottom: 16 },
   input: {
-    backgroundColor: "#1e293b", borderRadius: 10, paddingHorizontal: 16, paddingVertical: 14,
-    color: "#f8fafc", fontSize: 16, marginBottom: 12, borderWidth: 1, borderColor: "#334155",
+    backgroundColor: C.inset, borderRadius: 10, paddingHorizontal: 16, paddingVertical: 14,
+    color: C.text, fontSize: 16, marginBottom: 12, borderWidth: 1, borderColor: C.border,
   },
-  btn: { backgroundColor: "#4f46e5", borderRadius: 10, paddingVertical: 15, alignItems: "center", marginTop: 8 },
-  btnText: { color: "#fff", fontSize: 16, fontWeight: "600" },
-  logoutBtn: { backgroundColor: "transparent", borderWidth: 1, borderColor: "#475569", marginTop: 40 },
-  logoutText: { color: "#cbd5e1", fontSize: 16, fontWeight: "600" },
-  dangerZone: { marginTop: 48, borderTopWidth: 1, borderTopColor: "#334155", paddingTop: 24 },
-  dangerTitle: { fontSize: 14, fontWeight: "700", color: "#ef4444", marginBottom: 6, textTransform: "uppercase", letterSpacing: 0.5 },
-  dangerHint: { fontSize: 13, color: "#94a3b8", lineHeight: 19, marginBottom: 16 },
-  deleteBtn: { backgroundColor: "#450a0a", borderRadius: 10, paddingVertical: 15, alignItems: "center", borderWidth: 1, borderColor: "#7f1d1d" },
-  deleteText: { color: "#ef4444", fontSize: 16, fontWeight: "700" },
+  btn: { backgroundColor: C.primary, borderRadius: 10, paddingVertical: 15, alignItems: "center", marginTop: 8 },
+  btnText: { color: C.primaryText, fontSize: 16, fontWeight: "600" },
+  logoutBtn: { backgroundColor: "transparent", borderWidth: 1, borderColor: C.borderStrong, marginTop: 40 },
+  logoutText: { color: C.textSecondary, fontSize: 16, fontWeight: "600" },
+  dangerZone: { marginTop: 48, borderTopWidth: 1, borderTopColor: C.border, paddingTop: 24 },
+  dangerTitle: { fontSize: 14, fontWeight: "700", color: C.dangerText, marginBottom: 6, textTransform: "uppercase", letterSpacing: 0.5 },
+  dangerHint: { fontSize: 13, color: C.textMuted, lineHeight: 19, marginBottom: 16 },
+  deleteBtn: { backgroundColor: C.dangerTint, borderRadius: 10, paddingVertical: 15, alignItems: "center", borderWidth: 1, borderColor: C.dangerBorder },
+  deleteText: { color: C.dangerText, fontSize: 16, fontWeight: "700" },
 });

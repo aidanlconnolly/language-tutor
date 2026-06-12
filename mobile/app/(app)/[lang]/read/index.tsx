@@ -4,6 +4,7 @@ import { useLocalSearchParams, useRouter } from "expo-router";
 import { apiGetProgress } from "@/lib/api";
 import { pickTodaysRead } from "@/lib/content";
 import { isValidLang } from "@/lib/lang";
+import { C } from "@/lib/theme";
 
 export default function ReadIndexScreen() {
   const { lang: langParam } = useLocalSearchParams<{ lang: string }>();
@@ -20,8 +21,8 @@ export default function ReadIndexScreen() {
   }, [lang]);
 
   return (
-    <View style={{ flex: 1, backgroundColor: "#0f172a", alignItems: "center", justifyContent: "center" }}>
-      <ActivityIndicator color="#818cf8" size="large" />
+    <View style={{ flex: 1, backgroundColor: C.bg, alignItems: "center", justifyContent: "center" }}>
+      <ActivityIndicator color={C.primary} size="large" />
     </View>
   );
 }
