@@ -1,0 +1,5 @@
+# Keep the folder structure + tooling, ignore the screenshot binaries
+raw/*
+formatted/*
+!raw/.gitkeep
+!formatted/.gitkeep
