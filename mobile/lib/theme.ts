@@ -59,3 +59,26 @@ export const C = {
 } as const;
 
 export type Palette = typeof C;
+
+/**
+ * "Sunlit" palette — warm cream surfaces used by the entry (login/register)
+ * and home screens only. Inner screens keep the plain light palette above.
+ */
+export const SUN = {
+  bg: "#faf6ef",          // warm cream page background
+  card: "#ffffff",
+  cardBorder: "#ece4d6",  // warm sand border
+  inputFill: "#f5f1e8",   // filled input, no hard border
+  ink: "#101828",         // near-navy headline text (matches app icon bg)
+  sub: "#8a7f6e",         // warm muted text
+} as const;
+
+/** Per-language tinted card colors for the home screen. */
+export const LANG_TINT: Record<
+  "italian" | "french" | "spanish",
+  { bg: string; border: string; text: string; bar: string; sub: string }
+> = {
+  italian: { bg: "#eaf6e7", border: "#bcdcb4", text: "#27500a", bar: "#639922", sub: "#3b6d11" },
+  french:  { bg: "#e8f0fb", border: "#b9d2f2", text: "#0c447c", bar: "#378add", sub: "#185fa5" },
+  spanish: { bg: "#fdf3de", border: "#f3d9a0", text: "#633806", bar: "#ef9f27", sub: "#854f0b" },
+};

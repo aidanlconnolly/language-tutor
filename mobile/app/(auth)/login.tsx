@@ -6,7 +6,7 @@ import {
 import { Link } from "expo-router";
 import { apiLogin } from "@/lib/api";
 import { saveAuth } from "@/lib/auth";
-import { C } from "@/lib/theme";
+import { C, SUN } from "@/lib/theme";
 import { useAuth } from "../_layout";
 
 export default function LoginScreen() {
@@ -31,10 +31,16 @@ export default function LoginScreen() {
 
   return (
     <KeyboardAvoidingView style={s.container} behavior={Platform.OS === "ios" ? "padding" : undefined}>
-      <View style={[s.card, s.shadow]}>
+      <View style={s.logoWrap}>
+        <View style={s.logoBubble}>
+          <Text style={s.logoA}>A</Text>
+          <View style={s.logoTail} />
+        </View>
         <Text style={s.title}>Allora</Text>
-        <Text style={s.subtitle}>Sign in to continue</Text>
+        <Text style={s.tagline}>Ciao · Bonjour · Hola</Text>
+      </View>
 
+      <View style={[s.card, s.shadow]}>
         <TextInput
           style={s.input}
           placeholder="Email"
@@ -42,7 +48,7 @@ export default function LoginScreen() {
           onChangeText={setEmail}
           autoCapitalize="none"
           keyboardType="email-address"
-          placeholderTextColor={C.textFaint}
+          placeholderTextColor={SUN.sub}
         />
         <TextInput
           style={s.input}
@@ -50,35 +56,47 @@ export default function LoginScreen() {
           value={password}
           onChangeText={setPassword}
           secureTextEntry
-          placeholderTextColor={C.textFaint}
+          placeholderTextColor={SUN.sub}
         />
 
         <TouchableOpacity style={s.btn} onPress={handleLogin} disabled={loading}>
           {loading ? <ActivityIndicator color={C.primaryText} /> : <Text style={s.btnText}>Sign in</Text>}
         </TouchableOpacity>
-
-        <Link href="/(auth)/register" style={s.link}>
-          No account? Register
-        </Link>
       </View>
+
+      <Link href="/(auth)/register" style={s.link}>
+        No account? Register
+      </Link>
     </KeyboardAvoidingView>
   );
 }
 
 const s = StyleSheet.create({
-  container: { flex: 1, backgroundColor: C.bg, justifyContent: "center", padding: 24 },
-  shadow: { shadowColor: "#000", shadowOpacity: 0.06, shadowRadius: 12, shadowOffset: { width: 0, height: 4 }, elevation: 3 },
-  card: { backgroundColor: C.card, borderRadius: 16, padding: 28, borderWidth: 1, borderColor: C.border },
-  title: { fontSize: 28, fontWeight: "700", color: C.text, textAlign: "center", marginBottom: 4 },
-  subtitle: { fontSize: 15, color: C.textMuted, textAlign: "center", marginBottom: 28 },
+  container: { flex: 1, backgroundColor: SUN.bg, justifyContent: "center", padding: 24 },
+  logoWrap: { alignItems: "center", marginBottom: 28 },
+  logoBubble: {
+    width: 68, height: 60, borderRadius: 20, backgroundColor: SUN.ink,
+    alignItems: "center", justifyContent: "center", marginBottom: 14,
+  },
+  logoA: { color: "#ffffff", fontSize: 32, fontWeight: "700" },
+  logoTail: {
+    position: "absolute", bottom: -8, left: 16,
+    width: 0, height: 0,
+    borderLeftWidth: 7, borderRightWidth: 7, borderTopWidth: 10,
+    borderLeftColor: "transparent", borderRightColor: "transparent", borderTopColor: SUN.ink,
+  },
+  title: { fontSize: 32, fontWeight: "700", color: SUN.ink },
+  tagline: { fontSize: 15, color: SUN.sub, marginTop: 4 },
+  shadow: { shadowColor: "#000", shadowOpacity: 0.05, shadowRadius: 14, shadowOffset: { width: 0, height: 5 }, elevation: 3 },
+  card: { backgroundColor: SUN.card, borderRadius: 22, padding: 22, borderWidth: 1, borderColor: SUN.cardBorder },
   input: {
-    backgroundColor: C.white, borderRadius: 10, paddingHorizontal: 16, paddingVertical: 14,
-    color: C.text, fontSize: 16, marginBottom: 12, borderWidth: 1, borderColor: C.borderStrong,
+    backgroundColor: SUN.inputFill, borderRadius: 14, paddingHorizontal: 18, paddingVertical: 15,
+    color: SUN.ink, fontSize: 16, marginBottom: 12,
   },
   btn: {
-    backgroundColor: C.primary, borderRadius: 10, paddingVertical: 15,
-    alignItems: "center", marginTop: 8,
+    backgroundColor: C.primary, borderRadius: 999, paddingVertical: 16,
+    alignItems: "center", marginTop: 6,
   },
   btnText: { color: C.primaryText, fontSize: 16, fontWeight: "600" },
-  link: { color: C.primary, textAlign: "center", marginTop: 20, fontSize: 15 },
+  link: { color: C.primary, textAlign: "center", marginTop: 24, fontSize: 15 },
 });
