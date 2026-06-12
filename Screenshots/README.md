@@ -9,8 +9,9 @@ iPhone screenshots are required.
   Store Connect, numbered in display order:
   1. `01-languages.png` — home / language picker (Italian · French · Spanish)
   2. `02-roadmap.png` — Italian home: streak, today's read, roadmap
-  3. `03-lesson.png` — a lesson page (the `c`/`g` pronunciation tip)
-  4. `04-daily-read.png` — Daily Read with translations
+  3. `03-lesson.png` — a grammar lesson (the `c`/`g` pronunciation tip)
+  4. `04-listen.png` — a listening lesson (tap-to-reveal vocab + audio)
+  5. `05-daily-read.png` — Daily Read with translations
 - **`originals/`** — the raw phone screenshots from build 13.
   (`IMG_4860` is an older build-11 shot — kept for reference, not used.)
 - **`format-screenshots.sh`** — re-runs the formatter on `originals/`.
@@ -18,8 +19,8 @@ iPhone screenshots are required.
 ## Upload to App Store Connect
 
 App Store Connect → **Allora** → (your version) → **Previews and Screenshots** →
-**iPhone 6.9" Display** → drag in the four `app-store-ready/` files in order.
-You need 3–10 screenshots; you have 4.
+**iPhone 6.9" Display** → drag in the five `app-store-ready/` files in order.
+You need 3–10 screenshots; you have 5.
 
 ## Re-formatting (e.g. after retaking on a newer build)
 
