@@ -101,7 +101,7 @@ export default function HomeScreen() {
         })
       )}
 
-      <Text style={s.footer}>Una lingua al giorno…</Text>
+      <Text style={s.footer}>A language a day…</Text>
     </ScrollView>
   );
 }

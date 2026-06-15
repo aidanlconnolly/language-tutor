@@ -11,9 +11,6 @@ export function TranslatePage({ page, lang, onNext }: { page: Translate; lang: L
   const [result, setResult] = useState<{ score: number; feedback: string; corrected?: string } | null>(null);
   const [loading, setLoading] = useState(false);
 
-  const showL1 = page.direction === "en-to-l1";
-  const promptLang = showL1 ? "en" : lang;
-
   async function handleGrade() {
     if (!answer.trim()) return;
     setLoading(true);
