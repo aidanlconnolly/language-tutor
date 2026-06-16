@@ -161,10 +161,12 @@ PATH=/opt/homebrew/bin:$PATH npx eas-cli build --profile production --platform i
 
 ### Shipping changes — OTA-first (READ BEFORE EVERY BUILD)
 
-The EAS **free plan allows only 15 iOS cloud builds/month**. To avoid burning them,
-this app is set up for **EAS Update** (OTA): `expo-updates` is installed, `app.json`
-has `runtimeVersion` (`appVersion` policy) + `updates.url`, and every `eas.json`
-profile has a `channel`. **Default to shipping JS over-the-air, not rebuilding.**
+This account is on the EAS **Starter plan: 45 iOS cloud builds/month** (up from the
+free plan's 15). That's more headroom, but **still a hard monthly cap — be careful and
+don't burn credits on JS-only edits.** This app is set up for **EAS Update** (OTA):
+`expo-updates` is installed, `app.json` has `runtimeVersion` (`appVersion` policy) +
+`updates.url`, and every `eas.json` profile has a `channel`. **Default to shipping JS
+over-the-air, not rebuilding.**
 
 **Decision rule — one question per change: did the NATIVE layer change?**
 EAS prints a **fingerprint** per build; same fingerprint = no native change. (Builds
@@ -184,7 +186,7 @@ updates; the first build after that commit is the OTA baseline. Install/submit t
 once, then JS changes flow to it via `eas update`.
 
 **Reserve cloud builds (`eas build` without `--local`) for emergencies only** — prefer
-`--local` for native changes so the 15/month quota is never the constraint.
+`--local` for native changes so the 45/month quota is never the constraint.
 
 ### Architecture
 
