@@ -7,7 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 A combined Italian + French + Spanish language-learning app (A0–B1). **Multi-user with email/password auth.** Three learning loops per language: **Roadmap** (35 units × 8 stages with lessons and checkpoint quizzes), **Daily Read** (8 graded stories with comprehension questions), **Review** (FSRS spaced-repetition flashcard deck).
 
 **Two platforms sharing one Turso cloud DB:**
-- `web/` — Next.js 16.2 web app, live at **https://language-tutor-silk.vercel.app** (auto-deploys from `main`)
+- `web/` — Next.js 16.2 web app, live at **https://learnallora.com** (auto-deploys from `main`)
 - `mobile/` — Expo SDK 56 iOS app (Expo Router v6), built with EAS
 
 ## Folder structure
@@ -216,7 +216,7 @@ Web uses httpOnly cookies; mobile can't. API routes (`/api/auth/login` etc.) ret
 
 Create `mobile/.env.local` (gitignored):
 ```
-EXPO_PUBLIC_API_BASE=https://language-tutor-silk.vercel.app
+EXPO_PUBLIC_API_BASE=https://learnallora.com
 ```
 Defaults to the Vercel URL if unset. For local dev, set to `http://localhost:5620`.
 

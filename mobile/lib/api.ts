@@ -1,7 +1,7 @@
 import { getToken, clearAuth } from "./auth";
 import type { Lang } from "./lang";
 
-const API_BASE = process.env.EXPO_PUBLIC_API_BASE ?? "https://language-tutor-silk.vercel.app";
+const API_BASE = process.env.EXPO_PUBLIC_API_BASE ?? "https://learnallora.com";
 
 /** Raised when the backend rejects our token (expired/invalid). */
 export class SessionExpiredError extends Error {

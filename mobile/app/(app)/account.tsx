@@ -6,7 +6,7 @@ import { getToken, clearAuth } from "@/lib/auth";
 import { apiDeleteAccount } from "@/lib/api";
 import { C } from "@/lib/theme";
 
-const API_BASE = process.env.EXPO_PUBLIC_API_BASE ?? "https://language-tutor-silk.vercel.app";
+const API_BASE = process.env.EXPO_PUBLIC_API_BASE ?? "https://learnallora.com";
 
 export default function AccountScreen() {
   const { user, setUser } = useAuth();
