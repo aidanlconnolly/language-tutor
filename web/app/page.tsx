@@ -6,8 +6,8 @@ import { getUnits } from "@/lib/content";
 
 export const dynamic = "force-dynamic";
 
-// TODO: swap in the real App Store listing URL once Allora is live.
-const APP_STORE_URL = "https://apps.apple.com/app/allora";
+const APP_STORE_URL =
+  "https://apps.apple.com/us/app/allora-learn-languages/id6779423192";
 
 type LangStats = {
   lang: Lang;
