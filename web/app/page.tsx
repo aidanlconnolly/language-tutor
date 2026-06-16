@@ -6,6 +6,9 @@ import { getUnits } from "@/lib/content";
 
 export const dynamic = "force-dynamic";
 
+// TODO: swap in the real App Store listing URL once Allora is live.
+const APP_STORE_URL = "https://apps.apple.com/app/allora";
+
 type LangStats = {
   lang: Lang;
   lessonsCompleted: number;
@@ -56,8 +59,36 @@ export default async function Home() {
             <LangCard key={s.lang} stats={s} />
           ))}
         </div>
+
+        <AppStoreCallout />
       </div>
     </main>
+  );
+}
+
+function AppStoreCallout() {
+  return (
+    <a
+      href={APP_STORE_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="mt-8 flex flex-col items-center gap-4 rounded-2xl border border-slate-800 bg-slate-900 px-6 py-5 text-center transition-all hover:border-sky-700 hover:bg-slate-800 sm:flex-row sm:justify-between sm:text-left"
+    >
+      <div>
+        <div className="font-semibold text-white">Get Allora on your iPhone</div>
+        <div className="mt-0.5 text-sm text-slate-400">
+          Download the App Store version for lessons on the go.
+        </div>
+      </div>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/app-store-badge.svg"
+        alt="Download on the App Store"
+        width={160}
+        height={54}
+        className="h-[54px] w-auto shrink-0"
+      />
+    </a>
   );
 }
 
