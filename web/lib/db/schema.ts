@@ -218,4 +218,7 @@ export type FsrsCardState = {
   lapses: number;
   state: number;
   last_review?: string;
+  // Optional so existing JSON rows (written before this field existed)
+  // deserialize cleanly via `?? 0`.
+  learning_steps?: number;
 };

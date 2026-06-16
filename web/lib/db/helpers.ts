@@ -1,4 +1,4 @@
-import { and, eq, inArray } from "drizzle-orm";
+import { eq, inArray, sql } from "drizzle-orm";
 import { db, schema } from "@/lib/db/client";
 
 function localDay(d: Date = new Date()): string {
@@ -15,21 +15,22 @@ function priorDay(day: string): string {
 export async function touchStreak(kind: "lesson" | "read", userId: string, lang: string): Promise<void> {
   const today = localDay();
   const yest = priorDay(today);
-  const rows = await db
-    .select()
-    .from(schema.streaks)
-    .where(and(eq(schema.streaks.userId, userId), eq(schema.streaks.language, lang), eq(schema.streaks.kind, kind)))
-    .limit(1);
-  if (rows.length === 0) {
-    await db.insert(schema.streaks).values({ userId, language: lang, kind, current: 1, longest: 1, lastDay: today });
-    return;
-  }
-  const r = rows[0];
-  if (r.lastDay === today) return;
-  const newCurrent = r.lastDay === yest ? r.current + 1 : 1;
-  await db.update(schema.streaks)
-    .set({ current: newCurrent, longest: Math.max(r.longest, newCurrent), lastDay: today })
-    .where(and(eq(schema.streaks.userId, userId), eq(schema.streaks.language, lang), eq(schema.streaks.kind, kind)));
+  // Atomic upsert: same-day → unchanged, consecutive day → +1, gap → reset to 1.
+  const nextCurrent = sql`case
+    when ${schema.streaks.lastDay} = ${today} then ${schema.streaks.current}
+    when ${schema.streaks.lastDay} = ${yest} then ${schema.streaks.current} + 1
+    else 1 end`;
+  await db
+    .insert(schema.streaks)
+    .values({ userId, language: lang, kind, current: 1, longest: 1, lastDay: today })
+    .onConflictDoUpdate({
+      target: [schema.streaks.userId, schema.streaks.language, schema.streaks.kind],
+      set: {
+        current: nextCurrent,
+        longest: sql`max(${schema.streaks.longest}, ${nextCurrent})`,
+        lastDay: today,
+      },
+    });
 }
 
 /**

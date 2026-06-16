@@ -10,6 +10,10 @@ import { deleteUserData } from "@/lib/db/helpers";
 
 export type AuthState = { error: string } | null;
 
+// Real bcrypt(cost 12) hash for the no-user login path so timing doesn't leak
+// whether an email is registered (email enumeration).
+const FAKE_HASH = "$2b$12$KtV8EbH90Rd6dwoeUbbuYec8.YB9sReUMdmA84/dPa8bnbXghzltC";
+
 export async function registerAction(
   _prevState: AuthState,
   formData: FormData,
@@ -31,9 +35,17 @@ export async function registerAction(
 
   const passwordHash = await bcrypt.hash(password, 12);
   const id = nanoid();
-  await db
-    .insert(schema.users)
-    .values({ id, email, passwordHash, createdAt: Date.now() });
+  try {
+    await db
+      .insert(schema.users)
+      .values({ id, email, passwordHash, createdAt: Date.now() });
+  } catch (err) {
+    // Concurrent registration that lost the UNIQUE(email) race.
+    if (String(err).includes("UNIQUE")) {
+      return { error: "An account with that email already exists" };
+    }
+    throw err;
+  }
   await createSession({ userId: id, email });
   redirect("/");
 }
@@ -52,7 +64,10 @@ export async function loginAction(
     .from(schema.users)
     .where(eq(schema.users.email, email))
     .limit(1);
-  if (rows.length === 0) return { error: "Invalid email or password" };
+  if (rows.length === 0) {
+    await bcrypt.compare(password, FAKE_HASH); // constant-time dummy compare
+    return { error: "Invalid email or password" };
+  }
 
   const user = rows[0];
   const valid = await bcrypt.compare(password, user.passwordHash);

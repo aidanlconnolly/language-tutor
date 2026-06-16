@@ -28,6 +28,15 @@ export async function saveCardForWord(args: {
   try {
     const userId = await requireAuth();
 
+    // Guard the "word_id implies language" invariant.
+    const w = await db
+      .select({ language: schema.words.language })
+      .from(schema.words)
+      .where(eq(schema.words.id, args.wordId))
+      .limit(1);
+    if (w.length === 0) return { ok: false, error: "Word not found" };
+    if (w[0].language !== args.lang) return { ok: false, error: "Word language mismatch" };
+
     const existing = await db
       .select({ id: schema.cards.id })
       .from(schema.cards)

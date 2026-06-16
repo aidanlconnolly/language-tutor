@@ -3,6 +3,7 @@ import { Stack } from "expo-router";
 import { useRouter, useSegments } from "expo-router";
 import { isAuthenticated, getUser } from "@/lib/auth";
 import type { AuthUser } from "@/lib/auth";
+import { setSessionExpiredHandler } from "@/lib/api";
 
 export type AuthCtx = { user: AuthUser | null; setUser: (u: AuthUser | null) => void };
 import { createContext, useContext } from "react";
@@ -21,6 +22,13 @@ export default function RootLayout() {
       if (authed) setUser(await getUser());
       setReady(true);
     })();
+  }, []);
+
+  // Any API 401 (expired/invalid token) clears auth state → redirect effect
+  // below bounces to login.
+  useEffect(() => {
+    setSessionExpiredHandler(() => setUser(null));
+    return () => setSessionExpiredHandler(null);
   }, []);
 
   useEffect(() => {

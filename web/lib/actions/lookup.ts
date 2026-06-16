@@ -76,18 +76,36 @@ export async function lookupWord(args: {
       grammarNotes: lookup.grammar_notes ?? null,
       lookedUpAt: Date.now(),
     };
-    await db.insert(schema.words).values(newWord);
+    // Two concurrent cold-misses of the same lemma both reach here; the unique
+    // (language, lemma) index would make the second insert throw. onConflictDoNothing
+    // makes the loser a no-op, then we re-select the canonical row (ours or theirs).
+    await db
+      .insert(schema.words)
+      .values(newWord)
+      .onConflictDoNothing({ target: [schema.words.language, schema.words.lemma] });
+    const [row] = await db
+      .select()
+      .from(schema.words)
+      .where(and(eq(schema.words.language, lang), eq(schema.words.lemma, lemma)))
+      .limit(1);
+    const word = row ?? ({
+      ...newWord,
+      gender: newWord.gender ?? null,
+      conjugation: newWord.conjugation ?? null,
+      grammarNotes: newWord.grammarNotes ?? null,
+      surfaceSeen: newWord.surfaceSeen ?? [],
+    } as Word);
+    // If we lost the race, the winner's row may not know this surface yet.
+    if (row && surface !== lemma && !(row.surfaceSeen ?? []).includes(surface)) {
+      const seen = [...(row.surfaceSeen ?? []), surface];
+      await db.update(schema.words).set({ surfaceSeen: seen }).where(eq(schema.words.id, row.id));
+      word.surfaceSeen = seen;
+    }
     return {
       ok: true,
-      word: {
-        ...newWord,
-        gender: newWord.gender ?? null,
-        conjugation: newWord.conjugation ?? null,
-        grammarNotes: newWord.grammarNotes ?? null,
-        surfaceSeen: newWord.surfaceSeen ?? [],
-      } as Word,
+      word,
       cached: false,
-      isSaved: false,
+      isSaved: await wordIsSaved(word.id, userId),
     };
   } catch (err) {
     return {

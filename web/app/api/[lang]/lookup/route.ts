@@ -51,8 +51,24 @@ export async function POST(
       conjugation: lookup.conjugation ?? null, examples: lookup.examples,
       grammarNotes: lookup.grammar_notes ?? null, lookedUpAt: Date.now(),
     };
-    await db.insert(schema.words).values(newWord);
-    return Response.json({ ok: true, word: newWord, cached: false, isSaved: false });
+    // Concurrent cold-miss safe: loser of the unique (language, lemma) race no-ops,
+    // then we re-select the canonical row and merge our surface in.
+    await db
+      .insert(schema.words)
+      .values(newWord)
+      .onConflictDoNothing({ target: [schema.words.language, schema.words.lemma] });
+    const [row] = await db
+      .select()
+      .from(schema.words)
+      .where(and(eq(schema.words.language, langParam), eq(schema.words.lemma, lemma)))
+      .limit(1);
+    const word = row ?? newWord;
+    if (row && surface !== lemma && !(row.surfaceSeen ?? []).includes(surface)) {
+      const seen = [...(row.surfaceSeen ?? []), surface];
+      await db.update(schema.words).set({ surfaceSeen: seen }).where(eq(schema.words.id, row.id));
+      word.surfaceSeen = seen;
+    }
+    return Response.json({ ok: true, word, cached: false, isSaved: await wordIsSaved(word.id, userId) });
   } catch (err) {
     if (isAuthError(err)) return apiError("Unauthorized", 401);
     return apiError(err instanceof Error ? err.message : "Server error", 500);

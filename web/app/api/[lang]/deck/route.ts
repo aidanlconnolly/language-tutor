@@ -50,6 +50,16 @@ export async function POST(
     const { wordId, sourceSurface, sourceSentence, sourceTextId } = await request.json();
     if (!wordId || !sourceSurface || !sourceSentence) return apiError("Missing fields");
 
+    // Guard the "word_id implies language" invariant: never store a card whose
+    // language diverges from the word it points at.
+    const w = await db
+      .select({ language: schema.words.language })
+      .from(schema.words)
+      .where(eq(schema.words.id, wordId))
+      .limit(1);
+    if (w.length === 0) return apiError("Word not found", 404);
+    if (w[0].language !== langParam) return apiError("Word language mismatch", 400);
+
     const existing = await db
       .select({ id: schema.cards.id })
       .from(schema.cards)

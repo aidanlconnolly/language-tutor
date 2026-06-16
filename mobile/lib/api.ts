@@ -1,7 +1,22 @@
-import { getToken } from "./auth";
+import { getToken, clearAuth } from "./auth";
 import type { Lang } from "./lang";
 
 const API_BASE = process.env.EXPO_PUBLIC_API_BASE ?? "https://language-tutor-silk.vercel.app";
+
+/** Raised when the backend rejects our token (expired/invalid). */
+export class SessionExpiredError extends Error {
+  constructor() {
+    super("Your session expired. Please sign in again.");
+    this.name = "SessionExpiredError";
+  }
+}
+
+// The root layout registers a handler here so that any 401 can reset auth
+// state app-wide and bounce the user to the login screen.
+let onSessionExpired: (() => void) | null = null;
+export function setSessionExpiredHandler(fn: (() => void) | null): void {
+  onSessionExpired = fn;
+}
 
 async function authHeaders(): Promise<Record<string, string>> {
   const token = await getToken();
@@ -9,12 +24,27 @@ async function authHeaders(): Promise<Record<string, string>> {
   return { Authorization: `Bearer ${token}`, "Content-Type": "application/json" };
 }
 
+/** Parse a response, mapping 401 → cleared session + SessionExpiredError. */
+async function handle<T>(res: Response): Promise<T> {
+  if (res.status === 401) {
+    await clearAuth();
+    onSessionExpired?.();
+    throw new SessionExpiredError();
+  }
+  let json: { ok?: boolean; error?: string };
+  try {
+    json = await res.json();
+  } catch {
+    throw new Error(`Request failed (${res.status})`);
+  }
+  if (!json.ok) throw new Error(json.error ?? "API error");
+  return json as T;
+}
+
 async function get<T>(path: string): Promise<T> {
   const headers = await authHeaders();
   const res = await fetch(`${API_BASE}${path}`, { headers });
-  const json = await res.json();
-  if (!json.ok) throw new Error(json.error ?? "API error");
-  return json as T;
+  return handle<T>(res);
 }
 
 async function post<T>(path: string, body: unknown): Promise<T> {
@@ -24,17 +54,13 @@ async function post<T>(path: string, body: unknown): Promise<T> {
     headers,
     body: JSON.stringify(body),
   });
-  const json = await res.json();
-  if (!json.ok) throw new Error(json.error ?? "API error");
-  return json as T;
+  return handle<T>(res);
 }
 
 async function del<T>(path: string): Promise<T> {
   const headers = await authHeaders();
   const res = await fetch(`${API_BASE}${path}`, { method: "DELETE", headers });
-  const json = await res.json();
-  if (!json.ok) throw new Error(json.error ?? "API error");
-  return json as T;
+  return handle<T>(res);
 }
 
 /* ─────────── Auth ─────────── */

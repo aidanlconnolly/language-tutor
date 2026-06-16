@@ -23,11 +23,20 @@ export async function POST(request: NextRequest): Promise<Response> {
 
     const passwordHash = await bcrypt.hash(password, 12);
     const id = nanoid();
-    await db.insert(schema.users).values({ id, email, passwordHash, createdAt: Date.now() });
+    try {
+      await db.insert(schema.users).values({ id, email, passwordHash, createdAt: Date.now() });
+    } catch (err) {
+      // Concurrent registration that lost the UNIQUE(email) race — surface the
+      // friendly 400 rather than a raw 500 with the DB error string.
+      if (String(err).includes("UNIQUE")) {
+        return apiError("An account with that email already exists");
+      }
+      throw err;
+    }
 
     const token = await createApiToken(id, email);
     return Response.json({ ok: true, token, user: { id, email } });
-  } catch (err) {
-    return apiError(err instanceof Error ? err.message : "Server error", 500);
+  } catch {
+    return apiError("Server error", 500);
   }
 }

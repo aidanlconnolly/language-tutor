@@ -15,13 +15,28 @@ export async function createApiToken(userId: string, email: string): Promise<str
     .sign(getSecret());
 }
 
+/** Thrown for every auth failure (missing header, expired/tampered/invalid token). */
+export class AuthError extends Error {
+  constructor(message = "Unauthorized") {
+    super(message);
+    this.name = "AuthError";
+  }
+}
+
 export async function getApiUserId(request: NextRequest): Promise<string> {
   const header = request.headers.get("authorization");
-  if (!header?.startsWith("Bearer ")) throw new Error("Missing or invalid Authorization header");
+  if (!header?.startsWith("Bearer ")) throw new AuthError("Missing or invalid Authorization header");
   const token = header.slice(7);
-  const { payload } = await jwtVerify(token, getSecret());
+  let payload;
+  try {
+    ({ payload } = await jwtVerify(token, getSecret()));
+  } catch {
+    // jose throws its own errors for expired/bad-signature/malformed tokens —
+    // normalize them all to AuthError so callers return 401, not 500.
+    throw new AuthError("Invalid or expired token");
+  }
   const userId = payload.userId as string;
-  if (!userId) throw new Error("Invalid token payload");
+  if (!userId) throw new AuthError("Invalid token payload");
   return userId;
 }
 
@@ -34,5 +49,5 @@ export function apiError(message: string, status = 400): Response {
 }
 
 export function isAuthError(err: unknown): boolean {
-  return (err as Error)?.message?.includes("Missing or invalid") ?? false;
+  return err instanceof AuthError;
 }

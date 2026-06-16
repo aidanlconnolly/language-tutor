@@ -1,5 +1,5 @@
-import { and, eq } from "drizzle-orm";
 import { nanoid } from "nanoid";
+import { sql } from "drizzle-orm";
 import { db, schema } from "@/lib/db/client";
 import { getApiUserId, apiError, isAuthError } from "@/lib/api-auth";
 import { touchStreak } from "@/lib/db/helpers";
@@ -17,29 +17,14 @@ export async function POST(
     const { readSlug, comprehensionScore } = await request.json();
     if (!readSlug || typeof comprehensionScore !== "number") return apiError("Missing fields");
 
-    const existing = await db
-      .select()
-      .from(schema.readProgress)
-      .where(and(
-        eq(schema.readProgress.userId, userId),
-        eq(schema.readProgress.readSlug, readSlug),
-        eq(schema.readProgress.language, langParam),
-      ))
-      .limit(1);
-
-    if (existing.length > 0) {
-      await db.update(schema.readProgress)
-        .set({ completedAt: Date.now(), comprehensionScore: Math.max(existing[0].comprehensionScore, comprehensionScore) })
-        .where(and(
-          eq(schema.readProgress.userId, userId),
-          eq(schema.readProgress.readSlug, readSlug),
-          eq(schema.readProgress.language, langParam),
-        ));
-    } else {
-      await db.insert(schema.readProgress).values({
-        id: nanoid(), userId, language: langParam, readSlug, completedAt: Date.now(), comprehensionScore,
+    const now = Date.now();
+    await db
+      .insert(schema.readProgress)
+      .values({ id: nanoid(), userId, language: langParam, readSlug, completedAt: now, comprehensionScore })
+      .onConflictDoUpdate({
+        target: [schema.readProgress.userId, schema.readProgress.readSlug, schema.readProgress.language],
+        set: { completedAt: now, comprehensionScore: sql`max(${schema.readProgress.comprehensionScore}, ${comprehensionScore})` },
       });
-    }
     await touchStreak("read", userId, langParam);
     return Response.json({ ok: true });
   } catch (err) {

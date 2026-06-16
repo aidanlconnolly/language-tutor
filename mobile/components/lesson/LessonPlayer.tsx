@@ -79,8 +79,9 @@ export function LessonPlayer({ lang, unit, lesson, lessonIndex, onComplete, onBa
         <Text style={s.pageCounter}>{pageIndex + 1}/{totalPages}</Text>
       </View>
 
-      {/* Page content */}
-      <PageRenderer page={page} lang={lang} onNext={handleNext} saving={saving} />
+      {/* Page content — key on pageIndex so each page mounts fresh and never
+          inherits the previous page's local state (answer/result/flipped). */}
+      <PageRenderer key={pageIndex} page={page} lang={lang} onNext={handleNext} saving={saving} />
     </SafeAreaView>
   );
 }

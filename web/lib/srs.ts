@@ -68,6 +68,7 @@ function serialize(card: FsrsCard): FsrsCardState {
     last_review: card.last_review
       ? card.last_review.toISOString()
       : undefined,
+    learning_steps: card.learning_steps,
   };
 }
 
@@ -82,7 +83,7 @@ function deserialize(state: FsrsCardState): FsrsCard {
     lapses: state.lapses,
     state: state.state as State,
     last_review: state.last_review ? new Date(state.last_review) : undefined,
-    learning_steps: 0,
+    learning_steps: state.learning_steps ?? 0,
   };
 }
 

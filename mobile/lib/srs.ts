@@ -16,6 +16,8 @@ import {
 export type FsrsCardState = {
   due: string; stability: number; difficulty: number; elapsed_days: number;
   scheduled_days: number; reps: number; lapses: number; state: number; last_review?: string;
+  // Optional so existing JSON rows (written before this field existed) deserialize via `?? 0`.
+  learning_steps?: number;
 };
 
 /**
@@ -71,6 +73,7 @@ function serialize(card: FsrsCard): FsrsCardState {
     last_review: card.last_review
       ? card.last_review.toISOString()
       : undefined,
+    learning_steps: card.learning_steps,
   };
 }
 
@@ -85,7 +88,7 @@ function deserialize(state: FsrsCardState): FsrsCard {
     lapses: state.lapses,
     state: state.state as State,
     last_review: state.last_review ? new Date(state.last_review) : undefined,
-    learning_steps: 0,
+    learning_steps: state.learning_steps ?? 0,
   };
 }
 

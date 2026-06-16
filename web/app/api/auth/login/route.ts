@@ -4,6 +4,11 @@ import { eq } from "drizzle-orm";
 import { db, schema } from "@/lib/db/client";
 import { createApiToken, apiError } from "@/lib/api-auth";
 
+// A real bcrypt(cost 12) hash compared against on the no-user path so the
+// missing-email and wrong-password branches take comparable time (defeats
+// email enumeration via response timing).
+const FAKE_HASH = "$2b$12$KtV8EbH90Rd6dwoeUbbuYec8.YB9sReUMdmA84/dPa8bnbXghzltC";
+
 export async function POST(request: NextRequest): Promise<Response> {
   try {
     const body = await request.json();
@@ -17,7 +22,10 @@ export async function POST(request: NextRequest): Promise<Response> {
       .from(schema.users)
       .where(eq(schema.users.email, email))
       .limit(1);
-    if (rows.length === 0) return apiError("Invalid email or password", 401);
+    if (rows.length === 0) {
+      await bcrypt.compare(password, FAKE_HASH); // constant-time dummy compare
+      return apiError("Invalid email or password", 401);
+    }
 
     const user = rows[0];
     const valid = await bcrypt.compare(password, user.passwordHash);

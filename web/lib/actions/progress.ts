@@ -1,6 +1,6 @@
 "use server";
 
-import { and, desc, eq, gte } from "drizzle-orm";
+import { and, desc, eq, gte, sql } from "drizzle-orm";
 import { nanoid } from "nanoid";
 import { db, schema } from "@/lib/db/client";
 import { findUnit, getUnits } from "@/lib/content";
@@ -39,30 +39,11 @@ export async function markLessonDone(args: {
   try {
     const userId = await requireAuth();
     const now = Date.now();
-    const existing = await db
-      .select()
-      .from(schema.lessonProgress)
-      .where(
-        and(
-          eq(schema.lessonProgress.userId, userId),
-          eq(schema.lessonProgress.lessonSlug, args.lessonSlug),
-          eq(schema.lessonProgress.language, args.lang),
-        ),
-      )
-      .limit(1);
-    if (existing.length > 0) {
-      await db
-        .update(schema.lessonProgress)
-        .set({ score: Math.max(existing[0].score, args.score), completedAt: now })
-        .where(
-          and(
-            eq(schema.lessonProgress.userId, userId),
-            eq(schema.lessonProgress.lessonSlug, args.lessonSlug),
-            eq(schema.lessonProgress.language, args.lang),
-          ),
-        );
-    } else {
-      await db.insert(schema.lessonProgress).values({
+    // Atomic upsert: a first-ever double-fire (double-tap, or web+mobile) would
+    // otherwise race the read-then-write and throw on the UNIQUE index.
+    await db
+      .insert(schema.lessonProgress)
+      .values({
         id: nanoid(),
         userId,
         language: args.lang,
@@ -70,8 +51,18 @@ export async function markLessonDone(args: {
         unitSlug: args.unitSlug,
         completedAt: now,
         score: args.score,
+      })
+      .onConflictDoUpdate({
+        target: [
+          schema.lessonProgress.userId,
+          schema.lessonProgress.lessonSlug,
+          schema.lessonProgress.language,
+        ],
+        set: {
+          completedAt: now,
+          score: sql`max(${schema.lessonProgress.score}, ${args.score})`,
+        },
       });
-    }
     await touchStreak("lesson", userId, args.lang);
     return { ok: true };
   } catch (err) {
@@ -166,44 +157,28 @@ export async function markReadDone(args: {
 }): Promise<{ ok: true } | { ok: false; error: string }> {
   try {
     const userId = await requireAuth();
-    const existing = await db
-      .select()
-      .from(schema.readProgress)
-      .where(
-        and(
-          eq(schema.readProgress.userId, userId),
-          eq(schema.readProgress.readSlug, args.readSlug),
-          eq(schema.readProgress.language, args.lang),
-        ),
-      )
-      .limit(1);
-    if (existing.length > 0) {
-      await db
-        .update(schema.readProgress)
-        .set({
-          completedAt: Date.now(),
-          comprehensionScore: Math.max(
-            existing[0].comprehensionScore,
-            args.comprehensionScore,
-          ),
-        })
-        .where(
-          and(
-            eq(schema.readProgress.userId, userId),
-            eq(schema.readProgress.readSlug, args.readSlug),
-            eq(schema.readProgress.language, args.lang),
-          ),
-        );
-    } else {
-      await db.insert(schema.readProgress).values({
+    const now = Date.now();
+    await db
+      .insert(schema.readProgress)
+      .values({
         id: nanoid(),
         userId,
         language: args.lang,
         readSlug: args.readSlug,
-        completedAt: Date.now(),
+        completedAt: now,
         comprehensionScore: args.comprehensionScore,
+      })
+      .onConflictDoUpdate({
+        target: [
+          schema.readProgress.userId,
+          schema.readProgress.readSlug,
+          schema.readProgress.language,
+        ],
+        set: {
+          completedAt: now,
+          comprehensionScore: sql`max(${schema.readProgress.comprehensionScore}, ${args.comprehensionScore})`,
+        },
       });
-    }
     await touchStreak("read", userId, args.lang);
     return { ok: true };
   } catch (err) {
@@ -265,42 +240,23 @@ export async function getStreak(kind: "lesson" | "read", lang: Lang): Promise<St
 async function touchStreak(kind: "lesson" | "read", userId: string, lang: Lang): Promise<void> {
   const today = localDay();
   const yest = priorDay(today);
-  const rows = await db
-    .select()
-    .from(schema.streaks)
-    .where(
-      and(
-        eq(schema.streaks.userId, userId),
-        eq(schema.streaks.language, lang),
-        eq(schema.streaks.kind, kind),
-      ),
-    )
-    .limit(1);
-  if (rows.length === 0) {
-    await db.insert(schema.streaks).values({
-      userId,
-      language: lang,
-      kind,
-      current: 1,
-      longest: 1,
-      lastDay: today,
-    });
-    return;
-  }
-  const r = rows[0];
-  if (r.lastDay === today) return;
-  const newCurrent = r.lastDay === yest ? r.current + 1 : 1;
-  const newLongest = Math.max(r.longest, newCurrent);
+  // Atomic upsert. The CASE reproduces the prior logic against the existing row:
+  // same-day → unchanged, consecutive day → +1, gap → reset to 1.
+  const nextCurrent = sql`case
+    when ${schema.streaks.lastDay} = ${today} then ${schema.streaks.current}
+    when ${schema.streaks.lastDay} = ${yest} then ${schema.streaks.current} + 1
+    else 1 end`;
   await db
-    .update(schema.streaks)
-    .set({ current: newCurrent, longest: newLongest, lastDay: today })
-    .where(
-      and(
-        eq(schema.streaks.userId, userId),
-        eq(schema.streaks.language, lang),
-        eq(schema.streaks.kind, kind),
-      ),
-    );
+    .insert(schema.streaks)
+    .values({ userId, language: lang, kind, current: 1, longest: 1, lastDay: today })
+    .onConflictDoUpdate({
+      target: [schema.streaks.userId, schema.streaks.language, schema.streaks.kind],
+      set: {
+        current: nextCurrent,
+        longest: sql`max(${schema.streaks.longest}, ${nextCurrent})`,
+        lastDay: today,
+      },
+    });
 }
 
 /* ─────────── Aggregated dashboard ─────────── */
