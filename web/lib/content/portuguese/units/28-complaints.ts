@@ -1,0 +1,392 @@
+import type { Unit } from "../../types";
+
+export const UNIT_COMPLAINTS: Unit = {
+  slug: "complaints",
+  stage: 6,
+  order: 28,
+  icon: "📣",
+  title: "Complaints & returns",
+  tagline: "Queria fazer uma reclamação — polite escalation.",
+  badge: "tourist",
+  lessons: [
+    {
+      slug: "complaints-soft-opening",
+      title: "The polite complaint opener",
+      estMinutes: 8,
+      pages: [
+        {
+          type: "intro",
+          heading: "Brazilian complaint culture: warm first, firm later",
+          body: [
+            "Brazilians value warmth and a friendly tone even when something has gone wrong. The trick is to <strong>open softly</strong> and only escalate if you have to.",
+            "<strong>Level 1 (soft):</strong> <em>«Desculpa, mas tem um probleminha…»</em> (Sorry, but there's a little problem…)",
+            "<strong>Level 2 (firmer):</strong> <em>«Queria avisar que…»</em> (I'd like to let you know that…)",
+            "<strong>Level 3 (firm but polite):</strong> <em>«Isso não está certo. Queria falar com o gerente.»</em>",
+            "<strong>Level 4 (escalate):</strong> <em>«Queria fazer uma reclamação formal.»</em> (I'd like to file a formal complaint.)",
+            "Lead with warmth and you'll usually get a fast solution. Open aggressively and you'll be read as a <em>cliente chato</em> (an annoying customer).",
+          ],
+          keyPoint:
+            "Always START soft: 'Desculpa, mas tem um probleminha'. Escalate only if needed. Prefer 'queria' over the blunt 'quero'.",
+        },
+        {
+          type: "vocab",
+          heading: "Complaint vocabulary",
+          items: [
+            { l1: "o problema", en: "the problem" },
+            { l1: "não está funcionando", en: "it's not working", note: "BR loves the -ndo continuous form" },
+            { l1: "está quebrado / quebrada", en: "it's broken (m / f)" },
+            { l1: "está com defeito", en: "it's defective / faulty" },
+            { l1: "não está certo", en: "it's not right" },
+            { l1: "não estou satisfeito / satisfeita", en: "I'm not satisfied (m / f)" },
+            { l1: "esperava mais", en: "I expected more" },
+            { l1: "queria avisar", en: "I'd like to point out / report" },
+            { l1: "a reclamação", en: "the (formal) complaint" },
+            { l1: "o gerente", en: "the manager" },
+            { l1: "o reembolso", en: "the refund" },
+            { l1: "a troca", en: "the exchange (swap)" },
+            { l1: "a devolução", en: "the return (giving back)" },
+            { l1: "a garantia", en: "the warranty" },
+            { l1: "um desconto", en: "a discount" },
+            { l1: "a nota fiscal", en: "the receipt / tax invoice", note: "Your proof of purchase in Brazil" },
+          ],
+        },
+        {
+          type: "tip",
+          heading: "Use 'queria' / 'poderia' to soften everything",
+          body: "The imperfect/conditional softens the ask. Avoid: <em>«Quero um reembolso»</em> (sounds demanding). Use: <em>«Queria um reembolso»</em> (polite). Same with <em>«Poderia verificar?»</em> (could you check?) and <em>«Seria possível trocar?»</em> (would it be possible to exchange it?). In casual Brazilian speech <em>queria</em> (imperfect) is even more common than the textbook conditional <em>quereria</em>.",
+        },
+        {
+          type: "multipleChoice",
+          heading: "Which opener?",
+          questions: [
+            {
+              q: "Best way to start a complaint =",
+              options: [
+                "Quero falar com o gerente agora!",
+                "Desculpa, mas tem um probleminha…",
+                "Isso é um absurdo!",
+                "Não estou nada satisfeito!",
+              ],
+              correct: 1,
+            },
+            {
+              q: "Most demanding-sounding =",
+              options: ["Queria…", "Quero…", "Seria possível…", "Poderia…?"],
+              correct: 1,
+            },
+            {
+              q: "'It's not working' (most natural in Brazil) =",
+              options: [
+                "Não trabalha.",
+                "Não está funcionando.",
+                "Não anda.",
+                "Não serve.",
+              ],
+              correct: 1,
+              fb: "'Não está funcionando' is the natural BR form. 'Não trabalha' is a literal English-to-Portuguese miss — trabalhar is for people having jobs.",
+            },
+            {
+              q: "'I'd like to speak to the manager' =",
+              options: [
+                "Quero falar com o gerente.",
+                "Queria falar com o gerente, por favor.",
+                "Tenho que falar com o gerente.",
+                "Dá pra falar com o gerente?",
+              ],
+              correct: 1,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      slug: "complaints-restaurant-hotel",
+      title: "Complaining at restaurants and hotels",
+      estMinutes: 9,
+      pages: [
+        {
+          type: "intro",
+          heading: "Two contexts where you'll need this",
+          body: [
+            "<strong>Restaurant problems:</strong> wrong dish, cold food, long wait, an error on the bill (<em>a conta</em>), an allergen in the dish.",
+            "<strong>Hotel problems:</strong> noisy room, broken air conditioning, no hot water, dirty bathroom, missing items, wrong room.",
+            "The script: name the problem → ask politely for a fix → say thank you when it's sorted.",
+            "Avoid making a scene in front of other guests or raising your voice. Brazilians dislike the American-style \"I demand to speak to your manager\" — it lands as aggressive and slows things down.",
+          ],
+          keyPoint:
+            "Name problem → ask politely → thank when fixed. No public scenes. 'Queria' keeps the temperature low.",
+        },
+        {
+          type: "dialogue",
+          heading: "Wrong dish at the restaurant",
+          setup: "The waiter brings you a feijoada, but you ordered moqueca.",
+          lines: [
+            { speaker: "Você", l1: "Com licença, acho que tem um errinho. Eu tinha pedido a moqueca, não a feijoada.", en: "Excuse me, I think there's a little mistake. I had ordered the moqueca, not the feijoada." },
+            { speaker: "Garçom", l1: "Ah, me desculpe! Devo ter trocado as mesas. Já trago a moqueca pro senhor.", en: "Oh, I'm sorry! I must have mixed up the tables. I'll bring you the moqueca right away." },
+            { speaker: "Você", l1: "Obrigado. Quanto tempo demora?", en: "Thanks. How long does it take?" },
+            { speaker: "Garçom", l1: "Uns cinco minutos. Vou pedir pra cozinha fazer primeiro.", en: "About five minutes. I'll ask the kitchen to do it first." },
+            { speaker: "Você", l1: "Perfeito, sem problema.", en: "Perfect, no problem." },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "Hotel room issue",
+          setup: "You go to reception about a noisy room.",
+          lines: [
+            { speaker: "Você", l1: "Boa noite. Desculpa incomodar, mas queria avisar de um problema no quarto.", en: "Good evening. Sorry to bother you, but I'd like to report a problem with the room." },
+            { speaker: "Recepcionista", l1: "Pois não, me diga.", en: "Of course, tell me." },
+            { speaker: "Você", l1: "O quarto dá pra rua e tem muito barulho. Seria possível trocar de quarto?", en: "The room faces the street and there's a lot of noise. Would it be possible to change rooms?" },
+            { speaker: "Recepcionista", l1: "Entendo. Um momento, deixa eu verificar… Tenho um quarto no quarto andar, virado pro pátio interno. Bem mais silencioso.", en: "I understand. One moment, let me check… I have a room on the fourth floor, facing the inner courtyard. Much quieter." },
+            { speaker: "Você", l1: "Perfeito, muito obrigado.", en: "Perfect, thank you very much." },
+            { speaker: "Recepcionista", l1: "Já preparo a chave. Desculpe o transtorno.", en: "I'll prepare the key now. Sorry for the inconvenience." },
+          ],
+        },
+        {
+          type: "fillBlank",
+          heading: "Complaint-phrase fill",
+          items: [
+            {
+              template: "Queria ___ de um problema no quarto.",
+              answer: "avisar",
+              en: "I'd like to report a problem with the room.",
+              options: ["pedir", "avisar", "falar", "dizer"],
+            },
+            {
+              template: "Com ___ , mas esta comida está fria.",
+              answer: "licença",
+              en: "Excuse me, but this food is cold.",
+              options: ["favor", "licença", "certeza", "calma"],
+            },
+            {
+              template: "O ar-condicionado não está ___ .",
+              answer: "funcionando",
+              en: "The air conditioning isn't working.",
+              options: ["trabalhando", "funcionando", "andando", "servindo"],
+            },
+            {
+              template: "Queria falar com o ___ , por favor.",
+              answer: "gerente",
+              en: "I'd like to speak with the manager, please.",
+              options: ["gerente", "cliente", "garçom", "gerentes"],
+            },
+            {
+              template: "Seria possível ___ de quarto?",
+              answer: "trocar",
+              en: "Would it be possible to change rooms?",
+              options: ["pagar", "trocar", "comprar", "vender"],
+            },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "Excuse me, the food is cold. Could you reheat it?",
+          reference: "Com licença, a comida está fria. Poderia esquentar?",
+          hint: "'Poderia…?' = could you…? 'Esquentar' = to reheat / warm up.",
+        },
+      ],
+    },
+    {
+      slug: "complaints-returns",
+      title: "Returns, refunds, defective items",
+      estMinutes: 9,
+      pages: [
+        {
+          type: "intro",
+          heading: "Returns are protected by law — but bring your nota fiscal",
+          body: [
+            "In Brazil the <strong>Código de Defesa do Consumidor</strong> (consumer protection code) is strong, and the magic phrase is <em>nota fiscal</em> — keep that receipt, it's your proof of purchase.",
+            "For purchases made online or away from the store, you have the <em>direito de arrependimento</em>: <strong>7 days</strong> to return for any reason, no questions asked.",
+            "For a defective product (<em>produto com defeito</em>) the store has 30 days to fix it; if they don't, you can demand a <em>troca</em> (exchange), a <em>reembolso</em> (refund), or a <em>desconto</em>.",
+            "The script: bring the item + the nota fiscal → explain the problem → ask for a <em>reembolso</em> or a <em>troca</em>. Stay polite but firm: <em>«Prefiro o reembolso, não o vale-troca.»</em>",
+          ],
+          keyPoint:
+            "Online: 7-day arrependimento. Defective: store has 30 days to fix. Always keep the nota fiscal — it's your proof.",
+        },
+        {
+          type: "vocab",
+          heading: "Returns & refunds vocabulary",
+          items: [
+            { l1: "o reembolso", en: "the refund (money back)" },
+            { l1: "a troca", en: "the exchange / swap" },
+            { l1: "a devolução", en: "the return (giving the item back)" },
+            { l1: "a garantia", en: "the warranty" },
+            { l1: "o vale-troca", en: "store credit / exchange voucher" },
+            { l1: "está com defeito", en: "it's defective / faulty" },
+            { l1: "está quebrado / quebrada", en: "it's broken (m / f)" },
+            { l1: "não funciona mais", en: "it doesn't work anymore" },
+            { l1: "nunca usei / nunca usado", en: "I never used it / never used" },
+            { l1: "ainda com a etiqueta", en: "still with the tag" },
+            { l1: "dentro de X dias", en: "within X days" },
+            { l1: "a nota fiscal", en: "the receipt / proof of purchase" },
+            { l1: "trocar", en: "to exchange / swap" },
+            { l1: "devolver", en: "to return / give back" },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "Returning a defective product",
+          setup: "You bought a pair of headphones three days ago, but they won't pair.",
+          lines: [
+            { speaker: "Você", l1: "Bom dia. Comprei esse fone há três dias e não está funcionando. Queria um reembolso.", en: "Good morning. I bought these headphones three days ago and they're not working. I'd like a refund." },
+            { speaker: "Vendedora", l1: "O que exatamente não funciona?", en: "What exactly doesn't work?" },
+            { speaker: "Você", l1: "Não conecta no celular. Já testei em dois aparelhos diferentes.", en: "It won't connect to the phone. I already tested it on two different devices." },
+            { speaker: "Vendedora", l1: "O senhor tem a nota fiscal?", en: "Do you have the receipt?" },
+            { speaker: "Você", l1: "Tenho, aqui está.", en: "Yes, here it is." },
+            { speaker: "Vendedora", l1: "Certo. Posso oferecer a troca ou o reembolso?", en: "Okay. Can I offer you an exchange or a refund?" },
+            { speaker: "Você", l1: "Prefiro o reembolso, obrigado.", en: "I prefer the refund, thank you." },
+            { speaker: "Vendedora", l1: "Tudo bem. O estorno cai no cartão em até três dias úteis.", en: "All right. The refund goes back on the card within three business days." },
+            { speaker: "Você", l1: "Perfeito, muito obrigado.", en: "Perfect, thank you very much." },
+          ],
+        },
+        {
+          type: "fillBlank",
+          heading: "Refund fill",
+          items: [
+            {
+              template: "Queria um ___ , por favor.",
+              answer: "reembolso",
+              en: "I'd like a refund, please.",
+              options: ["desconto", "reembolso", "troca", "recibo"],
+            },
+            {
+              template: "O produto está com ___ , não funciona.",
+              answer: "defeito",
+              en: "The product is defective, it doesn't work.",
+              options: ["novo", "defeito", "garantia", "validade"],
+            },
+            {
+              template: "Tenho a ___ fiscal, se precisar.",
+              answer: "nota",
+              en: "I have the receipt, if needed.",
+              options: ["nota", "troca", "conta", "garantia"],
+            },
+            {
+              template: "Prefiro o reembolso ao ___ , se for possível.",
+              answer: "vale-troca",
+              en: "I prefer the refund to the store credit, if possible.",
+              options: ["vale-troca", "desconto", "reembolso", "estorno"],
+            },
+            {
+              template: "Nunca usei, ainda está com a ___ .",
+              answer: "etiqueta",
+              en: "Never used, still with the tag.",
+              options: ["etiqueta", "nota", "garantia", "marca"],
+            },
+          ],
+        },
+        {
+          type: "orderWords",
+          heading: "Build the refund request",
+          items: [
+            { tokens: ["Queria", "um", "reembolso", ",", "por", "favor", "."], en: "I'd like a refund, please." },
+            { tokens: ["O", "sapato", "quebrou", "depois", "de", "dois", "dias", "."], en: "The shoe broke after two days." },
+            { tokens: ["Ainda", "está", "na", "garantia", "?"], en: "Is it still under warranty?" },
+            { tokens: ["Prefiro", "o", "reembolso", ",", "não", "o", "vale-troca", "."], en: "I prefer the refund, not the store credit." },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "I'd like to return this product. It's defective.",
+          reference: "Queria devolver este produto. Está com defeito.",
+          hint: "'Devolver' = to return / give back. 'Está com defeito' = it's defective (lit. it's with a defect).",
+        },
+        {
+          type: "tip",
+          heading: "If the shop refuses: Procon and the consumer code",
+          body: "If a store digs in, stay calm, ask for the <em>gerente</em>, and mention the law. For a defective item you can say <em>«Pelo Código de Defesa do Consumidor, eu tenho esse direito.»</em> = Under the consumer protection code, this is my right. If they still won't help, your real recourse in Brazil is the <strong>Procon</strong> — the state consumer-protection agency that mediates disputes (you can even file online). Don't argue at length in the shop — escalate to the Procon.",
+          example: { l1: "Vou registrar uma reclamação no Procon.", en: "I'm going to file a complaint with the Procon." },
+        },
+        {
+          type: "tip",
+          heading: "Portugal: the Livro de Reclamações",
+          body: "Brazil leans on the <em>nota fiscal</em> + Procon. Portugal has a very different, almost theatrical tool: every business is legally required to keep a <strong>Livro de Reclamações</strong> (complaints book). If you ask <em>«Queria o livro de reclamações, por favor»</em>, the staff MUST hand it over — your written complaint is then sent to the regulator. Just asking for it often resolves the issue on the spot. There's no such book in Brazil.",
+          example: { l1: "PT: Queria o livro de reclamações. · BR: Vou no Procon.", en: "PT: I'd like the complaints book. · BR: I'll go to the Procon." },
+        },
+      ],
+    },
+  ],
+  checkpoint: {
+    passingPct: 80,
+    questions: [
+      {
+        q: "Best complaint opener =",
+        options: [
+          "Quero falar com o gerente agora!",
+          "Desculpa, mas tem um probleminha…",
+          "Isso é um absurdo!",
+          "Não estou nada satisfeito.",
+        ],
+        correct: 1,
+      },
+      {
+        q: "'It's not working' (most natural in Brazil) =",
+        options: ["Não trabalha.", "Não está funcionando.", "Não opera.", "Não ajuda."],
+        correct: 1,
+      },
+      {
+        q: "'I'd like a refund' =",
+        options: [
+          "Quero um reembolso.",
+          "Queria um reembolso.",
+          "Posso um reembolso.",
+          "Me dá um reembolso.",
+        ],
+        correct: 1,
+      },
+      {
+        q: "For online purchases in Brazil, you have how many days to return (direito de arrependimento)?",
+        options: ["7", "14", "30", "60"],
+        correct: 0,
+      },
+      {
+        q: "Your essential proof of purchase in Brazil is…",
+        options: ["o vale-troca", "a nota fiscal", "a garantia", "o desconto"],
+        correct: 1,
+      },
+      {
+        q: "'Could you check?' (polite) =",
+        options: [
+          "Verifica!",
+          "Pode verificar?",
+          "Poderia verificar?",
+          "Tem que verificar.",
+        ],
+        correct: 2,
+      },
+      {
+        q: "The Brazilian state consumer-protection agency you escalate to is the…",
+        options: ["Livro de Reclamações", "Procon", "Garantia", "Nota Fiscal"],
+        correct: 1,
+      },
+      {
+        q: "'Store credit / exchange voucher' =",
+        options: ["o reembolso", "o vale-troca", "a troca", "a devolução"],
+        correct: 1,
+      },
+      {
+        q: "Translate: 'The air conditioning isn't working. Could you fix it?'",
+        options: [
+          "O ar-condicionado não funciona. Conserta!",
+          "O ar-condicionado não trabalha. Pode consertar?",
+          "O ar-condicionado não está funcionando. Poderia consertar?",
+          "Tenho que o ar-condicionado.",
+        ],
+        correct: 2,
+      },
+      {
+        q: "In Portugal, the mandatory complaints book every business must keep is the…",
+        options: [
+          "Código de Defesa do Consumidor",
+          "Livro de Reclamações",
+          "Nota Fiscal",
+          "Procon",
+        ],
+        correct: 1,
+      },
+    ],
+  },
+};

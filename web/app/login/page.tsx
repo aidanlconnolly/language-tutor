@@ -3,6 +3,7 @@
 import { useActionState } from "react";
 import Link from "next/link";
 import { loginAction } from "@/lib/actions/auth";
+import { SUPPORTED_LANGS, LANG_FLAGS } from "@/lib/lang";
 
 export default function LoginPage() {
   const [state, action, isPending] = useActionState(loginAction, null);
@@ -11,7 +12,7 @@ export default function LoginPage() {
     <main className="flex min-h-screen flex-col items-center justify-center px-4 bg-slate-950 font-sans">
       <div className="w-full max-w-sm">
         <div className="mb-8 text-center">
-          <div className="text-3xl mb-2">🇮🇹 🇫🇷</div>
+          <div className="text-3xl mb-2">{SUPPORTED_LANGS.map((l) => LANG_FLAGS[l]).join(" ")}</div>
           <h1 className="text-2xl font-bold tracking-tight text-white">
             Allora
           </h1>

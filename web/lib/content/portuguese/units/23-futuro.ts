@@ -1,0 +1,505 @@
+import type { Unit } from "../../types";
+
+export const UNIT_FUTURO: Unit = {
+  slug: "futuro",
+  stage: 5,
+  order: 23,
+  icon: "⏩",
+  title: "Futuro",
+  tagline: "Farei amanhã — and the vou fazer alternative.",
+  badge: "core",
+  lessons: [
+    {
+      slug: "futuro-vou-infinitive",
+      title: "The everyday future: vou + infinitive",
+      estMinutes: 10,
+      pages: [
+        {
+          type: "intro",
+          heading: "Portuguese has TWO futures — start with the easy one",
+          body: [
+            "There are two ways to talk about the future in Portuguese. The good news: the one Brazilians actually use in speech is the easier one.",
+            "<strong>1. Periphrastic future (ir + infinitive).</strong> Conjugate <em>ir</em> (to go) in the present + the plain infinitive: <em>vou falar</em> = I'm going to speak, <em>vou comer</em> = I'm going to eat. This is the everyday spoken future — exactly like English \"I'm going to…\".",
+            "<strong>2. Synthetic future (futuro do presente).</strong> A single conjugated word: <em>falarei</em> = I will speak. More formal and written. We'll cover it in lesson 2.",
+            "Lesson 1 is all about the easy, conversational one: <strong>ir + infinitive</strong>.",
+          ],
+          keyPoint:
+            "Spoken Brazilian future = ir (conjugated) + infinitive. Vou falar, você vai comer, nós vamos partir.",
+        },
+        {
+          type: "conjugation",
+          heading: "ir (to go) — present tense",
+          verb: "ir",
+          meaning: "to go (used to build the future)",
+          intro: "Memorize these four forms — they power the entire periphrastic future. In Brazil, você takes the same form as ele/ela.",
+          tenses: [{ name: "Presente", forms: [
+            { person: "eu", form: "vou", en: "I go / I'm going to" },
+            { person: "você / ele / ela", form: "vai", en: "you/he/she go(es)" },
+            { person: "nós", form: "vamos", en: "we go" },
+            { person: "vocês / eles / elas", form: "vão", en: "you all/they go" },
+          ] }],
+        },
+        {
+          type: "conjugation",
+          heading: "vou + infinitive — the full pattern",
+          verb: "ir + falar",
+          meaning: "to be going to speak",
+          intro: "Just attach any infinitive after the conjugated ir. The second verb never changes.",
+          tenses: [{ name: "Futuro com ir", forms: [
+            { person: "eu", form: "vou falar", en: "I'm going to speak" },
+            { person: "você / ele / ela", form: "vai falar", en: "you/he/she is going to speak" },
+            { person: "nós", form: "vamos falar", en: "we're going to speak" },
+            { person: "vocês / eles / elas", form: "vão falar", en: "you all/they are going to speak" },
+          ] }],
+        },
+        {
+          type: "tip",
+          heading: "This is how Brazilians actually say the future",
+          body: "In everyday Brazilian speech, the <em>ir + infinitive</em> form dominates. You'll hear <strong>vou viajar</strong>, <strong>vou comer</strong>, <strong>vamos sair</strong> far more often than the one-word synthetic future. The synthetic future (falarei) sounds bookish in casual conversation — Brazilians reserve it for formal writing, news, and emphasis. (Portugal also favors <em>ir + infinitive</em> in speech, so this tendency is shared across both dialects.)",
+          example: { l1: "Amanhã eu vou trabalhar. Depois vamos jantar fora.", en: "Tomorrow I'm going to work. Afterwards we're going to eat out." },
+        },
+        {
+          type: "vocab",
+          heading: "vou + infinitive in context",
+          items: [
+            { l1: "Eu vou viajar amanhã.", en: "I'm going to travel tomorrow." },
+            { l1: "Você vai estudar hoje à noite?", en: "Are you going to study tonight?" },
+            { l1: "Nós vamos morar no Rio.", en: "We're going to live in Rio." },
+            { l1: "Ela vai comprar um carro novo.", en: "She's going to buy a new car." },
+            { l1: "Eles vão chegar mais tarde.", en: "They're going to arrive later." },
+            { l1: "O que você vai fazer no fim de semana?", en: "What are you going to do this weekend?" },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "Build the spoken future",
+          questions: [
+            {
+              q: "'I'm going to eat' is…",
+              options: ["vou comer", "vai comer", "vamos comer", "comerei"],
+              correct: 0,
+              fb: "eu → vou + infinitive: vou comer.",
+            },
+            {
+              q: "'We're going to travel' is…",
+              options: ["vou viajar", "vão viajar", "vamos viajar", "vai viajar"],
+              correct: 2,
+              fb: "nós → vamos + infinitive: vamos viajar.",
+            },
+            {
+              q: "'Are you (você) going to work?' is…",
+              options: ["Você vão trabalhar?", "Você vai trabalhar?", "Você vou trabalhar?", "Você vamos trabalhar?"],
+              correct: 1,
+              fb: "você takes vai (same form as ele/ela): você vai trabalhar.",
+            },
+          ],
+        },
+        {
+          type: "fillBlank",
+          heading: "Fill in the ir + infinitive",
+          intro: "Conjugate ir for the subject, then add the infinitive unchanged.",
+          items: [
+            {
+              template: "Amanhã eu ___ estudar português. (ir)",
+              answer: "vou",
+              en: "Tomorrow I'm going to study Portuguese.",
+              options: ["vou", "vai", "vamos", "vão"],
+            },
+            {
+              template: "Nós ___ viajar na próxima semana. (ir)",
+              answer: "vamos",
+              en: "We're going to travel next week.",
+              options: ["vou", "vai", "vamos", "vão"],
+            },
+            {
+              template: "Eles ___ chegar depois. (ir)",
+              answer: "vão",
+              en: "They're going to arrive later.",
+              options: ["vai", "vão", "vamos", "vou"],
+            },
+            {
+              template: "Você ___ sair hoje à noite? (ir)",
+              answer: "vai",
+              en: "Are you going out tonight?",
+              options: ["vou", "vai", "vão", "vamos"],
+            },
+            {
+              template: "Ela ___ comprar pão na padaria. (ir)",
+              answer: "vai",
+              en: "She's going to buy bread at the bakery.",
+              options: ["vou", "vai", "vamos", "vão"],
+            },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it — the spoken future",
+          direction: "en-to-l1",
+          prompt: "Tomorrow I'm going to travel and we're going to eat at a restaurant.",
+          reference: "Amanhã eu vou viajar e vamos comer num restaurante.",
+          hint: "ir + infinitive: vou viajar (eu), vamos comer (nós). \"at a restaurant\" = num restaurante.",
+        },
+      ],
+    },
+    {
+      slug: "futuro-sintetico",
+      title: "The synthetic future: falarei, comerei, partirei",
+      estMinutes: 10,
+      pages: [
+        {
+          type: "intro",
+          heading: "One word, one tense: the futuro do presente",
+          body: [
+            "The synthetic future is a single conjugated word. The beauty: it works the same for ALL three verb families (-ar, -er, -ir) and you build it on the <strong>full infinitive</strong> — you don't drop anything.",
+            "Take the whole infinitive and add: <strong>-ei, -á, -emos, -ão</strong> (for eu / você-ele-ela / nós / vocês-eles-elas).",
+            "<em>falar → falar<strong>ei</strong></em> (I will speak), <em>comer → comer<strong>ei</strong></em> (I will eat), <em>partir → partir<strong>ei</strong></em> (I will leave).",
+            "Notice the accents: the você/ele/ela form takes a stressed <strong>-á</strong> (falará, comerá), and there's a circumflex in the eu/nós region of some patterns. Watch them.",
+          ],
+          keyPoint:
+            "Synthetic future = full infinitive + -ei / -á / -emos / -ão. Same endings for -ar, -er, -ir. falarei, comerá, partiremos.",
+        },
+        {
+          type: "conjugation",
+          heading: "falar — futuro do presente",
+          verb: "falar",
+          meaning: "to speak (synthetic future)",
+          intro: "Endings are added to the whole infinitive. Note the accent on falará and falarão.",
+          tenses: [{ name: "Futuro do presente", forms: [
+            { person: "eu", form: "falarei", en: "I will speak" },
+            { person: "você / ele / ela", form: "falará", en: "you/he/she will speak" },
+            { person: "nós", form: "falaremos", en: "we will speak" },
+            { person: "vocês / eles / elas", form: "falarão", en: "you all/they will speak" },
+          ] }],
+        },
+        {
+          type: "conjugation",
+          heading: "Side-by-side: -ar / -er / -ir",
+          verb: "falar / comer / partir",
+          meaning: "speak / eat / leave — futuro do presente",
+          intro: "The endings are identical across all three families.",
+          tenses: [{ name: "All three families", forms: [
+            { person: "eu", form: "falarei / comerei / partirei", en: "I will speak / eat / leave" },
+            { person: "você / ele / ela", form: "falará / comerá / partirá", en: "you/he/she will…" },
+            { person: "nós", form: "falaremos / comeremos / partiremos", en: "we will…" },
+            { person: "vocês / eles / elas", form: "falarão / comerão / partirão", en: "you all/they will…" },
+          ] }],
+        },
+        {
+          type: "intro",
+          heading: "The irregular stems — only THREE",
+          body: [
+            "Portuguese is generous here: only three verbs have irregular future stems. Learn them once and you're done.",
+            "<strong>fazer → far-</strong> → farei, fará, faremos, farão (I will do/make).",
+            "<strong>dizer → dir-</strong> → direi, dirá, diremos, dirão (I will say/tell).",
+            "<strong>trazer → trar-</strong> → trarei, trará, traremos, trarão (I will bring).",
+            "They all just drop the -ze- middle, then add the normal endings. Every other verb in the language is regular in the future.",
+          ],
+          keyPoint:
+            "Only 3 irregular future stems: fazer → far-, dizer → dir-, trazer → trar-. Endings stay regular (farei, dirá, traremos).",
+        },
+        {
+          type: "vocab",
+          heading: "The three irregular futures",
+          items: [
+            { l1: "fazer → farei", en: "I will do / make" },
+            { l1: "dizer → direi", en: "I will say / tell" },
+            { l1: "trazer → trarei", en: "I will bring" },
+            { l1: "Eu farei o jantar.", en: "I will make dinner. (fazer)" },
+            { l1: "Ela dirá a verdade.", en: "She will tell the truth. (dizer)" },
+            { l1: "Nós traremos o vinho.", en: "We will bring the wine. (trazer)" },
+          ],
+        },
+        {
+          type: "tip",
+          heading: "Formal vs spoken — when to use which",
+          body: "The synthetic future (<strong>falarei, farei</strong>) is the future of writing, news reports, formal speeches, and proverbs. In casual conversation Brazilians overwhelmingly prefer <em>ir + infinitive</em> (<strong>vou falar, vou fazer</strong>) instead — you'll rarely hear <em>farei</em> at the dinner table. Learn the synthetic future so you can read and write it and recognize it in formal Portuguese, but reach for <em>vou + infinitive</em> when you speak.",
+          example: { l1: "Escrito: O presidente falará amanhã. · Falado: Ele vai falar amanhã.", en: "Written: The president will speak tomorrow. / Spoken: He's going to speak tomorrow." },
+        },
+        {
+          type: "multipleChoice",
+          heading: "Synthetic future check",
+          questions: [
+            {
+              q: "Synthetic future of 'comer' (eu) is…",
+              options: ["comerei", "comeria", "comerà", "comirei"],
+              correct: 0,
+              fb: "Full infinitive + -ei: comer + ei = comerei.",
+            },
+            {
+              q: "Synthetic future of 'fazer' (você/ele) is…",
+              options: ["fazerá", "fará", "farà", "faroá"],
+              correct: 1,
+              fb: "Irregular stem far- + á: fará.",
+            },
+            {
+              q: "Synthetic future of 'partir' (nós) is…",
+              options: ["partiremos", "partirão", "parteremos", "partiríamos"],
+              correct: 0,
+              fb: "Full infinitive + -emos: partir + emos = partiremos.",
+            },
+          ],
+        },
+        {
+          type: "fillBlank",
+          heading: "Build the synthetic future",
+          items: [
+            {
+              template: "Um dia eu ___ um livro. (escrever)",
+              answer: "escreverei",
+              en: "One day I will write a book.",
+              options: ["escreverei", "escreveria", "escrevo", "escreverá"],
+            },
+            {
+              template: "Ela ___ a verdade. (dizer)",
+              answer: "dirá",
+              en: "She will tell the truth.",
+              options: ["dizerá", "dirá", "dirà", "dizirá"],
+            },
+            {
+              template: "Nós ___ o jantar hoje. (fazer)",
+              answer: "faremos",
+              en: "We will make dinner today.",
+              options: ["fazeremos", "faremos", "fariamos", "farão"],
+            },
+            {
+              template: "Os alunos ___ na próxima semana. (partir)",
+              answer: "partirão",
+              en: "The students will leave next week.",
+              options: ["partirão", "partiram", "partiriam", "parterão"],
+            },
+            {
+              template: "Eu ___ um presente para você. (trazer)",
+              answer: "trarei",
+              en: "I will bring a gift for you.",
+              options: ["trazerei", "trarei", "trairei", "trarà"],
+            },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it — the formal future",
+          direction: "en-to-l1",
+          prompt: "Tomorrow I will speak with the director and we will make a decision.",
+          reference: "Amanhã eu falarei com o diretor e tomaremos uma decisão.",
+          hint: "Synthetic future: falarei (regular), tomaremos (regular -ar). \"make a decision\" = tomar uma decisão.",
+        },
+      ],
+    },
+    {
+      slug: "futuro-time-markers",
+      title: "Time markers, plans & choosing your future",
+      estMinutes: 9,
+      pages: [
+        {
+          type: "intro",
+          heading: "Pointing the future in time",
+          body: [
+            "Both futures pair with time markers that anchor when something happens. <em>Amanhã</em> (tomorrow), <em>na próxima semana</em> (next week), <em>depois</em> (afterwards/later).",
+            "With clear time words and the present tense, Brazilians sometimes don't even mark the future at all: <em>Amanhã eu trabalho</em> = Tomorrow I work — the time word does the job. But for plans you'll usually reach for <strong>vou + infinitive</strong>.",
+            "Rule of thumb: speaking? Use <em>vou + infinitive</em>. Writing formally or making a prediction/promise with weight? The synthetic future fits.",
+          ],
+          keyPoint:
+            "Anchor the future with time markers. Speech → vou + infinitive. Formal/written → synthetic (falarei).",
+        },
+        {
+          type: "vocab",
+          heading: "Time markers for the future",
+          items: [
+            { l1: "amanhã", en: "tomorrow" },
+            { l1: "depois de amanhã", en: "the day after tomorrow" },
+            { l1: "depois", en: "afterwards / later" },
+            { l1: "mais tarde", en: "later (today)" },
+            { l1: "logo", en: "soon" },
+            { l1: "daqui a pouco", en: "in a little while" },
+            { l1: "na próxima semana", en: "next week" },
+            { l1: "no próximo mês / ano", en: "next month / year" },
+            { l1: "hoje à noite", en: "tonight" },
+            { l1: "no fim de semana", en: "on the weekend" },
+            { l1: "um dia", en: "one day / someday" },
+            { l1: "no futuro", en: "in the future" },
+          ],
+        },
+        {
+          type: "tip",
+          heading: "Portugal vs Brazil — \"daqui a\" and friends",
+          body: "Both dialects share these time markers, but listen for small splits. Brazil says <em>daqui a pouco</em> / <em>daqui a dois dias</em> (in a little while / in two days); Portugal often says <em>daqui a bocado</em> for \"in a little while\". And the weekend is <em>o fim de semana</em> in both, but Portugal frequently writes it hyphenated: <em>fim-de-semana</em>. The future-tense grammar itself is identical across both — only the everyday vocabulary garnish differs.",
+          example: { l1: "BR: Daqui a pouco eu volto. · PT: Daqui a bocado volto.", en: "I'll be back in a little while." },
+        },
+        {
+          type: "dialogue",
+          heading: "Making weekend plans",
+          setup: "Two friends in São Paulo plan their weekend.",
+          lines: [
+            { speaker: "Bruno", l1: "O que você vai fazer no fim de semana?", en: "What are you going to do this weekend?" },
+            { speaker: "You", l1: "Sábado eu vou à praia com a Carla. Domingo vou descansar em casa.", en: "Saturday I'm going to the beach with Carla. Sunday I'm going to rest at home." },
+            { speaker: "Bruno", l1: "E na próxima semana?", en: "And next week?" },
+            { speaker: "You", l1: "Vou ter muito trabalho. Vou começar um projeto novo na segunda.", en: "I'm going to have a lot of work. I'm going to start a new project on Monday." },
+            { speaker: "Bruno", l1: "Nossa, você vai ficar cansado. Quando a gente vai se ver de novo?", en: "Wow, you're going to be tired. When are we going to see each other again?" },
+            { speaker: "You", l1: "Sexta à noite? Eu te ligo na quarta para confirmar.", en: "Friday night? I'll call you Wednesday to confirm." },
+            { speaker: "Bruno", l1: "Combinado! Vai ser ótimo te ver.", en: "Deal! It'll be great to see you." },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "Which future, which marker?",
+          questions: [
+            {
+              q: "Most natural for 'I'm going to study tomorrow' in speech:",
+              options: ["Amanhã estudarei.", "Amanhã vou estudar.", "Amanhã estudaria.", "Amanhã estudo estudar."],
+              correct: 1,
+              fb: "Casual speech → vou + infinitive: Amanhã vou estudar. (Estudarei is correct but formal.)",
+            },
+            {
+              q: "'next week' is…",
+              options: ["depois de amanhã", "na próxima semana", "mais tarde", "hoje à noite"],
+              correct: 1,
+              fb: "na próxima semana = next week.",
+            },
+            {
+              q: "A formal news headline would most likely use…",
+              options: ["o presidente vai falar", "o presidente falará", "o presidente fala falar", "o presidente falava"],
+              correct: 1,
+              fb: "Formal/written register favors the synthetic future: o presidente falará.",
+            },
+          ],
+        },
+        {
+          type: "fillBlank",
+          heading: "Future fill — mix it up",
+          intro: "Some blanks want ir + infinitive, some want the synthetic future. Read the hint.",
+          items: [
+            {
+              template: "Amanhã eu ___ trabalhar cedo. (ir — spoken)",
+              answer: "vou",
+              en: "Tomorrow I'm going to work early.",
+              options: ["vou", "vai", "vamos", "irei"],
+            },
+            {
+              template: "No próximo ano nós ___ para o Brasil. (ir — spoken)",
+              answer: "vamos",
+              en: "Next year we're going to Brazil.",
+              options: ["vou", "vamos", "vão", "iremos"],
+            },
+            {
+              template: "Um dia ela ___ famosa. (ser — synthetic)",
+              answer: "será",
+              en: "One day she will be famous.",
+              options: ["é", "será", "vai", "serà"],
+            },
+            {
+              template: "Depois eu ___ o que aconteceu. (dizer — synthetic)",
+              answer: "direi",
+              en: "Later I will say what happened.",
+              options: ["dizerei", "direi", "digo", "dirà"],
+            },
+            {
+              template: "O que você ___ fazer hoje à noite? (ir — spoken)",
+              answer: "vai",
+              en: "What are you going to do tonight?",
+              options: ["vou", "vai", "vão", "fará"],
+            },
+          ],
+        },
+        {
+          type: "orderWords",
+          heading: "Build the future sentence",
+          intro: "Drag the words into a natural Portuguese order.",
+          items: [
+            { tokens: ["Amanhã", "eu", "vou", "viajar", "para", "o", "Rio"], en: "Tomorrow I'm going to travel to Rio." },
+            { tokens: ["Na", "próxima", "semana", "vamos", "comer", "fora"], en: "Next week we're going to eat out." },
+            { tokens: ["Um", "dia", "ela", "será", "médica"], en: "One day she will be a doctor." },
+            { tokens: ["Eu", "te", "ligo", "mais", "tarde"], en: "I'll call you later." },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Final translation challenge",
+          direction: "en-to-l1",
+          prompt: "Tonight I'm going to rest, and tomorrow we're going to travel to São Paulo.",
+          reference: "Hoje à noite eu vou descansar e amanhã vamos viajar para São Paulo.",
+          hint: "Spoken future → ir + infinitive: vou descansar, vamos viajar. \"tonight\" = hoje à noite.",
+        },
+        {
+          type: "tip",
+          heading: "Don't over-use the synthetic future in speech",
+          body: "Learners love conjugating <em>falarei, comerei, farei</em> because it feels accomplished — but in real Brazilian conversation it can sound stiff or even theatrical. Keep <em>vou + infinitive</em> as your default spoken future. Bring out the synthetic future for writing, formal contexts, weighty promises (<em>eu nunca te esquecerei</em> — I'll never forget you), and recognizing it in print. Both dialects lean on <em>ir + infinitive</em> in everyday speech.",
+        },
+      ],
+    },
+  ],
+  checkpoint: {
+    passingPct: 80,
+    questions: [
+      {
+        q: "The everyday spoken Brazilian future is built with…",
+        options: [
+          "the imperfect tense",
+          "ir (conjugated) + infinitive",
+          "ter + past participle",
+          "estar + gerund",
+        ],
+        correct: 1,
+      },
+      {
+        q: "'I'm going to eat' (spoken) is…",
+        options: ["comerei", "vou comer", "vai comer", "comeria"],
+        correct: 1,
+      },
+      {
+        q: "'We're going to travel' (spoken) is…",
+        options: ["vão viajar", "vou viajar", "vamos viajar", "viajaremos vamos"],
+        correct: 2,
+      },
+      {
+        q: "Synthetic future endings (added to the full infinitive) are…",
+        options: [
+          "-o, -e, -emos, -em",
+          "-ava, -ava, -ávamos, -avam",
+          "-ei, -á, -emos, -ão",
+          "-ia, -ia, -íamos, -iam",
+        ],
+        correct: 2,
+      },
+      {
+        q: "Synthetic future of 'falar' (eu) is…",
+        options: ["falo", "falarei", "falaria", "falava"],
+        correct: 1,
+      },
+      {
+        q: "Synthetic future of 'comer' (você/ele) is…",
+        options: ["come", "comerá", "comeria", "comará"],
+        correct: 1,
+      },
+      {
+        q: "The irregular future stem of 'fazer' is…",
+        options: ["faz-", "far-", "fazer-", "fac-"],
+        correct: 1,
+      },
+      {
+        q: "Synthetic future of 'dizer' (eu) is…",
+        options: ["dizerei", "direi", "digo", "dizirei"],
+        correct: 1,
+      },
+      {
+        q: "In casual Brazilian speech, which future do speakers strongly prefer?",
+        options: [
+          "the synthetic future (falarei)",
+          "ir + infinitive (vou falar)",
+          "the imperfect",
+          "the conditional",
+        ],
+        correct: 1,
+      },
+      {
+        q: "Translate: 'Tomorrow I'm going to work.' (most natural spoken)",
+        options: [
+          "Amanhã eu trabalhei.",
+          "Amanhã eu vou trabalhar.",
+          "Amanhã eu trabalharia.",
+          "Amanhã eu trabalhava.",
+        ],
+        correct: 1,
+      },
+    ],
+  },
+};

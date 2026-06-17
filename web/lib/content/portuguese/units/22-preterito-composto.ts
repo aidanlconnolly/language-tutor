@@ -1,0 +1,297 @@
+import type { Unit } from "../../types";
+
+export const UNIT_PRETERITO_COMPOSTO: Unit = {
+  slug: "preterito-composto",
+  stage: 5,
+  order: 22,
+  icon: "⏪",
+  title: "Compound past (tenho feito)",
+  tagline: "Recent / ongoing past — and the notable BR/PT usage difference.",
+  lessons: [
+    {
+      slug: "preterito-composto-intro",
+      title: "The pretérito perfeito composto",
+      estMinutes: 11,
+      pages: [
+        {
+          type: "intro",
+          heading: "ter (present) + past participle",
+          body: [
+            "The <strong>pretérito perfeito composto</strong> is built with the present tense of <strong>ter</strong> plus a past participle: <em>tenho falado</em>, <em>tenho comido</em>, <em>tenho trabalhado</em>.",
+            "It looks exactly like the English present perfect (\"I have spoken\"), but — and this is the whole point of the unit — it does <strong>not</strong> mean the same thing. In Portuguese it describes an action that has been <strong>repeated or going on continuously up to now</strong>, not a single finished event.",
+            "So <em>Ultimamente tenho trabalhado muito</em> means \"Lately I've been working a lot\" (it keeps happening), <strong>not</strong> \"I worked once.\" For a single completed past action you use the simple <strong>pretérito perfeito</strong> (<em>trabalhei ontem</em>).",
+          ],
+          tip: {
+            label: "Auxiliary ter ≠ possession ter",
+            body: "Here ter is just an auxiliary — it does not mean \"to have / possess.\" Tenho comido = I have been eating. Tenho um carro = I have (own) a car. Same verb, two jobs.",
+          },
+        },
+        {
+          type: "conjugation",
+          heading: "ter — present tense (auxiliary)",
+          verb: "ter",
+          meaning: "to have (auxiliary)",
+          intro: "We default to você, which shares the ele/ela form. Note the circumflex on têm (plural).",
+          tenses: [{ name: "Presente", forms: [
+            { person: "eu", form: "tenho", en: "I have" },
+            { person: "você / ele / ela", form: "tem", en: "you/he/she has" },
+            { person: "nós", form: "temos", en: "we have" },
+            { person: "vocês / eles / elas", form: "têm", en: "you all/they have" },
+          ] }],
+        },
+        {
+          type: "tip",
+          heading: "Regular past participles: -ado and -ido",
+          body: "<strong>-ar</strong> verbs → drop -ar, add <strong>-ado</strong>. <strong>-er / -ir</strong> verbs → drop the ending, add <strong>-ido</strong>. falar → falado · comer → comido · partir → partido. The participle never changes for person: <em>tenho falado, você tem falado, nós temos falado</em>.",
+          example: { l1: "Tenho trabalhado / Você tem comido / Temos partido cedo", en: "I've been working / You've been eating / We've been leaving early" },
+        },
+        {
+          type: "vocab",
+          heading: "Key irregular participles",
+          intro: "These six are the high-frequency irregulars — memorize them.",
+          items: [
+            { l1: "feito (fazer)", en: "done / made" },
+            { l1: "dito (dizer)", en: "said" },
+            { l1: "visto (ver)", en: "seen" },
+            { l1: "posto (pôr)", en: "put / placed" },
+            { l1: "escrito (escrever)", en: "written" },
+            { l1: "aberto (abrir)", en: "opened" },
+          ],
+        },
+        {
+          type: "tip",
+          heading: "The big idea: repeated / ongoing, NOT a single event",
+          body: "This is the meaning that trips up English and Spanish speakers. <em>Tenho feito</em> = \"I have been doing (lately, repeatedly).\" It signals an action that started in the recent past and is <strong>still going on or keeps recurring</strong> right now. It is almost always paired with words like <em>ultimamente, nos últimos dias, este mês, recentemente</em>.",
+          example: { l1: "Nos últimos dias tenho dormido mal.", en: "These last few days I've been sleeping badly. (still ongoing)" },
+        },
+        {
+          type: "multipleChoice",
+          heading: "Composto check",
+          questions: [
+            {
+              q: "The pretérito perfeito composto is formed with…",
+              options: ["ser + participle", "ter (present) + participle", "estar + participle", "haver (past) + participle"],
+              correct: 1,
+              fb: "Present tense of ter + past participle: tenho falado, tem comido.",
+            },
+            {
+              q: "The participle of 'fazer' is…",
+              options: ["fazido", "fazado", "feito", "fado"],
+              correct: 2,
+              fb: "fazer → feito (irregular). Tenho feito = I've been doing/making.",
+            },
+            {
+              q: "'Ultimamente tenho estudado muito' means…",
+              options: ["I studied once", "I will study a lot", "Lately I've been studying a lot", "I study every day forever"],
+              correct: 2,
+              fb: "Composto = a repeated/ongoing action up to now. \"Lately I've been studying a lot.\"",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      slug: "preterito-composto-meaning",
+      title: "Composto vs simple past",
+      estMinutes: 9,
+      pages: [
+        {
+          type: "intro",
+          heading: "When NOT to use it",
+          body: [
+            "The single most common mistake is using the composto for a one-time finished action, the way English uses \"have done.\" In Portuguese that is wrong.",
+            "\"I have already eaten\" (just now, one event) is <strong>Já comi</strong> — simple pretérito perfeito. \"I have been eating a lot lately\" (repeated) is <strong>Tenho comido muito ultimamente</strong> — composto.",
+            "Quick test: if you can add <em>ultimamente / nos últimos tempos</em> and it still makes sense, the composto fits. If it's a single moment, use the simple past.",
+          ],
+          keyPoint: "Single finished event → pretérito perfeito (comi, fiz, fui). Repeated/ongoing up to now → composto (tenho comido, tenho feito).",
+        },
+        {
+          type: "tip",
+          heading: "BR/PT: both dialects restrict it the same way",
+          body: "Unlike Spanish and English — where the present perfect happily covers a single recent event (\"he comido\" / \"I have eaten\") — <strong>both Brazilian and European Portuguese</strong> reserve <em>tenho feito</em> for a <strong>repeated or continuous</strong> action up to now. The rule is the same on both sides of the Atlantic, so this is one place BR and PT agree. Don't import the Spanish/English habit: don't say <em>tenho comido</em> to mean \"I just ate\" — say <em>já comi</em>.",
+          example: { l1: "✗ Tenho comido agora.  ✓ Já comi.  ✓ Tenho comido muito esta semana.", en: "✗ (wrong for \"I just ate\")  ✓ I've already eaten.  ✓ I've been eating a lot this week." },
+        },
+        {
+          type: "vocab",
+          heading: "Composto in real context",
+          items: [
+            { l1: "Ultimamente tenho trabalhado demais.", en: "Lately I've been working too much." },
+            { l1: "Você tem dormido bem?", en: "Have you been sleeping well? (these days)" },
+            { l1: "Nos últimos meses temos viajado muito.", en: "In the last few months we've been traveling a lot." },
+            { l1: "Eles têm estudado para a prova.", en: "They've been studying for the test." },
+            { l1: "Tenho lido bastante este ano.", en: "I've been reading a lot this year." },
+            { l1: "O tempo tem estado horrível.", en: "The weather has been awful (lately)." },
+          ],
+        },
+        {
+          type: "fillBlank",
+          heading: "Composto or simple past?",
+          intro: "One event → simple past. Repeated/ongoing up to now → composto (ter + participle).",
+          items: [
+            {
+              template: "Ultimamente eu ___ muito ocupado.",
+              answer: "tenho estado",
+              en: "Lately I've been very busy. (ongoing → composto)",
+              options: ["tenho estado", "estive", "estou", "fui"],
+            },
+            {
+              template: "Ontem eu ___ um filme ótimo.",
+              answer: "vi",
+              en: "Yesterday I saw a great film. (single event → simple past)",
+              options: ["tenho visto", "vi", "vejo", "verei"],
+            },
+            {
+              template: "Nós ___ muito nos últimos dias.",
+              answer: "temos comido",
+              en: "We've been eating a lot these last few days. (repeated → composto)",
+              options: ["comemos", "temos comido", "comíamos", "comeremos"],
+            },
+            {
+              template: "Ela já ___ o relatório hoje de manhã.",
+              answer: "fez",
+              en: "She already did the report this morning. (single event → simple past)",
+              options: ["tem feito", "fez", "faz", "fará"],
+            },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate to Portuguese (BR)",
+          direction: "en-to-l1",
+          prompt: "Lately I've been working a lot.",
+          reference: "Ultimamente tenho trabalhado muito.",
+          hint: "Ongoing/repeated up to now → composto: tenho + trabalhado. \"Lately\" = ultimamente.",
+        },
+        {
+          type: "translate",
+          heading: "Translate to Portuguese (BR)",
+          direction: "en-to-l1",
+          prompt: "Have you been sleeping well these days?",
+          reference: "Você tem dormido bem ultimamente?",
+          hint: "tem + dormido (regular -ir participle). \"these days / lately\" = ultimamente.",
+        },
+        {
+          type: "multipleChoice",
+          heading: "Meaning check",
+          questions: [
+            {
+              q: "Which sentence is correct for \"I've already eaten (just now)\"?",
+              options: ["Tenho comido.", "Já comi.", "Tenho comer.", "Comendo já."],
+              correct: 1,
+              fb: "A single finished event uses the simple past: Já comi. Tenho comido would mean \"I've been eating a lot lately.\"",
+            },
+            {
+              q: "The composto tenho feito signals an action that is…",
+              options: ["finished and one-time", "repeated or ongoing up to now", "in the far future", "purely hypothetical"],
+              correct: 1,
+              fb: "Composto = repeated/continuous action up to the present moment.",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      slug: "preterito-composto-practice",
+      title: "Putting it to work",
+      estMinutes: 8,
+      pages: [
+        {
+          type: "conjugation",
+          heading: "fazer in the composto",
+          verb: "ter + feito",
+          meaning: "to have been doing/making",
+          intro: "The participle (feito) is fixed; only ter conjugates.",
+          tenses: [{ name: "Pretérito perfeito composto", forms: [
+            { person: "eu", form: "tenho feito", en: "I've been doing" },
+            { person: "você / ele / ela", form: "tem feito", en: "you/he/she has been doing" },
+            { person: "nós", form: "temos feito", en: "we've been doing" },
+            { person: "vocês / eles / elas", form: "têm feito", en: "you all/they've been doing" },
+          ] }],
+        },
+        {
+          type: "vocab",
+          heading: "Useful time markers with the composto",
+          intro: "These phrases naturally trigger the composto — they all mean \"up to now.\"",
+          items: [
+            { l1: "ultimamente", en: "lately" },
+            { l1: "recentemente", en: "recently" },
+            { l1: "nos últimos dias", en: "in the last few days" },
+            { l1: "este mês / este ano", en: "this month / this year" },
+            { l1: "nos últimos tempos", en: "lately / in recent times" },
+            { l1: "até agora", en: "up to now" },
+          ],
+        },
+        {
+          type: "orderWords",
+          heading: "Build the sentence",
+          intro: "Drag the words into a natural Brazilian order.",
+          items: [
+            { tokens: ["Ultimamente", "tenho", "comido", "muito", "bem"], en: "Lately I've been eating very well." },
+            { tokens: ["Você", "tem", "estudado", "bastante?"], en: "Have you been studying a lot?" },
+            { tokens: ["Nós", "temos", "trabalhado", "demais", "este", "mês"], en: "We've been working too much this month." },
+            { tokens: ["Eles", "têm", "feito", "exercício", "todos", "os", "dias"], en: "They've been exercising every day." },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "How have things been going?",
+          setup: "Two friends catch up after a busy stretch.",
+          lines: [
+            { speaker: "Bia", l1: "E aí, como você tem passado?", en: "Hey, how have you been (doing) lately?" },
+            { speaker: "Léo", l1: "Tenho trabalhado muito, mas tudo bem. E você?", en: "I've been working a lot, but all good. And you?" },
+            { speaker: "Bia", l1: "Tenho estudado para o concurso. Não tenho dormido direito.", en: "I've been studying for the exam. I haven't been sleeping properly." },
+            { speaker: "Léo", l1: "Nossa! Você tem feito alguma pausa?", en: "Wow! Have you been taking any breaks?" },
+            { speaker: "Bia", l1: "Pouca. Mas semana passada eu tirei um dia de folga.", en: "Few. But last week I took a day off. (single event → simple past)" },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Final translation challenge",
+          direction: "en-to-l1",
+          prompt: "We've been traveling a lot this year, but yesterday we stayed home.",
+          reference: "Este ano temos viajado muito, mas ontem ficamos em casa.",
+          hint: "Ongoing this year → composto (temos viajado). \"Yesterday we stayed\" is one event → simple past (ficamos).",
+        },
+        {
+          type: "multipleChoice",
+          heading: "Final check",
+          questions: [
+            {
+              q: "'Não tenho dormido bem' means…",
+              options: ["I didn't sleep well one night", "I haven't been sleeping well (lately)", "I won't sleep well", "I never sleep"],
+              correct: 1,
+              fb: "Composto = ongoing up to now: I haven't been sleeping well these days.",
+            },
+            {
+              q: "Which time word naturally goes with the composto?",
+              options: ["amanhã (tomorrow)", "ontem (yesterday)", "ultimamente (lately)", "nunca mais (never again)"],
+              correct: 2,
+              fb: "Ultimamente (lately) points to an ongoing recent stretch — the composto's home turf.",
+            },
+            {
+              q: "The nós form of the composto for 'comer' is…",
+              options: ["temos comido", "comemos", "temos comer", "tem comido"],
+              correct: 0,
+              fb: "ter (nós = temos) + comido = temos comido.",
+            },
+          ],
+        },
+      ],
+    },
+  ],
+  checkpoint: {
+    passingPct: 80,
+    questions: [
+      { q: "The pretérito perfeito composto is formed with…", options: ["ser + participle", "ter (present) + participle", "estar + participle", "ir + participle"], correct: 1 },
+      { q: "The regular participle of 'falar' is…", options: ["falido", "falado", "falando", "falou"], correct: 1 },
+      { q: "The regular participle of 'comer' is…", options: ["comado", "comendo", "comido", "comeu"], correct: 2 },
+      { q: "The irregular participle of 'fazer' is…", options: ["fazido", "fazado", "feito", "fado"], correct: 2 },
+      { q: "The irregular participle of 'ver' is…", options: ["vido", "veído", "visto", "vendo"], correct: 2 },
+      { q: "'Ultimamente tenho trabalhado muito' means…", options: ["I worked once", "Lately I've been working a lot", "I will work a lot", "I never work"], correct: 1 },
+      { q: "For a single finished event ('I already ate'), you use…", options: ["tenho comido", "já comi", "tenho comer", "vou comer"], correct: 1 },
+      { q: "The composto signals an action that is…", options: ["a one-time finished event", "repeated or ongoing up to now", "in the distant future", "purely imaginary"], correct: 1 },
+      { q: "Compared with Spanish/English present perfect, Portuguese composto…", options: ["covers single recent events too", "is restricted to repeated/ongoing actions (in both BR and PT)", "is only used in Portugal", "does not exist"], correct: 1 },
+      { q: "The nós form of ter (auxiliary) is…", options: ["tem", "têm", "temos", "tenho"], correct: 2 },
+    ],
+  },
+};

@@ -50,7 +50,7 @@ export default async function Home() {
             Allora
           </h1>
           <p className="mt-2 text-slate-400 text-sm">
-            A0 → B1 in Italian, French and Spanish. Ten minutes a day.
+            A0 → B1 in Italian, French, Spanish and Portuguese. Ten minutes a day.
           </p>
         </header>
 

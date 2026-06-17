@@ -1,0 +1,352 @@
+import type { Unit } from "../../types";
+
+export const UNIT_IDIOMS: Unit = {
+  slug: "idioms",
+  stage: 7,
+  order: 29,
+  icon: "🗯️",
+  title: "Idioms & slang",
+  tagline: "Nossa!, valeu, beleza, legal — and PT: fixe, giro, pá.",
+  badge: "culture",
+  lessons: [
+    {
+      slug: "idioms-everyday-slang",
+      title: "Everyday Brazilian slang",
+      estMinutes: 9,
+      pages: [
+        {
+          type: "intro",
+          heading: "Slang is where Portuguese gets its warmth",
+          body: [
+            "Brazilian Portuguese is full of little words that don't translate cleanly but make you sound human and relaxed. Sprinkle a few and people loosen up instantly.",
+            "<strong>Nossa!</strong> = Wow! / Oh my! (short for <em>Nossa Senhora</em>, 'Our Lady'). The all-purpose exclamation of surprise, awe, or dismay.",
+            "<strong>Valeu!</strong> = Thanks! / Cheers! A super-casual 'thank you', also 'cool, got it' to wrap up a chat.",
+            "<strong>Beleza?</strong> = All good? / Cool? Both a greeting ('how's it going?') and an agreement ('sounds good').",
+            "<strong>Legal</strong> = cool / nice / awesome. The single most useful slang adjective in Brazil.",
+          ],
+          keyPoint:
+            "Nossa! (wow), valeu (thanks/cheers), beleza (all good?), legal (cool) — the four you'll hear hundreds of times a day.",
+        },
+        {
+          type: "vocab",
+          heading: "Core Brazilian slang",
+          items: [
+            { l1: "Nossa!", en: "Wow! / Oh my!", note: "Surprise, awe, or dismay — short for Nossa Senhora" },
+            { l1: "Valeu!", en: "Thanks! / Cheers! / Got it", note: "Very casual thank-you (BR)" },
+            { l1: "Beleza?", en: "All good? / Cool?", note: "Greeting and agreement at once" },
+            { l1: "Legal", en: "Cool / nice / awesome", note: "The workhorse positive adjective" },
+            { l1: "Massa", en: "Awesome / great", note: "Cool, esp. in the Northeast (BR)" },
+            { l1: "Da hora", en: "Awesome / really cool", note: "Slang, esp. São Paulo (BR)" },
+            { l1: "Cara", en: "Dude / man", note: "Address a friend; also 'guy'" },
+            { l1: "E aí?", en: "Hey, what's up?", note: "Casual greeting among friends" },
+            { l1: "Falou!", en: "Bye! / Later! / Deal!", note: "Sign-off, lit. 'said'" },
+            { l1: "Tô nessa", en: "I'm in / count me in", note: "From 'estou nessa'" },
+            { l1: "Que isso!", en: "No way! / Don't mention it!", note: "Surprise or polite brush-off" },
+            { l1: "Demais", en: "Too much / awesome", note: "É demais! = it's amazing!" },
+          ],
+        },
+        {
+          type: "tip",
+          heading: "Nossa! does almost everything",
+          body: "<em>Nossa!</em> stretches across every emotion. Surprise: <em>Nossa, que caro!</em> (Wow, so expensive!). Delight: <em>Nossa, que lindo!</em> (Wow, how beautiful!). Dismay: <em>Nossa, que chato…</em> (Ugh, how annoying…). You'll also hear the longer <em>Nossa Senhora!</em> for extra drama. It's not religious in tone anymore — it's pure exclamation.",
+          example: { l1: "Nossa, que delícia esse bolo!", en: "Wow, this cake is delicious!" },
+        },
+        {
+          type: "multipleChoice",
+          heading: "Match the slang",
+          questions: [
+            {
+              q: "A friend helps you out. The casual way to say thanks is…",
+              options: ["Por favor", "Valeu!", "Com licença", "Pois não"],
+              correct: 1,
+              fb: "Valeu! is the relaxed, everyday 'thanks / cheers' in Brazil.",
+            },
+            {
+              q: "'Que filme legal!' means…",
+              options: ["What a legal film!", "What a cool movie!", "What a long movie!", "What a sad film!"],
+              correct: 1,
+              fb: "Legal = cool / nice. It does NOT mean 'legal' in the law sense here.",
+            },
+            {
+              q: "'Nossa!' is best described as…",
+              options: ["a goodbye", "an all-purpose 'wow!'", "a swear word", "a question"],
+              correct: 1,
+            },
+            {
+              q: "Someone ends a chat with 'Falou!'. It means…",
+              options: ["I'm angry", "Later! / Bye!", "Repeat that", "I agree completely"],
+              correct: 1,
+              fb: "Falou! (lit. 'said') is a breezy sign-off, like 'later!'.",
+            },
+            {
+              q: "'Beleza?' in a greeting means…",
+              options: ["Are you beautiful?", "All good? / Cool?", "Where are you?", "How much?"],
+              correct: 1,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      slug: "idioms-fixed-expressions",
+      title: "Fixed expressions & reactions",
+      estMinutes: 10,
+      pages: [
+        {
+          type: "intro",
+          heading: "The phrases that keep a conversation easy",
+          body: [
+            "Beyond single words, Brazilians lean on a set of short fixed phrases for reassuring, agreeing, and reacting. They sound effortless and instantly mark you as comfortable.",
+            "<strong>Fica tranquilo / relaxa</strong> = take it easy / don't worry / chill. The national mantra of staying calm.",
+            "<strong>Dar um jeito</strong> = to find a way / sort it out (somehow). The famous Brazilian <em>jeitinho</em> — improvising a solution.",
+            "<strong>Pra caramba</strong> = a ton / like crazy. Tacks onto anything: <em>caro pra caramba</em> = crazy expensive.",
+            "<strong>Tá ligado?</strong> = you know? / you get me? A spoken filler to check you're following.",
+            "<strong>Mó</strong> = super / really (short for <em>maior</em>): <em>mó legal</em> = super cool (very casual, BR).",
+          ],
+          keyPoint:
+            "Fica tranquilo (chill), dar um jeito (sort it out), pra caramba (a ton), tá ligado? (you know?), mó (= muito/super).",
+        },
+        {
+          type: "vocab",
+          heading: "Fixed expressions",
+          items: [
+            { l1: "Fica tranquilo", en: "Take it easy / don't worry", note: "Also: relaxa" },
+            { l1: "Relaxa", en: "Chill / relax", note: "Reassuring a stressed friend (BR)" },
+            { l1: "Dar um jeito", en: "To find a way / sort it out", note: "The jeitinho brasileiro" },
+            { l1: "Pra caramba", en: "A ton / like crazy", note: "Intensifier after adjectives/verbs" },
+            { l1: "Tá ligado?", en: "You know? / You get me?", note: "Conversational check-in (BR)" },
+            { l1: "Mó", en: "Super / really", note: "= maior; very casual: mó legal (BR)" },
+            { l1: "Sei lá", en: "I dunno / whatever", note: "Shrug answer, lit. 'I know there'" },
+            { l1: "Que pena", en: "What a shame", note: "Sympathetic reaction" },
+            { l1: "Com certeza", en: "For sure / absolutely", note: "Strong agreement" },
+            { l1: "Tá bom / Tá", en: "OK / alright", note: "Tá alone = casual 'ok'" },
+            { l1: "Deixa pra lá", en: "Never mind / let it go", note: "Drop the subject" },
+            { l1: "Nem vem", en: "Don't even / no way", note: "Playful refusal (BR)" },
+          ],
+        },
+        {
+          type: "tip",
+          heading: "Dar um jeito — the Brazilian superpower",
+          body: "<em>Dar um jeito</em> captures a whole cultural attitude: there's always a way to work something out, bend a rule, improvise. <em>A gente dá um jeito</em> = we'll figure it out. The noun <em>jeitinho</em> (little knack) names this resourcefulness directly. When a Brazilian says <em>deixa que eu dou um jeito</em>, they mean 'leave it to me, I'll sort it'.",
+          example: { l1: "Não tem ingresso, mas a gente dá um jeito.", en: "There are no tickets, but we'll figure something out." },
+        },
+        {
+          type: "dialogue",
+          heading: "Slang in conversation (Brazil)",
+          setup: "Two friends planning a night out.",
+          lines: [
+            { speaker: "Bruno", l1: "E aí, cara! Beleza?", en: "Hey, dude! All good?" },
+            { speaker: "Lia", l1: "Beleza! Bora sair hoje?", en: "All good! Wanna go out today?" },
+            { speaker: "Bruno", l1: "Nossa, queria, mas tô sem grana pra caramba.", en: "Aw, I'd love to, but I'm super broke." },
+            { speaker: "Lia", l1: "Relaxa, a gente dá um jeito. Tem festa de graça.", en: "Chill, we'll sort it out. There's a free party." },
+            { speaker: "Bruno", l1: "Massa! Tá ligado onde é?", en: "Awesome! Do you know where it is?" },
+            { speaker: "Lia", l1: "Com certeza. Valeu, então. Falou!", en: "For sure. Cool, then. Later!" },
+          ],
+        },
+        {
+          type: "fillBlank",
+          heading: "Slang fill-ins",
+          intro: "Choose the expression that fits.",
+          items: [
+            {
+              template: "Não se preocupe, ___ tranquilo.",
+              answer: "fica",
+              en: "Don't worry, take it easy.",
+              options: ["fica", "vem", "dá", "sei"],
+            },
+            {
+              template: "Esse celular é caro ___ caramba.",
+              answer: "pra",
+              en: "This phone is crazy expensive.",
+              options: ["pra", "com", "de", "em"],
+            },
+            {
+              template: "Sem problema, a gente ___ um jeito.",
+              answer: "dá",
+              en: "No problem, we'll sort it out.",
+              options: ["dá", "fica", "vem", "vai"],
+            },
+            {
+              template: "— Você vem? — ___ lá, talvez.",
+              answer: "Sei",
+              en: "— Are you coming? — Dunno, maybe.",
+              options: ["Sei", "Tá", "Mó", "Que"],
+            },
+            {
+              template: "A festa foi ___ legal!",
+              answer: "mó",
+              en: "The party was super cool!",
+              options: ["mó", "pra", "sei", "tá"],
+            },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "Chill, we'll figure it out. Thanks, dude!",
+          reference: "Relaxa, a gente dá um jeito. Valeu, cara!",
+          hint: "'Chill' = relaxa. 'We'll figure it out' = a gente dá um jeito. 'Thanks' (casual) = valeu.",
+        },
+      ],
+    },
+    {
+      slug: "idioms-european-slang",
+      title: "European Portuguese slang",
+      estMinutes: 9,
+      pages: [
+        {
+          type: "intro",
+          heading: "Cross the Atlantic and the slang changes completely",
+          body: [
+            "Brazilian and European Portuguese share grammar but split hard on slang. A Brazilian's <em>legal</em> is a Portuguese person's <em>fixe</em> — and each can sound foreign to the other.",
+            "<strong>Fixe</strong> (PT) = cool / nice — the European equivalent of Brazilian <em>legal</em>. Pronounced 'FEESH'.",
+            "<strong>Giro / gira</strong> (PT) = cute / nice / cool (agrees with gender). In Brazil 'giro' just means 'turn'.",
+            "<strong>Bué</strong> (PT) = a lot / very (from Angolan Portuguese): <em>bué de fixe</em> = really cool. Brazil uses <em>muito</em> or <em>pra caramba</em>.",
+            "<strong>Pá</strong> / <strong>ó pá</strong> (PT) = man / dude / hey — a filler and address word, roughly Brazil's <em>cara</em>.",
+          ],
+          keyPoint:
+            "PT slang: fixe (= BR legal), giro/gira (cute/cool), bué (= muito/pra caramba), pá / ó pá (= BR cara).",
+        },
+        {
+          type: "vocab",
+          heading: "European Portuguese slang (PT)",
+          intro: "Recognise these — you'll hear them all over Portugal, rarely in Brazil.",
+          items: [
+            { l1: "Fixe", en: "Cool / nice", note: "PT — equivalent of BR legal" },
+            { l1: "Giro / gira", en: "Cute / nice / cool", note: "PT — agrees with gender" },
+            { l1: "Bué", en: "A lot / very", note: "PT — from Angolan PT; = muito" },
+            { l1: "Pá", en: "Man / dude / hey", note: "PT filler & address; = BR cara" },
+            { l1: "Ó pá", en: "Hey, man / look here", note: "PT — getting attention" },
+            { l1: "Está-se bem", en: "It's all good / no worries", note: "PT — relaxed reassurance" },
+            { l1: "Porreiro", en: "Great / cool / nice", note: "PT — slightly older slang" },
+            { l1: "Brutal", en: "Awesome / amazing", note: "PT — positive intensifier" },
+            { l1: "Chunga", en: "Dodgy / sketchy", note: "PT — bad quality or shady" },
+            { l1: "Bazar", en: "To leave / split", note: "PT slang — vamos bazar = let's go" },
+          ],
+        },
+        {
+          type: "tip",
+          heading: "BR ↔ PT slang cheat sheet",
+          body: "Same idea, different word across the Atlantic. <strong>Cool/nice:</strong> BR <em>legal / massa / da hora</em> ↔ PT <em>fixe / giro / porreiro</em>. <strong>Very / a lot:</strong> BR <em>muito / pra caramba / mó</em> ↔ PT <em>bué (de)</em>. <strong>Dude / man:</strong> BR <em>cara</em> ↔ PT <em>pá / gajo</em>. <strong>Chill:</strong> BR <em>relaxa / fica tranquilo</em> ↔ PT <em>está-se bem</em>. Brazilian is our spine — but knowing the PT swaps means you'll follow a Lisbon conversation too.",
+          example: { l1: "BR: Que festa legal! · PT: Que festa fixe!", en: "What a cool party!" },
+        },
+        {
+          type: "dialogue",
+          heading: "Slang in Lisbon (PT)",
+          setup: "Two friends in Portugal reacting to a plan.",
+          lines: [
+            { speaker: "Tiago", l1: "Ó pá, vamos ao concerto logo?", en: "Hey man, shall we go to the concert later?" },
+            { speaker: "Rita", l1: "Bué de fixe! A que horas?", en: "Super cool! What time?" },
+            { speaker: "Tiago", l1: "Às nove. O sítio é mesmo giro.", en: "At nine. The place is really nice." },
+            { speaker: "Rita", l1: "Brutal. Está-se bem, então.", en: "Awesome. All good, then." },
+            { speaker: "Tiago", l1: "Boa. Vamos bazar daqui a pouco, pá.", en: "Great. Let's head out in a bit, man." },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "BR or PT?",
+          questions: [
+            {
+              q: "A person in Lisbon says 'Que fixe!'. It means…",
+              options: ["How expensive!", "How cool!", "How fixed!", "How tired!"],
+              correct: 1,
+              fb: "Fixe (PT) = cool / nice — the European twin of Brazilian 'legal'.",
+            },
+            {
+              q: "Brazilian 'pra caramba' (a lot) matches which PT word?",
+              options: ["fixe", "bué", "giro", "pá"],
+              correct: 1,
+              fb: "Bué (PT) = a lot / very, where Brazil says pra caramba / muito.",
+            },
+            {
+              q: "'Pá' in European Portuguese is roughly Brazil's…",
+              options: ["legal", "cara", "valeu", "nossa"],
+              correct: 1,
+              fb: "Pá (PT) is the address/filler word — like Brazilian 'cara' (dude).",
+            },
+            {
+              q: "Which set is European Portuguese slang?",
+              options: ["legal, massa, da hora", "fixe, giro, bué", "valeu, beleza, falou", "nossa, cara, demais"],
+              correct: 1,
+              fb: "Fixe, giro, and bué are PT slang; the others are Brazilian.",
+            },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it (European-style)",
+          direction: "en-to-l1",
+          prompt: "How cool! The place is really nice, man.",
+          reference: "Que fixe! O sítio é bué de giro, pá.",
+          hint: "Use PT slang: 'cool' = fixe, 'really' = bué (de), 'nice' = giro, 'man' = pá.",
+        },
+        {
+          type: "tip",
+          heading: "Borrow a few — but stay consistent",
+          body: "If you only ever adopt three Brazilian-isms, make them <em>nossa</em>, <em>legal</em>, and <em>valeu</em> — they cover surprise, approval, and thanks, and they make any chat instantly friendlier. Just don't mix BR and PT slang in the same breath: <em>legal</em> + <em>pá</em> in one sentence sounds odd to natives. Pick the spine (Brazilian, here) and let the European words stay as recognition vocabulary.",
+        },
+      ],
+    },
+  ],
+  checkpoint: {
+    passingPct: 80,
+    questions: [
+      {
+        q: "'Nossa!' is best described as…",
+        options: ["a goodbye", "an all-purpose 'wow!'", "a swear word", "a question"],
+        correct: 1,
+      },
+      {
+        q: "The casual Brazilian way to say 'thanks' is…",
+        options: ["Por favor", "Valeu", "Com licença", "Pois não"],
+        correct: 1,
+      },
+      {
+        q: "'Legal' (BR) means…",
+        options: ["law-related", "cool / nice", "boring", "expensive"],
+        correct: 1,
+      },
+      {
+        q: "'Fica tranquilo' / 'relaxa' means…",
+        options: ["hurry up", "take it easy / chill", "good luck", "I agree"],
+        correct: 1,
+      },
+      {
+        q: "'Dar um jeito' means…",
+        options: ["to give up", "to find a way / sort it out", "to complain", "to pay"],
+        correct: 1,
+      },
+      {
+        q: "'Caro pra caramba' means…",
+        options: ["a little expensive", "crazy expensive", "free", "fairly priced"],
+        correct: 1,
+      },
+      {
+        q: "European Portuguese 'fixe' is the twin of Brazilian…",
+        options: ["nossa", "legal", "valeu", "cara"],
+        correct: 1,
+      },
+      {
+        q: "European 'bué' matches which Brazilian expression?",
+        options: ["beleza", "pra caramba", "falou", "sei lá"],
+        correct: 1,
+      },
+      {
+        q: "'Pá' (PT) is roughly Brazil's…",
+        options: ["legal", "cara", "nossa", "valeu"],
+        correct: 1,
+      },
+      {
+        q: "Translate: 'Chill, we'll sort it out. Thanks, dude!'",
+        options: [
+          "Relaxa, a gente dá um jeito. Valeu, cara!",
+          "Calma, nós pagamos depois. Obrigado, senhor!",
+          "Fixe, vamos bazar. Valeu, pá!",
+          "Nossa, que pena. De nada, amigo!",
+        ],
+        correct: 0,
+      },
+    ],
+  },
+};

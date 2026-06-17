@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-A combined Italian + French + Spanish language-learning app (A0–B1). **Multi-user with email/password auth.** Three learning loops per language: **Roadmap** (35 units × 8 stages with lessons and checkpoint quizzes), **Daily Read** (8 graded stories with comprehension questions), **Review** (FSRS spaced-repetition flashcard deck).
+A combined Italian + French + Spanish + Portuguese language-learning app (A0–B1). **Multi-user with email/password auth.** (Portuguese is a single **Brazilian-primary** course — pt-BR audio — that teaches the major European-Portuguese differences inline via `tip` pages and vocab `note`s.) Three learning loops per language: **Roadmap** (35 units × 8 stages with lessons and checkpoint quizzes), **Daily Read** (8 graded stories with comprehension questions), **Review** (FSRS spaced-repetition flashcard deck).
 
 **Two platforms sharing one Turso cloud DB:**
 - `web/` — Next.js 16.2 web app, live at **https://learnallora.com** (auto-deploys from `main`)
@@ -63,7 +63,7 @@ There are no tests.
 
 ### Language routing
 
-All language-specific pages live under `app/[lang]/`. `lib/lang.ts` defines `Lang = 'italian' | 'french' | 'spanish'`, `SUPPORTED_LANGS`, flag/label/speech-code maps, and `isValidLang()`. Each `[lang]` page calls `isValidLang(langParam)` and returns `notFound()` for invalid values.
+All language-specific pages live under `app/[lang]/`. `lib/lang.ts` defines `Lang = 'italian' | 'french' | 'spanish' | 'portuguese'`, `SUPPORTED_LANGS`, flag/label/speech-code maps, and `isValidLang()`. Each `[lang]` page calls `isValidLang(langParam)` and returns `notFound()` for invalid values.
 
 ### Content
 
@@ -76,9 +76,10 @@ lib/content/
   italian/        ← units/ (35 files), reads/ (8 files), stages.ts
   french/         ← units/ (35 files), reads/ (8 files), stages.ts
   spanish/        ← units/ (35 files), reads/ (8 files), stages.ts
+  portuguese/     ← units/ (35 files), reads/ (8 files), stages.ts  (Brazilian-primary)
 ```
 
-All three languages are at content parity (≈35 units × 3 lessons, every unit carrying `translate` exercises — the productive en→l1 drill). When extending a language, author **original** content for that language/culture (Spanish wines, Spanish landmarks, ser/estar — never a literal translation of the Italian unit) and keep the per-unit `translate` count in step with the others.
+All four languages are at content parity (≈35 units × 3 lessons, every unit carrying `translate` exercises — the productive en→l1 drill). When extending a language, author **original** content for that language/culture (Spanish wines, Brazilian feijoada, ser/estar — never a literal translation of the Italian unit) and keep the per-unit `translate` count in step with the others. Adding a language touches: `lib/lang.ts` + `lib/content/index.ts` (dispatcher) + a new `lib/content/<lang>/` tree + `lib/anthropic.ts` (the `Record<Lang,string>` maps) on web, plus the **mirror copies** in `mobile/lib/` (`lang.ts`, `content/index.ts`, `content/<lang>/`, and the per-language `LANG_TINT`/greeting maps in mobile screens + `lib/theme.ts`). The login/register flag row renders from `SUPPORTED_LANGS` dynamically.
 
 ### Database schema
 

@@ -5,12 +5,14 @@ const LANG_NAMES: Record<Lang, string> = {
   italian: "Italian",
   french: "French",
   spanish: "Spanish",
+  portuguese: "Brazilian Portuguese",
 };
 
 const LANG_DIACRITICS: Record<Lang, string> = {
   italian: "à è é ì ò ù",
   french: "à â é è ê ë î ï ô ù û ü ç",
   spanish: "á é í ó ú ü ñ ¡ ¿",
+  portuguese: "á â ã à é ê í ó ô õ ú ç",
 };
 
 const LANG_CONJUGATION_NOTE: Record<Lang, string> = {
@@ -20,6 +22,8 @@ const LANG_CONJUGATION_NOTE: Record<Lang, string> = {
     "Keys are tenses ('présent', 'passé composé', 'imparfait', 'futur simple'). Each value is an object keyed by person ('je', 'tu', 'il/elle', 'nous', 'vous', 'ils/elles'). For 'passé composé' include the auxiliary (avoir/être).",
   spanish:
     "Keys are tenses ('presente', 'pretérito indefinido', 'imperfecto', 'futuro simple', 'condicional'). Each value is an object keyed by person ('yo', 'tú', 'él/ella/usted', 'nosotros', 'vosotros', 'ellos/ustedes').",
+  portuguese:
+    "Brazilian Portuguese. Keys are tenses ('presente', 'pretérito perfeito', 'pretérito imperfeito', 'futuro do presente', 'futuro do pretérito'). Each value is an object keyed by person ('eu', 'você/ele/ela', 'nós', 'vocês/eles/elas'). Use the Brazilian você forms as the 2nd person; for compound tenses include the auxiliary (ter).",
 };
 
 /**
