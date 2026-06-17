@@ -42,7 +42,10 @@ function buildSentenceRanges(
 }
 
 export function tokenize(_lang: Lang, rawText: string): Token[] {
-  const text = rawText.normalize("NFC");
+  // Fold typographic apostrophes (curly ’ U+2019, modifier ʼ U+02BC, left ‘ U+2018)
+  // to ASCII ' so WORD_RE's elision rules fire on l'ami / c'est / l'amico even when
+  // the source text uses smart quotes — NFC alone does not do this fold.
+  const text = rawText.normalize("NFC").replace(/[‘’ʼ]/g, "'");
   const sentences = buildSentenceRanges(text);
 
   const findSentence = (offset: number): string => {

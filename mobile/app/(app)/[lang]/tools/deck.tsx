@@ -14,10 +14,16 @@ export default function DeckScreen() {
   const lang = isValidLang(langParam) ? langParam : null;
   const [deck, setDeck] = useState<DeckEntry[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     if (!lang) return;
-    apiGetDeck(lang).then(({ cards }) => { setDeck(cards as DeckEntry[]); setLoading(false); });
+    let active = true;
+    apiGetDeck(lang)
+      .then(({ cards }) => { if (active) setDeck(cards as DeckEntry[]); })
+      .catch(() => { if (active) setError(true); })
+      .finally(() => { if (active) setLoading(false); }); // always clear the spinner
+    return () => { active = false; };
   }, [lang]);
 
   async function handleDelete(cardId: string, lemma: string) {
@@ -35,6 +41,7 @@ export default function DeckScreen() {
 
   if (!lang) return <Text style={{ color: C.danger, padding: 20 }}>Invalid language</Text>;
   if (loading) return <ActivityIndicator color={C.primary} style={{ marginTop: 80 }} />;
+  if (error) return <Text style={{ color: C.danger, padding: 20 }}>Couldn't load your deck. Check your connection and try again.</Text>;
 
   const now = Date.now();
 

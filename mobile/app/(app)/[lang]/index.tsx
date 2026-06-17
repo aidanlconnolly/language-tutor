@@ -35,7 +35,11 @@ export default function LangHomeScreen() {
 
   useEffect(() => { load().finally(() => setLoading(false)); }, [load]);
 
-  async function onRefresh() { setRefreshing(true); await load(); setRefreshing(false); }
+  async function onRefresh() {
+    setRefreshing(true);
+    // finally so a failed reload (e.g. offline) doesn't strand the spinner.
+    try { await load(); } finally { setRefreshing(false); }
+  }
 
   if (!lang) return <Text style={{ color: C.danger, padding: 20 }}>Invalid language</Text>;
   if (loading) return <ActivityIndicator color={C.primary} style={{ marginTop: 80 }} />;

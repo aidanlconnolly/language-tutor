@@ -2,7 +2,7 @@ import { eq } from "drizzle-orm";
 import { nanoid } from "nanoid";
 import { and } from "drizzle-orm";
 import { db, schema } from "@/lib/db/client";
-import { getApiUserId, apiError, isAuthError } from "@/lib/api-auth";
+import { getApiUserId, apiError, isAuthError, readJson, isBadRequestError } from "@/lib/api-auth";
 import { isValidLang } from "@/lib/lang";
 import { lookupWord as claudeLookup } from "@/lib/anthropic";
 import type { NextRequest } from "next/server";
@@ -15,7 +15,7 @@ export async function POST(
     const { lang: langParam } = await params;
     if (!isValidLang(langParam)) return apiError("Unknown language", 404);
     const userId = await getApiUserId(request);
-    const { surface: rawSurface, sentence: rawSentence } = await request.json();
+    const { surface: rawSurface, sentence: rawSentence } = await readJson(request);
     const surface = ((rawSurface as string) ?? "").normalize("NFC");
     const sentence = ((rawSentence as string) ?? "").normalize("NFC");
     if (!surface || !sentence) return apiError("Missing surface or sentence");
@@ -71,6 +71,7 @@ export async function POST(
     return Response.json({ ok: true, word, cached: false, isSaved: await wordIsSaved(word.id, userId) });
   } catch (err) {
     if (isAuthError(err)) return apiError("Unauthorized", 401);
+    if (isBadRequestError(err)) return apiError(err.message, 400);
     return apiError(err instanceof Error ? err.message : "Server error", 500);
   }
 }

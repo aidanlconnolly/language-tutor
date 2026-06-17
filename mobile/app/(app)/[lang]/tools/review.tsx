@@ -18,19 +18,42 @@ export default function ReviewScreen() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [revealed, setRevealed] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
   const [rating, setRating] = useState(false);
 
   useEffect(() => {
     if (!lang) return;
-    apiGetReview(lang).then(({ cards, stats }) => {
-      setCards(cards);
-      setStats(stats);
-      setLoading(false);
-    });
+    let active = true;
+    apiGetReview(lang)
+      .then(({ cards, stats }) => {
+        if (!active) return;
+        setCards(cards);
+        setStats(stats);
+      })
+      .catch(() => { if (active) setError(true); })
+      .finally(() => { if (active) setLoading(false); }); // always clear the spinner
+    return () => { active = false; };
   }, [lang]);
 
   if (!lang) return <Text style={{ color: C.danger, padding: 20 }}>Invalid language</Text>;
   if (loading) return <ActivityIndicator color={C.primary} style={{ marginTop: 80 }} />;
+
+  if (error) {
+    return (
+      <SafeAreaView style={s.container}>
+        <View style={s.empty}>
+          <Text style={s.emptyEmoji}>⚠️</Text>
+          <Text style={s.emptyTitle}>Couldn't load review</Text>
+          <Text style={{ color: C.textMuted, textAlign: "center", marginBottom: 24 }}>
+            Check your connection and try again.
+          </Text>
+          <TouchableOpacity style={s.btn} onPress={() => router.back()}>
+            <Text style={s.btnText}>Go back</Text>
+          </TouchableOpacity>
+        </View>
+      </SafeAreaView>
+    );
+  }
 
   if (cards.length === 0 || currentIndex >= cards.length) {
     return (

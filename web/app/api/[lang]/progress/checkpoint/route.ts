@@ -1,6 +1,6 @@
 import { nanoid } from "nanoid";
 import { db, schema } from "@/lib/db/client";
-import { getApiUserId, apiError, isAuthError } from "@/lib/api-auth";
+import { getApiUserId, apiError, isAuthError, readJson, isBadRequestError } from "@/lib/api-auth";
 import { isValidLang } from "@/lib/lang";
 import { findUnit } from "@/lib/content";
 import type { NextRequest } from "next/server";
@@ -13,7 +13,7 @@ export async function POST(
     const { lang: langParam } = await params;
     if (!isValidLang(langParam)) return apiError("Unknown language", 404);
     const userId = await getApiUserId(request);
-    const { unitSlug, score } = await request.json();
+    const { unitSlug, score } = await readJson(request);
     if (!unitSlug || typeof score !== "number") return apiError("Missing fields");
 
     const unit = findUnit(langParam, unitSlug);
@@ -26,6 +26,7 @@ export async function POST(
     return Response.json({ ok: true, passed });
   } catch (err) {
     if (isAuthError(err)) return apiError("Unauthorized", 401);
+    if (isBadRequestError(err)) return apiError(err.message, 400);
     return apiError(err instanceof Error ? err.message : "Server error", 500);
   }
 }

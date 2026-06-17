@@ -1,7 +1,7 @@
 import { and, desc, eq } from "drizzle-orm";
 import { nanoid } from "nanoid";
 import { db, schema } from "@/lib/db/client";
-import { getApiUserId, apiError, isAuthError } from "@/lib/api-auth";
+import { getApiUserId, apiError, isAuthError, readJson, isBadRequestError } from "@/lib/api-auth";
 import { isValidLang } from "@/lib/lang";
 import { freshCardState } from "@/lib/srs";
 import type { NextRequest } from "next/server";
@@ -35,6 +35,7 @@ export async function GET(
     });
   } catch (err) {
     if (isAuthError(err)) return apiError("Unauthorized", 401);
+    if (isBadRequestError(err)) return apiError(err.message, 400);
     return apiError(err instanceof Error ? err.message : "Server error", 500);
   }
 }
@@ -47,7 +48,7 @@ export async function POST(
     const { lang: langParam } = await params;
     if (!isValidLang(langParam)) return apiError("Unknown language", 404);
     const userId = await getApiUserId(request);
-    const { wordId, sourceSurface, sourceSentence, sourceTextId } = await request.json();
+    const { wordId, sourceSurface, sourceSentence, sourceTextId } = await readJson(request);
     if (!wordId || !sourceSurface || !sourceSentence) return apiError("Missing fields");
 
     // Guard the "word_id implies language" invariant: never store a card whose
@@ -82,6 +83,7 @@ export async function POST(
     return Response.json({ ok: true, cardId: id, created: true });
   } catch (err) {
     if (isAuthError(err)) return apiError("Unauthorized", 401);
+    if (isBadRequestError(err)) return apiError(err.message, 400);
     return apiError(err instanceof Error ? err.message : "Server error", 500);
   }
 }

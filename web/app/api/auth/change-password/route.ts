@@ -2,12 +2,12 @@ import type { NextRequest } from "next/server";
 import bcrypt from "bcryptjs";
 import { eq } from "drizzle-orm";
 import { db, schema } from "@/lib/db/client";
-import { getApiUserId, apiError, isAuthError } from "@/lib/api-auth";
+import { getApiUserId, apiError, isAuthError, readJson, isBadRequestError } from "@/lib/api-auth";
 
 export async function POST(request: NextRequest): Promise<Response> {
   try {
     const userId = await getApiUserId(request);
-    const { current, new: next, confirm } = await request.json();
+    const { current, new: next, confirm } = await readJson(request);
 
     if (!current || !next || !confirm) return apiError("All fields are required");
     if ((next as string).length < 8) return apiError("New password must be at least 8 characters");
@@ -24,6 +24,7 @@ export async function POST(request: NextRequest): Promise<Response> {
     return Response.json({ ok: true });
   } catch (err) {
     if (isAuthError(err)) return apiError("Unauthorized", 401);
+    if (isBadRequestError(err)) return apiError(err.message, 400);
     return apiError(err instanceof Error ? err.message : "Server error", 500);
   }
 }

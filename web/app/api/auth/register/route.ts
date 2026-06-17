@@ -3,11 +3,11 @@ import bcrypt from "bcryptjs";
 import { nanoid } from "nanoid";
 import { eq } from "drizzle-orm";
 import { db, schema } from "@/lib/db/client";
-import { createApiToken, apiError } from "@/lib/api-auth";
+import { createApiToken, apiError, readJson, isBadRequestError } from "@/lib/api-auth";
 
 export async function POST(request: NextRequest): Promise<Response> {
   try {
-    const body = await request.json();
+    const body = await readJson<{ email?: string; password?: string }>(request);
     const email = ((body.email as string) ?? "").trim().toLowerCase();
     const password = (body.password as string) ?? "";
 
@@ -36,7 +36,8 @@ export async function POST(request: NextRequest): Promise<Response> {
 
     const token = await createApiToken(id, email);
     return Response.json({ ok: true, token, user: { id, email } });
-  } catch {
+  } catch (err) {
+    if (isBadRequestError(err)) return apiError(err.message, 400);
     return apiError("Server error", 500);
   }
 }

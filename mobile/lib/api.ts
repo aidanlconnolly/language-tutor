@@ -65,26 +65,40 @@ async function del<T>(path: string): Promise<T> {
 
 /* ─────────── Auth ─────────── */
 
-export async function apiLogin(email: string, password: string) {
+type AuthResult = { token: string; user: { id: string; email: string } };
+
+/**
+ * Auth responses don't flow through handle() (no Bearer token yet), so parse them
+ * defensively here: a 5xx/HTML error page would otherwise make res.json() throw a
+ * cryptic SyntaxError instead of a readable message.
+ */
+async function parseAuthResponse(res: Response, fallbackError: string): Promise<AuthResult> {
+  let json: { ok?: boolean; error?: string };
+  try {
+    json = await res.json();
+  } catch {
+    throw new Error(`Request failed (${res.status})`);
+  }
+  if (!json.ok) throw new Error(json.error ?? fallbackError);
+  return json as unknown as AuthResult;
+}
+
+export async function apiLogin(email: string, password: string): Promise<AuthResult> {
   const res = await fetch(`${API_BASE}/api/auth/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password }),
   });
-  const json = await res.json();
-  if (!json.ok) throw new Error(json.error ?? "Login failed");
-  return json as { token: string; user: { id: string; email: string } };
+  return parseAuthResponse(res, "Login failed");
 }
 
-export async function apiRegister(email: string, password: string) {
+export async function apiRegister(email: string, password: string): Promise<AuthResult> {
   const res = await fetch(`${API_BASE}/api/auth/register`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password }),
   });
-  const json = await res.json();
-  if (!json.ok) throw new Error(json.error ?? "Registration failed");
-  return json as { token: string; user: { id: string; email: string } };
+  return parseAuthResponse(res, "Registration failed");
 }
 
 /** Permanently delete the signed-in account and all its data. */

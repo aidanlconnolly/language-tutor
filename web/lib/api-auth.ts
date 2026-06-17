@@ -51,3 +51,29 @@ export function apiError(message: string, status = 400): Response {
 export function isAuthError(err: unknown): boolean {
   return err instanceof AuthError;
 }
+
+/** Thrown when a request body is missing or not valid JSON. Callers map it to 400. */
+export class BadRequestError extends Error {
+  constructor(message = "Request body must be valid JSON") {
+    super(message);
+    this.name = "BadRequestError";
+  }
+}
+
+/**
+ * Parse a JSON request body, normalizing empty/malformed input to BadRequestError (→ 400, not 500).
+ * Defaults to `any` to match the ergonomics of the `request.json()` it replaces; callers that want
+ * type safety pass an explicit shape, e.g. `readJson<{ email?: string }>(request)`.
+ */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function readJson<T = any>(request: NextRequest): Promise<T> {
+  try {
+    return (await request.json()) as T;
+  } catch {
+    throw new BadRequestError();
+  }
+}
+
+export function isBadRequestError(err: unknown): err is BadRequestError {
+  return err instanceof BadRequestError;
+}

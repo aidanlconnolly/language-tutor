@@ -2,7 +2,7 @@ import type { NextRequest } from "next/server";
 import bcrypt from "bcryptjs";
 import { eq } from "drizzle-orm";
 import { db, schema } from "@/lib/db/client";
-import { createApiToken, apiError } from "@/lib/api-auth";
+import { createApiToken, apiError, readJson, isBadRequestError } from "@/lib/api-auth";
 
 // A real bcrypt(cost 12) hash compared against on the no-user path so the
 // missing-email and wrong-password branches take comparable time (defeats
@@ -11,7 +11,7 @@ const FAKE_HASH = "$2b$12$KtV8EbH90Rd6dwoeUbbuYec8.YB9sReUMdmA84/dPa8bnbXghzltC"
 
 export async function POST(request: NextRequest): Promise<Response> {
   try {
-    const body = await request.json();
+    const body = await readJson<{ email?: string; password?: string }>(request);
     const email = ((body.email as string) ?? "").trim().toLowerCase();
     const password = (body.password as string) ?? "";
 
@@ -34,6 +34,7 @@ export async function POST(request: NextRequest): Promise<Response> {
     const token = await createApiToken(user.id, user.email);
     return Response.json({ ok: true, token, user: { id: user.id, email: user.email } });
   } catch (err) {
+    if (isBadRequestError(err)) return apiError(err.message, 400);
     return apiError(err instanceof Error ? err.message : "Server error", 500);
   }
 }

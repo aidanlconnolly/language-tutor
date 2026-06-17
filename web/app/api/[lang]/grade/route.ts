@@ -1,4 +1,4 @@
-import { getApiUserId, apiError, isAuthError } from "@/lib/api-auth";
+import { getApiUserId, apiError, isAuthError, readJson, isBadRequestError } from "@/lib/api-auth";
 import { isValidLang } from "@/lib/lang";
 import { gradeTranslation } from "@/lib/anthropic";
 import type { NextRequest } from "next/server";
@@ -11,7 +11,7 @@ export async function POST(
     const { lang: langParam } = await params;
     if (!isValidLang(langParam)) return apiError("Unknown language", 404);
     await getApiUserId(request);
-    const { direction, prompt, reference, learner } = await request.json();
+    const { direction, prompt, reference, learner } = await readJson(request);
     if (!direction || !prompt || !reference || !learner?.trim()) return apiError("Missing fields");
 
     const grade = await gradeTranslation({
@@ -23,6 +23,7 @@ export async function POST(
     return Response.json({ ok: true, grade });
   } catch (err) {
     if (isAuthError(err)) return apiError("Unauthorized", 401);
+    if (isBadRequestError(err)) return apiError(err.message, 400);
     return apiError(err instanceof Error ? err.message : "Server error", 500);
   }
 }
