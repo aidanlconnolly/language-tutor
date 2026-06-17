@@ -1,0 +1,353 @@
+import type { Unit } from "../../types";
+
+export const UNIT_PRONUNCIATION: Unit = {
+  slug: "pronunciation",
+  stage: 1,
+  order: 1,
+  icon: "🔤",
+  title: "Pronunciation & sounds",
+  tagline: "Nasal ã/õ, lh/nh, ç, open vs closed vowels — plus the BR/PT accent split.",
+  badge: "core",
+  lessons: [
+    {
+      slug: "pronunciation-vowels",
+      title: "Vowels: open, closed & nasal",
+      estMinutes: 9,
+      pages: [
+        {
+          type: "intro",
+          heading: "Portuguese vowels do more than five",
+          body: [
+            "Portuguese is built from the same five vowel letters — <strong>a, e, i, o, u</strong> — but two of them, <strong>e</strong> and <strong>o</strong>, come in an <em>open</em> and a <em>closed</em> flavour. That single distinction can change a word's meaning, so it's worth meeting on day one.",
+            "On top of that, Portuguese has a whole set of <strong>nasal</strong> vowels — sounds you make by letting air through your nose, like the French 'on' or the English 'sing' without finishing the 'g'. The tilde (~) and the letters m and n are the signposts for these.",
+            "We're learning <strong>Brazilian Portuguese</strong> first — open, musical, vowel-full. Later pages flag where European (Portugal) pronunciation diverges so you'll recognise it too.",
+          ],
+          tip: {
+            label: "The two big ideas",
+            body: "1) e and o have open vs closed versions (often marked é/ê and ó/ô). 2) Nasal vowels (ã, õ, -ão, -m, -n) hum through the nose. Master these and Brazilian Portuguese opens up.",
+          },
+        },
+        {
+          type: "vocab",
+          heading: "The basic vowel sounds",
+          intro: "Brazilian vowels are clear and full — especially when stressed.",
+          items: [
+            { l1: "a", en: "like 'a' in 'father'", note: "casa, falar, água" },
+            { l1: "i", en: "like 'ee' in 'see'", note: "sim, livro, dia" },
+            { l1: "u", en: "like 'oo' in 'food'", note: "tu, uva, mundo" },
+            { l1: "e (closed, ê)", en: "like 'ay' in 'say' (no glide)", note: "você, mês, três" },
+            { l1: "e (open, é)", en: "like 'e' in 'bed'", note: "café, pé, fé" },
+            { l1: "o (closed, ô)", en: "like 'o' in 'go' (no glide)", note: "avô (grandfather), ovo, todo" },
+            { l1: "o (open, ó)", en: "like 'o' in 'lot'", note: "avó (grandmother), pó, sol" },
+          ],
+        },
+        {
+          type: "tip",
+          heading: "Open vs closed can flip the meaning",
+          body: "The accent on the <em>same letters</em> tells you which vowel to use — and sometimes which word. The classic pair: <em>avô</em> (closed ô) means <strong>grandfather</strong>, while <em>avó</em> (open ó) means <strong>grandmother</strong>. Same spelling otherwise, opposite person.",
+          example: { l1: "o avô e a avó", en: "the grandfather (ô, closed) and the grandmother (ó, open)" },
+        },
+        {
+          type: "pronounce",
+          heading: "Feel the open/closed contrast",
+          intro: "Say each pair back to back and hear the mouth open or close.",
+          items: [
+            { l1: "avô / avó", en: "grandfather / grandmother", tip: "ô = closed 'oh'; ó = open 'aw'" },
+            { l1: "ê (você) / é (café)", en: "closed e / open e", tip: "vo-SAY vs ka-FÉ (like 'e' in bed)" },
+            { l1: "mês", en: "month", tip: "closed ê — like 'mace' without the final consonant" },
+            { l1: "pé", en: "foot", tip: "open é — like 'peh'" },
+          ],
+        },
+        {
+          type: "intro",
+          heading: "Nasal vowels: the tilde and -m / -n",
+          body: [
+            "A nasal vowel hums through the nose. Three signposts tell you to nasalise:",
+            "<strong>The tilde (~)</strong> over a or o: <em>ã</em> (as in <em>maçã</em>, apple) and <em>õ</em> (as in <em>limões</em>, lemons).",
+            "<strong>A vowel + m or n before a consonant or at the end of a word</strong>: <em>bom</em>, <em>sim</em>, <em>tampa</em>, <em>tinta</em>. Here the m/n isn't really pronounced — it just nasalises the vowel.",
+          ],
+          keyPoint: "ã / õ / vowel+m / vowel+n = nasal. Hum it through the nose; don't fully sound the m or n.",
+        },
+        {
+          type: "vocab",
+          heading: "Nasal vowels in real words",
+          items: [
+            { l1: "maçã", en: "apple", note: "ma-SÃ — the tilde nasalises the final a" },
+            { l1: "irmã", en: "sister", note: "ir-MÃ — nasal ã" },
+            { l1: "sim", en: "yes", note: "the -m nasalises: like 'seeng' with no hard g" },
+            { l1: "bom", en: "good (m.)", note: "nasal o — 'bohng', no real m sound" },
+            { l1: "um", en: "a / one (m.)", note: "nasal u — 'oong'" },
+            { l1: "tampa", en: "lid", note: "TAM-pa — the a is nasal before mp" },
+          ],
+        },
+        {
+          type: "listen",
+          heading: "Nasal or not?",
+          intro: "Pick the spelling that matches the sound you hear.",
+          items: [
+            { l1: "maçã", en: "apple", options: ["massa", "maçã", "maca", "maçan"], correct: 1 },
+            { l1: "sim", en: "yes", options: ["si", "sim", "cim", "sin"], correct: 1 },
+            { l1: "bom", en: "good", options: ["bo", "bom", "bon", "bõ"], correct: 1 },
+            { l1: "irmã", en: "sister", options: ["irma", "irman", "irmã", "irmáa"], correct: 2 },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "Quick check",
+          questions: [
+            {
+              q: "What is the difference between 'avô' and 'avó'?",
+              options: [
+                "None — same word",
+                "avô = grandfather (closed ô), avó = grandmother (open ó)",
+                "avô is plural",
+                "avó is the formal version",
+              ],
+              correct: 1,
+              fb: "The accent picks the vowel and the meaning: ô (closed) = grandfather, ó (open) = grandmother.",
+            },
+            {
+              q: "What does the tilde (~) tell you to do?",
+              options: ["Stress the vowel", "Make the vowel nasal", "Make the vowel silent", "Double the vowel"],
+              correct: 1,
+              fb: "The tilde marks a nasal vowel: ã and õ hum through the nose.",
+            },
+            {
+              q: "In 'sim' (yes), the final m…",
+              options: ["Is a full 'm' like in English", "Nasalises the vowel and isn't really pronounced", "Is silent and does nothing", "Sounds like 'n'"],
+              correct: 1,
+              fb: "A vowel + final m nasalises the vowel. You don't close your lips for a hard 'm'.",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      slug: "pronunciation-consonants",
+      title: "Consonants: lh, nh, ç, s, r",
+      estMinutes: 10,
+      pages: [
+        {
+          type: "intro",
+          heading: "The consonants that make Portuguese sound Portuguese",
+          body: [
+            "A handful of consonant spellings carry the Brazilian sound. Meet the big four:",
+            "<strong>lh</strong> = the 'lli' in 'million' (a soft, melted L). <strong>nh</strong> = the 'ny' in 'canyon'. <strong>ç</strong> (c-cedilha) = always an 's' sound. <strong>r</strong> at the start of a word, or <strong>rr</strong>, is a guttural 'h' from the throat in Brazil — not a trill.",
+            "Get these and you can read most Brazilian words on sight.",
+          ],
+          keyPoint: "lh = 'lli' (million) · nh = 'ny' (canyon) · ç = 's' · initial r / rr = throaty 'h'.",
+        },
+        {
+          type: "vocab",
+          heading: "lh and nh",
+          intro: "These digraphs are everywhere — colours, family, food.",
+          items: [
+            { l1: "filho", en: "son", note: "lh = 'lli' — FEE-lyo" },
+            { l1: "trabalho", en: "work / job", note: "tra-BA-lyo" },
+            { l1: "mulher", en: "woman / wife", note: "mu-LYER — lh again" },
+            { l1: "vermelho", en: "red", note: "ver-ME-lyo" },
+            { l1: "vinho", en: "wine", note: "nh = 'ny' — VEE-nyo" },
+            { l1: "dinheiro", en: "money", note: "di-NYEY-ro" },
+            { l1: "manhã", en: "morning", note: "ma-NYÃ — nh + a nasal ã" },
+          ],
+        },
+        {
+          type: "vocab",
+          heading: "ç, ss, and s between vowels",
+          intro: "Three ways to land on a sound — and a 'z' twist.",
+          items: [
+            { l1: "ç (cedilha)", en: "always 's'", note: "begins like 'cement', never 'k': maçã, coração, almoço" },
+            { l1: "ss", en: "a sharp 's'", note: "between vowels: massa, pássaro, isso" },
+            { l1: "s between vowels", en: "sounds like 'z'", note: "casa = 'KA-za', mesa = 'ME-za', coisa = 'KOY-za'" },
+            { l1: "coração", en: "heart", note: "ko-ra-SÃO — ç = s, then nasal -ão" },
+            { l1: "almoço", en: "lunch", note: "al-MO-so" },
+            { l1: "casa", en: "house", note: "KA-za — single s between vowels = z" },
+          ],
+        },
+        {
+          type: "tip",
+          heading: "ç vs c — and where the cedilha can go",
+          body: "Plain <strong>c</strong> before a/o/u is a hard 'k' (<em>casa, com, cubo</em>). To get an 's' sound before a/o/u you add the cedilha: <strong>ç</strong> (<em>maçã, almoço, açúcar</em>). You never write ç before e or i — there, plain c is already soft (<em>cidade</em> = 'see-DA-dji').",
+          example: { l1: "como vs coração", en: "como (hard k: 'KO-mo') vs coração (ç = s: 'ko-ra-SÃO')" },
+        },
+        {
+          type: "intro",
+          heading: "The letter R — two very different sounds",
+          body: [
+            "Brazilian R has two jobs:",
+            "<strong>Strong R</strong> — at the start of a word, or written <strong>rr</strong> — is a guttural 'h' made in the throat (like a soft English 'h'). <em>rato</em> sounds like 'HA-to'; <em>carro</em> like 'KA-ho'.",
+            "<strong>Soft R</strong> — a single r between vowels — is a quick flap, like the 'tt' in American 'butter'. <em>caro</em> = 'KA-ro' (flap), which is clearly different from <em>carro</em> = 'KA-ho'.",
+          ],
+          keyPoint: "Initial r / rr = throaty 'h' (rato, carro). Single r between vowels = light flap (caro, hora).",
+        },
+        {
+          type: "pronounce",
+          heading: "Practise lh, nh, ç and R",
+          intro: "Say them slowly, then at speed.",
+          items: [
+            { l1: "filho / vinho", en: "son / wine", tip: "melted L (lli) vs ny" },
+            { l1: "coração", en: "heart", tip: "ç = s, then a nasal -ão: ko-ra-SÃO" },
+            { l1: "carro / caro", en: "car / expensive", tip: "KA-ho (throaty rr) vs KA-ro (light flap r)" },
+            { l1: "rua", en: "street", tip: "initial r = throaty 'h': 'HOO-a'" },
+          ],
+        },
+        {
+          type: "listen",
+          heading: "Which word is it?",
+          items: [
+            { l1: "filho", en: "son", options: ["filo", "filho", "fillo", "finho"], correct: 1 },
+            { l1: "carro", en: "car", options: ["caro", "carro", "cárro", "karro"], correct: 1 },
+            { l1: "coração", en: "heart", options: ["coracao", "corasão", "coração", "coraçao"], correct: 2 },
+            { l1: "manhã", en: "morning", options: ["manha", "manhá", "manhã", "manhan"], correct: 2 },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "Consonant check",
+          questions: [
+            {
+              q: "How does 'nh' sound in 'vinho' (wine)?",
+              options: ["Like 'n' + 'h'", "Like 'ny' in canyon", "Like 'ng'", "Silent"],
+              correct: 1,
+              fb: "nh = 'ny' (canyon). vinho = VEE-nyo.",
+            },
+            {
+              q: "How is the single s in 'casa' (house) pronounced?",
+              options: ["Like 's' in 'sun'", "Like 'z' (a single s between vowels)", "Like 'sh'", "Silent"],
+              correct: 1,
+              fb: "A single s between vowels sounds like 'z': KA-za. Use ss for a sharp s sound.",
+            },
+            {
+              q: "How is 'rr' in 'carro' pronounced in Brazil?",
+              options: ["A rolled/trilled r", "A throaty 'h' sound", "Like English 'r'", "Silent"],
+              correct: 1,
+              fb: "In Brazil, rr (and initial r) is a guttural 'h'. carro = KA-ho.",
+            },
+            {
+              q: "What sound does ç always make?",
+              options: ["'k'", "'s'", "'sh'", "'ch'"],
+              correct: 1,
+              fb: "ç (c-cedilha) is always 's' — even before a/o/u: maçã, almoço.",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      slug: "pronunciation-practice",
+      title: "Putting it together: -ão, affrication & BR vs PT",
+      estMinutes: 9,
+      pages: [
+        {
+          type: "intro",
+          heading: "The famous -ão (and its plural -ões / -ães)",
+          body: [
+            "The ending <strong>-ão</strong> is the signature sound of Portuguese: a nasal 'ow' that dives through the nose, like 'ow' in 'cow' but hummed. <em>pão</em> (bread), <em>não</em> (no), <em>coração</em> (heart).",
+            "When these words go plural they often shift the spelling: most become <strong>-ões</strong> (<em>limão → limões</em>, lemon → lemons; <em>coração → corações</em>). A few become <strong>-ães</strong> (<em>pão → pães</em>; <em>cão → cães</em>, dog → dogs). All three endings are nasal diphthongs.",
+          ],
+          keyPoint: "-ão = nasal 'ow'. Plurals: usually -ões (limões), sometimes -ães (pães). All nasal.",
+        },
+        {
+          type: "vocab",
+          heading: "-ão and its plurals",
+          items: [
+            { l1: "não", en: "no / not", note: "nasal -ão — the most common word you'll say" },
+            { l1: "pão / pães", en: "bread / loaves", note: "PÃO → PÃES (the -ães plural)" },
+            { l1: "limão / limões", en: "lime/lemon → lemons", note: "li-MÃO → li-MÕES (the -ões plural)" },
+            { l1: "coração / corações", en: "heart → hearts", note: "ko-ra-SÃO → ko-ra-SÕES" },
+            { l1: "mão / mãos", en: "hand → hands", note: "MÃO → MÃOS (keeps -ão, adds s)" },
+          ],
+        },
+        {
+          type: "tip",
+          heading: "Brazilian affrication: de/te → 'dji/tchi'",
+          body: "This is the most recognisably <em>Brazilian</em> sound. Before an 'i' sound (including a final unstressed -e, which Brazilians pronounce as 'i'), <strong>d</strong> becomes 'dj' (like the j in 'jeep') and <strong>t</strong> becomes 'tch' (like 'ch' in 'cheese'). So <em>dia</em> = 'DJEE-a', <em>tarde</em> = 'TAR-dji', <em>noite</em> = 'NOY-tchi', <em>gente</em> = 'JEN-tchi'.",
+          example: { l1: "Bom dia! Boa tarde! Boa noite!", en: "Good morning / afternoon / night — 'bom DJEE-a, boa TAR-dji, boa NOY-tchi'" },
+        },
+        {
+          type: "tip",
+          heading: "Brazil vs Portugal: the accent split",
+          body: "Same language, two musics. <strong>Brazil</strong> keeps vowels open and full and adds the 'dji/tchi' affrication — <em>presidente</em> sounds like 'pre-zi-DEN-tchi'. <strong>Portugal</strong> heavily <em>reduces</em> unstressed vowels (so <em>pequeno</em> sounds clipped, almost 'pkenu') and pronounces a final or pre-consonant <strong>s</strong> as 'sh' — <em>os pastéis</em> sounds like 'oosh pashtéish'. You're learning Brazilian; just know the European version will sound faster and more whispered.",
+          example: { l1: "dois pastéis, por favor", en: "BR: 'doys pas-TÉIS'; PT: 'doysh pash-TÉISH' (final/pre-consonant s = 'sh')" },
+        },
+        {
+          type: "pronounce",
+          heading: "Say it the Brazilian way",
+          intro: "Lean into the open vowels and the 'dji/tchi'.",
+          items: [
+            { l1: "Bom dia", en: "Good morning", tip: "bom DJEE-a — d before i = 'dj'" },
+            { l1: "Boa tarde", en: "Good afternoon", tip: "boa TAR-dji — final -e = 'i', so de = 'dji'" },
+            { l1: "Obrigado / Obrigada", en: "Thank you (m. / f.)", tip: "o-bri-GA-do / o-bri-GA-da" },
+            { l1: "Tudo bem?", en: "All good? (How are you?)", tip: "TU-do BENG — bem is nasal" },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Try a short one",
+          direction: "en-to-l1",
+          prompt: "No, thank you.",
+          reference: "Não, obrigado.",
+          hint: "Start with the nasal -ão word for 'no'. A woman would say 'obrigada'.",
+        },
+        {
+          type: "translate",
+          heading: "One more",
+          direction: "en-to-l1",
+          prompt: "Good afternoon!",
+          reference: "Boa tarde!",
+          hint: "Remember the affrication: tarde sounds like 'TAR-dji' in Brazil.",
+        },
+        {
+          type: "multipleChoice",
+          heading: "Final check",
+          questions: [
+            {
+              q: "How does Brazilian Portuguese pronounce the 'de' in 'tarde' (afternoon)?",
+              options: ["'deh'", "'dji' (like the j in jeep)", "'day'", "Silent"],
+              correct: 1,
+              fb: "Before an i-sound (final -e becomes 'i'), d → 'dj'. tarde = 'TAR-dji'.",
+            },
+            {
+              q: "What is the plural of 'limão' (lemon)?",
+              options: ["limãos", "limães", "limões", "limaos"],
+              correct: 2,
+              fb: "Most -ão words pluralise to -ões: limão → limões.",
+            },
+            {
+              q: "Which is a EUROPEAN (Portugal) feature, not Brazilian?",
+              options: [
+                "Open, full vowels",
+                "Final/pre-consonant 's' pronounced as 'sh'",
+                "'dji/tchi' affrication",
+                "The nasal -ão",
+              ],
+              correct: 1,
+              fb: "European Portuguese says final/pre-consonant s as 'sh' (os pastéis → 'oosh pashtéish') and reduces unstressed vowels. Brazil does the 'dji/tchi' affrication.",
+            },
+            {
+              q: "How is the ending '-ão' in 'não' pronounced?",
+              options: ["'ah-oh' (two clear syllables)", "A nasal 'ow' hummed through the nose", "Like English 'on'", "'ann'"],
+              correct: 1,
+              fb: "-ão is a single nasal diphthong — a nasal 'ow'.",
+            },
+          ],
+        },
+      ],
+    },
+  ],
+  checkpoint: {
+    passingPct: 80,
+    questions: [
+      { q: "What does 'avô' (closed ô) mean, vs 'avó' (open ó)?", options: ["Both mean grandfather", "avô = grandfather, avó = grandmother", "avô = grandmother, avó = grandfather", "Both mean grandmother"], correct: 1 },
+      { q: "What does the tilde (~) over a vowel indicate?", options: ["Stress", "A nasal vowel", "A silent vowel", "A doubled vowel"], correct: 1 },
+      { q: "How does 'lh' sound (e.g. in 'filho')?", options: ["Like 'l' + 'h'", "Like 'lli' in 'million'", "Like 'y'", "Silent"], correct: 1 },
+      { q: "How does 'nh' sound (e.g. in 'vinho')?", options: ["Like 'ng'", "Like 'ny' in 'canyon'", "Like 'n' + 'h'", "Silent"], correct: 1 },
+      { q: "What sound does ç (c-cedilha) make?", options: ["'k'", "'s'", "'sh'", "'ch'"], correct: 1 },
+      { q: "How is a single 's' between vowels pronounced, as in 'casa'?", options: ["'s'", "'z'", "'sh'", "Silent"], correct: 1 },
+      { q: "How is 'rr' (and initial r) pronounced in Brazil, as in 'carro'?", options: ["A trill", "A throaty 'h'", "Like English 'r'", "Silent"], correct: 1 },
+      { q: "In Brazilian Portuguese, how is the 'di' in 'dia' pronounced?", options: ["'dee'", "'dji' (like j in jeep)", "'day'", "'dye'"], correct: 1 },
+      { q: "What is the plural of 'pão' (bread)?", options: ["pãos", "pães", "pões", "paos"], correct: 1 },
+      { q: "Which is a EUROPEAN Portuguese trait rather than Brazilian?", options: ["Open vowels", "'dji/tchi' affrication", "Final 's' pronounced 'sh' + reduced unstressed vowels", "The nasal -ão"], correct: 2 },
+    ],
+  },
+};

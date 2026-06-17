@@ -1,0 +1,440 @@
+import type { Unit } from "../../types";
+
+export const UNIT_FORMAL_REGISTER: Unit = {
+  slug: "formal-register",
+  stage: 6,
+  order: 27,
+  icon: "🤝",
+  title: "Formal register",
+  tagline: "O senhor / a senhora, você vs tu — politeness.",
+  badge: "core",
+  lessons: [
+    {
+      slug: "formal-who-to-address-how",
+      title: "Você, o senhor, a senhora — who gets what",
+      estMinutes: 9,
+      pages: [
+        {
+          type: "intro",
+          heading: "Three ways to say \"you\" in Brazil",
+          body: [
+            "In Brazil, the everyday word for \"you\" is <strong>você</strong>. It's neutral — you use it with friends, coworkers, and most strangers without sounding rude.",
+            "When you want to show <strong>respect or distance</strong>, you upgrade to <strong>o senhor</strong> (to a man) or <strong>a senhora</strong> (to a woman). This is the truly formal address.",
+            "Use <strong>o senhor / a senhora</strong> with: people clearly older than you, your boss or a client, anyone in authority (police, officials), and as a sign of respect in service situations when you want to be especially polite.",
+            "All three take the <strong>same verb form as ele/ela</strong> (third person). So you already know the conjugation — only the pronoun changes.",
+          ],
+          tip: {
+            label: "Quick rule of thumb",
+            body: "Default to você. Switch to o senhor / a senhora for elders, bosses, clients, and officials — or any time you want to sound extra respectful.",
+          },
+        },
+        {
+          type: "vocab",
+          heading: "Same question, three levels of formality",
+          intro: "Notice the pronoun changes but the verb stays third-person.",
+          items: [
+            { l1: "Como você está?", en: "How are you? (neutral)", note: "você" },
+            { l1: "Como o senhor está?", en: "How are you, sir? (formal, to a man)", note: "o senhor" },
+            { l1: "Como a senhora está?", en: "How are you, ma'am? (formal, to a woman)", note: "a senhora" },
+            { l1: "O que você precisa?", en: "What do you need? (neutral)", note: "você" },
+            { l1: "O que o senhor precisa?", en: "What do you need, sir? (formal)", note: "o senhor" },
+            { l1: "De onde a senhora é?", en: "Where are you from, ma'am? (formal)", note: "a senhora" },
+            { l1: "O senhor pode esperar um momento?", en: "Can you wait a moment, sir?", note: "formal" },
+            { l1: "A senhora gostaria de um café?", en: "Would you like a coffee, ma'am?", note: "formal" },
+          ],
+        },
+        {
+          type: "tip",
+          heading: "Brazil vs Portugal: this is the big one",
+          body: "In <strong>Brazil</strong>, <em>você</em> is the normal, neutral \"you\" and <em>o senhor / a senhora</em> is the respectful form. In <strong>Portugal</strong>, <em>você</em> can sound cold or even rude to a peer — the Portuguese use <em>tu</em> (informal, with its own tu-conjugation: <em>tu estás, tu tens</em>) or simply the person's name/title. <em>O senhor / a senhora</em> is formal in both countries. We teach the Brazilian system; just know that in Lisbon you'd hear <em>tu</em> where São Paulo says <em>você</em>.",
+          example: { l1: "BR: Como você está? · PT: Como estás? (tu) ou Como está, senhor?", en: "How are you?" },
+        },
+        {
+          type: "tip",
+          heading: "Senhor, senhora, senhorita — and the title trick",
+          body: "Address strangers respectfully with <em>senhor</em> (sir) and <em>senhora</em> (ma'am). <em>Senhorita</em> (miss, for a young woman) is heard less today — <em>senhora</em> is the safe choice. Brazilians also love titles: <em>doutor / doutora</em> for doctors (and, casually, for anyone with a degree or authority), <em>professor / professora</em> for teachers. Using the title is warm and polite.",
+          example: { l1: "Bom dia, doutora! / Obrigado, professor.", en: "Good morning, doctor! / Thank you, teacher." },
+        },
+        {
+          type: "multipleChoice",
+          heading: "Você or o senhor / a senhora?",
+          questions: [
+            {
+              q: "Speaking to a friend your age in Brazil, use…",
+              options: ["o senhor", "você", "a senhora", "tu (always)"],
+              correct: 1,
+              fb: "Você is the neutral, everyday \"you\" in Brazil.",
+            },
+            {
+              q: "Speaking respectfully to an elderly man, use…",
+              options: ["você", "o senhor", "a senhora", "tu"],
+              correct: 1,
+              fb: "O senhor is the formal/respectful address for a man.",
+            },
+            {
+              q: "In Portugal, saying 'você' to a peer can sound…",
+              options: ["warm and friendly", "cold or even rude", "overly formal but fine", "the same as in Brazil"],
+              correct: 1,
+              fb: "In Portugal você can feel distant; the Portuguese use tu with peers.",
+            },
+            {
+              q: "'O senhor', 'a senhora' and 'você' all take which verb form?",
+              options: [
+                "a special formal conjugation",
+                "the same form as ele/ela (third person)",
+                "the tu form",
+                "the nós form",
+              ],
+              correct: 1,
+              fb: "All three use the third-person verb — you already know it.",
+            },
+            {
+              q: "Safest respectful word for an unknown woman =",
+              options: ["senhorita", "menina", "a senhora", "tu"],
+              correct: 2,
+              fb: "Senhora is the safe, respectful choice; senhorita is heard less now.",
+            },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it — choosing the register",
+          direction: "en-to-l1",
+          prompt: "Good morning, ma'am. How are you today?",
+          reference: "Bom dia, senhora. Como a senhora está hoje?",
+          hint: "Respectful address to a woman → a senhora. The verb is third person: está.",
+        },
+      ],
+    },
+    {
+      slug: "formal-polite-requests",
+      title: "Polite requests — softening what you ask",
+      estMinutes: 11,
+      pages: [
+        {
+          type: "intro",
+          heading: "How to ask without sounding blunt",
+          body: [
+            "A direct command (\"Help me\", \"Bring the menu\") can sound abrupt. Portuguese softens requests with a few reliable tools — and they make you sound instantly more polite.",
+            "<strong>Poderia</strong> = \"could you\" (conditional of poder). <em>O senhor poderia me ajudar?</em> = Could you help me, sir?",
+            "<strong>Eu gostaria de…</strong> = \"I would like…\" (much softer than <em>eu quero</em> = I want). <em>Eu gostaria de um café.</em>",
+            "<strong>Por favor</strong> (please) and the more formal <strong>por gentileza</strong> (kindly) round off almost any request.",
+            "Open with <strong>com licença</strong> (excuse me — to pass or interrupt) or <strong>desculpe incomodar</strong> (sorry to bother you) and you're being genuinely courteous.",
+          ],
+          keyPoint:
+            "poderia (could you) · eu gostaria de (I'd like) · por favor / por gentileza (please / kindly) · com licença (excuse me) · desculpe incomodar (sorry to bother you).",
+        },
+        {
+          type: "conjugation",
+          heading: "The polite conditionals — gostar & poder",
+          verb: "gostaria / poderia",
+          meaning: "would like / could (polite request forms)",
+          intro: "These conditional forms are the heart of a polite request. Você/o senhor/a senhora take the ele/ela form.",
+          tenses: [
+            {
+              name: "gostar — Condicional (would like)",
+              forms: [
+                { person: "eu", form: "gostaria", en: "I would like" },
+                { person: "você / o senhor / a senhora", form: "gostaria", en: "you would like" },
+                { person: "nós", form: "gostaríamos", en: "we would like" },
+                { person: "vocês / eles / elas", form: "gostariam", en: "they would like" },
+              ],
+            },
+            {
+              name: "poder — Condicional (could)",
+              forms: [
+                { person: "eu", form: "poderia", en: "I could" },
+                { person: "você / o senhor / a senhora", form: "poderia", en: "you could" },
+                { person: "nós", form: "poderíamos", en: "we could" },
+                { person: "vocês / eles / elas", form: "poderiam", en: "they could" },
+              ],
+            },
+          ],
+        },
+        {
+          type: "tip",
+          heading: "Quero vs gostaria — the politeness gap",
+          body: "<em>Eu quero um café</em> (\"I want a coffee\") is fine with friends but can sound demanding to a waiter or stranger. Swap in <em>Eu gostaria de um café</em> (\"I'd like a coffee\") and you sound polished. Note the little <strong>de</strong> after <em>gostaria</em> before a noun: <em>gostaria de água, gostaria de ajuda</em>.",
+          example: { l1: "Eu quero a conta. → Eu gostaria da conta, por favor.", en: "I want the bill. → I'd like the bill, please." },
+        },
+        {
+          type: "vocab",
+          heading: "Polite-request toolkit",
+          items: [
+            { l1: "com licença", en: "excuse me (to pass by or interrupt)" },
+            { l1: "desculpe incomodar", en: "sorry to bother you" },
+            { l1: "por favor", en: "please" },
+            { l1: "por gentileza", en: "kindly / please (more formal)" },
+            { l1: "O senhor poderia me ajudar?", en: "Could you help me, sir?" },
+            { l1: "Eu gostaria de…", en: "I would like…" },
+            { l1: "Seria possível…?", en: "Would it be possible…?" },
+            { l1: "Você se importa se…?", en: "Do you mind if…?" },
+            { l1: "Muito obrigado / obrigada", en: "Thank you very much (m / f speaker)" },
+            { l1: "Agradeço muito", en: "I really appreciate it" },
+            { l1: "Imagina! / De nada.", en: "Don't mention it! / You're welcome." },
+          ],
+        },
+        {
+          type: "fillBlank",
+          heading: "Build the polite request",
+          intro: "Pick the form that softens the request.",
+          items: [
+            {
+              template: "O senhor ___ me dizer onde fica o banheiro?",
+              answer: "poderia",
+              en: "Could you tell me where the restroom is, sir?",
+              options: ["pode", "poderia", "quer", "vai"],
+            },
+            {
+              template: "Eu ___ de um copo de água, por favor.",
+              answer: "gostaria",
+              en: "I would like a glass of water, please.",
+              options: ["quero", "gostaria", "gosto", "queria"],
+            },
+            {
+              template: "___ incomodar, mas o senhor pode me ajudar?",
+              answer: "Desculpe",
+              en: "Sorry to bother you, but can you help me?",
+              options: ["Desculpe", "Obrigado", "Tchau", "Oi"],
+            },
+            {
+              template: "Com ___ , preciso passar.",
+              answer: "licença",
+              en: "Excuse me, I need to get by.",
+              options: ["favor", "licença", "certeza", "calma"],
+            },
+            {
+              template: "Por ___ , a senhora poderia repetir?",
+              answer: "gentileza",
+              en: "Kindly, could you repeat that, ma'am?",
+              options: ["acaso", "gentileza", "enquanto", "exemplo"],
+            },
+            {
+              template: "Seria ___ trocar de mesa?",
+              answer: "possível",
+              en: "Would it be possible to change tables?",
+              options: ["possível", "preciso", "fácil", "pronto"],
+            },
+          ],
+        },
+        {
+          type: "orderWords",
+          heading: "Build the sentence",
+          intro: "Drag the words into a natural, polite order.",
+          items: [
+            { tokens: ["O", "senhor", "poderia", "me", "ajudar?"], en: "Could you help me, sir?" },
+            { tokens: ["Eu", "gostaria", "de", "ver", "o", "cardápio"], en: "I would like to see the menu." },
+            { tokens: ["Desculpe", "incomodar,", "a", "senhora", "tem", "um", "minuto?"], en: "Sorry to bother you, do you have a minute, ma'am?" },
+            { tokens: ["Por", "gentileza,", "onde", "fica", "a", "saída?"], en: "Kindly, where is the exit?" },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it — a polite ask",
+          direction: "en-to-l1",
+          prompt: "Excuse me, could you help me, please?",
+          reference: "Com licença, o senhor poderia me ajudar, por favor?",
+          hint: "Open with com licença. \"Could you\" → poderia (formal: o senhor). Close with por favor.",
+        },
+      ],
+    },
+    {
+      slug: "formal-professional-service",
+      title: "Formal register in professional & service situations",
+      estMinutes: 10,
+      pages: [
+        {
+          type: "intro",
+          heading: "Where you'll actually use the formal register",
+          body: [
+            "You'll reach for o senhor / a senhora and polite requests most in <strong>service and professional settings</strong>: a hotel front desk, a bank, a doctor's office, a meeting with a client.",
+            "Useful openers: <em>Bom dia, em que posso ajudar?</em> (Good morning, how can I help?) — what you'll hear from staff — and <em>O senhor poderia me informar…?</em> (Could you let me know…?) — what you say back.",
+            "To thank warmly and formally: <em>Agradeço a atenção</em> (Thank you for your attention/help) and <em>Foi muito gentil</em> (You were very kind).",
+            "Polite goodbyes: <em>Tenha um bom dia</em> (Have a good day), <em>Até logo</em> (See you soon), <em>Foi um prazer</em> (It was a pleasure).",
+          ],
+          keyPoint:
+            "Em que posso ajudar? · O senhor poderia me informar…? · Agradeço a atenção · Foi muito gentil · Tenha um bom dia.",
+        },
+        {
+          type: "vocab",
+          heading: "Service & professional phrases",
+          items: [
+            { l1: "Em que posso ajudar?", en: "How can I help you?" },
+            { l1: "O senhor poderia me informar o horário?", en: "Could you tell me the schedule, sir?" },
+            { l1: "A senhora tem uma reserva?", en: "Do you have a reservation, ma'am?" },
+            { l1: "Um momento, por favor.", en: "One moment, please." },
+            { l1: "Aguarde um instante.", en: "Please wait an instant." },
+            { l1: "Pois não?", en: "Yes? / How can I help? (polite, from staff)" },
+            { l1: "Agradeço a atenção.", en: "Thank you for your attention." },
+            { l1: "Foi muito gentil.", en: "You were very kind." },
+            { l1: "Fico à disposição.", en: "I'm at your service / happy to help." },
+            { l1: "Tenha um bom dia.", en: "Have a good day." },
+            { l1: "Foi um prazer.", en: "It was a pleasure." },
+          ],
+        },
+        {
+          type: "tip",
+          heading: "\"Pois não\" really means yes",
+          body: "In Brazilian service-speak, <em>Pois não?</em> is a warm \"How can I help you?\" — not a refusal, despite the <em>não</em>. A clerk or waiter greets you with it. You answer with your request: <em>Pois não? — Eu gostaria de fazer uma pergunta.</em> Reply <em>Pois não</em> (no question mark) to mean \"of course\" when someone asks if they may do something.",
+          example: { l1: "— Posso entrar? — Pois não!", en: "— May I come in? — Of course!" },
+        },
+        {
+          type: "dialogue",
+          heading: "Checking in at a hotel (formal)",
+          setup: "A polite exchange at the front desk in São Paulo.",
+          lines: [
+            { speaker: "Recepcionista", l1: "Boa tarde! Em que posso ajudar?", en: "Good afternoon! How can I help you?" },
+            { speaker: "You", l1: "Boa tarde. Eu gostaria de fazer o check-in. Tenho uma reserva.", en: "Good afternoon. I'd like to check in. I have a reservation." },
+            { speaker: "Recepcionista", l1: "Pois não. O senhor poderia me dizer o seu nome?", en: "Of course. Could you tell me your name, sir?" },
+            { speaker: "You", l1: "Claro. Meu nome é Tom Alves. Desculpe incomodar, o café da manhã está incluído?", en: "Sure. My name is Tom Alves. Sorry to bother you, is breakfast included?" },
+            { speaker: "Recepcionista", l1: "Está sim, das sete às dez. Aqui está a sua chave. Qualquer coisa, fico à disposição.", en: "Yes it is, from seven to ten. Here's your key. For anything, I'm at your service." },
+            { speaker: "You", l1: "Muito obrigado, a senhora foi muito gentil.", en: "Thank you very much, you were very kind." },
+            { speaker: "Recepcionista", l1: "Imagina! Tenha uma ótima estadia.", en: "Don't mention it! Have a great stay." },
+          ],
+        },
+        {
+          type: "fillBlank",
+          heading: "Formal service phrases",
+          items: [
+            {
+              template: "Em que ___ ajudar, senhor?",
+              answer: "posso",
+              en: "How can I help you, sir?",
+              options: ["posso", "pode", "quero", "vou"],
+            },
+            {
+              template: "A senhora ___ uma reserva?",
+              answer: "tem",
+              en: "Do you have a reservation, ma'am?",
+              options: ["tem", "tens", "têm", "tenho"],
+            },
+            {
+              template: "Agradeço a ___ , o senhor foi muito gentil.",
+              answer: "atenção",
+              en: "Thank you for your help, you were very kind.",
+              options: ["conta", "atenção", "licença", "pressa"],
+            },
+            {
+              template: "Um ___ , por favor, já vou verificar.",
+              answer: "momento",
+              en: "One moment, please, I'll check right away.",
+              options: ["dia", "momento", "favor", "prazer"],
+            },
+            {
+              template: "Foi um ___ atendê-lo. Tenha um bom dia!",
+              answer: "prazer",
+              en: "It was a pleasure to assist you. Have a good day!",
+              options: ["prazer", "gentil", "obrigado", "bom"],
+            },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "Reading the situation",
+          questions: [
+            {
+              q: "A clerk greets you with 'Pois não?'. They mean…",
+              options: ["No, we're closed", "How can I help you?", "Please leave", "I don't know"],
+              correct: 1,
+              fb: "Pois não? is a warm \"How can I help you?\" in Brazilian service-speak.",
+            },
+            {
+              q: "Most polite way to ask a hotel clerk for the wifi password =",
+              options: [
+                "Me dá a senha do wifi.",
+                "Quero a senha do wifi.",
+                "O senhor poderia me passar a senha do wifi, por favor?",
+                "Senha do wifi?",
+              ],
+              correct: 2,
+              fb: "poderia + o senhor + por favor is the polished, formal request.",
+            },
+            {
+              q: "'Foi muito gentil' is best used…",
+              options: [
+                "to start a complaint",
+                "to thank someone warmly for their help",
+                "to ask for directions",
+                "to order food",
+              ],
+              correct: 1,
+              fb: "It's a warm thank-you: \"You were very kind.\"",
+            },
+            {
+              q: "A polite, formal goodbye to a client is…",
+              options: ["Falou!", "Tenha um bom dia.", "E aí?", "Beleza."],
+              correct: 1,
+              fb: "Tenha um bom dia is courteous; the others are casual.",
+            },
+          ],
+        },
+        {
+          type: "tip",
+          heading: "When can you relax into 'você'?",
+          body: "If the other person uses <em>você</em> with you, or you're clearly the same age and in a casual setting, you can mirror them and drop to <em>você</em>. With elders, clients, and officials, stay on <em>o senhor / a senhora</em> until they invite otherwise — Brazilians may say <em>Pode me chamar de você</em> (You can call me \"você\") to signal the shift. Matching the other person's register is the real skill.",
+          example: { l1: "Pode me chamar de você, sem formalidade!", en: "You can use \"você\" with me, no need to be formal!" },
+        },
+      ],
+    },
+  ],
+  checkpoint: {
+    passingPct: 80,
+    questions: [
+      {
+        q: "The neutral, everyday word for \"you\" in Brazil is…",
+        options: ["tu", "você", "o senhor", "vós"],
+        correct: 1,
+      },
+      {
+        q: "The respectful way to address an older man is…",
+        options: ["você", "tu", "o senhor", "menino"],
+        correct: 2,
+      },
+      {
+        q: "In Portugal, 'você' to a peer can sound…",
+        options: ["friendly", "cold or rude", "very respectful", "identical to Brazil"],
+        correct: 1,
+      },
+      {
+        q: "'O senhor', 'a senhora' and 'você' all take which verb form?",
+        options: ["the tu form", "the nós form", "the ele/ela (third-person) form", "a special formal form"],
+        correct: 2,
+      },
+      {
+        q: "The polite \"could you\" (conditional of poder) is…",
+        options: ["pode", "poderia", "podia", "poder"],
+        correct: 1,
+      },
+      {
+        q: "Softer, more polite than 'eu quero' is…",
+        options: ["eu gosto", "eu gostaria", "eu queria muito", "eu vou"],
+        correct: 1,
+      },
+      {
+        q: "'Com licença' is used to…",
+        options: ["thank someone", "pass by or interrupt politely", "say goodbye", "order food"],
+        correct: 1,
+      },
+      {
+        q: "A clerk says 'Pois não?'. It means…",
+        options: ["No.", "We're closed.", "How can I help you?", "Please wait outside."],
+        correct: 2,
+      },
+      {
+        q: "Warm, formal thank-you for someone's help =",
+        options: ["Foi muito gentil.", "Falou!", "E aí?", "Beleza."],
+        correct: 0,
+      },
+      {
+        q: "Translate: 'Excuse me, sir, could you help me, please?'",
+        options: [
+          "Oi, você me ajuda?",
+          "Com licença, senhor, o senhor poderia me ajudar, por favor?",
+          "Me ajuda aí, cara.",
+          "Quero ajuda agora.",
+        ],
+        correct: 1,
+      },
+    ],
+  },
+};

@@ -75,10 +75,11 @@ export const SUN = {
 
 /** Per-language tinted card colors for the home screen. */
 export const LANG_TINT: Record<
-  "italian" | "french" | "spanish",
+  "italian" | "french" | "spanish" | "portuguese",
   { bg: string; border: string; text: string; bar: string; sub: string }
 > = {
   italian: { bg: "#eaf6e7", border: "#bcdcb4", text: "#27500a", bar: "#639922", sub: "#3b6d11" },
   french:  { bg: "#e8f0fb", border: "#b9d2f2", text: "#0c447c", bar: "#378add", sub: "#185fa5" },
   spanish: { bg: "#fdf3de", border: "#f3d9a0", text: "#633806", bar: "#ef9f27", sub: "#854f0b" },
+  portuguese: { bg: "#e7f5ea", border: "#b4dcc0", text: "#0a5028", bar: "#1c9b4b", sub: "#116d33" },
 };
