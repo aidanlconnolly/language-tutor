@@ -11,8 +11,20 @@ export const UNIT_HOTEL: Unit = {
     {
       slug: "hotel-checkin",
       title: "Checking in",
-      estMinutes: 8,
+      estMinutes: 11,
       pages: [
+        {
+          type: "intro",
+          heading: "The check-in script (you'll repeat it every trip)",
+          body: [
+            "<em>«Tengo una reserva a nombre de [tu apellido].»</em> = I have a reservation in the name of [your surname]. This is the line that opens every check-in.",
+            "Spanish hotels need your <strong>passport or DNI</strong>: <em>«¿Me deja su documento, por favor?»</em> They register guests with the police — it's required by law, so don't worry when they keep it for a few minutes.",
+            "Questions you'll hear back: <em>«¿Cuántas noches?» «¿Habitación doble o individual?» «¿El desayuno incluido?»</em>",
+            "Handy answers: <em>«Tres noches, hasta el domingo.» «Una doble, por favor.» «Sí, con desayuno.»</em>",
+          ],
+          keyPoint:
+            "1) Give your name. 2) Hand over your passport/DNI. 3) Confirm nights and room type. 4) Take the key. 5) Ask about breakfast and wifi.",
+        },
         {
           type: "vocab",
           heading: "Hotel vocabulary",
@@ -59,13 +71,72 @@ export const UNIT_HOTEL: Unit = {
             },
           ],
         },
+        {
+          type: "fillBlank",
+          heading: "Complete the check-in",
+          items: [
+            {
+              template: "Tengo una ___ a nombre de García.",
+              answer: "reserva",
+              en: "I have a reservation in the name of García.",
+              options: ["reserva", "habitación", "llave", "factura"],
+            },
+            {
+              template: "Quería una habitación ___ con baño.",
+              answer: "doble",
+              en: "I wanted a double room with a bathroom.",
+              options: ["doble", "limpia", "incluida", "barata"],
+            },
+            {
+              template: "¿A qué hora es la ___ ?",
+              answer: "salida",
+              en: "What time is check-out?",
+              options: ["salida", "entrada", "llave", "piscina"],
+            },
+            {
+              template: "¿Puedo pagar con ___ ?",
+              answer: "tarjeta",
+              en: "Can I pay by card?",
+              options: ["tarjeta", "llave", "reserva", "ascensor"],
+            },
+          ],
+        },
+        {
+          type: "orderWords",
+          heading: "Build the check-in line",
+          items: [
+            { tokens: ["Tengo", "una", "reserva", "a", "nombre", "de", "García"], en: "I have a reservation in the name of García." },
+            { tokens: ["¿", "Tiene", "wifi", "en", "las", "habitaciones", "?"], en: "Is there wifi in the rooms?" },
+            { tokens: ["Quería", "una", "habitación", "doble", ",", "por", "favor"], en: "I'd like a double room, please." },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "I have a reservation in the name of Smith, for two nights.",
+          reference: "Tengo una reserva a nombre de Smith, para dos noches.",
+          hint: "a nombre de = in the name of. 'For two nights' = para dos noches.",
+        },
       ],
     },
     {
       slug: "hotel-problems",
       title: "Problems and requests",
-      estMinutes: 7,
+      estMinutes: 10,
       pages: [
+        {
+          type: "intro",
+          heading: "How to complain politely in Spain",
+          body: [
+            "Spaniards are direct but still cushion complaints. The friendly opener is <em>«Perdone, pero…»</em> + the problem.",
+            "<em>«Perdone, pero el aire acondicionado no funciona.»</em> = Excuse me, but the air conditioning isn't working.",
+            "Soften a request with <em>«¿Sería posible…?»</em> (Would it be possible…?) or <em>«¿Podría…?»</em> (Could you…?) instead of a flat <em>«Quiero…»</em> (I want…).",
+            "If it's serious, you can ask: <em>«Quería poner una queja»</em> = I'd like to make a complaint. Hotels keep an official complaint form: <em>«las hojas de reclamaciones»</em>.",
+          ],
+          keyPoint:
+            "Open with 'Perdone, pero…', describe the problem, then soften the fix with '¿Sería posible…?' or '¿Podría…?'. Never just demand.",
+        },
         {
           type: "vocab",
           heading: "Reporting problems",
@@ -96,12 +167,69 @@ export const UNIT_HOTEL: Unit = {
             },
           ],
         },
+        {
+          type: "dialogue",
+          heading: "Reporting an issue at reception",
+          setup: "You go down to reception late in the evening.",
+          lines: [
+            { speaker: "Guest", l1: "Buenas noches. Perdone que le moleste, pero hay un problema en mi habitación.", en: "Good evening. Sorry to bother you, but there's a problem in my room." },
+            { speaker: "Receptionist", l1: "Dígame, ¿qué ocurre?", en: "Tell me, what's wrong?" },
+            { speaker: "Guest", l1: "El aire acondicionado no funciona y hace mucho calor. ¿Sería posible cambiarme de habitación?", en: "The air conditioning isn't working and it's very hot. Would it be possible to change my room?" },
+            { speaker: "Receptionist", l1: "Por supuesto. Le doy la 215, que está libre. Aquí tiene la nueva llave.", en: "Of course. I'll give you room 215, which is free. Here's the new key." },
+            { speaker: "Guest", l1: "Muchas gracias. ¿Me podrían subir el equipaje?", en: "Thank you very much. Could you bring up my luggage?" },
+            { speaker: "Receptionist", l1: "Ahora mismo se lo subimos. Disculpe las molestias.", en: "We'll bring it up right away. Sorry for the inconvenience." },
+          ],
+        },
+        {
+          type: "fillBlank",
+          heading: "Polite complaint patterns",
+          items: [
+            {
+              template: "Perdone, pero la habitación no está ___ .",
+              answer: "limpia",
+              en: "Excuse me, but the room isn't clean.",
+              options: ["limpia", "incluida", "libre", "doble"],
+            },
+            {
+              template: "No hay agua ___ en la ducha.",
+              answer: "caliente",
+              en: "There's no hot water in the shower.",
+              options: ["caliente", "fría", "limpia", "buena"],
+            },
+            {
+              template: "¿Sería posible ___ de habitación?",
+              answer: "cambiarme",
+              en: "Would it be possible to change my room?",
+              options: ["cambiarme", "pagar", "salir", "limpiar"],
+            },
+            {
+              template: "El televisor no ___ .",
+              answer: "funciona",
+              en: "The television doesn't work.",
+              options: ["funciona", "incluye", "limpia", "abre"],
+            },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "Excuse me, but the heating isn't working and it's very cold.",
+          reference: "Perdone, pero la calefacción no funciona y hace mucho frío.",
+          hint: "Heating = la calefacción. 'It's very cold' uses hacer → hace mucho frío.",
+        },
+        {
+          type: "tip",
+          heading: "Tipping in Spain",
+          body: "Tipping at hotels is modest and optional. A euro or two for the porter who carries your bags, and a euro a day for housekeeping (leave it on the pillow) is generous. At checkout, if the stay was great, a warm <em>«Todo ha sido perfecto, muchas gracias»</em> goes a long way — and a good online review even further.",
+          example: { l1: "Todo ha sido perfecto, muchas gracias.", en: "Everything was perfect, thank you very much." },
+        },
       ],
     },
     {
       slug: "hotel-full-conversation",
       title: "A complete hotel check-in",
-      estMinutes: 7,
+      estMinutes: 9,
       pages: [
         {
           type: "dialogue",
@@ -144,6 +272,23 @@ export const UNIT_HOTEL: Unit = {
               fb: "La caja fuerte = the safe. Caja = box, fuerte = strong/safe.",
             },
           ],
+        },
+        {
+          type: "orderWords",
+          heading: "Put the questions in order",
+          items: [
+            { tokens: ["¿", "A", "qué", "hora", "es", "la", "salida", "?"], en: "What time is check-out?" },
+            { tokens: ["¿", "El", "desayuno", "está", "incluido", "?"], en: "Is breakfast included?" },
+            { tokens: ["¿", "Me", "puede", "dar", "la", "contraseña", "del", "wifi", "?"], en: "Can you give me the wifi password?" },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "Is breakfast included, and what time is check-out?",
+          reference: "¿El desayuno está incluido, y a qué hora es la salida?",
+          hint: "Check-out = la salida. Remember the inverted ¿ at the start of the question.",
         },
       ],
     }

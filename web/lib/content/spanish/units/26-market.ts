@@ -7,11 +7,12 @@ export const UNIT_MARKET: Unit = {
   icon: "🥕",
   title: "Market / mercado",
   tagline: "Kilos, gramos, me pone un kilo de…",
+  badge: "tourist",
   lessons: [
     {
       slug: "market-vocab",
       title: "At the market",
-      estMinutes: 8,
+      estMinutes: 10,
       pages: [
         {
           type: "intro",
@@ -66,12 +67,57 @@ export const UNIT_MARKET: Unit = {
             },
           ],
         },
+        {
+          type: "tip",
+          heading: "Ponme vs. me pone — tú or usted",
+          body: "At a market stall you choose your register. With <em>usted</em> (polite, the default with a vendor you don't know) you say <em>me pone</em> or the imperative <em>póngame</em>. With <em>tú</em> (casual, your regular vendor) it becomes <em>me pones</em> or <em>ponme</em>. Both mean 'give me / put me' — Spaniards use this verb constantly instead of <em>quiero</em>, which can sound blunt.",
+          example: { l1: "Ponme un cuarto de aceitunas, porfa.", en: "Give me a quarter-kilo of olives, please. (casual)" },
+        },
+        {
+          type: "fillBlank",
+          heading: "Order at the stall",
+          intro: "Fill the blank with the right quantity or phrase.",
+          items: [
+            {
+              template: "Me pone medio ___ de cerezas, por favor.",
+              answer: "kilo",
+              en: "Give me half a kilo of cherries, please.",
+              options: ["litro", "kilo", "gramo", "docena"],
+            },
+            {
+              template: "¿Me pone una ___ de huevos? Doce, sí.",
+              answer: "docena",
+              en: "Can you give me a dozen eggs? Twelve, yes.",
+              options: ["docena", "lata", "botella", "manojo"],
+            },
+            {
+              template: "Un ___ de kilo de jamón, que es para dos personas.",
+              answer: "cuarto",
+              en: "A quarter-kilo of ham, it's for two people.",
+              options: ["medio", "cuarto", "cien", "manojo"],
+            },
+            {
+              template: "Póngame cien ___ de queso curado.",
+              answer: "gramos",
+              en: "Give me a hundred grams of aged cheese.",
+              options: ["kilos", "litros", "gramos", "docenas"],
+            },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "Give me a kilo of oranges and half a kilo of tomatoes, please.",
+          reference: "Me pone un kilo de naranjas y medio kilo de tomates, por favor.",
+          hint: "'Give me' at a stall = me pone. 'Half a kilo' = medio kilo.",
+        },
       ],
     },
     {
       slug: "market-negotiating",
       title: "Choosing and leaving",
-      estMinutes: 6,
+      estMinutes: 9,
       pages: [
         {
           type: "vocab",
@@ -103,12 +149,46 @@ export const UNIT_MARKET: Unit = {
             },
           ],
         },
+        {
+          type: "vocab",
+          heading: "The specialist shops",
+          intro: "A Spanish mercado de abastos groups stalls by specialty. Knowing the names tells you where to go.",
+          items: [
+            { l1: "la frutería", en: "the fruit & vegetable shop" },
+            { l1: "la carnicería", en: "the butcher's" },
+            { l1: "la pescadería", en: "the fishmonger's" },
+            { l1: "la charcutería", en: "the deli (cured meats)" },
+            { l1: "la panadería", en: "the bakery" },
+            { l1: "el puesto", en: "the (market) stall" },
+            { l1: "maduro / verde", en: "ripe / unripe" },
+            { l1: "¿algo más?", en: "anything else?" },
+          ],
+        },
+        {
+          type: "orderWords",
+          heading: "Build the request",
+          intro: "Put the words in order to make a natural market sentence.",
+          items: [
+            { tokens: ["¿", "A", "cuánto", "está", "el", "kilo", "de", "fresas", "?"], en: "How much is a kilo of strawberries?" },
+            { tokens: ["Me", "quedo", "con", "estas", "manzanas", ",", "gracias"], en: "I'll take these apples, thanks." },
+            { tokens: ["¿", "Me", "pone", "un", "manojo", "de", "perejil", "?"], en: "Can you give me a bunch of parsley?" },
+            { tokens: ["¿", "Son", "de", "temporada", "los", "espárragos", "?"], en: "Are the asparagus in season?" },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "How much per kilo are the strawberries? Are they ripe?",
+          reference: "¿A cuánto está el kilo de fresas? ¿Están maduras?",
+          hint: "'How much per kilo' = ¿A cuánto está el kilo? 'Strawberries' (las fresas) is feminine plural, so maduras.",
+        },
       ],
     },
     {
       slug: "market-full-visit",
       title: "A full market visit",
-      estMinutes: 7,
+      estMinutes: 9,
       pages: [
         {
           type: "dialogue",
@@ -151,6 +231,59 @@ export const UNIT_MARKET: Unit = {
               fb: "¿A cómo? = at what price? ¿A cómo el kilo? = how much per kilo?",
             },
           ],
+        },
+        {
+          type: "dialogue",
+          heading: "At the fishmonger's",
+          setup: "You're at the pescadería in La Boquería.",
+          lines: [
+            { speaker: "You", l1: "Buenas. ¿A cuánto están los boquerones hoy?", en: "Hi. How much are the anchovies today?" },
+            { speaker: "Vendor", l1: "A nueve el kilo, frescos de esta mañana.", en: "Nine a kilo, fresh from this morning." },
+            { speaker: "You", l1: "Vale. Póngame un cuarto de kilo.", en: "Okay. Give me a quarter-kilo." },
+            { speaker: "Vendor", l1: "¿Se los limpio?", en: "Shall I clean them for you?" },
+            { speaker: "You", l1: "Sí, por favor. ¿Algo de marisco fresco hoy?", en: "Yes, please. Any fresh shellfish today?" },
+            { speaker: "Vendor", l1: "Tenemos gambas estupendas. ¿Le pongo medio kilo?", en: "We've got great prawns. Shall I give you half a kilo?" },
+            { speaker: "You", l1: "Mejor un cuarto. Eso es todo, gracias.", en: "A quarter is better. That's all, thanks." },
+          ],
+        },
+        {
+          type: "tip",
+          heading: "Spain's market culture",
+          body: "A big-city <em>mercado de abastos</em> — Barcelona's La Boquería, Madrid's San Miguel, Valencia's Mercado Central — is a covered hall of independent <em>puestos</em>. You greet each vendor (<em>buenas</em>), wait your turn (<em>¿quién es el último?</em> = who's last in line?), and pay each stall separately. Many vendors will clean fish, debone, or recommend what's best that day if you ask <em>¿qué me recomienda?</em>",
+          example: { l1: "¿Quién es el último para la pescadería?", en: "Who's last in line for the fish counter?" },
+        },
+        {
+          type: "fillBlank",
+          heading: "Round out the visit",
+          intro: "Complete each market sentence.",
+          items: [
+            {
+              template: "¿Quién es el ___? — Yo, vaya usted.",
+              answer: "último",
+              en: "Who's last in line? — Me, go ahead.",
+              options: ["primero", "último", "puesto", "kilo"],
+            },
+            {
+              template: "Estos melocotones están muy ___, los como hoy.",
+              answer: "maduros",
+              en: "These peaches are very ripe, I'll eat them today.",
+              options: ["verdes", "maduros", "frescas", "caros"],
+            },
+            {
+              template: "¿Qué me ___ para hacer una paella?",
+              answer: "recomienda",
+              en: "What do you recommend for making a paella?",
+              options: ["recomienda", "pone", "cuesta", "queda"],
+            },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "I'll take a quarter-kilo of prawns. That's all, thanks.",
+          reference: "Me llevo un cuarto de kilo de gambas. Eso es todo, gracias.",
+          hint: "'I'll take' (I'm taking it with me) = me llevo. 'That's all' = eso es todo.",
         },
       ],
     }

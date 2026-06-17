@@ -12,7 +12,7 @@ export const UNIT_GREETINGS: Unit = {
     {
       slug: "greetings-basic",
       title: "Saying hello and goodbye",
-      estMinutes: 7,
+      estMinutes: 9,
       pages: [
         {
           type: "intro",
@@ -64,12 +64,44 @@ export const UNIT_GREETINGS: Unit = {
             },
           ],
         },
+        {
+          type: "dialogue",
+          heading: "A quick hello at a café in Madrid",
+          setup: "You step into a busy café mid-morning to grab a coffee.",
+          lines: [
+            { speaker: "Tú", l1: "¡Buenos días!", en: "Good morning!" },
+            { speaker: "Camarero", l1: "Buenos días. ¿Qué le pongo?", en: "Good morning. What can I get you?" },
+            { speaker: "Tú", l1: "Un café con leche, por favor.", en: "A coffee with milk, please." },
+            { speaker: "Camarero", l1: "Marchando. Aquí tiene.", en: "Coming right up. Here you go." },
+            { speaker: "Tú", l1: "Gracias. ¡Hasta luego!", en: "Thank you. See you later!" },
+            { speaker: "Camarero", l1: "A usted. ¡Que vaya bien!", en: "Thank you. Have a good one!" },
+          ],
+        },
+        {
+          type: "orderWords",
+          heading: "Build the greeting",
+          intro: "Tap the words into the correct order.",
+          items: [
+            { tokens: ["Buenos", "días", "señora"], en: "Good morning, ma'am." },
+            { tokens: ["Hasta", "luego", "y", "gracias"], en: "See you later and thank you." },
+            { tokens: ["Hola", "buenas", "tardes"], en: "Hi, good afternoon." },
+            { tokens: ["Adiós", "hasta", "mañana"], en: "Goodbye, see you tomorrow." },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "Good morning! See you later.",
+          reference: "¡Buenos días! Hasta luego.",
+          hint: "Remember the inverted opening mark ¡ and the agreement in 'buenos días'.",
+        },
       ],
     },
     {
       slug: "greetings-tu-usted",
       title: "Tú vs usted — formal and informal",
-      estMinutes: 8,
+      estMinutes: 10,
       pages: [
         {
           type: "intro",
@@ -125,12 +157,77 @@ export const UNIT_GREETINGS: Unit = {
             },
           ],
         },
+        {
+          type: "conjugation",
+          heading: "How are you? — estar by person",
+          verb: "estar",
+          meaning: "to be (feelings, location, state)",
+          intro: "Spanish uses 'estar' for how you feel. Notice how the ending changes with tú, usted, and vosotros.",
+          tenses: [
+            {
+              name: "Asking how someone is",
+              forms: [
+                { person: "(tú) ¿Cómo estás?", form: "estás", en: "How are you? (informal)" },
+                { person: "(usted) ¿Cómo está?", form: "está", en: "How are you? (formal)" },
+                { person: "(vosotros) ¿Cómo estáis?", form: "estáis", en: "How are you all? (Spain, informal)" },
+              ],
+            },
+            {
+              name: "Common replies",
+              forms: [
+                { person: "Estoy bien.", form: "bien", en: "I'm well." },
+                { person: "Estoy muy bien.", form: "muy bien", en: "I'm very well." },
+                { person: "Estoy regular.", form: "regular", en: "I'm so-so." },
+                { person: "Estoy cansado/a.", form: "cansado/a", en: "I'm tired. (m/f)" },
+              ],
+            },
+          ],
+        },
+        {
+          type: "fillBlank",
+          heading: "Fill in tú or usted",
+          intro: "Choose the form that fits the context.",
+          items: [
+            {
+              template: "Buenas tardes, señor. ¿Cómo ___?",
+              answer: "está",
+              en: "Good afternoon, sir. How are you?",
+              options: ["estás", "está", "estáis", "estoy"],
+            },
+            {
+              template: "¡Hola, Carmen! ¿Cómo ___?",
+              answer: "estás",
+              en: "Hi, Carmen! How are you?",
+              options: ["estás", "está", "estoy", "estamos"],
+            },
+            {
+              template: "Perdone, ¿de dónde es ___?",
+              answer: "usted",
+              en: "Excuse me, where are you from? (formal)",
+              options: ["tú", "usted", "vosotros", "yo"],
+            },
+            {
+              template: "Bien, gracias, ¿y ___?",
+              answer: "tú",
+              en: "Fine, thanks, and you? (to a friend)",
+              options: ["tú", "usted", "yo", "él"],
+            },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "Hello, how are you? (to a friend) Pleased to meet you.",
+          reference: "Hola, ¿cómo estás? Encantado.",
+          hint: "Use tú (estás) for a friend. A male speaker says 'encantado'; a female speaker says 'encantada'.",
+        },
       ],
     },
     {
       slug: "greetings-real-conversation",
       title: "Real greetings in context",
-      estMinutes: 7,
+      estMinutes: 9,
       pages: [
         {
           type: "dialogue",
@@ -183,6 +280,20 @@ export const UNIT_GREETINGS: Unit = {
             },
           ],
         },
+        {
+          type: "tip",
+          heading: "Greetings come with a kiss — or a handshake",
+          body: "In Spain, friends and acquaintances often greet with <em>dos besos</em> (two kisses, left cheek first), even on a first meeting in social settings. In formal or business contexts, a handshake with <em>encantado/a</em> is the safe choice. When in doubt, follow the other person's lead.",
+          example: { l1: "— Encantada. — Igualmente.", en: "— Pleased to meet you. — Likewise. (woman speaking first)" },
+        },
+        {
+          type: "translate",
+          heading: "Translate the introduction",
+          direction: "en-to-l1",
+          prompt: "Good afternoon. What is your name? I'm from Madrid.",
+          reference: "Buenas tardes. ¿Cómo se llama usted? Soy de Madrid.",
+          hint: "Use the formal '¿cómo se llama usted?' since you're meeting someone for the first time. Don't forget the ¿ and accents.",
+        },
       ],
     },
   ],
@@ -199,6 +310,8 @@ export const UNIT_GREETINGS: Unit = {
       { q: "The reply 'regular' to ¿cómo estás? means…", options: ["Very well", "Terrible", "So-so", "Regular schedule"], correct: 2 },
       { q: "Which greeting works at any time of day?", options: ["Buenos días", "Buenas tardes", "Hola", "Buenas noches"], correct: 2 },
       { q: "'Hasta pronto' means…", options: ["Goodbye forever", "Until tomorrow", "See you soon", "Good night"], correct: 2 },
+      { q: "Asking a stranger formally 'how are you?' is…", options: ["¿Cómo estás?", "¿Cómo está?", "¿Cómo estáis?", "¿Cómo estoy?"], correct: 1 },
+      { q: "In Spain, friends often greet socially with…", options: ["a bow", "dos besos (two kisses)", "a high five", "nothing at all"], correct: 1 },
     ],
   },
 };

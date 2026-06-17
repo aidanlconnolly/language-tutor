@@ -12,15 +12,20 @@ export const UNIT_IDIOMS: Unit = {
     {
       slug: "idioms-spain",
       title: "Spanish slang and colloquial expressions",
-      estMinutes: 9,
+      estMinutes: 11,
       pages: [
         {
           type: "intro",
           heading: "Sound like a local",
           body: [
             "Spanish textbook language sounds correct but robotic. Real Spaniards use a rich set of filler words, exclamations, and idioms. Learning a handful of these will immediately make you sound more natural — and they make conversations far more fun.",
+            "<strong>¡Qué guay!</strong> = How cool! And <strong>mola</strong> / <strong>molar</strong> = to be cool: <em>Mola mucho</em> = It's really cool.",
+            "<strong>Vale</strong> = OK / fine — the single most-used word in Spain. <strong>No pasa nada</strong> = No worries / it's fine.",
+            "<strong>Flipar</strong> = to be blown away / freak out: <em>Estoy flipando</em> = I can't believe it.",
             "Most of these are Spain-specific. Latin American Spanish has its own equivalents.",
           ],
+          keyPoint:
+            "vale (OK), guay (cool), mola (it's cool), no pasa nada (no worries), flipar (to be blown away).",
         },
         {
           type: "vocab",
@@ -68,12 +73,26 @@ export const UNIT_IDIOMS: Unit = {
             },
           ],
         },
+        {
+          type: "tip",
+          heading: "The 'vale' superpower",
+          body: "<em>Vale</em> is the heartbeat of Spanish conversation — Spaniards say it constantly. On its own it means \"OK / fine / got it.\" Doubled up, <strong>vale, vale</strong> means \"yeah yeah, alright already.\" As a question, <strong>¿vale?</strong> tags onto the end of a sentence like \"…OK?\": <em>Quedamos a las ocho, ¿vale?</em> = Let's meet at eight, OK? Pair it with <strong>no pasa nada</strong> (no worries) and you can defuse almost anything.",
+          example: { l1: "Vale, no pasa nada, lo hacemos mañana.", en: "OK, no worries, we'll do it tomorrow." },
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "How cool! That's really awesome, mate.",
+          reference: "¡Qué guay! Eso mola mazo, tío.",
+          hint: "'Qué guay' = how cool. 'Mola mazo' = it's mega cool. 'Tío' = mate/dude.",
+        },
       ],
     },
     {
       slug: "idioms-proverbs",
-      title: "Spanish sayings",
-      estMinutes: 6,
+      title: "Spanish sayings and colourful idioms",
+      estMinutes: 9,
       pages: [
         {
           type: "vocab",
@@ -104,12 +123,114 @@ export const UNIT_IDIOMS: Unit = {
             },
           ],
         },
+        {
+          type: "intro",
+          heading: "Spanish loves body parts, food and animals",
+          body: [
+            "Beyond proverbs, everyday Spanish is full of vivid idioms built from body parts and food.",
+            "<strong>Costar un ojo de la cara</strong> = to cost an eye from the face = to cost a fortune.",
+            "<strong>Estar de mala leche</strong> = to be in a foul mood (lit. 'of bad milk'). But <strong>ser la leche</strong> = to be amazing (or, depending on tone, unbelievable).",
+            "<strong>Ponerse las botas</strong> = to put your boots on = to stuff yourself / have a field day.",
+            "<strong>Estar hasta las narices</strong> = to be up to your nose = to be fed up to here.",
+            "<strong>Dar la lata</strong> = to give the tin can = to be a nuisance / pester.",
+          ],
+          keyPoint:
+            "costar un ojo de la cara (cost a fortune), estar de mala leche (foul mood), ponerse las botas (stuff yourself), estar hasta las narices (be fed up), dar la lata (to pester).",
+        },
+        {
+          type: "vocab",
+          heading: "Colourful everyday idioms",
+          intro: "These are heard daily all over Spain.",
+          items: [
+            { l1: "costar un ojo de la cara", en: "to cost a fortune (lit. an eye from the face)" },
+            { l1: "estar de mala leche", en: "to be in a foul mood (lit. of bad milk)" },
+            { l1: "ser la leche", en: "to be amazing / unbelievable (tone decides which)" },
+            { l1: "ponerse las botas", en: "to stuff oneself / have a field day (lit. put on your boots)" },
+            { l1: "estar hasta las narices (de)", en: "to be fed up (with) (lit. up to the noses)" },
+            { l1: "dar la lata", en: "to pester / be a nuisance (lit. give the tin)" },
+            { l1: "currar", en: "to work / graft", note: "el curro = the job (Spain slang)" },
+            { l1: "¡qué fuerte!", en: "how shocking! / no way! (lit. how strong)" },
+            { l1: "estar como una cabra", en: "to be nuts (lit. like a goat)" },
+            { l1: "tener mala pata", en: "to have bad luck (lit. bad leg/paw)" },
+            { l1: "importar un pepino", en: "to not care at all (lit. matter a cucumber)" },
+            { l1: "echar una mano", en: "to lend a hand / help out" },
+          ],
+        },
+        {
+          type: "tip",
+          heading: "Watch the milk: 'mala leche' vs 'la leche'",
+          body: "Spanish does a lot with <em>leche</em> (milk). <strong>Estar de mala leche</strong> = to be in a bad mood; <strong>tener mala leche</strong> = to be nasty / have a mean streak. But <strong>ser la leche</strong> flips positive (or astonished): <em>¡Este tío es la leche!</em> = This guy is amazing! / unbelievable! And <strong>a toda leche</strong> = at full speed. Tone and the verb (ser vs estar) tell you which way it points. All three are mildly colloquial — fine with friends, skip them in formal settings.",
+          example: { l1: "Está de mala leche porque ha perdido el tren.", en: "He's in a foul mood because he missed the train." },
+        },
+        {
+          type: "fillBlank",
+          heading: "Idiom fill-ins",
+          intro: "Pick the word that completes each idiom.",
+          items: [
+            {
+              template: "Ese coche cuesta un ___ de la cara.",
+              answer: "ojo",
+              en: "That car costs a fortune.",
+              options: ["ojo", "brazo", "pie", "diente"],
+            },
+            {
+              template: "No me hables, estoy de mala ___ hoy.",
+              answer: "leche",
+              en: "Don't talk to me, I'm in a foul mood today.",
+              options: ["leche", "cara", "pata", "lata"],
+            },
+            {
+              template: "En la boda nos pusimos las ___ con la comida.",
+              answer: "botas",
+              en: "At the wedding we stuffed ourselves with the food.",
+              options: ["botas", "manos", "narices", "cabras"],
+            },
+            {
+              template: "Estoy hasta las ___ de tanto ruido.",
+              answer: "narices",
+              en: "I'm fed up with all this noise.",
+              options: ["narices", "botas", "patas", "cejas"],
+            },
+            {
+              template: "Tu hermano está como una ___ .",
+              answer: "cabra",
+              en: "Your brother is nuts.",
+              options: ["cabra", "vaca", "leche", "lata"],
+            },
+          ],
+        },
+        {
+          type: "orderWords",
+          heading: "Build the idiom",
+          intro: "Put the words in order.",
+          items: [
+            { tokens: ["Este", "móvil", "cuesta", "un", "ojo", "de", "la", "cara"], en: "This phone costs a fortune." },
+            { tokens: ["¿Me", "echas", "una", "mano", "con", "esto?"], en: "Can you lend me a hand with this?" },
+            { tokens: ["Deja", "de", "dar", "la", "lata", ",", "tío"], en: "Stop being a pest, mate." },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "I'm fed up. This restaurant costs a fortune.",
+          reference: "Estoy hasta las narices. Este restaurante cuesta un ojo de la cara.",
+          hint: "'Estar hasta las narices' = to be fed up. 'Costar un ojo de la cara' = to cost a fortune.",
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "l1-to-en",
+          prompt: "Hoy no curro, así que nos ponemos las botas.",
+          reference: "I'm not working today, so we'll stuff ourselves / have a field day.",
+          hint: "'Currar' = to work. 'Ponerse las botas' = to stuff yourself / go all out.",
+        },
       ],
     },
     {
       slug: "idioms-in-conversation",
       title: "Using idioms naturally",
-      estMinutes: 7,
+      estMinutes: 9,
       pages: [
         {
           type: "dialogue",
@@ -152,6 +273,28 @@ export const UNIT_IDIOMS: Unit = {
               fb: "Me importa un pimiento = I couldn't care less. One of many colourful Spanish ways to express indifference.",
             },
           ],
+        },
+        {
+          type: "tip",
+          heading: "Stay you — but borrow these four",
+          body: "If you only ever pick up four Spanish-isms, make them: <em>vale</em>, <em>guay</em>, <em>venga</em>, and <em>no pasa nada</em>. They cover agreement, approval, urging/farewell, and reassurance — the four moods you need most. Drop them naturally and conversations relax instantly. Hold off on the saltier ones (<em>mala leche</em>, <em>flipar</em>, <em>¡qué fuerte!</em>) until you've heard friends use them — they're great, but context-sensitive.",
+          example: { l1: "—¿Quedamos a las ocho? —Venga, vale. —¡Guay!", en: "—Shall we meet at eight? —Come on, OK. —Cool!" },
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "No way! That concert blew my mind, mate.",
+          reference: "¡Qué fuerte! Ese concierto me flipó, tío.",
+          hint: "'Qué fuerte' = no way / how shocking. 'Flipar' = to blow your mind. 'Tío' = mate.",
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "Come on, no worries, lend me a hand.",
+          reference: "Venga, no pasa nada, échame una mano.",
+          hint: "'Venga' = come on. 'No pasa nada' = no worries. 'Echar una mano' = to lend a hand.",
         },
       ],
     }

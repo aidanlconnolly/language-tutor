@@ -12,7 +12,7 @@ export const UNIT_FLAMENCO_CULTURE: Unit = {
     {
       slug: "flamenco-culture-flamenco",
       title: "Flamenco — Spain's deepest art",
-      estMinutes: 9,
+      estMinutes: 11,
       pages: [
         {
           type: "intro",
@@ -20,10 +20,11 @@ export const UNIT_FLAMENCO_CULTURE: Unit = {
           body: [
             "Flamenco is an art form from Andalusia — southern Spain — with roots in Moorish, Gypsy (Romani), and Spanish folk traditions. It has three elements: <em>el cante</em> (singing), <em>el toque</em> (guitar playing), and <em>el baile</em> (dancing).",
             "The concept of <em>duende</em> — a kind of dark, mysterious artistic intensity — is central to flamenco. When a performance has duende, something transcendent happens. It's untranslatable but unmistakable.",
+            "In 2010 UNESCO declared flamenco part of the <em>Patrimonio Cultural Inmaterial de la Humanidad</em> (Intangible Cultural Heritage of Humanity). It's not a museum piece, though — it's alive in peñas, festivals, and street corners across the south.",
           ],
           tip: {
             label: "Where to see real flamenco",
-            body: "A tablao flamenco is a venue that stages regular performances. Seville (La Carbonería), Granada (Sacromonte cave shows), Jerez, and Madrid all have authentic venues. Avoid tourist shows — seek out the real thing.",
+            body: "A tablao flamenco is a venue that stages regular performances. Seville (La Carbonería), Granada (Sacromonte cave shows), Jerez, and Madrid all have authentic venues. Avoid tourist shows — seek out the real thing. A peña flamenca is a members' club where aficionados gather; the most authentic shows of all happen there.",
           },
         },
         {
@@ -42,15 +43,25 @@ export const UNIT_FLAMENCO_CULTURE: Unit = {
         },
         {
           type: "vocab",
-          heading: "Spanish culture and daily life",
+          heading: "More flamenco terms",
+          intro: "The vocabulary aficionados use to talk about a performance.",
           items: [
-            { l1: "la siesta", en: "the midday rest (roughly 2–5pm)" },
-            { l1: "la feria", en: "local festival — rides, music, flamenco" },
-            { l1: "la Semana Santa", en: "Holy Week — the most intense procession tradition" },
-            { l1: "el fútbol", en: "football — Spain's national passion (Real Madrid, Barça)" },
-            { l1: "la corrida de toros", en: "bullfighting — traditional but controversial" },
-            { l1: "la Nochevieja", en: "New Year's Eve — 12 grapes at midnight tradition" },
+            { l1: "el palmero / la palmera", en: "the person who claps the rhythm (palmas)" },
+            { l1: "las palmas", en: "the rhythmic hand-clapping that drives the song" },
+            { l1: "el compás", en: "the rhythm / beat — the backbone of flamenco" },
+            { l1: "el palo", en: "a flamenco style or form (soleá, bulería, alegría…)" },
+            { l1: "la bulería", en: "a fast, festive flamenco style from Jerez" },
+            { l1: "la soleá", en: "a slow, solemn, deeply emotional flamenco style" },
+            { l1: "la guitarra flamenca", en: "the flamenco guitar" },
+            { l1: "el tocaor / la tocaora", en: "the flamenco guitarist (m/f)" },
+            { l1: "el quejío", en: "the anguished cry/wail in cante jondo" },
           ],
+        },
+        {
+          type: "tip",
+          heading: "When (and how) to shout ¡Olé!",
+          body: "Don't shout <em>¡olé!</em> at random — it's a reaction to a moment of real intensity, like a perfect run of footwork or a singer hitting a devastating note. You'll also hear <em>¡así se canta!</em> (that's how you sing!), <em>¡agua!</em>, and <em>¡vamos ya!</em>. Clap only if you know the compás; clapping off-beat is worse than silence.",
+          example: { l1: "¡Olé! ¡Así se baila!", en: "Bravo! That's how you dance!" },
         },
         {
           type: "multipleChoice",
@@ -68,15 +79,90 @@ export const UNIT_FLAMENCO_CULTURE: Unit = {
               correct: 2,
               fb: "Duende = untranslatable dark spirit of flamenco. When a performance has it, everyone feels it.",
             },
+            {
+              q: "'El compás' is…",
+              options: ["A flamenco singer", "The rhythm/beat that drives the music", "A type of guitar", "The applause at the end"],
+              correct: 1,
+              fb: "El compás = the rhythmic backbone. Everything in flamenco hangs off the compás.",
+            },
           ],
+        },
+        {
+          type: "fillBlank",
+          heading: "Flamenco fill",
+          intro: "Complete each sentence with the right flamenco word.",
+          items: [
+            {
+              template: "El cantaor tiene mucho ___ esta noche.",
+              answer: "duende",
+              en: "The singer has a lot of duende tonight.",
+              options: ["duende", "tablao", "compás", "palo"],
+            },
+            {
+              template: "Vamos a ver un espectáculo en un ___ de Triana.",
+              answer: "tablao",
+              en: "We're going to see a show at a tablao in Triana.",
+              options: ["tablao", "palmero", "quejío", "zapateado"],
+            },
+            {
+              template: "La ___ es un palo rápido y festivo de Jerez.",
+              answer: "bulería",
+              en: "The bulería is a fast, festive style from Jerez.",
+              options: ["soleá", "bulería", "guitarra", "siesta"],
+            },
+            {
+              template: "Los palmeros marcan el ___ con las manos.",
+              answer: "compás",
+              en: "The palmeros mark the rhythm with their hands.",
+              options: ["compás", "duende", "tablao", "olé"],
+            },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "I want to see an authentic flamenco show in Seville.",
+          reference: "Quiero ver un espectáculo de flamenco auténtico en Sevilla.",
+          hint: "'Espectáculo de flamenco' = flamenco show. 'Auténtico' agrees with the masculine 'espectáculo'.",
         },
       ],
     },
     {
       slug: "flamenco-culture-traditions",
       title: "Spanish traditions",
-      estMinutes: 6,
+      estMinutes: 10,
       pages: [
+        {
+          type: "intro",
+          heading: "The Spanish calendar is a year of fiestas",
+          body: [
+            "Spain runs on celebrations. Nearly every town has its own <em>fiestas patronales</em> for its patron saint, and the big regional festivals draw visitors from all over the world.",
+            "<strong>Semana Santa</strong> (Holy Week) is most intense in Seville and Málaga — solemn processions with <em>pasos</em> (floats), <em>nazarenos</em> (hooded penitents), and <em>saetas</em> (spontaneous flamenco-style laments).",
+            "<strong>La Feria de Abril</strong> (Seville, two weeks after Easter) is the opposite mood: <em>casetas</em> (tents), sherry, sevillanas dancing, and horse-drawn carriages.",
+            "<strong>Las Fallas</strong> (Valencia, March) burns giant satirical sculptures; <strong>San Fermín</strong> (Pamplona, July) is the running of the bulls; <strong>La Tomatina</strong> (Buñol, August) is a town-wide tomato fight.",
+          ],
+          keyPoint:
+            "Semana Santa = solemn processions (Seville). Feria de Abril = festive tents + dancing. Las Fallas = burning sculptures (Valencia). San Fermín = running of the bulls (Pamplona).",
+        },
+        {
+          type: "vocab",
+          heading: "Festivals & celebrations",
+          items: [
+            { l1: "la fiesta", en: "the festival / party" },
+            { l1: "las fiestas patronales", en: "a town's patron-saint festivals" },
+            { l1: "la Feria de Abril", en: "Seville's April Fair" },
+            { l1: "la Semana Santa", en: "Holy Week" },
+            { l1: "la procesión", en: "the procession" },
+            { l1: "el paso", en: "the float (carried in Holy Week processions)" },
+            { l1: "la caseta", en: "the festival tent (at the Feria)" },
+            { l1: "las sevillanas", en: "the folk dance of the Feria de Abril" },
+            { l1: "Las Fallas", en: "Valencia's festival of burning sculptures (March)" },
+            { l1: "los Sanfermines", en: "Pamplona's running-of-the-bulls festival (July)" },
+            { l1: "el encierro", en: "the running of the bulls" },
+            { l1: "la verbena", en: "an open-air night festival with music and dancing" },
+          ],
+        },
         {
           type: "vocab",
           heading: "Talking about Spanish culture",
@@ -86,6 +172,33 @@ export const UNIT_FLAMENCO_CULTURE: Unit = {
             { l1: "La Semana Santa es impresionante en Sevilla.", en: "Holy Week is impressive in Seville." },
             { l1: "¿Eres del Madrid o del Barça?", en: "Are you a Madrid or Barça fan?" },
             { l1: "El fútbol es una religión aquí.", en: "Football is a religion here." },
+          ],
+        },
+        {
+          type: "vocab",
+          heading: "Spanish culture and daily life",
+          items: [
+            { l1: "la siesta", en: "the midday rest (roughly 2–5pm)" },
+            { l1: "la feria", en: "local festival — rides, music, flamenco" },
+            { l1: "la sobremesa", en: "the lingering chat at the table after a meal" },
+            { l1: "el fútbol", en: "football — Spain's national passion (Real Madrid, Barça)" },
+            { l1: "la corrida de toros", en: "bullfighting — traditional but controversial" },
+            { l1: "la Nochevieja", en: "New Year's Eve — 12 grapes at midnight tradition" },
+            { l1: "el botellón", en: "young people gathering to drink in public squares" },
+            { l1: "el tapeo / ir de tapas", en: "going bar to bar eating tapas" },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "Asking about a local festival",
+          setup: "You see banners about a festival in your neighborhood and ask a local.",
+          lines: [
+            { speaker: "Tú", l1: "Perdone, ¿hay alguna fiesta hoy?", en: "Excuse me, is there a festival today?" },
+            { speaker: "Vecina", l1: "Sí, son las fiestas del barrio. Esta noche hay verbena en la plaza.", en: "Yes, it's the neighborhood festival. Tonight there's an open-air party in the square." },
+            { speaker: "Tú", l1: "¿Puedo ir aunque no sea de aquí?", en: "Can I go even though I'm not from here?" },
+            { speaker: "Vecina", l1: "¡Claro! Viene todo el mundo. Hay música, baile y comida para todos.", en: "Of course! Everyone comes. There's music, dancing, and food for everybody." },
+            { speaker: "Tú", l1: "¡Qué bien! ¿A qué hora empieza?", en: "How nice! What time does it start?" },
+            { speaker: "Vecina", l1: "Sobre las diez, pero la cosa se anima pasada la medianoche.", en: "Around ten, but it really gets going after midnight." },
           ],
         },
         {
@@ -104,14 +217,61 @@ export const UNIT_FLAMENCO_CULTURE: Unit = {
               correct: 1,
               fb: "A tablao flamenco is a venue that stages regular flamenco shows.",
             },
+            {
+              q: "Las Fallas, the festival of burning sculptures, takes place in…",
+              options: ["Seville", "Valencia", "Pamplona", "Granada"],
+              correct: 1,
+              fb: "Las Fallas happen in Valencia every March — giant satirical sculptures are paraded, then burned.",
+            },
+            {
+              q: "'El encierro' refers to…",
+              options: ["A flamenco style", "The running of the bulls", "A festival tent", "A type of tapa"],
+              correct: 1,
+              fb: "El encierro = the running of the bulls, most famous at San Fermín in Pamplona.",
+            },
           ],
+        },
+        {
+          type: "orderWords",
+          heading: "Build the sentence",
+          intro: "Put the words in the right order.",
+          items: [
+            {
+              tokens: ["La", "Feria", "de", "Abril", "es", "en", "Sevilla"],
+              en: "The Feria de Abril is in Seville.",
+            },
+            {
+              tokens: ["En", "Nochevieja", "comemos", "doce", "uvas", "a", "medianoche"],
+              en: "On New Year's Eve we eat twelve grapes at midnight.",
+            },
+            {
+              tokens: ["Las", "procesiones", "de", "Semana", "Santa", "son", "impresionantes"],
+              en: "The Holy Week processions are impressive.",
+            },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "Holy Week is very impressive in Seville.",
+          reference: "La Semana Santa es muy impresionante en Sevilla.",
+          hint: "'La Semana Santa' is feminine; 'impresionante' has the same form for both genders.",
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "Every town has its own patron-saint festivals.",
+          reference: "Cada pueblo tiene sus propias fiestas patronales.",
+          hint: "'Cada pueblo' takes a singular verb; 'fiestas patronales' is plural feminine.",
         },
       ],
     },
     {
       slug: "culture-conversation",
       title: "Discussing Spanish culture",
-      estMinutes: 7,
+      estMinutes: 9,
       pages: [
         {
           type: "dialogue",
@@ -137,6 +297,55 @@ export const UNIT_FLAMENCO_CULTURE: Unit = {
           ],
         },
         {
+          type: "tip",
+          heading: "Madrid vs. Barça — the safe way to talk football",
+          body: "Football (<em>el fútbol</em>) is a genuine passion, and <em>El Clásico</em> (Real Madrid vs. FC Barcelona) divides the country. A friendly opener is <em>¿de qué equipo eres?</em> (which team do you support?). Keep it light — in some regions team loyalty overlaps with politics and identity, so read the room before pushing the topic.",
+          example: { l1: "¿De qué equipo eres, del Madrid o del Barça?", en: "Which team do you support, Madrid or Barça?" },
+        },
+        {
+          type: "dialogue",
+          heading: "Comparing fiestas",
+          setup: "Two friends compare their favorite Spanish festivals.",
+          lines: [
+            { speaker: "Lucía", l1: "¿Cuál es tu fiesta favorita de España?", en: "What's your favorite festival in Spain?" },
+            { speaker: "Tom", l1: "Me encanta la Feria de Abril. El ambiente es increíble.", en: "I love the Feria de Abril. The atmosphere is incredible." },
+            { speaker: "Lucía", l1: "A mí me gusta más la Semana Santa, es más emotiva.", en: "I prefer Holy Week, it's more moving." },
+            { speaker: "Tom", l1: "Son muy diferentes, ¿verdad? Una es alegre y la otra es solemne.", en: "They're very different, right? One is joyful and the other is solemn." },
+            { speaker: "Lucía", l1: "Exacto. Pero las dos forman parte de nuestra cultura.", en: "Exactly. But both are part of our culture." },
+          ],
+        },
+        {
+          type: "fillBlank",
+          heading: "Culture-talk fill",
+          intro: "Complete each cultural expression.",
+          items: [
+            {
+              template: "El flamenco forma parte de la ___ española.",
+              answer: "identidad",
+              en: "Flamenco is part of Spanish identity.",
+              options: ["identidad", "siesta", "caseta", "procesión"],
+            },
+            {
+              template: "Es una tradición muy ___ en Andalucía.",
+              answer: "arraigada",
+              en: "It's a deeply rooted tradition in Andalusia.",
+              options: ["arraigada", "moderna", "extranjera", "nueva"],
+            },
+            {
+              template: "Para entenderlo de verdad, hay que verlo en ___ .",
+              answer: "directo",
+              en: "To really understand it, you have to see it live.",
+              options: ["directo", "televisión", "vídeo", "casa"],
+            },
+            {
+              template: "Después de comer, nos quedamos de ___ charlando.",
+              answer: "sobremesa",
+              en: "After eating, we stay at the table chatting.",
+              options: ["sobremesa", "siesta", "verbena", "tapeo"],
+            },
+          ],
+        },
+        {
           type: "multipleChoice",
           heading: "Culture discussion",
           questions: [
@@ -152,10 +361,32 @@ export const UNIT_FLAMENCO_CULTURE: Unit = {
               correct: 1,
               fb: "Arraigado = deeply rooted (from raíz = root). Very common when describing strong cultural traditions.",
             },
+            {
+              q: "'La sobremesa' is…",
+              options: ["A dessert", "The lingering chat after a meal", "An extra table", "A type of nap"],
+              correct: 1,
+              fb: "La sobremesa = the time spent talking at the table after eating. A cherished Spanish ritual.",
+            },
           ],
         },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "Football is almost a religion here.",
+          reference: "El fútbol es casi una religión aquí.",
+          hint: "'El fútbol' takes the article; 'casi' = almost.",
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "You have to see flamenco live to understand it.",
+          reference: "Hay que ver el flamenco en directo para entenderlo.",
+          hint: "'Hay que' + infinitive = you have to / one must. 'En directo' = live.",
+        },
       ],
-    }
+    },
   ],
   checkpoint: {
     passingPct: 80,
@@ -170,6 +401,8 @@ export const UNIT_FLAMENCO_CULTURE: Unit = {
       { q: "La Semana Santa is most spectacular in…", options: ["Madrid", "Barcelona", "Seville", "Bilbao"], correct: 2 },
       { q: "'¡Olé!' is shouted during flamenco to…", options: ["Stop the performance", "Encourage the performers", "Ask for silence", "Signal the end"], correct: 1 },
       { q: "Cante jondo means…", options: ["Deep song — the most serious flamenco", "Light entertainment flamenco", "Flamenco guitar technique", "A flamenco dance style"], correct: 0 },
+      { q: "Las Fallas, the festival of burning sculptures, is in…", options: ["Seville", "Valencia", "Pamplona", "Bilbao"], correct: 1 },
+      { q: "Translate: 'Holy Week is very impressive in Seville.'", options: ["La Semana Santa es muy impresionante en Sevilla.", "La Semana Santa está muy impresionante en Sevilla.", "El Semana Santa es muy impresionante en Sevilla.", "La Semana Santa es muy impresionado en Sevilla."], correct: 0 },
     ],
   },
 };

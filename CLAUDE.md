@@ -53,7 +53,13 @@ There are no tests.
 - `lib/auth.ts` — `createSession` / `getSession` / `deleteSession` / `requireAuth()`. JWT stored in `__session` httpOnly cookie, 30-day expiry.
 - `lib/actions/auth.ts` — `registerAction` / `loginAction` / `logoutAction` / `changePasswordAction` (all `useActionState`-driven).
 - **Every per-user Server Action calls `await requireAuth()` first.** The middleware is defense-in-depth, not the sole gate.
-- `lib/api-auth.ts` — `getApiUserId(request)` reads `Authorization: Bearer <token>` header; used by all REST API routes called from the mobile app.
+- `lib/api-auth.ts` — `getApiUserId(request)` reads `Authorization: Bearer <token>` header; used by all REST API routes called from the mobile app. Also exports `readJson(request)` + `BadRequestError`: wrap body parsing so malformed JSON returns **400**, not an unhandled **500**.
+
+### Admin dashboard
+
+`app/admin/page.tsx` — a `force-dynamic` server component (no API route/server action; it queries Drizzle directly) gated to an email allowlist via `ADMIN_EMAIL` (comma-separated env var, defaults to the owner). It computes **growth & retention** entirely from existing timestamps — there is no analytics table:
+- **Activity** = any row in `lesson_progress`/`read_progress`/`checkpoint_attempts`/`cards`/`reviews` (joined to `cards` for `userId`). All `*At` columns are epoch-ms.
+- Derives signups, activated/active-24h/7d, "returned" (active on ≥2 distinct days), **D1/D7 return** (activity ≥1/7 days after `users.createdAt`, among users old enough to qualify), a 14-day signups + active-users chart, per-language active learners, and a **roadmap drop-off funnel** (distinct lesson-completers per unit, ordered via `getUnitOutline(lang)`).
 
 ### Language routing
 
@@ -71,6 +77,8 @@ lib/content/
   french/         ← units/ (35 files), reads/ (8 files), stages.ts
   spanish/        ← units/ (35 files), reads/ (8 files), stages.ts
 ```
+
+All three languages are at content parity (≈35 units × 3 lessons, every unit carrying `translate` exercises — the productive en→l1 drill). When extending a language, author **original** content for that language/culture (Spanish wines, Spanish landmarks, ser/estar — never a literal translation of the Italian unit) and keep the per-unit `translate` count in step with the others.
 
 ### Database schema
 

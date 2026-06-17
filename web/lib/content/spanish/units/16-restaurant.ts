@@ -11,7 +11,7 @@ export const UNIT_RESTAURANT: Unit = {
     {
       slug: "restaurant-ordering",
       title: "Ordering at a Spanish restaurant",
-      estMinutes: 9,
+      estMinutes: 12,
       pages: [
         {
           type: "intro",
@@ -54,6 +54,12 @@ export const UNIT_RESTAURANT: Unit = {
           ],
         },
         {
+          type: "tip",
+          heading: "De primero, de segundo — the magic words",
+          body: "When you order from the <em>menú del día</em>, you choose one dish from each section. The waiter expects you to say <em>«De primero…»</em> (for the first course) and <em>«De segundo…»</em> (for the main). You don't need a full sentence — just <em>«De primero, la ensalada»</em> is perfectly natural. <em>De postre</em> covers dessert, and you can usually swap it for <em>café</em> or <em>fruta</em>.",
+          example: { l1: "De primero, la sopa. De segundo, el pollo. Y de postre, flan.", en: "For the starter, the soup. For the main, the chicken. And for dessert, flan." },
+        },
+        {
           type: "multipleChoice",
           heading: "Restaurant check",
           questions: [
@@ -77,13 +83,68 @@ export const UNIT_RESTAURANT: Unit = {
             },
           ],
         },
+        {
+          type: "fillBlank",
+          heading: "Ordering the menú del día",
+          intro: "Complete each phrase the way you'd say it to the waiter.",
+          items: [
+            {
+              template: "Una ___ para dos, por favor.",
+              answer: "mesa",
+              en: "A table for two, please.",
+              options: ["mesa", "carta", "cuenta", "silla"],
+            },
+            {
+              template: "De ___ quiero la ensalada mixta.",
+              answer: "primero",
+              en: "For my starter I'll have the mixed salad.",
+              options: ["primero", "segundo", "postre", "bebida"],
+            },
+            {
+              template: "¿Nos puede traer la ___ , por favor?",
+              answer: "carta",
+              en: "Can you bring us the menu, please?",
+              options: ["carta", "cuenta", "propina", "mesa"],
+            },
+            {
+              template: "Para ___ , una botella de agua.",
+              answer: "beber",
+              en: "To drink, a bottle of water.",
+              options: ["beber", "comer", "pagar", "traer"],
+            },
+            {
+              template: "De ___ , quiero flan, por favor.",
+              answer: "postre",
+              en: "For dessert, I'll have flan, please.",
+              options: ["postre", "primero", "segundo", "pan"],
+            },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "A table for two, please. We'd like the set menu.",
+          reference: "Una mesa para dos, por favor. Queremos el menú del día.",
+          hint: "'Para dos' = for two. 'Queremos' (we want) is more natural than a literal 'we'd like' here, though 'quisiéramos' also works.",
+        },
       ],
     },
     {
       slug: "restaurant-paying",
       title: "Paying and leaving",
-      estMinutes: 6,
+      estMinutes: 9,
       pages: [
+        {
+          type: "intro",
+          heading: "The bill comes only when you ask",
+          body: [
+            "In Spain the waiter almost never brings <em>la cuenta</em> unprompted — lingering at the table (<em>la sobremesa</em>, chatting after the meal) is sacred, so rushing you out would be rude. Catch their eye and say <em>«La cuenta, por favor»</em> or make the little air-scribble gesture.",
+            "Tipping is light: rounding up or leaving a euro or two per person is plenty. There's no 18–20% expectation — service is included in the price.",
+            "Cards are accepted almost everywhere in cities, but small bars and rural spots may be cash-only, so it's worth asking <em>«¿Se puede pagar con tarjeta?»</em> before you order.",
+          ],
+          keyPoint: "Ask for la cuenta. Tip lightly (round up). Confirm card vs cash if unsure.",
+        },
         {
           type: "vocab",
           heading: "Paying phrases",
@@ -94,6 +155,8 @@ export const UNIT_RESTAURANT: Unit = {
             { l1: "¿Cobran por el pan?", en: "Do you charge for the bread?" },
             { l1: "¿Se acepta tarjeta?", en: "Do you accept card?" },
             { l1: "Vamos a pagar por separado.", en: "We'll pay separately." },
+            { l1: "Quédese con el cambio.", en: "Keep the change." },
+            { l1: "¿Me da el recibo, por favor?", en: "Can I have the receipt, please?" },
           ],
         },
         {
@@ -112,15 +175,64 @@ export const UNIT_RESTAURANT: Unit = {
               correct: 1,
               fb: "Por separado = separately. We'll pay separately.",
             },
+            {
+              q: "'Quédese con el cambio' means…",
+              options: ["Give me the change", "Keep the change", "Where is the change?", "Count the change"],
+              correct: 1,
+              fb: "Quédese con el cambio = keep the change (formal, usted). A polite way to leave a small tip.",
+            },
           ],
+        },
+        {
+          type: "orderWords",
+          heading: "Build the paying phrases",
+          intro: "Put the words in order.",
+          items: [
+            { tokens: ["La", "cuenta", ",", "por", "favor"], en: "The bill, please." },
+            { tokens: ["¿", "Puedo", "pagar", "con", "tarjeta", "?"], en: "Can I pay by card?" },
+            { tokens: ["Creo", "que", "hay", "un", "error", "en", "la", "cuenta"], en: "I think there's an error in the bill." },
+            { tokens: ["Vamos", "a", "pagar", "por", "separado"], en: "We'll pay separately." },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "The bill, please. Can we pay by card?",
+          reference: "La cuenta, por favor. ¿Podemos pagar con tarjeta?",
+          hint: "'Podemos' = can we (nosotros). Don't forget the opening ¿ on the question.",
         },
       ],
     },
     {
       slug: "restaurant-full-conversation",
       title: "A full restaurant experience",
-      estMinutes: 7,
+      estMinutes: 10,
       pages: [
+        {
+          type: "intro",
+          heading: "Booking and arriving",
+          body: [
+            "For dinner at a popular spot, especially on weekends, it's smart to <em>reservar</em> (book): <em>«Quería reservar una mesa para cuatro el sábado a las nueve.»</em> On arrival the waiter asks <em>«¿Tienen reserva?»</em> — if not, you ask <em>«¿Tienen mesa para…?»</em>",
+            "Inside, you'll choose between <em>la carta</em> (full à-la-carte menu) and <em>el menú del día</em>. If you want to know what's in a dish, ask <em>«¿Qué lleva este plato?»</em> — literally 'what does this dish carry?', the standard way to ask about ingredients.",
+            "Common allergy/diet phrases are worth memorizing: <em>«Soy alérgico/a a…»</em> (I'm allergic to…) and <em>«¿Tienen algo sin gluten?»</em> (Do you have anything gluten-free?).",
+          ],
+          keyPoint: "Reservar → ¿Tienen reserva? → la carta or el menú → ¿Qué lleva este plato? → pedir.",
+        },
+        {
+          type: "vocab",
+          heading: "Reserving and asking about dishes",
+          items: [
+            { l1: "reservar una mesa", en: "to book a table" },
+            { l1: "Quería reservar para el sábado.", en: "I'd like to book for Saturday." },
+            { l1: "¿A nombre de quién?", en: "Under what name?" },
+            { l1: "¿Qué lleva este plato?", en: "What's in this dish?" },
+            { l1: "Soy alérgico / alérgica a…", en: "I'm allergic to… (m / f)" },
+            { l1: "¿Tienen algo sin gluten?", en: "Do you have anything gluten-free?" },
+            { l1: "¿Es picante?", en: "Is it spicy?" },
+            { l1: "para llevar", en: "to take away" },
+          ],
+        },
         {
           type: "dialogue",
           heading: "From arrival to dessert",
@@ -162,6 +274,45 @@ export const UNIT_RESTAURANT: Unit = {
               fb: "De segundo = as the main course. Lo ponemos = we'll have it (lit. we put it as).",
             },
           ],
+        },
+        {
+          type: "fillBlank",
+          heading: "Reserving and asking",
+          intro: "Fill in the gaps for these arrival-and-ordering phrases.",
+          items: [
+            {
+              template: "Quería ___ una mesa para el sábado.",
+              answer: "reservar",
+              en: "I'd like to book a table for Saturday.",
+              options: ["reservar", "pagar", "pedir", "traer"],
+            },
+            {
+              template: "¿Qué ___ este plato?",
+              answer: "lleva",
+              en: "What's in this dish?",
+              options: ["lleva", "cuesta", "quiere", "trae"],
+            },
+            {
+              template: "Soy ___ a los frutos secos.",
+              answer: "alérgico",
+              en: "I'm allergic to nuts.",
+              options: ["alérgico", "contento", "listo", "cansado"],
+            },
+            {
+              template: "¿Tienen algo sin ___ ?",
+              answer: "gluten",
+              en: "Do you have anything gluten-free?",
+              options: ["gluten", "sal", "carne", "azúcar"],
+            },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "What's in this dish? I'm allergic to nuts.",
+          reference: "¿Qué lleva este plato? Soy alérgico a los frutos secos.",
+          hint: "'¿Qué lleva…?' is the idiomatic way to ask about ingredients. Use 'alérgica' if you're female; 'frutos secos' = nuts.",
         },
       ],
     }

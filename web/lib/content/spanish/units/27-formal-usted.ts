@@ -11,7 +11,7 @@ export const UNIT_FORMAL_USTED: Unit = {
     {
       slug: "formal-usted-verbs",
       title: "Usted and ustedes forms",
-      estMinutes: 9,
+      estMinutes: 11,
       pages: [
         {
           type: "intro",
@@ -21,6 +21,48 @@ export const UNIT_FORMAL_USTED: Unit = {
             "In Spain, usted is used with strangers, elders, and professionals. In Latin America it's somewhat more common even in casual settings. In Canary Islands and some areas, ustedes replaces vosotros even informally.",
           ],
           keyPoint: "Usted = 3rd person singular verbs (same as él/ella). Ustedes = 3rd person plural (same as ellos).",
+        },
+        {
+          type: "tip",
+          heading: "Spain vs Latin America: how fast you switch",
+          body: "The biggest practical difference is <em>speed</em>, not grammar. In Spain people drop into <em>tú</em> very quickly — even a shop clerk or a younger waiter may use tú right away, and clinging to usted can feel cold or distant. In much of Latin America (especially Colombia, Mexico, Central America) usted stays the default far longer, sometimes even with family or between spouses. <em>Vosotros</em> (informal plural) is used only in Spain; Latin America uses <em>ustedes</em> for every plural 'you', formal or not.",
+          example: { l1: "España: ¿Qué quieres tomar? / Latinoamérica: ¿Qué desea tomar usted?", en: "What would you like to drink? (informal in Spain vs formal in Latin America)" },
+        },
+        {
+          type: "conjugation",
+          heading: "Tú vs usted vs ustedes — three key verbs",
+          verb: "estar / poder / querer",
+          meaning: "to be / to be able to / to want",
+          intro: "Usted borrows the él/ella form; ustedes borrows the ellos/ellas form. Compare them side by side.",
+          tenses: [
+            {
+              name: "estar (to be)",
+              forms: [
+                { person: "tú", form: "estás", en: "you are (informal)" },
+                { person: "usted", form: "está", en: "you are (formal sg.)" },
+                { person: "vosotros (Spain)", form: "estáis", en: "you all are (informal, Spain)" },
+                { person: "ustedes", form: "están", en: "you all are (formal / all LatAm)" },
+              ],
+            },
+            {
+              name: "poder (to be able)",
+              forms: [
+                { person: "tú", form: "puedes", en: "you can (informal)" },
+                { person: "usted", form: "puede", en: "you can (formal sg.)" },
+                { person: "vosotros (Spain)", form: "podéis", en: "you all can (informal, Spain)" },
+                { person: "ustedes", form: "pueden", en: "you all can (formal / all LatAm)" },
+              ],
+            },
+            {
+              name: "querer (to want)",
+              forms: [
+                { person: "tú", form: "quieres", en: "you want (informal)" },
+                { person: "usted", form: "quiere", en: "you want (formal sg.)" },
+                { person: "vosotros (Spain)", form: "queréis", en: "you all want (informal, Spain)" },
+                { person: "ustedes", form: "quieren", en: "you all want (formal / all LatAm)" },
+              ],
+            },
+          ],
         },
         {
           type: "vocab",
@@ -58,15 +100,39 @@ export const UNIT_FORMAL_USTED: Unit = {
               correct: 2,
               fb: "Formal imperative of -ar: add -e to stem. hablar → hable. Hable más despacio, por favor.",
             },
+            {
+              q: "In Latin America, the plural 'you all' (any register) is…",
+              options: ["vosotros", "ustedes", "tú", "usted"],
+              correct: 1,
+              fb: "Latin America uses ustedes for every plural 'you'. Vosotros only exists in Spain.",
+            },
           ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "Good morning, sir. How are you? (formal)",
+          reference: "Buenos días, señor. ¿Cómo está usted?",
+          hint: "Usted takes the él/ella form: está, not estás.",
         },
       ],
     },
     {
       slug: "formal-usted-requests",
       title: "Polite requests with conditional",
-      estMinutes: 7,
+      estMinutes: 9,
       pages: [
+        {
+          type: "intro",
+          heading: "Softening with the conditional",
+          body: [
+            "To sound polite in Spanish, swap the blunt present for the conditional. ¿Puede…? (can you?) is fine, but ¿Podría…? (could you?) is gentler and more deferential.",
+            "The conditional endings are the same for every verb: -ía, -ías, -ía, -íamos, -íais, -ían, added to the infinitive. For usted you'll mostly use the -ía form: podría, sería, tendría, querría, le importaría.",
+            "Pair the conditional with the indirect object pronoun le (to you, formal): ¿Le importaría…? = Would it matter to you…? / Would you mind…?",
+          ],
+          keyPoint: "¿Podría…? (could you?) > ¿Puede…? (can you?). Conditional + le = maximum politeness.",
+        },
         {
           type: "vocab",
           heading: "Conditional for polite requests",
@@ -97,12 +163,51 @@ export const UNIT_FORMAL_USTED: Unit = {
             },
           ],
         },
+        {
+          type: "fillBlank",
+          heading: "Build the polite request",
+          intro: "Fill in the conditional form for usted.",
+          items: [
+            {
+              template: "¿___ usted hablar más despacio, por favor? (poder)",
+              answer: "Podría",
+              en: "Could you speak more slowly, please?",
+              options: ["Puede", "Podría", "Podía", "Pudo"],
+            },
+            {
+              template: "¿Le ___ si abro la ventana? (importar)",
+              answer: "importaría",
+              en: "Would you mind if I open the window?",
+              options: ["importa", "importaría", "importaba", "importará"],
+            },
+            {
+              template: "¿___ tan amable de cerrar la puerta? (ser)",
+              answer: "Sería",
+              en: "Would you be so kind as to close the door?",
+              options: ["Es", "Sería", "Será", "Era"],
+            },
+            {
+              template: "Le ___ que me enviara el documento hoy. (agradecer)",
+              answer: "agradecería",
+              en: "I'd be grateful if you sent me the document today.",
+              options: ["agradezco", "agradecería", "agradecía", "agradeceré"],
+            },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "Excuse me, could you bring me the menu, please?",
+          reference: "Disculpe, ¿me podría traer la carta, por favor?",
+          hint: "Disculpe (formal). ¿Me podría + infinitive…? is the polite request frame.",
+        },
       ],
     },
     {
       slug: "formal-professional",
       title: "Formal language in professional contexts",
-      estMinutes: 7,
+      estMinutes: 9,
       pages: [
         {
           type: "vocab",
@@ -143,6 +248,39 @@ export const UNIT_FORMAL_USTED: Unit = {
               fb: "Atentamente = yours sincerely / faithfully. Un cordial saludo = kind regards. Both are standard formal closings.",
             },
           ],
+        },
+        {
+          type: "orderWords",
+          heading: "Build the formal sentence",
+          intro: "Put the words in order.",
+          items: [
+            {
+              tokens: ["Me", "dirijo", "a", "usted", "para", "solicitar", "información"],
+              en: "I am writing to you to request information.",
+            },
+            {
+              tokens: ["¿Podría", "concertar", "una", "cita", "para", "el", "lunes?"],
+              en: "Could I arrange an appointment for Monday?",
+            },
+            {
+              tokens: ["Le", "agradezco", "de", "antemano", "su", "atención"],
+              en: "I thank you in advance for your attention.",
+            },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "Dear Mrs. Gómez, I am writing to you to arrange an appointment.",
+          reference: "Estimada señora Gómez, me dirijo a usted para concertar una cita.",
+          hint: "Estimada (f.) for the opening; me dirijo a usted = I am writing to you (formal).",
+        },
+        {
+          type: "tip",
+          heading: "Usted in writing: capital or not?",
+          body: "Unlike Italian (which capitalizes <em>Lei</em>), Spanish does <em>not</em> capitalize <em>usted</em> in normal text. You will, however, see the abbreviations <em>Ud.</em>, <em>Vd.</em> (singular) and <em>Uds.</em>, <em>Vds.</em> (plural) in formal letters and signage. In an email, capitalize <em>Su / Sus</em> (your, formal) only as a courtesy in very formal correspondence — it is optional and increasingly rare.",
+          example: { l1: "Quedo a su disposición para cualquier consulta.", en: "I remain at your disposal for any query." },
         },
       ],
     }
