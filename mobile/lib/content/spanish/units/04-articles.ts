@@ -12,7 +12,7 @@ export const UNIT_ARTICLES: Unit = {
     {
       slug: "articles-gender",
       title: "Noun gender and definite articles",
-      estMinutes: 9,
+      estMinutes: 11,
       pages: [
         {
           type: "intro",
@@ -25,6 +25,29 @@ export const UNIT_ARTICLES: Unit = {
             label: "Learn the article with the noun",
             body: "When you learn a new noun, always learn it with its article: el libro (not just libro). This locks in the gender automatically.",
           },
+        },
+        {
+          type: "conjugation",
+          heading: "The four definite articles",
+          verb: "el / la / los / las",
+          meaning: "the (all four forms)",
+          intro: "Spanish has just four words for 'the' — far simpler than the noun-gender rules behind them. Pick the form that matches gender and number.",
+          tenses: [
+            {
+              name: "Masculine",
+              forms: [
+                { person: "singular", form: "el libro", en: "the book" },
+                { person: "plural", form: "los libros", en: "the books" },
+              ],
+            },
+            {
+              name: "Feminine",
+              forms: [
+                { person: "singular", form: "la mesa", en: "the table" },
+                { person: "plural", form: "las mesas", en: "the tables" },
+              ],
+            },
+          ],
         },
         {
           type: "vocab",
@@ -70,12 +93,49 @@ export const UNIT_ARTICLES: Unit = {
             },
           ],
         },
+        {
+          type: "fillBlank",
+          heading: "Choose the right 'the'",
+          intro: "Match the article to the noun's gender and number.",
+          items: [
+            {
+              template: "___ libro está en la mesa.",
+              answer: "El",
+              en: "The book is on the table.",
+              options: ["El", "La", "Los", "Las"],
+            },
+            {
+              template: "___ mano me duele.",
+              answer: "La",
+              en: "My hand hurts. (mano is feminine!)",
+              options: ["El", "La", "Los", "Las"],
+            },
+            {
+              template: "___ problema es difícil.",
+              answer: "El",
+              en: "The problem is difficult. (problema is masculine!)",
+              options: ["El", "La", "Los", "Las"],
+            },
+            {
+              template: "___ ciudades son bonitas.",
+              answer: "Las",
+              en: "The cities are pretty.",
+              options: ["El", "La", "Los", "Las"],
+            },
+            {
+              template: "___ días pasan rápido.",
+              answer: "Los",
+              en: "The days go by fast. (día is masculine!)",
+              options: ["El", "La", "Los", "Las"],
+            },
+          ],
+        },
       ],
     },
     {
       slug: "articles-indefinite-plural",
       title: "Indefinite articles and plurals",
-      estMinutes: 7,
+      estMinutes: 9,
       pages: [
         {
           type: "intro",
@@ -122,12 +182,38 @@ export const UNIT_ARTICLES: Unit = {
             },
           ],
         },
+        {
+          type: "orderWords",
+          heading: "Build the sentence",
+          intro: "Drag the words into a natural Spanish order.",
+          items: [
+            { tokens: ["Quiero", "un", "café", "y", "una", "tostada"], en: "I want a coffee and a piece of toast." },
+            { tokens: ["Hay", "unos", "libros", "en", "la", "mesa"], en: "There are some books on the table." },
+            { tokens: ["Las", "ciudades", "grandes", "son", "caras"], en: "Big cities are expensive." },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Say it in Spanish",
+          direction: "en-to-l1",
+          prompt: "a book and a table",
+          reference: "un libro y una mesa",
+          hint: "libro is masculine, mesa is feminine.",
+        },
+        {
+          type: "translate",
+          heading: "Say it in Spanish",
+          direction: "en-to-l1",
+          prompt: "some pencils",
+          reference: "unos lápices",
+          hint: "lápiz → lápices (z becomes c before -es).",
+        },
       ],
     },
     {
       slug: "articles-practice",
       title: "Articles in real sentences",
-      estMinutes: 7,
+      estMinutes: 9,
       pages: [
         {
           type: "vocab",
@@ -165,6 +251,42 @@ export const UNIT_ARTICLES: Unit = {
               fb: "No article after ser for professions: Soy médico.",
             },
           ],
+        },
+        {
+          type: "dialogue",
+          heading: "At the café",
+          setup: "Notice how articles change with gender and number throughout.",
+          lines: [
+            { speaker: "Camarero", l1: "Buenos días. ¿Qué desea?", en: "Good morning. What would you like?" },
+            { speaker: "Ana", l1: "Un café con leche y una tostada, por favor.", en: "A coffee with milk and a piece of toast, please." },
+            { speaker: "Camarero", l1: "¿Y para el señor?", en: "And for the gentleman?" },
+            { speaker: "Pablo", l1: "Para mí, los churros y un zumo de naranja.", en: "For me, the churros and an orange juice." },
+            { speaker: "Camarero", l1: "Muy bien. La cuenta está en la mesa.", en: "Very good. The bill is on the table." },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Say it in Spanish",
+          direction: "en-to-l1",
+          prompt: "The red book is on the table.",
+          reference: "El libro rojo está en la mesa.",
+          hint: "rojo agrees with libro (masc. sing.).",
+        },
+        {
+          type: "translate",
+          heading: "Say it in Spanish",
+          direction: "en-to-l1",
+          prompt: "I want a coffee, please.",
+          reference: "Quiero un café, por favor.",
+          hint: "café is masculine → un.",
+        },
+        {
+          type: "translate",
+          heading: "Read it in English",
+          direction: "l1-to-en",
+          prompt: "Las ciudades bonitas son caras.",
+          reference: "The pretty cities are expensive.",
+          hint: "las + feminine plural noun and adjective.",
         },
       ],
     }

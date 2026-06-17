@@ -7,11 +7,12 @@ export const UNIT_TRANSIT: Unit = {
   icon: "🚇",
   title: "Getting around",
   tagline: "Metro, autobús, Cercanías, billetes, validar.",
+  badge: "tourist",
   lessons: [
     {
       slug: "transit-metro",
       title: "The metro and buses",
-      estMinutes: 8,
+      estMinutes: 10,
       pages: [
         {
           type: "intro",
@@ -20,6 +21,8 @@ export const UNIT_TRANSIT: Unit = {
             "Madrid has an excellent metro (13 lines), an extensive bus network, and the Cercanías commuter rail. For tourists, the metro is simplest. Buy a <em>tarjeta de transporte</em> (travel card) or individual <em>billetes sencillos</em> (single tickets) at any metro station.",
             "Key vocabulary: <em>el metro</em> (underground), <em>el autobús / el bus</em> (bus), <em>el tren</em> (train), <em>la parada</em> (stop/station), <em>la línea</em> (line), <em>el andén</em> (platform).",
           ],
+          keyPoint:
+            "Metro = 13 lines, fastest. Autobús = slower but reaches everything. Cercanías = commuter trains to the suburbs and the airport.",
         },
         {
           type: "vocab",
@@ -35,6 +38,26 @@ export const UNIT_TRANSIT: Unit = {
             { l1: "el billete / el ticket", en: "the ticket" },
             { l1: "la tarjeta de transporte", en: "the travel card" },
             { l1: "validar el billete", en: "to validate the ticket" },
+          ],
+        },
+        {
+          type: "tip",
+          heading: "Tap your card before you board",
+          body: "In Madrid the single ticket lives on a rechargeable <em>Tarjeta Multi</em> (or your contactless card). You <strong>validar</strong> (tap) it on the turnstile reader before going down to the <em>andén</em>, and again on the reader when you board a <em>Cercanías</em> train. No valid tap can mean a fine from the <em>revisor</em> (inspector).",
+          example: { l1: "¿Tengo que validar el billete antes de subir?", en: "Do I have to validate the ticket before boarding?" },
+        },
+        {
+          type: "vocab",
+          heading: "Ticket types in Madrid",
+          intro: "What you'll see on the vending machine and at the counter.",
+          items: [
+            { l1: "un billete sencillo", en: "a single ticket (one journey)" },
+            { l1: "un billete de ida y vuelta", en: "a return ticket (there and back)" },
+            { l1: "un bono de diez viajes", en: "a 10-journey pass" },
+            { l1: "un abono mensual", en: "a monthly travel pass" },
+            { l1: "la Tarjeta Multi", en: "the rechargeable transport card" },
+            { l1: "recargar la tarjeta", en: "to top up / recharge the card" },
+            { l1: "la zona A", en: "zone A (central Madrid)" },
           ],
         },
         {
@@ -65,14 +88,28 @@ export const UNIT_TRANSIT: Unit = {
               correct: 3,
               fb: "Both work. Hacer trasbordo is the specific transit term; cambiar (de tren/metro) is also used.",
             },
+            {
+              q: "What is 'un abono mensual'?",
+              options: ["a single ticket", "a return ticket", "a monthly travel pass", "a 10-journey pass"],
+              correct: 2,
+              fb: "Un abono = a season pass. Un abono mensual = a monthly pass (unlimited travel for a month).",
+            },
           ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "Where is the nearest metro station?",
+          reference: "¿Dónde está la estación de metro más cercana?",
+          hint: "'nearest' = más cercana (agrees with the feminine estación).",
         },
       ],
     },
     {
       slug: "transit-taxis",
       title: "Taxis and asking the way",
-      estMinutes: 7,
+      estMinutes: 9,
       pages: [
         {
           type: "vocab",
@@ -84,6 +121,49 @@ export const UNIT_TRANSIT: Unit = {
             { l1: "Pare aquí, por favor.", en: "Stop here, please." },
             { l1: "¿Puede poner el taxímetro?", en: "Can you turn on the meter?" },
             { l1: "Quédese con el cambio.", en: "Keep the change." },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "Asking the way on the street",
+          setup: "You're lost near Gran Vía and stop a passer-by to find the nearest metro.",
+          lines: [
+            { speaker: "Tú", l1: "Perdone, ¿cómo llego a la Puerta del Sol?", en: "Excuse me, how do I get to Puerta del Sol?" },
+            { speaker: "Señor", l1: "Está muy cerca. Siga recto y la primera parada de metro es Gran Vía.", en: "It's very close. Go straight and the first metro stop is Gran Vía." },
+            { speaker: "Tú", l1: "¿Y qué línea cojo?", en: "And which line do I take?" },
+            { speaker: "Señor", l1: "La línea uno, dirección Valdecarros. Es solo una parada.", en: "Line one, towards Valdecarros. It's only one stop." },
+            { speaker: "Tú", l1: "Muchas gracias, muy amable.", en: "Thank you very much, that's very kind." },
+          ],
+        },
+        {
+          type: "fillBlank",
+          heading: "Complete the taxi phrases",
+          intro: "Choose the word that fits.",
+          items: [
+            {
+              template: "¿Puede ___ al aeropuerto, por favor?",
+              answer: "llevarme",
+              en: "Can you take me to the airport, please?",
+              options: ["llevarme", "llegar", "parar", "coger"],
+            },
+            {
+              template: "¿Puede poner el ___, por favor?",
+              answer: "taxímetro",
+              en: "Can you turn on the meter, please?",
+              options: ["billete", "taxímetro", "andén", "cambio"],
+            },
+            {
+              template: "___ aquí, por favor.",
+              answer: "Pare",
+              en: "Stop here, please.",
+              options: ["Pare", "Para", "Parar", "Paro"],
+            },
+            {
+              template: "Quédese con el ___.",
+              answer: "cambio",
+              en: "Keep the change.",
+              options: ["cambio", "billete", "dinero", "taxímetro"],
+            },
           ],
         },
         {
@@ -102,14 +182,28 @@ export const UNIT_TRANSIT: Unit = {
               correct: 1,
               fb: "Quédese = keep (formal imperative). El cambio = the change (money). Keep the change.",
             },
+            {
+              q: "'¿Cómo llego a…?' means…",
+              options: ["When do I arrive at…?", "How do I get to…?", "Where is…?", "How much to…?"],
+              correct: 1,
+              fb: "¿Cómo llego a…? = How do I get to…? — the go-to phrase for asking directions.",
+            },
           ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "Can you take me to the airport, please?",
+          reference: "¿Puede llevarme al aeropuerto, por favor?",
+          hint: "Formal 'can you' = ¿Puede…?; a + el contracts to 'al'.",
         },
       ],
     },
     {
       slug: "transit-full-journey",
       title: "Planning and making a journey",
-      estMinutes: 7,
+      estMinutes: 9,
       pages: [
         {
           type: "dialogue",
@@ -135,6 +229,37 @@ export const UNIT_TRANSIT: Unit = {
           ],
         },
         {
+          type: "conjugation",
+          heading: "coger — to take (transport)",
+          verb: "coger",
+          meaning: "to take / catch (a bus, the metro, a train)",
+          intro: "In Spain 'coger el metro / el autobús' is the everyday way to say you take a line. Present tense:",
+          tenses: [
+            {
+              name: "Presente",
+              forms: [
+                { person: "yo", form: "cojo", en: "I take" },
+                { person: "tú", form: "coges", en: "you take" },
+                { person: "él/ella/usted", form: "coge", en: "he/she takes, you (formal) take" },
+                { person: "nosotros", form: "cogemos", en: "we take" },
+                { person: "vosotros", form: "cogéis", en: "you all take" },
+                { person: "ellos/ellas/ustedes", form: "cogen", en: "they / you all take" },
+              ],
+            },
+          ],
+        },
+        {
+          type: "orderWords",
+          heading: "Build the journey questions",
+          intro: "Put the words in order.",
+          items: [
+            { tokens: ["¿", "Cómo", "llego", "a", "la", "estación", "?"], en: "How do I get to the station?" },
+            { tokens: ["¿", "Tengo", "que", "hacer", "trasbordo", "?"], en: "Do I have to change (transfer)?" },
+            { tokens: ["Cojo", "la", "línea", "dos", "dirección", "Las", "Rosas"], en: "I take line two towards Las Rosas." },
+            { tokens: ["¿", "Cuánto", "tarda", "el", "tren", "hasta", "Atocha", "?"], en: "How long does the train take to Atocha?" },
+          ],
+        },
+        {
           type: "multipleChoice",
           heading: "Journey planning",
           questions: [
@@ -151,6 +276,14 @@ export const UNIT_TRANSIT: Unit = {
               fb: "Fin = end. Fin de línea = end of the line. The train terminates here.",
             },
           ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "Take line one towards Atocha. It's four stops.",
+          reference: "Coge la línea uno dirección Atocha. Son cuatro paradas.",
+          hint: "Informal command 'take' = coge; 'it's four stops' = son cuatro paradas.",
         },
       ],
     }

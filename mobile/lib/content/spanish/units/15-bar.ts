@@ -11,7 +11,7 @@ export const UNIT_BAR: Unit = {
     {
       slug: "bar-coffee",
       title: "Spanish coffee culture",
-      estMinutes: 8,
+      estMinutes: 10,
       pages: [
         {
           type: "intro",
@@ -35,6 +35,8 @@ export const UNIT_BAR: Unit = {
             { l1: "un café americano", en: "a long black / Americano" },
             { l1: "un café con hielo", en: "iced coffee (espresso poured over ice)" },
             { l1: "un descafeinado", en: "a decaf" },
+            { l1: "un café bombón", en: "espresso layered over sweet condensed milk (Valencia / Alicante)" },
+            { l1: "un manchado", en: "lots of warm milk just 'stained' with a little coffee" },
             { l1: "una tostada con aceite", en: "toast with olive oil (classic Spanish breakfast)" },
             { l1: "un zumo de naranja", en: "an orange juice" },
           ],
@@ -44,11 +46,38 @@ export const UNIT_BAR: Unit = {
           heading: "Ordering and paying",
           items: [
             { l1: "Ponme un café con leche.", en: "Give me a café con leche. (informal, common at the bar)" },
+            { l1: "¿Me pone un cortado?", en: "Could you get me a cortado? (polite, very common)" },
             { l1: "¿Qué le debo?", en: "What do I owe you?" },
             { l1: "¿Me cobra?", en: "Can I pay? / Will you charge me?" },
             { l1: "Cóbrame cuando puedas.", en: "Charge me whenever you can." },
             { l1: "¿Hay tapa con la bebida?", en: "Does the drink come with a tapa?" },
             { l1: "Pago yo.", en: "I'll pay. (I've got this)" },
+          ],
+        },
+        {
+          type: "tip",
+          heading: "'¿Me pone…?' is the magic phrase",
+          body: "The smoothest way to order anything in a Spanish bar is <em>¿Me pone…?</em> — literally 'Will you put me…?' It sounds natural and polite without being stiff. <em>Ponme…</em> is the casual tú version you'll hear among locals, and <em>¿Me pone…?</em> is the safe go-to for everyone. Add <em>por favor</em> and you're golden.",
+          example: { l1: "¿Me pone un café con leche y una tostada, por favor?", en: "Could you get me a café con leche and a toast, please?" },
+        },
+        {
+          type: "conjugation",
+          heading: "The verb you need to order: poner",
+          verb: "poner",
+          meaning: "to put / to serve (used for 'get me / serve me' at the bar)",
+          intro: "When you order, you literally ask the bartender to 'put' a drink in front of you. Learn the present tense — '¿me pone…?' will carry you through any bar.",
+          tenses: [
+            {
+              name: "Presente (present)",
+              forms: [
+                { person: "yo", form: "pongo", en: "I put" },
+                { person: "tú", form: "pones", en: "you put (informal)" },
+                { person: "usted / él / ella", form: "pone", en: "you put (formal) / he/she puts" },
+                { person: "nosotros", form: "ponemos", en: "we put" },
+                { person: "vosotros", form: "ponéis", en: "you all put (Spain, informal)" },
+                { person: "ustedes / ellos", form: "ponen", en: "you all put / they put" },
+              ],
+            },
           ],
         },
         {
@@ -67,20 +96,76 @@ export const UNIT_BAR: Unit = {
               correct: 2,
               fb: "Al salir = when leaving. You order, drink, then pay on your way out.",
             },
+            {
+              q: "A polite, very common way to order is…",
+              options: ["¡Dame ya!", "¿Me pone un cortado?", "Yo quiero ahora", "Tráigame todo"],
+              correct: 1,
+              fb: "'¿Me pone…?' (lit. 'will you put me…?') is the standard polite order in any Spanish bar.",
+            },
           ],
+        },
+        {
+          type: "fillBlank",
+          heading: "Order builder",
+          intro: "Complete each order the way a local would.",
+          items: [
+            {
+              template: "¿Me ___ un café con leche, por favor?",
+              answer: "pone",
+              en: "Could you get me a café con leche, please?",
+              options: ["pone", "pongo", "ponen", "poner"],
+            },
+            {
+              template: "___ un cortado cuando puedas.",
+              answer: "Ponme",
+              en: "Get me a cortado whenever you can.",
+              options: ["Ponme", "Pongo", "Poner", "Ponéis"],
+            },
+            {
+              template: "¿Qué le ___? Voy a pagar.",
+              answer: "debo",
+              en: "What do I owe you? I'm going to pay.",
+              options: ["debo", "debe", "deber", "debes"],
+            },
+            {
+              template: "El café viene con un vaso de ___.",
+              answer: "agua",
+              en: "The coffee comes with a glass of water.",
+              options: ["agua", "leche", "hielo", "vino"],
+            },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "Could you get me a café con leche and a toast with olive oil, please?",
+          reference: "¿Me pone un café con leche y una tostada con aceite, por favor?",
+          hint: "Start with the polite '¿Me pone…?'. 'Toast' = la tostada; 'olive oil' = el aceite.",
         },
       ],
     },
     {
       slug: "bar-tapas",
       title: "Tapas and drinks",
-      estMinutes: 7,
+      estMinutes: 10,
       pages: [
+        {
+          type: "intro",
+          heading: "Going out for tapas",
+          body: [
+            "<em>Ir de tapeo</em> (or <em>ir de tapas</em>) means hopping from bar to bar, one drink and one small bite at each. In cities like Granada or León the tapa is often <strong>free</strong> with every drink; in Madrid or Barcelona you usually pay for it.",
+            "Two key sizes beyond the tapa: <em>la ración</em> (a full plate to share) and <em>la media ración</em> (a half plate). A <em>pincho</em> is a single bite, often speared with a toothpick on top of bread — the star of Basque bars (<em>pintxos</em>).",
+          ],
+          keyPoint:
+            "Ir de tapeo = bar-hopping with small bites. Tapa = snack with a drink. Ración / media ración = plate to share. Pincho = single skewered bite.",
+        },
         {
           type: "vocab",
           heading: "Bar drinks and tapas",
           items: [
             { l1: "una cerveza / una caña", en: "a beer / a small draught beer" },
+            { l1: "una clara", en: "beer with lemon soda (shandy)" },
             { l1: "un vino tinto / blanco / rosado", en: "a red / white / rosé wine" },
             { l1: "el vermut / el vermú", en: "vermouth (the aperitif of Madrid)" },
             { l1: "una tónica", en: "a tonic water" },
@@ -89,7 +174,52 @@ export const UNIT_BAR: Unit = {
             { l1: "las patatas bravas", en: "fried potatoes with spicy sauce" },
             { l1: "la tortilla española", en: "potato omelette — the classic bar tapa" },
             { l1: "el jamón", en: "cured ham (the king of tapas)" },
+            { l1: "las croquetas", en: "creamy breaded croquettes (ham or chicken)" },
             { l1: "las aceitunas", en: "olives" },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "Ordering at the barra",
+          setup: "You squeeze up to the bar on a busy evening.",
+          lines: [
+            { speaker: "You", l1: "¿Me pone dos cañas, por favor?", en: "Could you get me two small beers, please?" },
+            { speaker: "Camarero", l1: "Marchando. ¿Algo de tapeo?", en: "Coming up. Anything to nibble on?" },
+            { speaker: "You", l1: "Sí, una ración de croquetas y unas aceitunas.", en: "Yes, a plate of croquettes and some olives." },
+            { speaker: "Camarero", l1: "¿La ración entera o media?", en: "The full plate or a half?" },
+            { speaker: "You", l1: "Entera, que somos cuatro.", en: "Full plate, there are four of us." },
+            { speaker: "Camarero", l1: "Perfecto. Os lo llevo a la mesa.", en: "Perfect. I'll bring it to your table." },
+          ],
+        },
+        {
+          type: "fillBlank",
+          heading: "Tapas phrases",
+          intro: "Fill in the missing word.",
+          items: [
+            {
+              template: "¿Me pone una ___, por favor? (small draught beer)",
+              answer: "caña",
+              en: "Could you get me a small draught beer, please?",
+              options: ["caña", "clara", "copa", "jarra"],
+            },
+            {
+              template: "Vamos a ir de ___ por el centro.",
+              answer: "tapeo",
+              en: "We're going to go for tapas around downtown.",
+              options: ["tapeo", "cuenta", "barra", "terraza"],
+            },
+            {
+              template: "Una ___ ración de bravas, que no tenemos mucha hambre.",
+              answer: "media",
+              en: "A half plate of bravas, we're not that hungry.",
+              options: ["media", "mucha", "poca", "entera"],
+            },
+            {
+              template: "¿La tapa es ___ con la bebida?",
+              answer: "gratis",
+              en: "Is the tapa free with the drink?",
+              options: ["gratis", "cara", "fría", "grande"],
+            },
           ],
         },
         {
@@ -108,15 +238,55 @@ export const UNIT_BAR: Unit = {
               correct: 0,
               fb: "Patatas bravas = fried potato chunks with a spicy or aioli sauce — one of Spain's most iconic tapas.",
             },
+            {
+              q: "Una clara is…",
+              options: ["A clear spirit", "Beer mixed with lemon soda", "A light wine", "Sparkling water"],
+              correct: 1,
+              fb: "Una clara = beer cut with lemon soda (gaseosa) — Spain's shandy. Refreshing in summer.",
+            },
+            {
+              q: "'Ir de tapeo' means…",
+              options: ["To pay the bill", "To order a full meal", "To bar-hop for tapas", "To sit on the terrace"],
+              correct: 2,
+              fb: "Ir de tapeo / ir de tapas = moving from bar to bar with a drink and a bite at each.",
+            },
           ],
+        },
+        {
+          type: "orderWords",
+          heading: "Build the order",
+          intro: "Put the words in the right order.",
+          items: [
+            { tokens: ["¿Me", "pone", "una", "caña", "y", "unas", "aceitunas", "?"], en: "Could you get me a small beer and some olives?" },
+            { tokens: ["Vamos", "a", "ir", "de", "tapeo", "esta", "noche"], en: "We're going to go for tapas tonight." },
+            { tokens: ["Una", "ración", "de", "croquetas", "para", "compartir", ",", "por", "favor"], en: "A plate of croquettes to share, please." },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "Two small beers and a half plate of patatas bravas, please.",
+          reference: "Dos cañas y una media ración de patatas bravas, por favor.",
+          hint: "'Small beers' = cañas; 'half plate' = media ración. Drinks first, then the food.",
         },
       ],
     },
     {
       slug: "bar-full-visit",
       title: "A complete bar experience",
-      estMinutes: 7,
+      estMinutes: 9,
       pages: [
+        {
+          type: "intro",
+          heading: "La barra or la terraza?",
+          body: [
+            "Spanish bars give you two worlds. <strong>La barra</strong> (the counter) is fast, cheap, and where the action is — you stand, you chat, you pay less. <strong>La terraza</strong> (the outdoor seating) is for lingering in the sun, but expect a small price bump and table service.",
+            "On a slow Sunday, the move is the <em>vermut</em>: a glass of vermouth over ice with an olive and a slice of orange, usually before lunch. It's social, low-key, and very Spanish.",
+          ],
+          keyPoint:
+            "La barra = stand, cheap, fast. La terraza = sit outside, pay a bit more. El vermut = the Sunday pre-lunch ritual.",
+        },
         {
           type: "dialogue",
           heading: "Sunday vermut",
@@ -138,7 +308,33 @@ export const UNIT_BAR: Unit = {
             { l1: "un pincho de", en: "a small individual snack of" },
             { l1: "otro/a igual", en: "another one the same" },
             { l1: "la misma cosa", en: "the same thing" },
+            { l1: "para compartir", en: "to share" },
             { l1: "¿Cómo se llama este plato?", en: "What is this dish called?" },
+          ],
+        },
+        {
+          type: "vocab",
+          heading: "Paying and wrapping up",
+          items: [
+            { l1: "La cuenta, por favor.", en: "The bill, please." },
+            { l1: "¿Nos cobra, por favor?", en: "Could you charge us, please?" },
+            { l1: "¿Se puede pagar con tarjeta?", en: "Can I pay by card?" },
+            { l1: "¿Aceptan tarjeta?", en: "Do you take cards?" },
+            { l1: "Quédate con el cambio.", en: "Keep the change." },
+            { l1: "Invito yo.", en: "It's on me. / My treat." },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "Paying on the terraza",
+          setup: "You've finished your drinks outside and want the bill.",
+          lines: [
+            { speaker: "You", l1: "Perdone, ¿nos cobra cuando pueda?", en: "Excuse me, could you charge us when you can?" },
+            { speaker: "Camarera", l1: "Claro. Eran dos cañas y una ración de bravas, ¿verdad?", en: "Of course. That was two beers and a plate of bravas, right?" },
+            { speaker: "You", l1: "Sí. ¿Se puede pagar con tarjeta?", en: "Yes. Can I pay by card?" },
+            { speaker: "Camarera", l1: "Sí, ahora le traigo el datáfono.", en: "Yes, I'll bring you the card reader now." },
+            { speaker: "You", l1: "Gracias. Quédese con el cambio.", en: "Thanks. Keep the change." },
+            { speaker: "Camarera", l1: "Muy amable, ¡que vaya bien!", en: "Very kind, have a good one!" },
           ],
         },
         {
@@ -157,7 +353,33 @@ export const UNIT_BAR: Unit = {
               correct: 1,
               fb: "Otro igual = another one the same. The quickest reorder phrase.",
             },
+            {
+              q: "If you sit on la terraza instead of la barra, you usually…",
+              options: ["Pay a bit more", "Pay less", "Can't order food", "Have to pay first"],
+              correct: 0,
+              fb: "La terraza (outdoor seating) typically carries a small price bump versus standing at la barra.",
+            },
+            {
+              q: "'¿Nos cobra?' is a way to…",
+              options: ["Order another round", "Ask for the bill", "Complain", "Ask the dish name"],
+              correct: 1,
+              fb: "¿Nos cobra? (lit. 'will you charge us?') is the natural way to ask for the bill in a bar.",
+            },
           ],
+        },
+        {
+          type: "tip",
+          heading: "Tipping in Spain is light",
+          body: "Spain has no big tipping culture. At a bar, people often just <em>round up</em> or leave the small coins from the change — a euro or two is generous. You're never expected to add a percentage. <em>Quédate con el cambio</em> ('keep the change') or simply leaving a coin on the bar is perfectly normal.",
+          example: { l1: "Son nueve con cincuenta. Toma diez, quédate con el cambio.", en: "It's nine fifty. Here's ten, keep the change." },
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "Excuse me, could you charge us? Can I pay by card?",
+          reference: "Perdone, ¿nos cobra? ¿Se puede pagar con tarjeta?",
+          hint: "'Excuse me' (to get attention) = Perdone; 'charge us' = nos cobra; 'pay by card' = pagar con tarjeta.",
         },
       ],
     }
@@ -175,6 +397,11 @@ export const UNIT_BAR: Unit = {
       { q: "The aperitif tradition on Sunday mornings in Madrid involves…", options: ["Sangría", "Vermut/vermú", "Horchata", "Cava"], correct: 1 },
       { q: "'Ponme un café con leche' is…", options: ["Formal", "Common informal bar order", "Rude", "Old-fashioned"], correct: 1 },
       { q: "'¿Hay tapa con la bebida?' means…", options: ["Is the tapas free?", "Is the drink free?", "Does the drink come with a tapa?", "How much are the tapas?"], correct: 2 },
+      { q: "'¿Me pone un cortado?' is…", options: ["Rude", "A polite way to order", "Asking for the bill", "Asking the dish name"], correct: 1 },
+      { q: "Una clara is…", options: ["A clear spirit", "Beer with lemon soda", "A light wine", "Sparkling water"], correct: 1 },
+      { q: "'Ir de tapeo' means…", options: ["Pay the bill", "Bar-hop for tapas", "Order a full meal", "Sit on the terrace"], correct: 1 },
+      { q: "Compared to la barra, la terraza usually…", options: ["Costs a bit more", "Costs less", "Has no food", "Needs prepayment"], correct: 0 },
+      { q: "'¿Nos cobra?' is used to…", options: ["Order a round", "Ask for the bill", "Complain", "Ask the dish name"], correct: 1 },
     ],
   },
 };

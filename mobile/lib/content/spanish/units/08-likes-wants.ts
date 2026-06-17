@@ -40,6 +40,18 @@ export const UNIT_LIKES_WANTS: Unit = {
           ],
         },
         {
+          type: "tip",
+          heading: "Verbs after gusta stay singular and in the infinitive",
+          body: "When you like DOING something, use <em>gusta</em> (singular) plus the infinitive — never <em>gustan</em>. <em>Me gusta cocinar</em> = I like to cook. Even with two verbs it stays singular: <em>Me gusta cantar y bailar</em> = I like to sing and dance.",
+          example: { l1: "Me gusta viajar por España.", en: "I like traveling around Spain." },
+        },
+        {
+          type: "tip",
+          heading: "The clarifying 'a mí', 'a ti' for emphasis or contrast",
+          body: "You can add <em>a mí</em>, <em>a ti</em>, <em>a él</em>, <em>a ella</em> before the pronoun for emphasis or to clear up who 'le' refers to. <em>A mí me gusta el mar, pero a ella le gusta la montaña</em> = <em>I</em> like the sea, but <em>she</em> likes the mountains. With names: <em>A Pablo le gusta el flamenco</em>.",
+          example: { l1: "A mí me encanta el chocolate.", en: "I absolutely love chocolate." },
+        },
+        {
           type: "multipleChoice",
           heading: "Gustar check",
           questions: [
@@ -61,7 +73,58 @@ export const UNIT_LIKES_WANTS: Unit = {
               correct: 3,
               fb: "Le encanta = she loves (with gustar-pattern). Ella ama = she loves (direct verb). Both work — encantar is more natural for things.",
             },
+            {
+              q: "'I like to dance' →",
+              options: ["Me gustan bailar", "Me gusta bailar", "Me gusto bailar", "Me gustas bailar"],
+              correct: 1,
+              fb: "An infinitive (bailar) counts as singular → me gusta bailar. Never gustan with a verb.",
+            },
+            {
+              q: "To say 'Pablo likes football' you say…",
+              options: ["Pablo gusta el fútbol", "A Pablo le gusta el fútbol", "Pablo le gusta el fútbol", "A Pablo gusta el fútbol"],
+              correct: 1,
+              fb: "With a name: a + name + le gusta. A Pablo le gusta el fútbol.",
+            },
           ],
+        },
+        {
+          type: "fillBlank",
+          heading: "Gusta or gustan?",
+          intro: "Match the verb to the THING liked — singular or plural.",
+          items: [
+            {
+              template: "Me ___ las películas españolas.",
+              answer: "gustan",
+              en: "I like Spanish films.",
+              options: ["gusta", "gustan", "gusto", "gustas"],
+            },
+            {
+              template: "¿Te ___ el gazpacho?",
+              answer: "gusta",
+              en: "Do you like gazpacho?",
+              options: ["gusta", "gustan", "gustas", "gusto"],
+            },
+            {
+              template: "A nosotros nos ___ caminar por la playa.",
+              answer: "gusta",
+              en: "We like walking on the beach.",
+              options: ["gusta", "gustan", "gustamos", "gusto"],
+            },
+            {
+              template: "A mis padres les ___ los museos de Madrid.",
+              answer: "gustan",
+              en: "My parents like the museums in Madrid.",
+              options: ["gusta", "gustan", "gustas", "gustamos"],
+            },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "I like Spanish food but I don't like spicy dishes.",
+          reference: "Me gusta la comida española pero no me gustan los platos picantes.",
+          hint: "Comida is singular → gusta. Platos is plural → gustan. 'No' goes before 'me'.",
         },
       ],
     },
@@ -106,6 +169,26 @@ export const UNIT_LIKES_WANTS: Unit = {
           ],
         },
         {
+          type: "tip",
+          heading: "Me gustaría — the other polite 'I would like'",
+          body: "Alongside <em>quisiera</em>, Spaniards very often use <em>me gustaría</em> (the conditional of gustar) to soften a wish or request. <em>Me gustaría reservar una mesa</em> = I'd like to book a table. It works just like gustar: <em>Me gustaría</em> + infinitive, or <em>Me gustarían</em> + plural noun.",
+          example: { l1: "Me gustaría visitar la Sagrada Família.", en: "I'd like to visit the Sagrada Família." },
+        },
+        {
+          type: "conjugation",
+          heading: "preferir — to prefer (stem-changing e→ie)",
+          verb: "preferir",
+          meaning: "to prefer",
+          tenses: [{ name: "Presente", forms: [
+            { person: "yo", form: "prefiero", en: "I prefer" },
+            { person: "tú", form: "prefieres", en: "you prefer" },
+            { person: "él/ella/usted", form: "prefiere", en: "he/she prefers" },
+            { person: "nosotros", form: "preferimos", en: "we prefer (no stem change!)" },
+            { person: "vosotros", form: "preferís", en: "you all prefer (no stem change!)" },
+            { person: "ellos/ustedes", form: "prefieren", en: "they prefer" },
+          ] }],
+        },
+        {
           type: "multipleChoice",
           heading: "Wants and preferences",
           questions: [
@@ -121,15 +204,86 @@ export const UNIT_LIKES_WANTS: Unit = {
               correct: 1,
               fb: "Quiero + infinitive = I want to + verb. Quiero comer.",
             },
+            {
+              q: "Conjugate preferir for 'nosotros':",
+              options: ["prefierimos", "preferimos", "prefieremos", "prefiermos"],
+              correct: 1,
+              fb: "The stem change e→ie drops in nosotros/vosotros → preferimos.",
+            },
+            {
+              q: "'I'd like to book a table' (with gustar) →",
+              options: ["Quiero reservar una mesa", "Me gusta reservar una mesa", "Me gustaría reservar una mesa", "Necesito una mesa"],
+              correct: 2,
+              fb: "Me gustaría (conditional of gustar) = I would like. Softer than quiero.",
+            },
           ],
+        },
+        {
+          type: "orderWords",
+          heading: "Order the polite request",
+          items: [
+            { tokens: ["Quisiera", "una", "mesa", "para", "dos", ",", "por", "favor"], en: "I'd like a table for two, please." },
+            { tokens: ["Prefiero", "el", "vino", "tinto", "al", "vino", "blanco"], en: "I prefer red wine to white wine." },
+            { tokens: ["Me", "gustaría", "ver", "la", "carta", ",", "gracias"], en: "I'd like to see the menu, thank you." },
+            { tokens: ["¿", "Qué", "prefieres", ",", "la", "playa", "o", "la", "montaña", "?"], en: "What do you prefer, the beach or the mountains?" },
+          ],
+        },
+        {
+          type: "fillBlank",
+          heading: "Conjugate or pick",
+          intro: "Choose the right form of querer, preferir, or the polite wish.",
+          items: [
+            {
+              template: "Yo ___ el café sin azúcar. (preferir)",
+              answer: "prefiero",
+              en: "I prefer coffee without sugar.",
+              options: ["prefiero", "prefieres", "preferimos", "prefieren"],
+            },
+            {
+              template: "Ellos ___ salir por la noche. (preferir)",
+              answer: "prefieren",
+              en: "They prefer going out at night.",
+              options: ["prefiere", "preferimos", "prefieren", "prefiero"],
+            },
+            {
+              template: "___ una habitación doble para dos noches.",
+              answer: "Quisiera",
+              en: "I'd like a double room for two nights.",
+              options: ["Quiero", "Quisiera", "Prefiero", "Necesito"],
+            },
+            {
+              template: "¿Qué ___ hacer este fin de semana? (querer)",
+              answer: "quieres",
+              en: "What do you want to do this weekend?",
+              options: ["quiero", "quieres", "queremos", "quieren"],
+            },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "I'd like a coffee with milk, please, but I prefer it without sugar.",
+          reference: "Quisiera un café con leche, por favor, pero lo prefiero sin azúcar.",
+          hint: "Quisiera = polite 'I'd like'. Prefiero = I prefer. 'lo' = it (the coffee).",
         },
       ],
     },
     {
       slug: "likes-wants-extended",
       title: "Expressing preferences in conversation",
-      estMinutes: 7,
+      estMinutes: 9,
       pages: [
+        {
+          type: "intro",
+          heading: "Sounding natural when you (don't) feel like something",
+          body: [
+            "Beyond <em>gustar</em> and <em>querer</em>, everyday Spanish in Spain leans on two cosy expressions: <em>apetecer</em> (to feel like / to fancy) and <em>tener ganas de</em> (to be in the mood for).",
+            "<em>Apetecer</em> follows the gustar pattern exactly — the indirect object pronoun plus the verb: <em>Me apetece un café</em> (I fancy a coffee), <em>¿Te apetece salir?</em> (Do you feel like going out?).",
+            "<em>Tener ganas de</em> is always followed by an infinitive or a noun: <em>Tengo ganas de ver el mar</em> (I really want to see the sea), <em>No tengo ganas de cocinar</em> (I don't feel like cooking).",
+          ],
+          keyPoint: "Me apetece + thing/verb (gustar pattern) · Tengo ganas de + infinitive/noun.",
+        },
         {
           type: "vocab",
           heading: "More ways to express preferences",
@@ -170,7 +324,55 @@ export const UNIT_LIKES_WANTS: Unit = {
               correct: 1,
               fb: "Me da igual = I don't mind / it's all the same. Used when you have no preference.",
             },
+            {
+              q: "'Tengo ganas de' is followed by…",
+              options: ["a conjugated verb", "an infinitive or a noun", "a subjunctive", "nothing"],
+              correct: 1,
+              fb: "Tengo ganas de + infinitive/noun: 'Tengo ganas de viajar', 'Tengo ganas de vacaciones'.",
+            },
           ],
+        },
+        {
+          type: "fillBlank",
+          heading: "Pick the natural expression",
+          intro: "Fill the blank with the phrase that fits.",
+          items: [
+            {
+              template: "¿Te ___ ir al cine esta noche?",
+              answer: "apetece",
+              en: "Do you feel like going to the cinema tonight?",
+              options: ["apetece", "apeteces", "apetecen", "gusto"],
+            },
+            {
+              template: "No tengo ___ de salir, estoy cansado.",
+              answer: "ganas",
+              en: "I don't feel like going out, I'm tired.",
+              options: ["ganas", "gana", "gusto", "igual"],
+            },
+            {
+              template: "¿Vino o cerveza? — Me da ___, lo que prefieras.",
+              answer: "igual",
+              en: "Wine or beer? — I don't mind, whatever you prefer.",
+              options: ["igual", "gusta", "ganas", "apetece"],
+            },
+          ],
+        },
+        {
+          type: "orderWords",
+          heading: "Build the sentence",
+          items: [
+            { tokens: ["Me", "apetece", "una", "caña", "en", "la", "terraza"], en: "I fancy a small beer on the terrace." },
+            { tokens: ["No", "tengo", "ganas", "de", "cocinar", "hoy"], en: "I don't feel like cooking today." },
+            { tokens: ["¿", "Te", "apetece", "tomar", "algo", "?"], en: "Do you feel like having a drink?" },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "I feel like going out tonight, but I don't feel like getting home late.",
+          reference: "Me apetece salir esta noche, pero no tengo ganas de llegar tarde.",
+          hint: "Me apetece + infinitive (fancy doing). No tengo ganas de + infinitive (not in the mood to).",
         },
       ],
     }

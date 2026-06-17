@@ -11,8 +11,19 @@ export const UNIT_DIET_WINE: Unit = {
     {
       slug: "diet-wine-dietary",
       title: "Dietary needs",
-      estMinutes: 7,
+      estMinutes: 9,
       pages: [
+        {
+          type: "intro",
+          heading: "Saying what you can and can't eat",
+          body: [
+            "Three levels, strongest to softest: <em>«Tengo alergia a…»</em> = I'm allergic to… (medical, take it seriously). <em>«Soy intolerante a…»</em> = I'm intolerant to… (e.g. la lactosa). <em>«No puedo comer…»</em> or <em>«No como…»</em> = I can't / don't eat… (preference, no allergy implied).",
+            "Spain follows EU law: restaurants must disclose the 14 major allergens (<em>los alérgenos</em>) on the menu or on request. Don't be shy — ask <em>«¿Tiene la carta de alérgenos?»</em> = Do you have the allergen menu?",
+            "Watch gender: a woman says <em>vegetariana</em>, <em>vegana</em>, <em>celíaca</em>; a man says <em>vegetariano</em>, <em>vegano</em>, <em>celíaco</em>.",
+          ],
+          keyPoint:
+            "Tengo alergia a (allergy) > soy intolerante a (intolerance) > no puedo comer (preference). And ¿Lleva…? = Does it contain…? is your single most useful question.",
+        },
         {
           type: "vocab",
           heading: "Dietary restrictions",
@@ -28,10 +39,73 @@ export const UNIT_DIET_WINE: Unit = {
           ],
         },
         {
+          type: "vocab",
+          heading: "Allergens and ingredients",
+          intro: "The common culprits you'll want to name precisely.",
+          items: [
+            { l1: "el marisco", en: "shellfish/seafood (huge in Spain — careful)" },
+            { l1: "los frutos secos", en: "nuts (almonds, walnuts, etc.)" },
+            { l1: "los cacahuetes", en: "peanuts" },
+            { l1: "los lácteos", en: "dairy products" },
+            { l1: "el huevo", en: "egg" },
+            { l1: "el trigo", en: "wheat" },
+            { l1: "la soja", en: "soy" },
+            { l1: "el cerdo", en: "pork (in jamón, chorizo — everywhere)" },
+            { l1: "el caldo de carne", en: "meat broth (hidden in many 'veggie' dishes)" },
+            { l1: "sin gluten", en: "gluten-free" },
+            { l1: "sin lactosa", en: "lactose-free" },
+            { l1: "apto para celíacos", en: "suitable for coeliacs" },
+          ],
+        },
+        {
           type: "tip",
           heading: "Vegetarian in Spain — it's improving",
-          body: "Spain is not the easiest country for vegetarians historically, but this is changing fast, especially in cities. Always ask <em>¿Lleva carne o pescado?</em> as some dishes use meat stock even if they seem vegetarian. Caldo de verduras (vegetable broth) is your safe friend.",
+          body: "Spain is not the easiest country for vegetarians historically, but this is changing fast, especially in cities. Always ask <em>¿Lleva carne o pescado?</em> as some dishes use meat stock even if they seem vegetarian. Beware: <em>jamón</em> hides in salads and green beans, and the classic <em>tortilla de patatas</em> is fine but many tapas are not. <em>Caldo de verduras</em> (vegetable broth) is your safe friend.",
           example: { l1: "¿Este plato lleva carne? Soy vegetariana.", en: "Does this dish contain meat? I'm vegetarian." },
+        },
+        {
+          type: "fillBlank",
+          heading: "Complete the dietary phrase",
+          items: [
+            {
+              template: "Soy ___ . ¿Tienen platos sin carne ni pescado?",
+              answer: "vegetariana",
+              en: "I'm vegetarian (female). Do you have dishes without meat or fish?",
+              options: ["vegetariana", "vegetariano", "celíaca", "vegana"],
+            },
+            {
+              template: "Tengo ___ a los frutos secos.",
+              answer: "alergia",
+              en: "I'm allergic to nuts.",
+              options: ["alergia", "intolerancia", "gluten", "ganas"],
+            },
+            {
+              template: "¿Me puede hacer la ensalada ___ jamón?",
+              answer: "sin",
+              en: "Can you make the salad without ham?",
+              options: ["sin", "con", "de", "para"],
+            },
+            {
+              template: "Soy intolerante a la ___ .",
+              answer: "lactosa",
+              en: "I'm lactose intolerant.",
+              options: ["lactosa", "carne", "gluten", "soja"],
+            },
+            {
+              template: "¿Este plato ___ marisco? Tengo alergia.",
+              answer: "lleva",
+              en: "Does this dish contain shellfish? I'm allergic.",
+              options: ["lleva", "tiene ganas", "hace", "pone"],
+            },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "I'm allergic to nuts and shellfish. Can you check with the kitchen?",
+          reference: "Tengo alergia a los frutos secos y al marisco. ¿Puede comprobarlo con la cocina?",
+          hint: "Tengo alergia a + el/los… (a + el = al). 'Comprobar' = to check; '¿Puede…?' = can you (formal).",
         },
         {
           type: "multipleChoice",
@@ -49,6 +123,12 @@ export const UNIT_DIET_WINE: Unit = {
               correct: 1,
               fb: "Llevar = to contain/carry. ¿Lleva carne? = Does it contain meat?",
             },
+            {
+              q: "Which is the strongest, most medical phrasing?",
+              options: ["No como carne", "No puedo comer gluten", "Tengo alergia a los cacahuetes", "Prefiero sin lactosa"],
+              correct: 2,
+              fb: "Tengo alergia a… signals a genuine allergy. Use it when it really matters — staff treat it seriously.",
+            },
           ],
         },
       ],
@@ -56,8 +136,19 @@ export const UNIT_DIET_WINE: Unit = {
     {
       slug: "diet-wine-spanish-wine",
       title: "Spanish wines and drinks",
-      estMinutes: 7,
+      estMinutes: 9,
       pages: [
+        {
+          type: "intro",
+          heading: "You don't need to be a sommelier",
+          body: [
+            "Safe default: <em>«Una copa de vino de la casa, tinto (o blanco).»</em> = A glass of house wine, red (or white). Or order by the bottle: <em>«Una botella de tinto de la zona.»</em> = A bottle of local red.",
+            "Spanish wine is intensely regional. Reds: <em>Rioja</em> and <em>Ribera del Duero</em> (Tempranillo, the backbone of Spain). Whites: <em>Albariño</em> (Galicia, crisp, seafood) and <em>Verdejo</em> (Rueda). Sparkling: <em>cava</em> (Catalonia). Fortified: <em>jerez/sherry</em> (Andalusia). Cider: <em>sidra</em> (Asturias and the Basque Country).",
+            "Rioja labels tell you the ageing: <em>joven</em> (young), <em>crianza</em> (~2 years), <em>reserva</em> (~3), <em>gran reserva</em> (5+). More ageing usually means smoother and pricier.",
+          ],
+          keyPoint:
+            "Vino de la casa = safe, cheap default. Una copa = a glass, una botella = a bottle. Crianza/reserva/gran reserva tell you how long a Rioja was aged.",
+        },
         {
           type: "vocab",
           heading: "Spanish wines and aperitifs",
@@ -68,20 +159,73 @@ export const UNIT_DIET_WINE: Unit = {
             { l1: "el cava", en: "Spanish sparkling wine (from Catalonia)" },
             { l1: "el jerez / el sherry", en: "fortified wine from Jerez" },
             { l1: "la sangría", en: "red wine punch with fruit — tourist staple" },
+            { l1: "el tinto de verano", en: "red wine with lemon soda — what locals actually drink" },
             { l1: "la horchata", en: "tiger nut milk drink (Valencia)" },
-            { l1: "el sidra", en: "cider (especially in Asturias)" },
+            { l1: "la sidra", en: "cider (especially in Asturias)" },
+            { l1: "el vermut", en: "vermouth — classic Sunday aperitif" },
           ],
         },
         {
           type: "vocab",
-          heading: "Ordering wine",
+          heading: "Wine words and ordering",
+          intro: "The vocabulary to read a list and ask for what you want.",
           items: [
+            { l1: "tinto / blanco / rosado", en: "red / white / rosé" },
+            { l1: "seco / dulce / afrutado", en: "dry / sweet / fruity" },
+            { l1: "una copa", en: "a glass (a single pour)" },
+            { l1: "una botella / media botella", en: "a bottle / half bottle" },
             { l1: "Una copa de vino tinto, por favor.", en: "A glass of red wine, please." },
             { l1: "¿Qué vino recomienda de la zona?", en: "What local wine do you recommend?" },
             { l1: "La botella de la casa.", en: "The house bottle." },
-            { l1: "Un vino de la tierra.", en: "A local wine." },
             { l1: "¿Tiene vino por copas?", en: "Do you serve wine by the glass?" },
+            { l1: "un crianza / un reserva", en: "a crianza / reserva (aged red)" },
           ],
+        },
+        {
+          type: "dialogue",
+          heading: "Choosing a bottle at dinner",
+          setup: "The waiter asks what you'd like to drink with your meal.",
+          lines: [
+            { speaker: "Camarero", l1: "¿Qué van a tomar para beber?", en: "What will you have to drink?" },
+            { speaker: "You", l1: "¿Qué tinto nos recomienda con el cordero?", en: "What red do you recommend with the lamb?" },
+            { speaker: "Camarero", l1: "Un Ribera del Duero le va perfecto. Tenemos un crianza muy bueno.", en: "A Ribera del Duero suits it perfectly. We have a very good crianza." },
+            { speaker: "You", l1: "¿Cuánto cuesta la botella?", en: "How much is the bottle?" },
+            { speaker: "Camarero", l1: "Veinticuatro euros. O si prefiere, el vino de la casa está a tres euros la copa.", en: "Twenty-four euros. Or if you prefer, the house wine is three euros a glass." },
+            { speaker: "You", l1: "Pues la botella del crianza, gracias. Y una jarra de agua.", en: "The crianza bottle, then, thanks. And a jug of water." },
+          ],
+        },
+        {
+          type: "orderWords",
+          heading: "Build the wine order",
+          intro: "Put the words in the right order.",
+          items: [
+            {
+              tokens: ["Una", "copa", "de", "vino", "tinto", ",", "por", "favor", "."],
+              en: "A glass of red wine, please.",
+            },
+            {
+              tokens: ["¿Qué", "vino", "recomienda", "de", "la", "zona", "?"],
+              en: "What local wine do you recommend?",
+            },
+            {
+              tokens: ["¿Tienen", "vino", "blanco", "por", "copas", "?"],
+              en: "Do you have white wine by the glass?",
+            },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "Can you recommend a local red? And a jug of water, please.",
+          reference: "¿Me puede recomendar un tinto de la zona? Y una jarra de agua, por favor.",
+          hint: "tinto = red wine; de la zona = local; una jarra de agua = a jug of water (tap water).",
+        },
+        {
+          type: "tip",
+          heading: "Order like a local, not a tourist",
+          body: "Two tricks. 1) Locals rarely drink <em>sangría</em> — at a casual lunch order a <em>tinto de verano</em> (red wine + lemon soda) instead; it's lighter, cheaper, and refreshing. 2) For tap water, ask for <em>«una jarra de agua del grifo»</em> — it's free and perfectly safe, whereas <em>agua mineral</em> is bottled and charged. To sound confident, just say <em>«lo que recomiende la casa»</em> = whatever the house recommends.",
+          example: { l1: "Para mí, un tinto de verano. Y una jarra de agua del grifo, por favor.", en: "For me, a tinto de verano. And a jug of tap water, please." },
         },
         {
           type: "multipleChoice",
@@ -99,6 +243,12 @@ export const UNIT_DIET_WINE: Unit = {
               correct: 1,
               fb: "De la zona = from this area/region. A key phrase for wine tourism.",
             },
+            {
+              q: "On a Rioja label, which is aged the longest?",
+              options: ["joven", "crianza", "reserva", "gran reserva"],
+              correct: 3,
+              fb: "Gran reserva is aged 5+ years — the longest, smoothest and usually the priciest tier.",
+            },
           ],
         },
       ],
@@ -106,17 +256,28 @@ export const UNIT_DIET_WINE: Unit = {
     {
       slug: "diet-wine-conversation",
       title: "Talking about wine and diet in context",
-      estMinutes: 7,
+      estMinutes: 8,
       pages: [
+        {
+          type: "intro",
+          heading: "Putting it together at the table",
+          body: [
+            "Real meals mix both threads: someone orders wine while someone else flags a dietary need. Flag the allergy <em>before</em> ordering, not after the food arrives.",
+            "Useful openers: <em>«Antes de pedir, le aviso de una alergia.»</em> = Before we order, I should mention an allergy. And <em>«¿Es apto para celíacos?»</em> = Is it suitable for coeliacs?",
+            "Tapas culture means lots of small shared plates — perfect for asking <em>«¿Cuáles son vegetarianos?»</em> = Which ones are vegetarian? before you commit.",
+          ],
+          keyPoint:
+            "Flag allergies before ordering. ¿Es apto para celíacos? and ¿Cuáles son vegetarianos? do most of the work at a tapas table.",
+        },
         {
           type: "dialogue",
           heading: "Ordering wine at a restaurant",
           lines: [
-            { speaker: "Waiter", l1: "¿Desean algo de beber?", en: "Would you like something to drink?" },
+            { speaker: "Camarero", l1: "¿Desean algo de beber?", en: "Would you like something to drink?" },
             { speaker: "Guest", l1: "¿Qué vino tinto recomienda de la zona?", en: "What red wine from the area do you recommend?" },
-            { speaker: "Waiter", l1: "El Ribera del Duero que tenemos está muy bien.", en: "The Ribera del Duero we have is very good." },
+            { speaker: "Camarero", l1: "El Ribera del Duero que tenemos está muy bien.", en: "The Ribera del Duero we have is very good." },
             { speaker: "Guest", l1: "Perfecto. Una botella, por favor. Y para mi amiga, ¿tienen algo sin alcohol?", en: "Perfect. A bottle, please. And for my friend, do you have anything non-alcoholic?" },
-            { speaker: "Waiter", l1: "Sí, tenemos agua, refrescos y zumos.", en: "Yes, we have water, soft drinks and juices." },
+            { speaker: "Camarero", l1: "Sí, tenemos agua, refrescos y zumos.", en: "Yes, we have water, soft drinks and juices." },
           ],
         },
         {
@@ -129,7 +290,65 @@ export const UNIT_DIET_WINE: Unit = {
             { l1: "sin lactosa", en: "lactose-free" },
             { l1: "¿Tiene opciones veganas?", en: "Do you have vegan options?" },
             { l1: "¿Puede hacerlo sin mantequilla?", en: "Can you make it without butter?" },
+            { l1: "¿Cuáles son vegetarianos?", en: "Which ones are vegetarian?" },
+            { l1: "Antes de pedir, le aviso de una alergia.", en: "Before ordering, I should mention an allergy." },
           ],
+        },
+        {
+          type: "dialogue",
+          heading: "Flagging coeliac disease before ordering",
+          setup: "You let the waiter know before choosing tapas.",
+          lines: [
+            { speaker: "You", l1: "Perdone, antes de pedir: soy celíaca, no puedo tomar gluten. ¿Qué tapas son aptas?", en: "Excuse me, before ordering: I'm coeliac, I can't have gluten. Which tapas are suitable?" },
+            { speaker: "Camarero", l1: "La tortilla de patatas, el jamón, las aceitunas y los pimientos de Padrón son sin gluten. Las croquetas no, llevan harina.", en: "The potato omelette, the ham, the olives and the Padrón peppers are gluten-free. The croquettes aren't — they have flour." },
+            { speaker: "You", l1: "Genial. Entonces, una de tortilla y unos pimientos. ¿Fríen todo en el mismo aceite?", en: "Great. Then one tortilla and some peppers. Do you fry everything in the same oil?" },
+            { speaker: "Camarero", l1: "Buena pregunta. Le pido a la cocina que use una sartén aparte, sin problema.", en: "Good question. I'll ask the kitchen to use a separate pan, no problem." },
+            { speaker: "You", l1: "Muchas gracias, es importante para mí.", en: "Thank you very much, it's important to me." },
+          ],
+        },
+        {
+          type: "fillBlank",
+          heading: "Complete the conversation",
+          items: [
+            {
+              template: "¿Es ___ para celíacos este plato?",
+              answer: "apto",
+              en: "Is this dish suitable for coeliacs?",
+              options: ["apto", "bueno", "sin", "libre"],
+            },
+            {
+              template: "¿Tienen ___ veganas en la carta?",
+              answer: "opciones",
+              en: "Do you have vegan options on the menu?",
+              options: ["opciones", "platos", "comidas", "raciones"],
+            },
+            {
+              template: "¿Me puede hacer la paella ___ marisco? Tengo alergia.",
+              answer: "sin",
+              en: "Can you make the paella without shellfish? I'm allergic.",
+              options: ["sin", "con", "para", "de"],
+            },
+            {
+              template: "¿Cuáles de estas tapas son ___ ?",
+              answer: "vegetarianas",
+              en: "Which of these tapas are vegetarian?",
+              options: ["vegetarianas", "vegetariano", "vegetarianos", "vegana"],
+            },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "I'm vegan. Which tapas don't have meat, fish or dairy?",
+          reference: "Soy vegano/a. ¿Qué tapas no llevan carne, pescado ni lácteos?",
+          hint: "Use 'no llevan… ni… ni…' for 'don't have X, Y or Z'. lácteos = dairy.",
+        },
+        {
+          type: "tip",
+          heading: "Ham is hiding everywhere",
+          body: "In Spain, <em>jamón</em> (cured ham) sneaks into things that look vegetarian: <em>judías verdes</em> (green beans), salads, <em>guisantes</em> (peas), even some bread. If you're vegetarian, don't just ask <em>«¿es vegetariano?»</em> — confirm explicitly: <em>«¿Lleva jamón, chorizo o caldo de carne?»</em> = Does it have ham, chorizo or meat broth? Those three account for most accidental slip-ups.",
+          example: { l1: "¿Las judías verdes llevan jamón?", en: "Do the green beans have ham in them?" },
         },
         {
           type: "multipleChoice",
@@ -147,10 +366,16 @@ export const UNIT_DIET_WINE: Unit = {
               correct: 3,
               fb: "All three work. ¿Es vegano? (is it vegan?), ¿Tiene opciones veganas? (do you have vegan options?), ¿Lleva carne o pescado? (does it contain meat or fish?) are all useful.",
             },
+            {
+              q: "A reliable way to catch hidden meat in a 'veggie' dish is to ask…",
+              options: ["¿Es bueno?", "¿Lleva jamón, chorizo o caldo de carne?", "¿Está rico?", "¿Es picante?"],
+              correct: 1,
+              fb: "Ham, chorizo and meat broth are the usual hidden culprits in Spain — name them directly.",
+            },
           ],
         },
       ],
-    }
+    },
   ],
   checkpoint: {
     passingPct: 80,
@@ -165,6 +390,10 @@ export const UNIT_DIET_WINE: Unit = {
       { q: "Jerez/Sherry is a…", options: ["Red wine", "Sparkling wine", "Fortified wine", "Rosé wine"], correct: 2 },
       { q: "'Soy celíaco/a' means…", options: ["I'm vegetarian", "I'm lactose intolerant", "I'm coeliac/gluten intolerant", "I'm vegan"], correct: 2 },
       { q: "Una copa de vino is…", options: ["A bottle of wine", "A glass of wine", "A jug of wine", "A box of wine"], correct: 1 },
+      { q: "On a Rioja label, the longest-aged tier is…", options: ["joven", "crianza", "reserva", "gran reserva"], correct: 3 },
+      { q: "Translate: 'I'm allergic to shellfish.'", options: ["Soy intolerante al marisco.", "Tengo alergia al marisco.", "No me gusta el marisco.", "No quiero marisco."], correct: 1 },
+      { q: "Which drink do locals actually order at a casual lunch (not tourists)?", options: ["sangría", "tinto de verano", "horchata", "jerez"], correct: 1 },
+      { q: "A hidden ingredient that often makes a 'veggie' Spanish dish non-vegetarian is…", options: ["jamón", "tomate", "ajo", "aceite de oliva"], correct: 0 },
     ],
   },
 };

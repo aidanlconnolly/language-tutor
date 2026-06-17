@@ -7,17 +7,32 @@ export const UNIT_HELP: Unit = {
   icon: "🆘",
   title: "Emergencies & help",
   tagline: "Farmacia, urgencias, ¿puede ayudarme?",
+  badge: "tourist",
   lessons: [
     {
       slug: "help-emergency",
       title: "Emergency phrases",
-      estMinutes: 8,
+      estMinutes: 10,
       pages: [
+        {
+          type: "intro",
+          heading: "Learn these like you learn an emergency number",
+          body: [
+            "<strong>112</strong> is the free, all-in-one emergency number across Spain — police, ambulance and fire all answer it, and operators can find an English speaker.",
+            "<strong>¡Socorro!</strong> and <strong>¡Ayuda!</strong> both mean Help! shouted in danger. To ask a person calmly, use <strong>¿Puede ayudarme?</strong> = Can you help me?",
+            "<strong>¡Llame a la policía / a una ambulancia!</strong> = Call the police / an ambulance! (formal command of <em>llamar</em>).",
+            "<strong>Me he perdido</strong> = I'm lost. <strong>Me encuentro mal</strong> = I feel ill.",
+            "<strong>Me duele aquí</strong> = It hurts here (just point) — the fastest way to be understood.",
+          ],
+          keyPoint:
+            "112 = emergency line. ¡Socorro! / ¡Ayuda! / ¿Puede ayudarme? Necesito un médico. ¡Llame a la policía / a una ambulancia!",
+        },
         {
           type: "vocab",
           heading: "Emergency vocabulary",
           items: [
             { l1: "¡Ayuda!", en: "Help!" },
+            { l1: "¡Socorro!", en: "Help! / Save me! (shouted in danger)" },
             { l1: "¡Llame a la policía!", en: "Call the police!" },
             { l1: "¡Llame a una ambulancia!", en: "Call an ambulance!" },
             { l1: "¡Fuego!", en: "Fire!" },
@@ -25,6 +40,7 @@ export const UNIT_HELP: Unit = {
             { l1: "He perdido mi pasaporte.", en: "I've lost my passport." },
             { l1: "Necesito un médico.", en: "I need a doctor." },
             { l1: "Estoy herido/a.", en: "I'm injured." },
+            { l1: "Es una emergencia.", en: "It's an emergency." },
           ],
         },
         {
@@ -48,6 +64,37 @@ export const UNIT_HELP: Unit = {
           example: { l1: "Me duelen los pies.", en: "My feet hurt. (duelen, because pies is plural)" },
         },
         {
+          type: "fillBlank",
+          heading: "Say what's wrong",
+          intro: "Pick the word that fits each emergency sentence.",
+          items: [
+            {
+              template: "¡___! ¡Que alguien llame a una ambulancia!",
+              answer: "Socorro",
+              en: "Help! Someone call an ambulance!",
+              options: ["Socorro", "Gracias", "Perdón", "Adiós"],
+            },
+            {
+              template: "Me ___ robado el bolso en el metro.",
+              answer: "han",
+              en: "They've stolen my bag on the metro.",
+              options: ["han", "he", "ha", "hemos"],
+            },
+            {
+              template: "Necesito un ___, por favor.",
+              answer: "médico",
+              en: "I need a doctor, please.",
+              options: ["médico", "taxi", "billete", "menú"],
+            },
+            {
+              template: "Tengo ___ y me duele todo el cuerpo.",
+              answer: "fiebre",
+              en: "I have a fever and my whole body aches.",
+              options: ["fiebre", "hambre", "sueño", "prisa"],
+            },
+          ],
+        },
+        {
           type: "multipleChoice",
           heading: "Emergency check",
           questions: [
@@ -63,14 +110,28 @@ export const UNIT_HELP: Unit = {
               correct: 1,
               fb: "Pies (feet) is plural → duelen. Me duelen los pies.",
             },
+            {
+              q: "Spain's free, all-in-one emergency number is…",
+              options: ["911", "112", "061", "100"],
+              correct: 1,
+              fb: "112 reaches police, ambulance and fire across Spain (and the whole EU).",
+            },
           ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "Help! Call an ambulance, please. I'm injured.",
+          reference: "¡Socorro! Llame a una ambulancia, por favor. Estoy herido.",
+          hint: "'¡Socorro!' = Help! 'Llame' is the formal command of llamar. 'herido' (m) / 'herida' (f).",
         },
       ],
     },
     {
       slug: "help-lost",
       title: "When you're lost or need help",
-      estMinutes: 6,
+      estMinutes: 9,
       pages: [
         {
           type: "vocab",
@@ -84,6 +145,46 @@ export const UNIT_HELP: Unit = {
             { l1: "Me he perdido.", en: "I'm lost." },
             { l1: "¿Dónde está la embajada?", en: "Where is the embassy?" },
             { l1: "Necesito hacer una llamada.", en: "I need to make a call." },
+          ],
+        },
+        {
+          type: "vocab",
+          heading: "Reporting a theft & the police",
+          intro: "If you get pickpocketed in Madrid or Barcelona, you'll need these to file a report (una denuncia).",
+          items: [
+            { l1: "la comisaría", en: "the police station" },
+            { l1: "poner una denuncia", en: "to file a police report" },
+            { l1: "el ladrón / la ladrona", en: "the thief (m / f)" },
+            { l1: "la cartera", en: "the wallet" },
+            { l1: "el bolso", en: "the (hand)bag" },
+            { l1: "la mochila", en: "the backpack" },
+            { l1: "las llaves", en: "the keys" },
+            { l1: "el consulado", en: "the consulate" },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "Filing a report at the police station",
+          setup: "Your wallet was stolen on the metro and you go to the comisaría.",
+          lines: [
+            { speaker: "Agente", l1: "Buenos días. ¿Qué le ha pasado?", en: "Good morning. What happened to you?" },
+            { speaker: "You", l1: "Me han robado la cartera en el metro. Quiero poner una denuncia.", en: "My wallet was stolen on the metro. I want to file a report." },
+            { speaker: "Agente", l1: "¿Cuándo ha ocurrido?", en: "When did it happen?" },
+            { speaker: "You", l1: "Hace media hora, en la línea uno.", en: "Half an hour ago, on line 1." },
+            { speaker: "Agente", l1: "¿Qué llevaba en la cartera?", en: "What did you have in the wallet?" },
+            { speaker: "You", l1: "Unos cincuenta euros, dos tarjetas y mi carné de conducir.", en: "About fifty euros, two cards and my driver's license." },
+            { speaker: "Agente", l1: "De acuerdo. Rellene este formulario y le doy una copia de la denuncia.", en: "All right. Fill out this form and I'll give you a copy of the report." },
+          ],
+        },
+        {
+          type: "orderWords",
+          heading: "Build the sentence",
+          intro: "Put the words in order to make a correct sentence.",
+          items: [
+            { tokens: ["¿", "Puede", "ayudarme", ",", "por", "favor", "?"], en: "Can you help me, please?" },
+            { tokens: ["Me", "he", "perdido", "y", "no", "hablo", "español", "."], en: "I'm lost and I don't speak Spanish." },
+            { tokens: ["¿", "Dónde", "está", "la", "comisaría", "más", "cercana", "?"], en: "Where is the nearest police station?" },
+            { tokens: ["Necesito", "llamar", "a", "la", "embajada", "."], en: "I need to call the embassy." },
           ],
         },
         {
@@ -102,15 +203,56 @@ export const UNIT_HELP: Unit = {
               correct: 1,
               fb: "Más despacio = more slowly. ¿Puede repetir más despacio? is essential for beginners.",
             },
+            {
+              q: "Where do you go to 'poner una denuncia'?",
+              options: ["la farmacia", "la comisaría", "el hospital", "la embajada"],
+              correct: 1,
+              fb: "La comisaría = the police station. You file (poner) a denuncia there.",
+            },
           ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "I'm lost. Where is the American embassy?",
+          reference: "Me he perdido. ¿Dónde está la embajada americana?",
+          hint: "'Me he perdido' = I'm lost. 'embajada' is feminine, so 'americana'.",
         },
       ],
     },
     {
       slug: "help-pharmacy",
       title: "At the pharmacy",
-      estMinutes: 7,
+      estMinutes: 9,
       pages: [
+        {
+          type: "intro",
+          heading: "The farmacia is your first medical stop",
+          body: [
+            "Spanish pharmacists (<em>farmacéuticos</em>) can diagnose minor problems and recommend medicine — go to the <em>farmacia</em> first for a headache, an upset stomach, allergies or a cold.",
+            "Look for the green cross. There's always a <em>farmacia de guardia</em> (a 24-hour duty pharmacy) — the rota is posted on every pharmacy door.",
+            "<em>«Me duele…»</em> (it hurts me…) and <em>«Necesito algo para…»</em> (I need something for…) are the two openers that get you everywhere.",
+          ],
+          keyPoint:
+            "Farmacia (green cross) = first medical stop. There's always a farmacia de guardia open 24h. Open with «Me duele…» or «Necesito algo para…».",
+        },
+        {
+          type: "vocab",
+          heading: "Body parts",
+          intro: "Name where it hurts: «Me duele…» (singular) or «Me duelen…» (plural).",
+          items: [
+            { l1: "la cabeza", en: "head" },
+            { l1: "la garganta", en: "throat" },
+            { l1: "el estómago / la barriga", en: "stomach / belly" },
+            { l1: "la espalda", en: "back" },
+            { l1: "el brazo / los brazos", en: "arm / arms" },
+            { l1: "la pierna / las piernas", en: "leg / legs" },
+            { l1: "el pie / los pies", en: "foot / feet" },
+            { l1: "la muela", en: "molar / (back) tooth" },
+            { l1: "el oído", en: "(inner) ear" },
+          ],
+        },
         {
           type: "dialogue",
           heading: "Getting help at a pharmacy",
@@ -136,6 +278,37 @@ export const UNIT_HELP: Unit = {
           ],
         },
         {
+          type: "fillBlank",
+          heading: "At the counter",
+          intro: "Complete each pharmacy sentence.",
+          items: [
+            {
+              template: "Me ___ mucho la garganta.",
+              answer: "duele",
+              en: "My throat hurts a lot.",
+              options: ["duele", "duelen", "duelo", "dolido"],
+            },
+            {
+              template: "Necesito algo ___ la tos.",
+              answer: "para",
+              en: "I need something for the cough.",
+              options: ["para", "por", "con", "de"],
+            },
+            {
+              template: "Soy ___ a la penicilina.",
+              answer: "alérgico",
+              en: "I'm allergic to penicillin. (male speaker)",
+              options: ["alérgico", "alérgica", "cansado", "enfermo"],
+            },
+            {
+              template: "Tome una pastilla ___ ocho horas.",
+              answer: "cada",
+              en: "Take one tablet every eight hours.",
+              options: ["cada", "todo", "por", "en"],
+            },
+          ],
+        },
+        {
           type: "multipleChoice",
           heading: "Pharmacy check",
           questions: [
@@ -151,7 +324,21 @@ export const UNIT_HELP: Unit = {
               correct: 1,
               fb: "Cada = every. Cada ocho horas = every eight hours.",
             },
+            {
+              q: "A 'farmacia de guardia' is…",
+              options: ["a pharmacy with a security guard", "the duty pharmacy open 24h", "a hospital pharmacy", "a pharmacy that only sells prescriptions"],
+              correct: 1,
+              fb: "Farmacia de guardia = the on-duty pharmacy that stays open at night/weekends.",
+            },
           ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "I'm allergic to penicillin. Can you give me something for the fever?",
+          reference: "Soy alérgico/a a la penicilina. ¿Puede darme algo para la fiebre?",
+          hint: "'Soy alérgico' (m) / 'alérgica' (f). '¿Puede darme algo para…?' = Can you give me something for…?",
         },
       ],
     }
@@ -169,6 +356,8 @@ export const UNIT_HELP: Unit = {
       { q: "'Soy alérgico/a a…' means…", options: ["I have a fever", "I'm injured", "I'm allergic to…", "I'm sick"], correct: 2 },
       { q: "How do you ask someone to speak slowly?", options: ["¿Puede hablar más alto?", "¿Puede repetir más despacio?", "¿Puede escribir?", "¿Habla inglés?"], correct: 1 },
       { q: "'He perdido mi pasaporte' means…", options: ["I've found my passport", "I've lost my passport", "I need my passport", "I forgot my passport"], correct: 1 },
+      { q: "Spain's free, all-in-one emergency number is…", options: ["911", "112", "061", "100"], correct: 1 },
+      { q: "Where do you go to 'poner una denuncia'?", options: ["la farmacia", "la comisaría", "el hospital", "la embajada"], correct: 1 },
     ],
   },
 };

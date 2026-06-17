@@ -7,11 +7,12 @@ export const UNIT_IMPERFECTO: Unit = {
   icon: "🌅",
   title: "Imperfecto",
   tagline: "Cuando era niño… — habitual and descriptive past.",
+  badge: "core",
   lessons: [
     {
       slug: "imperfecto-intro",
       title: "The imperfecto — ongoing and habitual past",
-      estMinutes: 10,
+      estMinutes: 12,
       pages: [
         {
           type: "intro",
@@ -51,12 +52,77 @@ export const UNIT_IMPERFECTO: Unit = {
           ] }],
         },
         {
+          type: "conjugation",
+          heading: "vivir — imperfecto",
+          verb: "vivir",
+          meaning: "to live",
+          intro: "-ir verbs share the exact same endings as -er verbs.",
+          tenses: [{ name: "Imperfecto", forms: [
+            { person: "yo", form: "vivía" },
+            { person: "tú", form: "vivías" },
+            { person: "él/ella/usted", form: "vivía" },
+            { person: "nosotros", form: "vivíamos" },
+            { person: "vosotros", form: "vivíais" },
+            { person: "ellos/ustedes", form: "vivían" },
+          ] }],
+        },
+        {
+          type: "tip",
+          heading: "Two endings cover everything",
+          body: "Spanish has just <em>two</em> sets of imperfecto endings. <strong>-ar</strong> verbs take <strong>-aba</strong> endings; <strong>-er and -ir</strong> verbs share the <strong>-ía</strong> endings. Notice the written accents: every -ía form carries one, and the -ar nosotros form (<em>-ábamos</em>) does too. No avoiding accents here — <em>hablábamos, comíamos, vivíamos</em>.",
+          example: { l1: "Antes trabajaba en Madrid, pero vivía en las afueras.", en: "Back then I worked in Madrid, but I lived in the suburbs." },
+        },
+        {
           type: "vocab",
           heading: "Only 3 irregular imperfectos",
+          intro: "Out of every Spanish verb, only these three are irregular in the imperfecto — memorize them and the rest are fully predictable.",
           items: [
             { l1: "ser → era, eras, era, éramos, erais, eran", en: "to be (identity)" },
             { l1: "ir → iba, ibas, iba, íbamos, ibais, iban", en: "to go" },
             { l1: "ver → veía, veías, veía, veíamos, veíais, veían", en: "to see" },
+          ],
+        },
+        {
+          type: "fillBlank",
+          heading: "Conjugate the imperfecto",
+          intro: "Pick the imperfecto form — watch the accents.",
+          items: [
+            {
+              template: "Cuando era niño, ___ mucho con mis primos. (jugar)",
+              answer: "jugaba",
+              en: "When I was a child, I used to play a lot with my cousins.",
+              options: ["juego", "jugaba", "jugué", "jugaría"],
+            },
+            {
+              template: "Marta ___ el periódico cada mañana. (leer)",
+              answer: "leía",
+              en: "Marta used to read the newspaper every morning.",
+              options: ["lee", "leía", "leyó", "leería"],
+            },
+            {
+              template: "Nosotros ___ en el centro de Sevilla. (vivir)",
+              answer: "vivíamos",
+              en: "We used to live in the center of Seville.",
+              options: ["vivíamos", "vivimos", "vivían", "vivíais"],
+            },
+            {
+              template: "De pequeña, yo ___ tímida. (ser)",
+              answer: "era",
+              en: "As a little girl, I was shy.",
+              options: ["fui", "era", "soy", "estaba"],
+            },
+            {
+              template: "Los domingos ___ a casa de la abuela. (ir, nosotros)",
+              answer: "íbamos",
+              en: "On Sundays we used to go to grandma's house.",
+              options: ["fuimos", "íbamos", "vamos", "iban"],
+            },
+            {
+              template: "Desde la ventana ___ el mar. (ver, yo)",
+              answer: "veía",
+              en: "From the window I could see the sea.",
+              options: ["vi", "veía", "veo", "vería"],
+            },
           ],
         },
         {
@@ -82,7 +148,7 @@ export const UNIT_IMPERFECTO: Unit = {
     {
       slug: "imperfecto-contrast",
       title: "Imperfecto vs indefinido",
-      estMinutes: 8,
+      estMinutes: 11,
       pages: [
         {
           type: "intro",
@@ -122,12 +188,51 @@ export const UNIT_IMPERFECTO: Unit = {
             },
           ],
         },
+        {
+          type: "tip",
+          heading: "Imperfecto vs indefinido — the decisive test",
+          body: "Ask yourself one thing: <strong>was it a single, finished action with a clear endpoint?</strong> → indefinido (<em>comí una paella</em>). <strong>Was it a state, a description, a habit, or what was going on in the background?</strong> → imperfecto (<em>comía paella a menudo</em>). The same verb feels completely different:<br><br>• <em>Ayer comí paella.</em> = Yesterday I ate paella. (one event)<br>• <em>De niño comía paella todos los domingos.</em> = As a child I used to eat paella every Sunday. (habit)",
+        },
+        {
+          type: "vocab",
+          heading: "Signal words for the imperfecto",
+          intro: "These markers strongly point to the imperfecto — repetition, habit, or duration.",
+          items: [
+            { l1: "a menudo", en: "often" },
+            { l1: "siempre", en: "always" },
+            { l1: "normalmente", en: "usually" },
+            { l1: "todos los días / todos los veranos", en: "every day / every summer" },
+            { l1: "mientras", en: "while" },
+            { l1: "de niño/a", en: "as a child" },
+            { l1: "en aquella época", en: "in those days" },
+            { l1: "antes", en: "before / back then" },
+          ],
+        },
+        {
+          type: "orderWords",
+          heading: "Build the mixed-tense sentence",
+          intro: "Background in the imperfecto, the event in the indefinido.",
+          items: [
+            { tokens: ["Mientras", "leía", ",", "sonó", "el", "teléfono"], en: "While I was reading, the phone rang." },
+            { tokens: ["Cuando", "era", "pequeño", ",", "vivía", "en", "Valencia"], en: "When I was little, I lived in Valencia." },
+            { tokens: ["Llovía", ",", "pero", "salimos", "a", "pasear"], en: "It was raining, but we went out for a walk." },
+            { tokens: ["Hacía", "calor", ",", "así", "que", "fuimos", "a", "la", "playa"], en: "It was hot, so we went to the beach." },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "It was cold and I was tired, so I stayed home.",
+          reference: "Hacía frío y estaba cansado/a, así que me quedé en casa.",
+          hint: "Weather + state = imperfecto (hacía, estaba). The decision to stay is a single event = indefinido (me quedé).",
+        },
       ],
     },
     {
       slug: "imperfecto-childhood",
       title: "Childhood memories",
-      estMinutes: 7,
+      estMinutes: 11,
       pages: [
         {
           type: "vocab",
@@ -169,6 +274,70 @@ export const UNIT_IMPERFECTO: Unit = {
               fb: "Era (imperfecto of ser) = was (ongoing state). Asking about the general character of life.",
             },
           ],
+        },
+        {
+          type: "intro",
+          heading: "Real Spanish narration uses both tenses at once",
+          body: [
+            "When you tell a story in Spanish, the two past tenses work together: the imperfecto sets the scene, and the indefinido drops in the events.",
+            "<em>Era una tarde tranquila. Llovía desde hacía horas. Yo leía en el sofá cuando, de repente, sonó el timbre.</em>",
+            "Imperfecto: era, llovía, leía (the background). Indefinido: sonó (the new event that breaks the scene).",
+            "Think of the imperfecto as the painted backdrop and the indefinido as the action that happens in front of it.",
+          ],
+          keyPoint: "Imperfecto = the backdrop (state, habit, ongoing). Indefinido = the event that moves the story forward.",
+        },
+        {
+          type: "fillBlank",
+          heading: "Pick the right past tense",
+          intro: "Decide between imperfecto (background/habit) and indefinido (single event).",
+          items: [
+            {
+              template: "Mientras (yo) ___ , llegó mi hermano. (cenar)",
+              answer: "cenaba",
+              en: "While I was having dinner, my brother arrived.",
+              options: ["cené", "cenaba", "ceno", "cenaría"],
+            },
+            {
+              template: "Anoche (yo) ___ una película de Almodóvar. (ver)",
+              answer: "vi",
+              en: "Last night I watched an Almodóvar film. (completed event)",
+              options: ["veía", "vi", "veo", "vería"],
+            },
+            {
+              template: "De pequeña, (yo) ___ a casa de la abuela cada domingo. (ir)",
+              answer: "iba",
+              en: "As a girl, I used to go to grandma's house every Sunday.",
+              options: ["iba", "fui", "voy", "iría"],
+            },
+            {
+              template: "Cuando abrí la puerta, el niño ya ___ . (dormir)",
+              answer: "dormía",
+              en: "When I opened the door, the child was already sleeping.",
+              options: ["durmió", "dormía", "duerme", "dormiría"],
+            },
+            {
+              template: "El verano pasado (nosotros) ___ en Barcelona una semana. (estar)",
+              answer: "estuvimos",
+              en: "Last summer we were in Barcelona for a week. (completed, with a duration)",
+              options: ["estábamos", "estuvimos", "estamos", "estaríamos"],
+            },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate the memory",
+          direction: "en-to-l1",
+          prompt: "When I was a child, I lived in Granada. Every summer we went to the beach.",
+          reference: "Cuando era niño/a, vivía en Granada. Todos los veranos íbamos a la playa.",
+          hint: "Two states (was, lived) + one repeated habit (went) → all imperfecto.",
+        },
+        {
+          type: "translate",
+          heading: "Translate the scene",
+          direction: "en-to-l1",
+          prompt: "I was reading in the kitchen when someone knocked on the door.",
+          reference: "Yo leía en la cocina cuando alguien llamó a la puerta.",
+          hint: "The background action (was reading) = imperfecto; the interruption (knocked) = indefinido.",
         },
       ],
     }

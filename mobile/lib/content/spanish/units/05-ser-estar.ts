@@ -12,7 +12,7 @@ export const UNIT_SER_ESTAR: Unit = {
     {
       slug: "ser-estar-difference",
       title: "Ser vs estar — which 'to be'?",
-      estMinutes: 10,
+      estMinutes: 12,
       pages: [
         {
           type: "intro",
@@ -92,12 +92,63 @@ export const UNIT_SER_ESTAR: Unit = {
             },
           ],
         },
+        {
+          type: "fillBlank",
+          heading: "Ser or estar? Fill the blank",
+          intro: "Choose the right form. Ask: defining trait, or changeable state?",
+          items: [
+            {
+              template: "Yo ___ de Sevilla.",
+              answer: "soy",
+              en: "I'm from Seville. (origin → ser)",
+              options: ["soy", "estoy", "es", "está"],
+            },
+            {
+              template: "La sopa ___ caliente.",
+              answer: "está",
+              en: "The soup is hot. (current state → estar)",
+              options: ["es", "está", "son", "estás"],
+            },
+            {
+              template: "Mi hermana ___ profesora.",
+              answer: "es",
+              en: "My sister is a teacher. (profession → ser)",
+              options: ["está", "es", "están", "estás"],
+            },
+            {
+              template: "Nosotros ___ en el parque.",
+              answer: "estamos",
+              en: "We're in the park. (location → estar)",
+              options: ["somos", "estamos", "estáis", "están"],
+            },
+            {
+              template: "El libro ___ de papel.",
+              answer: "es",
+              en: "The book is made of paper. (material → ser)",
+              options: ["está", "es", "están", "estamos"],
+            },
+            {
+              template: "¿Cómo ___ (tú) hoy?",
+              answer: "estás",
+              en: "How are you today? (mood/condition → estar)",
+              options: ["eres", "estás", "es", "está"],
+            },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it — ser vs estar",
+          direction: "en-to-l1",
+          prompt: "I'm Spanish, but right now I'm in France.",
+          reference: "Soy español, pero ahora estoy en Francia.",
+          hint: "Nationality is identity → ser. Location → estar. Drop the subject pronoun.",
+        },
       ],
     },
     {
       slug: "ser-estar-regular-verbs",
       title: "Regular -ar, -er, -ir verbs",
-      estMinutes: 10,
+      estMinutes: 12,
       pages: [
         {
           type: "intro",
@@ -172,12 +223,52 @@ export const UNIT_SER_ESTAR: Unit = {
             },
           ],
         },
+        {
+          type: "tip",
+          heading: "Tener for age and possession",
+          body: "Spanish uses <em>tener</em> (to have) where English uses <em>be</em> for age. <em>Tengo treinta años</em> = \"I'm thirty (I have thirty years).\" Tener is also the everyday verb for possession: <em>Tengo dos hermanos</em> = \"I have two brothers.\" It's irregular: <strong>tengo, tienes, tiene, tenemos, tenéis, tienen</strong>.",
+          example: { l1: "Tengo treinta años y tengo un perro.", en: "I'm thirty and I have a dog." },
+        },
+        {
+          type: "conjugation",
+          heading: "tener (to have) — irregular",
+          verb: "tener",
+          meaning: "to have (age, possession)",
+          intro: "Note the e→ie stem change in tú, él, ellos, and the irregular yo form.",
+          tenses: [{ name: "Presente", forms: [
+            { person: "yo", form: "tengo", en: "I have" },
+            { person: "tú", form: "tienes", en: "you have" },
+            { person: "él/ella/usted", form: "tiene", en: "he/she has" },
+            { person: "nosotros", form: "tenemos", en: "we have" },
+            { person: "vosotros", form: "tenéis", en: "you all have" },
+            { person: "ellos/ustedes", form: "tienen", en: "they have" },
+          ] }],
+        },
+        {
+          type: "orderWords",
+          heading: "Build the sentence",
+          intro: "Drag the words into a natural Spanish order.",
+          items: [
+            { tokens: ["Tengo", "veinticinco", "años"], en: "I'm twenty-five years old." },
+            { tokens: ["¿Cuántos", "años", "tienes?"], en: "How old are you?" },
+            { tokens: ["Mi", "hermano", "tiene", "un", "coche"], en: "My brother has a car." },
+            { tokens: ["Necesito", "un", "taxi", "ahora"], en: "I need a taxi now." },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it — verbs in action",
+          direction: "en-to-l1",
+          prompt: "I live in Barcelona and I work in a restaurant.",
+          reference: "Vivo en Barcelona y trabajo en un restaurante.",
+          hint: "vivir → vivo (-ir). trabajar → trabajo (-ar). Drop the 'I'.",
+        },
       ],
     },
     {
       slug: "ser-estar-complex",
       title: "Ser and estar — tricky cases",
-      estMinutes: 7,
+      estMinutes: 10,
       pages: [
         {
           type: "intro",
@@ -218,6 +309,27 @@ export const UNIT_SER_ESTAR: Unit = {
             },
           ],
         },
+        {
+          type: "dialogue",
+          heading: "Putting it together",
+          setup: "Two travelers meet at a hostel in Madrid.",
+          lines: [
+            { speaker: "Lucía", l1: "Hola, ¿cómo te llamas?", en: "Hi, what's your name?" },
+            { speaker: "You", l1: "Me llamo Tom. Soy americano. ¿Y tú?", en: "I'm Tom. I'm American. And you?" },
+            { speaker: "Lucía", l1: "Soy Lucía, soy de Valencia. ¿Cuántos años tienes?", en: "I'm Lucía, I'm from Valencia. How old are you?" },
+            { speaker: "You", l1: "Tengo veintiocho años. Estoy un poco cansado del viaje.", en: "I'm twenty-eight. I'm a bit tired from the trip." },
+            { speaker: "Lucía", l1: "¡Hablas muy bien el español! ¿Dónde estás ahora, en un hotel?", en: "You speak Spanish really well! Where are you staying now, in a hotel?" },
+            { speaker: "You", l1: "No, estoy aquí en el hostal. Es muy barato y está cerca del centro.", en: "No, I'm here at the hostel. It's very cheap and it's near the center." },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Final translation challenge",
+          direction: "en-to-l1",
+          prompt: "I'm twenty-eight years old, I'm from New York, and I'm a bit tired today.",
+          reference: "Tengo veintiocho años, soy de Nueva York y hoy estoy un poco cansado.",
+          hint: "Age → tener. Origin → ser. A temporary feeling like 'tired' → estar.",
+        },
       ],
     }
   ],
@@ -234,6 +346,8 @@ export const UNIT_SER_ESTAR: Unit = {
       { q: "What is 'you (tú) speak'?", options: ["hablo", "habla", "hablas", "habláis"], correct: 2 },
       { q: "The ellos form of 'vivir' is…", options: ["vivimos", "vivís", "viven", "vive"], correct: 2 },
       { q: "'Snow is white' (permanent quality) uses…", options: ["está", "es", "son", "estás"], correct: 1 },
+      { q: "'I'm 25 years old' uses…", options: ["Soy veinticinco", "Estoy veinticinco años", "Tengo veinticinco años", "Es veinticinco años"], correct: 2 },
+      { q: "The yo form of 'tener' is…", options: ["teno", "tiengo", "tengo", "tiene"], correct: 2 },
     ],
   },
 };

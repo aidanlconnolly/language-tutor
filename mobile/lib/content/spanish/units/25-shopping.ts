@@ -11,8 +11,20 @@ export const UNIT_SHOPPING: Unit = {
     {
       slug: "shopping-prices",
       title: "Prices and transactions",
-      estMinutes: 8,
+      estMinutes: 10,
       pages: [
+        {
+          type: "intro",
+          heading: "Euros, céntimos, and asking the price",
+          body: [
+            "Spain uses the <strong>euro (€)</strong>. Cents = <em>céntimos</em>. €4,50 is said <em>cuatro euros con cincuenta</em> — or just <em>cuatro cincuenta</em> in fast speech. Note Spain writes the decimal with a comma: <em>4,50 €</em>.",
+            "Two ways to ask the price: <em>«¿Cuánto cuesta?»</em> (from <em>costar</em>) and <em>«¿Cuánto vale?»</em> (from <em>valer</em>) — both totally normal, <em>vale</em> is very common in Spain. For the total: <em>«¿Cuánto es (en total)?»</em>.",
+            "Discounts: <em>el descuento</em> = discount. <em>la oferta</em> = special offer. <em>las rebajas</em> = the sales season — a real event in Spain, in January and in summer (July).",
+            "<em>Caro</em> = expensive. <em>barato</em> = cheap. <em>está de oferta</em> = it's on offer.",
+          ],
+          keyPoint:
+            "¿Cuánto cuesta? = ¿Cuánto vale? (both = how much is it). Las rebajas = the sales season. Caro/barato = expensive/cheap.",
+        },
         {
           type: "vocab",
           heading: "Shopping vocabulary",
@@ -57,13 +69,69 @@ export const UNIT_SHOPPING: Unit = {
             },
           ],
         },
+        {
+          type: "tip",
+          heading: "Paying in Spain: cash vs card",
+          body: "Contactless (<em>sin contacto</em>) is everywhere in Spain — just tap your card or phone on the <em>datáfono</em> (card reader). Above €50 you may be asked for the PIN. Small bars, bakeries, and markets often prefer cash, so carry a few coins and small notes. If a shop has a minimum for card payments they'll say <em>«hay un mínimo de cinco euros con tarjeta»</em>.",
+          example: { l1: "¿Puedo pagar con tarjeta?", en: "Can I pay by card?" },
+        },
+        {
+          type: "fillBlank",
+          heading: "Price and payment fill",
+          items: [
+            {
+              template: "¿Cuánto ___ estos zapatos?",
+              answer: "cuestan",
+              en: "How much do these shoes cost?",
+              options: ["cuesta", "cuestan", "valen", "es"],
+            },
+            {
+              template: "Está de ___ , tiene un veinte por ciento de descuento.",
+              answer: "oferta",
+              en: "It's on offer, it has a 20% discount.",
+              options: ["oferta", "rebaja", "precio", "cambio"],
+            },
+            {
+              template: "¿Tiene algo más ___ ? Esto es muy caro.",
+              answer: "barato",
+              en: "Do you have something cheaper? This is very expensive.",
+              options: ["caro", "barato", "grande", "pequeño"],
+            },
+            {
+              template: "Pago en ___ , no llevo tarjeta.",
+              answer: "efectivo",
+              en: "I'll pay in cash, I don't have a card on me.",
+              options: ["efectivo", "tarjeta", "cambio", "recibo"],
+            },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "How much does it cost? Can I pay by card?",
+          reference: "¿Cuánto cuesta? ¿Puedo pagar con tarjeta?",
+          hint: "Use the inverted ¿ at the start of each question. 'Pay by card' = 'pagar con tarjeta'.",
+        },
       ],
     },
     {
       slug: "shopping-clothes",
       title: "Clothes and sizes",
-      estMinutes: 7,
+      estMinutes: 10,
       pages: [
+        {
+          type: "intro",
+          heading: "Sizes, colours, and trying things on",
+          body: [
+            "<em>«¿Qué talla?»</em> = What size? <em>la talla</em> is for clothes (S, M, L, XL or numbers 36–46); <em>el número</em> is for shoes (35–46 EU).",
+            "<em>«¿Puedo probármelo / probármela?»</em> = Can I try it on? The pronoun agrees with the item: <em>-lo</em> for masculine (el jersey), <em>-la</em> for feminine (la camisa).",
+            "<em>«Me queda grande / pequeño / bien»</em> = It fits big / small / well on me. The verb is <em>quedar</em> — like Italian's <em>quedare</em>, it describes how something sits on you.",
+            "<em>«Me lo llevo»</em> / <em>«Me la llevo»</em> = I'll take it. The fitting room is <em>el probador</em>.",
+          ],
+          keyPoint:
+            "¿Qué talla? (clothes) / ¿Qué número? (shoes). Me queda grande/pequeño = it's too big/small on me. Me lo llevo = I'll take it.",
+        },
         {
           type: "vocab",
           heading: "Clothing vocabulary",
@@ -96,12 +164,58 @@ export const UNIT_SHOPPING: Unit = {
             },
           ],
         },
+        {
+          type: "vocab",
+          heading: "Colours and fit",
+          intro: "Colours agree with the noun: una camisa roja, un jersey rojo.",
+          items: [
+            { l1: "blanco / negro / gris", en: "white / black / grey" },
+            { l1: "rojo / azul / verde", en: "red / blue / green" },
+            { l1: "amarillo / naranja", en: "yellow / orange" },
+            { l1: "el jersey / la chaqueta", en: "jumper/sweater / jacket" },
+            { l1: "la falda / el abrigo", en: "skirt / coat" },
+            { l1: "¿Tiene esto en otro color?", en: "Do you have this in another colour?" },
+            { l1: "una talla más / menos", en: "a size up / a size down" },
+            { l1: "me aprieta / me sobra", en: "it's too tight / it's too loose on me" },
+          ],
+        },
+        {
+          type: "orderWords",
+          heading: "Build the sentence",
+          intro: "Put the words in the correct order.",
+          items: [
+            {
+              tokens: ["¿", "Puedo", "probarme", "esta", "camisa", "?"],
+              en: "Can I try this shirt on?",
+            },
+            {
+              tokens: ["Me", "queda", "un", "poco", "grande", "."],
+              en: "It's a bit big on me.",
+            },
+            {
+              tokens: ["¿", "Tiene", "esto", "en", "otro", "color", "?"],
+              en: "Do you have this in another colour?",
+            },
+            {
+              tokens: ["Me", "la", "llevo", ",", "gracias", "."],
+              en: "I'll take it, thank you.",
+            },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "It's a bit small on me. Do you have a size up?",
+          reference: "Me queda un poco pequeño. ¿Tiene una talla más?",
+          hint: "'It fits small on me' = 'me queda pequeño'. 'A size up' = 'una talla más'.",
+        },
       ],
     },
     {
       slug: "shopping-full-scenario",
       title: "A complete shopping trip",
-      estMinutes: 7,
+      estMinutes: 9,
       pages: [
         {
           type: "dialogue",
@@ -144,6 +258,45 @@ export const UNIT_SHOPPING: Unit = {
               fb: "Quedar bien = to suit/fit well. Te queda bien = it suits you / it fits you well.",
             },
           ],
+        },
+        {
+          type: "fillBlank",
+          heading: "At the till",
+          intro: "Complete the checkout phrases.",
+          items: [
+            {
+              template: "Me ___ llevo, ¿puedo pagar con tarjeta?",
+              answer: "lo",
+              en: "I'll take it, can I pay by card? (masculine item)",
+              options: ["lo", "la", "le", "me"],
+            },
+            {
+              template: "¿Me puede dar un ___ , por favor?",
+              answer: "recibo",
+              en: "Can you give me a receipt, please?",
+              options: ["recibo", "cambio", "descuento", "probador"],
+            },
+            {
+              template: "El ___ está al fondo, a la derecha.",
+              answer: "probador",
+              en: "The fitting room is at the back, on the right.",
+              options: ["probador", "recibo", "número", "abrigo"],
+            },
+            {
+              template: "Lo siento, está ___ en azul.",
+              answer: "agotado",
+              en: "I'm sorry, it's sold out in blue.",
+              options: ["agotado", "barato", "defectuoso", "abierto"],
+            },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "I'll take it. Can you give me a receipt, please?",
+          reference: "Me lo llevo. ¿Me puede dar un recibo, por favor?",
+          hint: "'I'll take it' = 'me lo llevo' (masculine item). Start the question with ¿.",
         },
       ],
     }

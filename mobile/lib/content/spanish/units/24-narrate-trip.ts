@@ -11,7 +11,7 @@ export const UNIT_NARRATE_TRIP: Unit = {
     {
       slug: "narrate-trip-story",
       title: "Telling your travel story",
-      estMinutes: 10,
+      estMinutes: 12,
       pages: [
         {
           type: "intro",
@@ -48,6 +48,12 @@ export const UNIT_NARRATE_TRIP: Unit = {
           ],
         },
         {
+          type: "tip",
+          heading: "The 'canvas and brushstroke' rule",
+          body: "Think of the imperfecto as the canvas — it paints the scene, the weather, how things felt, what was going on. Think of the indefinido as the brushstroke — it drops a single completed event onto that canvas. <em>Hacía sol y la gente paseaba</em> (canvas) <em>cuando, de repente, empezó a llover</em> (brushstroke). A story with only indefinido reads like a shopping list; a story with only imperfecto has no plot. You need both.",
+          example: { l1: "Caminaba por la playa cuando vi a un viejo amigo.", en: "I was walking on the beach when I saw an old friend." },
+        },
+        {
           type: "multipleChoice",
           heading: "Narrative tenses",
           questions: [
@@ -63,6 +69,60 @@ export const UNIT_NARRATE_TRIP: Unit = {
               correct: 2,
               fb: "De repente (suddenly) signals a plot event — use indefinido. De repente entró un hombre.",
             },
+            {
+              q: "'Mientras paseábamos, empezó a nevar' — which verb is the event?",
+              qL1: "Mientras paseábamos, empezó a nevar.",
+              options: ["paseábamos", "empezó", "both", "neither"],
+              correct: 1,
+              fb: "Paseábamos is the ongoing background (imperfecto); empezó is the single event that breaks in (indefinido).",
+            },
+          ],
+        },
+        {
+          type: "fillBlank",
+          heading: "Choose the right past tense",
+          intro: "Decide whether each blank is background (imperfecto) or a completed event (indefinido).",
+          items: [
+            {
+              template: "Ayer ___ (ser) un día precioso.",
+              answer: "era",
+              en: "Yesterday was a beautiful day. (description → imperfecto)",
+              options: ["era", "fue", "es", "será"],
+            },
+            {
+              template: "Mientras ___ (caminar) por el centro, ___ (encontrar) a un viejo amigo.",
+              answer: "caminaba / encontré",
+              en: "While I was walking through the center, I met an old friend.",
+              options: [
+                "caminaba / encontré",
+                "caminé / encontraba",
+                "camino / encuentro",
+                "caminaba / encontraba",
+              ],
+            },
+            {
+              template: "Cuando era pequeño, ___ (ir) a la playa todos los veranos.",
+              answer: "iba",
+              en: "When I was little, I used to go to the beach every summer. (habit → imperfecto)",
+              options: ["iba", "fui", "voy", "iré"],
+            },
+            {
+              template: "El tren ___ (llegar) anoche a las diez en punto.",
+              answer: "llegó",
+              en: "The train arrived last night at ten o'clock. (event → indefinido)",
+              options: ["llegaba", "llegó", "llega", "llegará"],
+            },
+            {
+              template: "(Yo) ___ (estar) muy cansado cuando ___ (llegar) al hotel.",
+              answer: "estaba / llegué",
+              en: "I was very tired when I arrived at the hotel. (state + event)",
+              options: [
+                "estuve / llegaba",
+                "estaba / llegué",
+                "estoy / llegué",
+                "estaba / llegaba",
+              ],
+            },
           ],
         },
       ],
@@ -70,8 +130,20 @@ export const UNIT_NARRATE_TRIP: Unit = {
     {
       slug: "narrate-trip-practice",
       title: "Writing a trip narrative",
-      estMinutes: 7,
+      estMinutes: 10,
       pages: [
+        {
+          type: "intro",
+          heading: "The three-tense braid",
+          body: [
+            "A polished story braids the tenses together naturally:",
+            "<em><strong>Era</strong> una mañana de septiembre. (imperfecto — scene)</em>",
+            "<em><strong>Me desperté</strong> a las seis y <strong>tomé</strong> un café. (indefinido — events)</em>",
+            "<em>Mientras <strong>desayunaba</strong>, <strong>leí</strong> el mensaje de Marta. (imperfecto background + indefinido event)</em>",
+            "<em>Ahora, cada vez que pienso en aquel viaje, sonrío. (presente — conclusion)</em>",
+          ],
+          keyPoint: "Imperfecto = states, ongoing background, weather, age, habits. Indefinido = events that move the story forward. Presente = wraps it up.",
+        },
         {
           type: "translate",
           heading: "Translate this narrative sentence",
@@ -89,6 +161,31 @@ export const UNIT_NARRATE_TRIP: Unit = {
           hint: "indefinido for event",
         },
         {
+          type: "translate",
+          heading: "Translate it (mixed tenses)",
+          direction: "en-to-l1",
+          prompt: "It was raining. I was eating dinner when the phone rang. It was my mother.",
+          reference: "Llovía. Estaba cenando cuando sonó el teléfono. Era mi madre.",
+          hint: "Three imperfectos (was raining, was eating, was — state) + one event (rang → sonó).",
+        },
+        {
+          type: "orderWords",
+          heading: "Build the narrative",
+          intro: "Put the words in order to form each sentence of a little story.",
+          items: [
+            { tokens: ["Era", "un", "día", "frío", "de", "enero"], en: "It was a cold January day." },
+            { tokens: ["Salí", "temprano", "para", "ir", "al", "trabajo"], en: "I left early to go to work." },
+            { tokens: ["Mientras", "esperaba", "el", "autobús", ",", "empezó", "a", "nevar"], en: "While I was waiting for the bus, it started to snow." },
+            { tokens: ["Al", "final", "llegué", "a", "la", "oficina", "empapado"], en: "In the end I arrived at the office soaked." },
+          ],
+        },
+        {
+          type: "tip",
+          heading: "estar + gerundio = 'was -ing'",
+          body: "To stress that an action was in progress, Spanish uses <em>estar + gerundio</em>: <em>Estaba cenando</em> = I was eating dinner. (vs <em>cenaba</em>, which is also correct but less vivid.) The gerundio: <em>-ando</em> for -ar verbs, <em>-iendo</em> for -er/-ir verbs. <em>hablar → hablando, comer → comiendo, vivir → viviendo</em>. Watch the stem changers: <em>leer → leyendo, dormir → durmiendo, pedir → pidiendo</em>.",
+          example: { l1: "Estábamos durmiendo cuando llamaron a la puerta.", en: "We were sleeping when they knocked at the door." },
+        },
+        {
           type: "multipleChoice",
           heading: "Story check",
           questions: [
@@ -104,6 +201,17 @@ export const UNIT_NARRATE_TRIP: Unit = {
               correct: 1,
               fb: "Ojalá = I hope / I wish. Expresses a desire without certainty.",
             },
+            {
+              q: "Which sentence correctly mixes the tenses?",
+              options: [
+                "Estaba cansado cuando llegué.",
+                "Estuve cansado cuando llegaba.",
+                "Estaba cansado cuando llegaba.",
+                "Estuve cansado cuando llegué.",
+              ],
+              correct: 0,
+              fb: "Estaba cansado = ongoing state (imperfecto); llegué = the completed event (indefinido).",
+            },
           ],
         },
       ],
@@ -111,7 +219,7 @@ export const UNIT_NARRATE_TRIP: Unit = {
     {
       slug: "narrate-trip-oral",
       title: "Telling your story aloud",
-      estMinutes: 7,
+      estMinutes: 8,
       pages: [
         {
           type: "dialogue",
@@ -145,8 +253,93 @@ export const UNIT_NARRATE_TRIP: Unit = {
           reference: "Lo mejor del viaje fue la comida.",
           hint: "Lo mejor del viaje fue + noun",
         },
+        {
+          type: "translate",
+          heading: "Describe your trip",
+          direction: "en-to-l1",
+          prompt: "We had a great time, but the only bad thing was the weather.",
+          reference: "Lo pasamos genial, pero lo único malo fue el tiempo.",
+          hint: "Lo pasamos genial (indefinido) + lo único malo fue + noun",
+        },
       ],
-    }
+    },
+    {
+      slug: "narrate-trip-write-your-own",
+      title: "Write your own trip story",
+      estMinutes: 12,
+      pages: [
+        {
+          type: "intro",
+          heading: "Time to put it all together",
+          body: [
+            "This lesson is mostly translation practice — you'll build a short trip story piece by piece using all the tenses you've learned.",
+            "Story setup: \"A weekend trip to Granada.\" The sentences below, together, form one complete narrative.",
+            "Use the Spanish model on each one — these are graded by Claude, so you'll get feedback if you drift off-track.",
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Scene-setting (use imperfecto)",
+          direction: "en-to-l1",
+          prompt: "It was a Saturday morning in June. The weather was beautiful and I was happy.",
+          reference: "Era un sábado por la mañana de junio. Hacía buen tiempo y estaba contento.",
+          hint: "All description = imperfecto. 'Hacía buen tiempo' = the weather was nice. 'Estaba contento' = I was happy.",
+        },
+        {
+          type: "translate",
+          heading: "First event (indefinido)",
+          direction: "en-to-l1",
+          prompt: "I took the train from Madrid at seven. The trip lasted four hours.",
+          reference: "Tomé el tren desde Madrid a las siete. El viaje duró cuatro horas.",
+          hint: "Two completed events: tomé + duró. Both indefinido.",
+        },
+        {
+          type: "translate",
+          heading: "On arrival (mix of tenses)",
+          direction: "en-to-l1",
+          prompt: "When I arrived in Granada, it was hot. I left the station and walked to the old town.",
+          reference: "Cuando llegué a Granada, hacía calor. Salí de la estación y caminé hasta el casco antiguo.",
+          hint: "Arrived (event) + was hot (background) + left (event) + walked (event).",
+        },
+        {
+          type: "translate",
+          heading: "Background detail (imperfecto)",
+          direction: "en-to-l1",
+          prompt: "While I was walking, I was looking at the buildings and listening to music.",
+          reference: "Mientras caminaba, miraba los edificios y escuchaba música.",
+          hint: "Three simultaneous ongoing actions = three imperfectos.",
+        },
+        {
+          type: "translate",
+          heading: "Sudden event (indefinido)",
+          direction: "en-to-l1",
+          prompt: "Suddenly I saw a small restaurant with a handwritten menu. I decided to go in.",
+          reference: "De repente vi un pequeño restaurante con una carta escrita a mano. Decidí entrar.",
+          hint: "Two events: vi + decidí. 'A mano' = by hand.",
+        },
+        {
+          type: "translate",
+          heading: "The meal (mix)",
+          direction: "en-to-l1",
+          prompt: "I ate a paella with a glass of red wine. It was the best meal of my trip.",
+          reference: "Comí una paella con una copa de vino tinto. Fue la mejor comida del viaje.",
+          hint: "Comí (event). 'Fue' = it was (one specific meal, completed = indefinido, NOT imperfecto here).",
+        },
+        {
+          type: "translate",
+          heading: "Conclusion (present + future plan)",
+          direction: "en-to-l1",
+          prompt: "I love Granada. Next month I'm definitely going back.",
+          reference: "Me encanta Granada. El mes que viene voy a volver sin falta.",
+          hint: "'Me encanta' = present. 'Voy a volver' = ir + a + infinitive (future plan). 'Sin falta' = without fail / definitely.",
+        },
+        {
+          type: "tip",
+          heading: "Congratulations — you can narrate now",
+          body: "You just told an eight-sentence story using three tenses, agreement, and connector words. That's real B1-level narrative skill. From here you can talk about any past trip, weekend, or memory in conversational Spanish. Later stages add nuance (usted forms, conditional, subjunctive) — but the heavy structural lifting is done.",
+        },
+      ],
+    },
   ],
   checkpoint: {
     passingPct: 80,
@@ -161,6 +354,8 @@ export const UNIT_NARRATE_TRIP: Unit = {
       { q: "'Llegué a Madrid' — what tense is llegué?", options: ["imperfecto", "indefinido", "perfecto", "presente"], correct: 1 },
       { q: "Recent past with present relevance uses…", options: ["indefinido", "imperfecto", "perfecto", "futuro"], correct: 2 },
       { q: "'Después' connects…", options: ["Cause and effect", "Sequence of events", "Background and foreground", "Present and future"], correct: 1 },
+      { q: "'Mientras cenaba, sonó el teléfono' — which verb is the event?", options: ["cenaba", "sonó", "both", "neither"], correct: 1 },
+      { q: "'Estaba cansado cuando llegué' correctly mixes…", options: ["two indefinidos", "two imperfectos", "imperfecto (state) + indefinido (event)", "indefinido (state) + imperfecto (event)"], correct: 2 },
     ],
   },
 };

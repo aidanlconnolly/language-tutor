@@ -12,7 +12,7 @@ export const UNIT_LANDMARKS: Unit = {
     {
       slug: "landmarks-madrid",
       title: "Madrid's highlights",
-      estMinutes: 8,
+      estMinutes: 10,
       pages: [
         {
           type: "intro",
@@ -46,10 +46,30 @@ export const UNIT_LANDMARKS: Unit = {
           items: [
             { l1: "¿Cuánto cuesta la entrada?", en: "How much is the entrance fee?" },
             { l1: "¿Hay descuento para estudiantes?", en: "Is there a student discount?" },
+            { l1: "¿A qué hora abre?", en: "What time does it open?" },
             { l1: "¿A qué hora cierra?", en: "What time does it close?" },
             { l1: "¿Está permitido hacer fotos?", en: "Is it permitted to take photos?" },
             { l1: "Es impresionante.", en: "It's impressive." },
             { l1: "Vale la pena.", en: "It's worth it." },
+          ],
+        },
+        {
+          type: "tip",
+          heading: "El, la — landmarks have gender too",
+          body: "Spanish landmark names carry gender, and you need it for agreement: <em>el</em> Prado, <em>el</em> Retiro, <em>el</em> Palacio Real (masculine) but <em>la</em> Plaza Mayor, <em>la</em> Puerta del Sol, <em>la</em> Sagrada Família (feminine). Note <em>de + el</em> always contracts to <em>del</em>: el Museo <em>del</em> Prado, el Parque <em>del</em> Retiro.",
+          example: { l1: "Vamos al Prado y luego a la Plaza Mayor.", en: "Let's go to the Prado and then to the Plaza Mayor." },
+        },
+        {
+          type: "dialogue",
+          heading: "At the Prado ticket desk",
+          setup: "You're buying tickets at el Museo del Prado.",
+          lines: [
+            { speaker: "Visitante", l1: "Buenas tardes. ¿Cuánto cuesta la entrada?", en: "Good afternoon. How much is the entrance fee?" },
+            { speaker: "Taquilla", l1: "La entrada general son quince euros. ¿Cuántas personas?", en: "General admission is fifteen euros. How many people?" },
+            { speaker: "Visitante", l1: "Dos, por favor. ¿Hay descuento para estudiantes?", en: "Two, please. Is there a student discount?" },
+            { speaker: "Taquilla", l1: "Sí, con carné de estudiante es gratis. ¿Tienen el carné?", en: "Yes, with a student card it's free. Do you have the card?" },
+            { speaker: "Visitante", l1: "Solo yo. Entonces una entrada general y una de estudiante.", en: "Only me. So one general ticket and one student ticket." },
+            { speaker: "Taquilla", l1: "Perfecto. ¿A qué hora cierran? — A las ocho. Tienen tiempo de sobra.", en: "Perfect. What time do you close? — At eight. You have plenty of time." },
           ],
         },
         {
@@ -70,12 +90,29 @@ export const UNIT_LANDMARKS: Unit = {
             },
           ],
         },
+        {
+          type: "orderWords",
+          heading: "Build the question",
+          items: [
+            { tokens: ["¿", "Cuánto", "cuesta", "la", "entrada", "?"], en: "How much is the entrance fee?" },
+            { tokens: ["¿", "A", "qué", "hora", "cierra", "el", "museo", "?"], en: "What time does the museum close?" },
+            { tokens: ["¿", "Hay", "descuento", "para", "estudiantes", "?"], en: "Is there a student discount?" },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "Two tickets, please. What time does the Prado close?",
+          reference: "Dos entradas, por favor. ¿A qué hora cierra el Prado?",
+          hint: "Entrada = ticket/admission. Use the inverted ¿ at the start of the question.",
+        },
       ],
     },
     {
       slug: "landmarks-spain",
       title: "Landmarks beyond Madrid",
-      estMinutes: 7,
+      estMinutes: 9,
       pages: [
         {
           type: "vocab",
@@ -87,8 +124,66 @@ export const UNIT_LANDMARKS: Unit = {
             { l1: "la Mezquita de Córdoba", en: "mosque-cathedral in Córdoba" },
             { l1: "el barrio Gótico", en: "Gothic Quarter of Barcelona" },
             { l1: "el Parque Güell", en: "Gaudí park in Barcelona" },
-            { l1: "la Torre del Oro", en: "12th-century tower in Seville" },
+            { l1: "la Giralda", en: "bell tower of Seville's cathedral" },
+            { l1: "el Acueducto de Segovia", en: "Roman aqueduct in Segovia" },
             { l1: "las Ramblas", en: "Barcelona's famous boulevard" },
+          ],
+        },
+        {
+          type: "vocab",
+          heading: "Opening hours & visiting words",
+          items: [
+            { l1: "la visita guiada", en: "the guided tour" },
+            { l1: "la entrada anticipada", en: "advance ticket" },
+            { l1: "el horario", en: "the opening hours / schedule" },
+            { l1: "¿Está abierto los domingos?", en: "Is it open on Sundays?" },
+            { l1: "Está cerrado los lunes.", en: "It's closed on Mondays." },
+            { l1: "Hay que reservar.", en: "You have to book." },
+            { l1: "Se agotan las entradas.", en: "Tickets sell out." },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "Planning a visit to the Sagrada Família",
+          setup: "You ask a hotel receptionist about visiting Gaudí's basilica.",
+          lines: [
+            { speaker: "Tú", l1: "Perdone, ¿a qué hora abre la Sagrada Família?", en: "Excuse me, what time does the Sagrada Família open?" },
+            { speaker: "Recepción", l1: "Abre a las nueve. Pero le recomiendo comprar la entrada anticipada por internet.", en: "It opens at nine. But I recommend buying the advance ticket online." },
+            { speaker: "Tú", l1: "¿Por qué? ¿Se agotan las entradas?", en: "Why? Do tickets sell out?" },
+            { speaker: "Recepción", l1: "Sí, casi siempre. Y si quiere subir a las torres, hay que reservar la visita guiada.", en: "Yes, almost always. And if you want to go up the towers, you have to book the guided tour." },
+            { speaker: "Tú", l1: "Muy bien. ¿Está abierta los domingos?", en: "Great. Is it open on Sundays?" },
+            { speaker: "Recepción", l1: "Sí, pero por la mañana hay misa, así que abre más tarde.", en: "Yes, but there's mass in the morning, so it opens later." },
+          ],
+        },
+        {
+          type: "fillBlank",
+          heading: "Opening hours fill",
+          intro: "Choose the word that fits.",
+          items: [
+            {
+              template: "¿A qué hora ___ el Parque Güell?",
+              answer: "abre",
+              en: "What time does Parque Güell open?",
+              options: ["abre", "cierra", "cuesta", "vale"],
+            },
+            {
+              template: "La Alhambra está ___ los lunes.",
+              answer: "cerrada",
+              en: "The Alhambra is closed on Mondays.",
+              options: ["abierta", "cerrada", "guiada", "gratis"],
+            },
+            {
+              template: "Para la Mezquita hay que ___ la entrada con antelación.",
+              answer: "reservar",
+              en: "For the Mezquita you have to book the ticket in advance.",
+              options: ["pagar", "reservar", "cerrar", "abrir"],
+            },
+            {
+              template: "Hicimos una ___ guiada por el barrio Gótico.",
+              answer: "visita",
+              en: "We did a guided tour of the Gothic Quarter.",
+              options: ["entrada", "visita", "salida", "cola"],
+            },
           ],
         },
         {
@@ -107,14 +202,28 @@ export const UNIT_LANDMARKS: Unit = {
               correct: 1,
               fb: "Valer la pena = to be worth it. ¡Vale la pena! is a common expression of enthusiasm.",
             },
+            {
+              q: "El Acueducto romano is in…",
+              options: ["Segovia", "Córdoba", "Sevilla", "Toledo"],
+              correct: 0,
+              fb: "El Acueducto de Segovia is one of the best-preserved Roman aqueducts in the world.",
+            },
           ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "Is the Alhambra open on Sundays? You have to book the guided tour.",
+          reference: "¿Está abierta la Alhambra los domingos? Hay que reservar la visita guiada.",
+          hint: "La Alhambra is feminine → abierta. 'You have to' = hay que + infinitive.",
         },
       ],
     },
     {
       slug: "landmarks-history",
       title: "Discussing Spanish history",
-      estMinutes: 7,
+      estMinutes: 8,
       pages: [
         {
           type: "vocab",
@@ -129,6 +238,21 @@ export const UNIT_LANDMARKS: Unit = {
           ],
         },
         {
+          type: "vocab",
+          heading: "Describing monuments & eras",
+          items: [
+            { l1: "el monumento", en: "the monument" },
+            { l1: "la catedral", en: "the cathedral" },
+            { l1: "el palacio", en: "the palace" },
+            { l1: "la torre", en: "the tower" },
+            { l1: "las ruinas", en: "the ruins" },
+            { l1: "antiguo / antigua", en: "ancient / old" },
+            { l1: "medieval", en: "medieval" },
+            { l1: "musulmán / árabe", en: "Muslim / Arab (Moorish)" },
+            { l1: "el siglo", en: "the century" },
+          ],
+        },
+        {
           type: "dialogue",
           heading: "Talking about a monument",
           lines: [
@@ -137,6 +261,30 @@ export const UNIT_LANDMARKS: Unit = {
             { speaker: "Guide", l1: "Felipe IV. Fue una época de gran esplendor.", en: "Felipe IV. It was a period of great splendour." },
             { speaker: "Visitor", l1: "¿Y cuánto tiempo tardaron en construirlo?", en: "And how long did it take to build?" },
             { speaker: "Guide", l1: "Casi cincuenta años.", en: "Almost fifty years." },
+          ],
+        },
+        {
+          type: "fillBlank",
+          heading: "History fill",
+          items: [
+            {
+              template: "La Mezquita de Córdoba es un monumento de origen ___.",
+              answer: "musulmán",
+              en: "The Mezquita of Córdoba is a monument of Muslim origin.",
+              options: ["musulmán", "romano", "moderno", "gótico"],
+            },
+            {
+              template: "La Alhambra fue ___ por los árabes en la Edad Media.",
+              answer: "construida",
+              en: "The Alhambra was built by the Arabs in the Middle Ages.",
+              options: ["construida", "construido", "cerrada", "comprada"],
+            },
+            {
+              template: "El Acueducto de Segovia es de la época ___.",
+              answer: "romana",
+              en: "The Aqueduct of Segovia is from the Roman era.",
+              options: ["romana", "moderna", "medieval", "barroca"],
+            },
           ],
         },
         {
@@ -156,6 +304,14 @@ export const UNIT_LANDMARKS: Unit = {
               fb: "Fue construido = was built (passive, indefinido of ser + past participle).",
             },
           ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "This cathedral is very old. It was built in the 13th century.",
+          reference: "Esta catedral es muy antigua. Fue construida en el siglo XIII.",
+          hint: "Catedral is feminine → antigua, construida. 'It was built' = fue construida (ser + past participle).",
         },
       ],
     }

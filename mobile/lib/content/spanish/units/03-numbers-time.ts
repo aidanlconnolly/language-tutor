@@ -12,7 +12,7 @@ export const UNIT_NUMBERS_TIME: Unit = {
     {
       slug: "numbers-0-100",
       title: "Numbers 0–100",
-      estMinutes: 8,
+      estMinutes: 10,
       pages: [
         {
           type: "intro",
@@ -70,12 +70,51 @@ export const UNIT_NUMBERS_TIME: Unit = {
             },
           ],
         },
+        {
+          type: "fillBlank",
+          heading: "Build the number",
+          intro: "Fill in the missing piece. In-between numbers join the tens to the units with y.",
+          items: [
+            {
+              template: "treinta ___ siete",
+              answer: "y",
+              en: "thirty-seven (37)",
+              options: ["y", "e", "con", "más"],
+            },
+            {
+              template: "Tengo veinti___ años.",
+              answer: "ocho",
+              en: "I'm twenty-eight years old.",
+              options: ["ocho", "y ocho", "y diez", "doce"],
+            },
+            {
+              template: "Hay ___ personas en la sala.",
+              answer: "cien",
+              en: "There are a hundred people in the room.",
+              options: ["cien", "ciento", "cienta", "cientos"],
+            },
+            {
+              template: "Cuesta ___ euros con cincuenta.",
+              answer: "tres",
+              en: "It costs three euros fifty (€3.50).",
+              options: ["tres", "trece", "treinta", "tercero"],
+            },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Say the number",
+          direction: "en-to-l1",
+          prompt: "I have twenty-one books and forty-five euros.",
+          reference: "Tengo veintiún libros y cuarenta y cinco euros.",
+          hint: "21 before a masculine plural noun → veintiún (drops the -o and takes an accent). 45 = cuarenta y cinco.",
+        },
       ],
     },
     {
       slug: "numbers-time-days",
       title: "Time, days & dates",
-      estMinutes: 9,
+      estMinutes: 11,
       pages: [
         {
           type: "vocab",
@@ -135,12 +174,32 @@ export const UNIT_NUMBERS_TIME: Unit = {
             },
           ],
         },
+        {
+          type: "dialogue",
+          heading: "At the train station",
+          setup: "You're catching a train in Madrid and need the time.",
+          lines: [
+            { speaker: "Tú", l1: "Perdone, ¿qué hora es?", en: "Excuse me, what time is it?" },
+            { speaker: "Empleado", l1: "Son las nueve y veinte.", en: "It's nine twenty." },
+            { speaker: "Tú", l1: "¿A qué hora sale el próximo tren?", en: "What time does the next train leave?" },
+            { speaker: "Empleado", l1: "A las diez menos cuarto.", en: "At a quarter to ten." },
+            { speaker: "Tú", l1: "Perfecto, muchas gracias.", en: "Perfect, thank you very much." },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Tell the time",
+          direction: "en-to-l1",
+          prompt: "It's half past two on Thursday.",
+          reference: "Son las dos y media el jueves.",
+          hint: "Use 'son las' for all hours except one. Half past = y media. Days are lowercase and take 'el'.",
+        },
       ],
     },
     {
       slug: "numbers-time-practical",
       title: "Numbers in everyday life",
-      estMinutes: 7,
+      estMinutes: 10,
       pages: [
         {
           type: "vocab",
@@ -190,6 +249,30 @@ export const UNIT_NUMBERS_TIME: Unit = {
             },
           ],
         },
+        {
+          type: "tip",
+          heading: "Writing the date — day before month",
+          body: "In Spain dates run day-month-year. <em>12/05/2026</em> means <strong>12 May 2026</strong>, not December 5. Spoken, you say the day as a plain number plus <em>de</em>: <em>el doce de mayo de dos mil veintiséis</em>. Only the first of the month uses an ordinal: <em>el primero de mayo</em> (or, very commonly in Spain, <em>el uno de mayo</em>).",
+          example: { l1: "Hoy es el dieciséis de junio de 2026.", en: "Today is the 16th of June, 2026." },
+        },
+        {
+          type: "orderWords",
+          heading: "Put it in order",
+          intro: "Drag the words into a natural Spanish sentence.",
+          items: [
+            { tokens: ["el", "concierto", "es", "el", "tres", "de", "abril"], en: "The concert is on the third of April." },
+            { tokens: ["mi", "cumpleaños", "es", "el", "primero", "de", "enero"], en: "My birthday is the first of January." },
+            { tokens: ["el", "billete", "cuesta", "doce", "euros"], en: "The ticket costs twelve euros." },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate the date",
+          direction: "en-to-l1",
+          prompt: "My birthday is the second of August.",
+          reference: "Mi cumpleaños es el dos de agosto.",
+          hint: "Day + de + month, all lowercase. Use the plain number 'dos', not an ordinal.",
+        },
       ],
     },
   ],
@@ -206,6 +289,9 @@ export const UNIT_NUMBERS_TIME: Unit = {
       { q: "How do you say 'What time is it?'", options: ["¿Cuánto tiempo?", "¿Qué hora es?", "¿A qué hora?", "¿Cuándo?"], correct: 1 },
       { q: "Uno before a masculine noun becomes…", options: ["una", "unos", "un", "uno stays the same"], correct: 2 },
       { q: "How do you say 'at noon'?", options: ["a medianoche", "al mediodía", "a las doce", "a medio"], correct: 1 },
+      { q: "How do you say 'the second of August'?", options: ["el segundo de agosto", "el dos agosto", "el dos de agosto", "agosto dos"], correct: 2 },
+      { q: "In Spain, '12/05/2026' means…", options: ["December 5, 2026", "12 May 2026", "Either is fine", "May 20, 2026"], correct: 1 },
+      { q: "21 before a masculine plural noun (e.g. libros) becomes…", options: ["veintiuno", "veintiún", "veintiuna", "veinte y uno"], correct: 1 },
     ],
   },
 };

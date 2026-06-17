@@ -12,7 +12,7 @@ export const UNIT_SPANISH_FOOD: Unit = {
     {
       slug: "spanish-food-icons",
       title: "Iconic Spanish dishes",
-      estMinutes: 9,
+      estMinutes: 12,
       pages: [
         {
           type: "intro",
@@ -53,6 +53,12 @@ export const UNIT_SPANISH_FOOD: Unit = {
           ],
         },
         {
+          type: "tip",
+          heading: "Paella — myths and rules",
+          body: "Real <em>paella valenciana</em> has chicken, rabbit, green beans and <em>garrofó</em> beans — <strong>not</strong> chorizo, and traditionally not seafood. The seafood version is <em>paella de marisco</em>; the mixed one is <em>paella mixta</em>. The prized crispy layer at the bottom is the <em>socarrat</em>. And Valencians eat it at lunch, almost never for dinner.",
+          example: { l1: "La paella de verdad no lleva chorizo.", en: "Real paella doesn't have chorizo in it." },
+        },
+        {
           type: "multipleChoice",
           heading: "Spanish food check",
           questions: [
@@ -74,14 +80,59 @@ export const UNIT_SPANISH_FOOD: Unit = {
               correct: 2,
               fb: "Riquísimo = superlative of rico (rich/delicious). The highest food compliment.",
             },
+            {
+              q: "The prized crispy crust at the bottom of a paella is called…",
+              options: ["el sofrito", "el socarrat", "la corteza", "el garrofó"],
+              correct: 1,
+              fb: "El socarrat = the toasted, slightly crispy rice layer at the base of the pan. Valencians fight over it.",
+            },
           ],
+        },
+        {
+          type: "fillBlank",
+          heading: "Complete the dish",
+          intro: "Pick the word that completes each Spanish food fact.",
+          items: [
+            {
+              template: "La tortilla española lleva patatas, huevo y a veces ___.",
+              answer: "cebolla",
+              en: "Spanish omelette has potatoes, egg and sometimes onion.",
+              options: ["cebolla", "arroz", "jamón", "queso"],
+            },
+            {
+              template: "El pulpo a la ___ se sirve con pimentón y aceite de oliva.",
+              answer: "gallega",
+              en: "Galician-style octopus is served with paprika and olive oil.",
+              options: ["valenciana", "gallega", "andaluza", "vasca"],
+            },
+            {
+              template: "El jamón ibérico de ___ viene de cerdos alimentados con bellotas.",
+              answer: "bellota",
+              en: "Acorn-fed Iberian ham comes from pigs fed on acorns.",
+              options: ["serrano", "bellota", "cebo", "campo"],
+            },
+            {
+              template: "El gazpacho es una sopa ___ de tomate.",
+              answer: "fría",
+              en: "Gazpacho is a cold tomato soup.",
+              options: ["caliente", "fría", "espesa", "dulce"],
+            },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "Real paella doesn't have chorizo; it has chicken and rabbit.",
+          reference: "La paella de verdad no lleva chorizo; lleva pollo y conejo.",
+          hint: "Use 'llevar' for what a dish contains. 'De verdad' = real / proper.",
         },
       ],
     },
     {
       slug: "spanish-food-tipping",
       title: "Tipping and food culture",
-      estMinutes: 6,
+      estMinutes: 11,
       pages: [
         {
           type: "intro",
@@ -104,6 +155,49 @@ export const UNIT_SPANISH_FOOD: Unit = {
           ],
         },
         {
+          type: "tip",
+          heading: "The Spanish clock — eat late",
+          body: "Spain runs on its own schedule. <em>Lunch</em> (<em>la comida</em>, the main meal) is around 2–3 pm, and <em>dinner</em> (<em>la cena</em>) rarely starts before 9 pm — 10 pm in summer. Many kitchens won't even open before 8:30 pm. If you turn up at 7 pm expecting dinner, you'll be eating alone. The gap is bridged by <em>la merienda</em> (an afternoon snack) and tapas with a drink.",
+          example: { l1: "Aquí se cena tarde, a partir de las nueve.", en: "Here people eat dinner late, from nine o'clock onward." },
+        },
+        {
+          type: "dialogue",
+          heading: "Ordering tapas at the bar",
+          setup: "You stand at a busy bar in Andalusia and order a round of tapas.",
+          lines: [
+            { speaker: "Camarero", l1: "Buenas. ¿Qué os pongo?", en: "Hi there. What can I get you?" },
+            { speaker: "Tú", l1: "Una caña y, para picar, ¿qué tapas tenéis?", en: "A small draft beer, and to nibble, what tapas do you have?" },
+            { speaker: "Camarero", l1: "Hoy hay jamón, tortilla, croquetas y boquerones en vinagre.", en: "Today we have ham, omelette, croquettes and anchovies in vinegar." },
+            { speaker: "Tú", l1: "Ponme una de croquetas y otra de jamón, por favor.", en: "Give me a portion of croquettes and one of ham, please." },
+            { speaker: "Camarero", l1: "Marchando. ¿Algo más?", en: "Coming right up. Anything else?" },
+            { speaker: "Tú", l1: "Nada más de momento, gracias.", en: "Nothing else for now, thanks." },
+          ],
+        },
+        {
+          type: "vocab",
+          heading: "At the bar",
+          intro: "Words you'll hear and use when ordering drinks and tapas.",
+          items: [
+            { l1: "una caña", en: "a small glass of draft beer" },
+            { l1: "una ración / una media ración", en: "a full / half plate to share" },
+            { l1: "una tapa / un pincho", en: "a small bar snack (free or cheap)" },
+            { l1: "para picar", en: "to nibble / for snacking" },
+            { l1: "¿Qué me recomienda?", en: "What do you recommend?" },
+            { l1: "¡Marchando!", en: "Coming right up! (waiter's reply)" },
+            { l1: "la barra / la terraza", en: "the bar counter / the outdoor terrace" },
+          ],
+        },
+        {
+          type: "orderWords",
+          heading: "Build the order",
+          intro: "Put the words in the right order to make a natural Spanish sentence.",
+          items: [
+            { tokens: ["Una", "caña", "y", "una", "ración", "de", "jamón", ",", "por", "favor", "."], en: "A small beer and a plate of ham, please." },
+            { tokens: ["¿", "Qué", "tapas", "tenéis", "hoy", "?"], en: "What tapas do you have today?" },
+            { tokens: ["Aquí", "se", "cena", "muy", "tarde", "."], en: "Here people eat dinner very late." },
+          ],
+        },
+        {
           type: "multipleChoice",
           heading: "Culture check",
           questions: [
@@ -119,14 +213,34 @@ export const UNIT_SPANISH_FOOD: Unit = {
               correct: 1,
               fb: "Tipping is optional and appreciated but not obligatory in Spain.",
             },
+            {
+              q: "In Spain, dinner (la cena) usually starts around…",
+              options: ["6 pm", "7 pm", "9–10 pm", "midnight"],
+              correct: 2,
+              fb: "Dinner rarely starts before 9 pm, and 10 pm is common in summer. Lunch is the big meal, around 2–3 pm.",
+            },
+            {
+              q: "'Una caña' is…",
+              options: ["A glass of wine", "A small draft beer", "A shot of liquor", "A coffee"],
+              correct: 1,
+              fb: "Una caña = a small glass of draft beer, the default bar order. A larger one is 'una jarra'.",
+            },
           ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "Here people eat dinner late, and tipping isn't expected.",
+          reference: "Aquí se cena tarde, y la propina no se espera.",
+          hint: "Use the impersonal 'se' (se cena = one dines). 'No se espera' = isn't expected.",
         },
       ],
     },
     {
       slug: "spanish-food-conversation",
       title: "Talking about food and cuisine",
-      estMinutes: 7,
+      estMinutes: 11,
       pages: [
         {
           type: "dialogue",
@@ -153,6 +267,35 @@ export const UNIT_SPANISH_FOOD: Unit = {
           ],
         },
         {
+          type: "conjugation",
+          heading: "probar — to try / to taste",
+          verb: "probar",
+          meaning: "to try, to taste (food)",
+          intro: "A stem-changing verb (o → ue) you'll use constantly with food. The stem changes in all forms except nosotros/vosotros.",
+          tenses: [
+            {
+              name: "Presente",
+              forms: [
+                { person: "yo", form: "pruebo", en: "I try" },
+                { person: "tú", form: "pruebas", en: "you try" },
+                { person: "él/ella", form: "prueba", en: "he/she tries" },
+                { person: "nosotros", form: "probamos", en: "we try" },
+                { person: "vosotros", form: "probáis", en: "you all try" },
+                { person: "ellos/ellas", form: "prueban", en: "they try" },
+              ],
+            },
+            {
+              name: "Pretérito perfecto (have you tried…?)",
+              forms: [
+                { person: "yo", form: "he probado", en: "I have tried" },
+                { person: "tú", form: "has probado", en: "you have tried" },
+                { person: "él/ella", form: "ha probado", en: "he/she has tried" },
+                { person: "nosotros", form: "hemos probado", en: "we have tried" },
+              ],
+            },
+          ],
+        },
+        {
           type: "multipleChoice",
           heading: "Food evaluation",
           questions: [
@@ -168,7 +311,46 @@ export const UNIT_SPANISH_FOOD: Unit = {
               correct: 2,
               fb: "En su punto = at its point / perfectly cooked. A great compliment.",
             },
+            {
+              q: "Choose the correct form: '¿___ tú la paella alguna vez?' (Have you ever tried paella?)",
+              options: ["Has probado", "Probas", "Pruebes", "Probaste a"],
+              correct: 0,
+              fb: "Pretérito perfecto: '¿Has probado…?' = Have you tried…? It's the natural way to ask about food experiences.",
+            },
           ],
+        },
+        {
+          type: "fillBlank",
+          heading: "Complete the conversation",
+          intro: "Fill in the missing word in each natural food exchange.",
+          items: [
+            {
+              template: "—¿Has ___ el pulpo a la gallega? —Todavía no.",
+              answer: "probado",
+              en: "—Have you tried Galician octopus? —Not yet.",
+              options: ["probado", "comido", "tomado", "gustado"],
+            },
+            {
+              template: "Esta tortilla está ___, le falta sal.",
+              answer: "sosa",
+              en: "This omelette is bland, it needs salt.",
+              options: ["rica", "sosa", "jugosa", "salada"],
+            },
+            {
+              template: "El cocido madrileño es un ___ contundente de garbanzos y carne.",
+              answer: "guiso",
+              en: "Madrid cocido is a hearty stew of chickpeas and meat.",
+              options: ["postre", "guiso", "aperitivo", "pincho"],
+            },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "l1-to-en",
+          prompt: "Me encanta el jamón ibérico, pero el gazpacho me parece soso.",
+          reference: "I love Iberian ham, but the gazpacho seems bland to me.",
+          hint: "'Me parece' = seems to me / I find it. 'Soso' = bland.",
         },
       ],
     }
