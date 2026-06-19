@@ -1,0 +1,395 @@
+import type { Unit } from "../../types";
+
+export const UNIT_SHOPPING: Unit = {
+  slug: "shopping",
+  stage: 6,
+  order: 25,
+  icon: "🛍️",
+  title: "Money & shopping",
+  tagline: "'How much is it?', contactless, sizes, 'can I try it on?'",
+  badge: "tourist",
+  lessons: [
+    {
+      slug: "shopping-prices-paying",
+      title: "Prices and paying",
+      estMinutes: 9,
+      pages: [
+        {
+          type: "intro",
+          heading: "Asking the price and paying in Britain",
+          body: [
+            "The everyday question is <strong>'How much is it?'</strong> for one thing, or <strong>'How much are they?'</strong> for more than one. You'll also hear <strong>'How much does it cost?'</strong> — slightly more formal, same meaning.",
+            "Prices are in <strong>pounds (£)</strong> and <strong>pence (p)</strong>. £4.50 is said <em>'four pounds fifty'</em> — most people drop the word <em>pence</em>. £3.99 is <em>'three ninety-nine'</em>. A price under a pound, like 80p, is <em>'eighty p'</em> or <em>'eighty pence'</em>.",
+            "Most shops take cards, and <strong>contactless</strong> (just tapping the card or phone) is everywhere. The shop assistant might ask <em>'Cash or card?'</em> or <em>'Are you paying by card?'</em>",
+          ],
+          keyPoint:
+            "'How much is it?' (one thing) / 'How much are they?' (more). £4.50 = 'four pounds fifty'. Tap the card = contactless.",
+        },
+        {
+          type: "vocab",
+          heading: "Money and price words",
+          intro: "The core words you'll use at any till in Britain.",
+          items: [
+            { l1: "How much is it?", en: "asking the price of one thing" },
+            { l1: "How much are they?", en: "asking the price of more than one" },
+            { l1: "the price", en: "what something costs" },
+            { l1: "pounds", en: "the main unit of money (£)" },
+            { l1: "pence / p", en: "smaller unit — 100p make £1; 'p' is said like the letter" },
+            { l1: "cash", en: "notes and coins" },
+            { l1: "card", en: "a debit or credit card" },
+            { l1: "contactless", en: "tapping a card or phone instead of using a PIN" },
+            { l1: "the change", en: "money you get back after paying with too much" },
+            { l1: "expensive", en: "costs a lot" },
+            { l1: "cheap", en: "costs very little" },
+            { l1: "Do you take card?", en: "asking if a shop accepts card payment" },
+          ],
+        },
+        {
+          type: "tip",
+          heading: "'Tap' culture and the contactless limit",
+          body: "In Britain, paying by card is the default and <strong>contactless</strong> is normal even for tiny amounts like a 90p coffee. Just hold the card or phone near the reader until it beeps. Above <strong>£100</strong> you'll usually be asked to insert the card and tap in your <em>PIN</em>. Small market stalls and some cafés may say <em>'cash only'</em>, so it's wise to carry a few coins.",
+          example: { l1: "Do you take card? — Yes, contactless is fine.", en: "Asking and confirming card payment." },
+        },
+        {
+          type: "dialogue",
+          heading: "Buying a coffee",
+          setup: "You order a flat white at a café counter in London.",
+          lines: [
+            { speaker: "You", l1: "Hi, a flat white, please. How much is it?", en: "Ordering and asking the price." },
+            { speaker: "Barista", l1: "That's three pounds twenty.", en: "£3.20." },
+            { speaker: "You", l1: "Do you take card?", en: "Checking card is accepted." },
+            { speaker: "Barista", l1: "Of course. Contactless is fine.", en: "You can just tap." },
+            { speaker: "You", l1: "Great, I'll tap.", en: "I'll pay by contactless." },
+            { speaker: "Barista", l1: "Lovely. There you go.", en: "Friendly 'here you are'." },
+          ],
+        },
+        {
+          type: "fillBlank",
+          heading: "Fill in the gap",
+          intro: "Choose the word that fits at a British till.",
+          items: [
+            {
+              template: "Excuse me, how ___ is this?",
+              answer: "much",
+              en: "Excuse me, how much is this?",
+              options: ["many", "much", "long", "old"],
+            },
+            {
+              template: "Do you ___ card?",
+              answer: "take",
+              en: "Do you take card?",
+              options: ["take", "make", "give", "have"],
+            },
+            {
+              template: "It's four ___ fifty.",
+              answer: "pounds",
+              en: "It's £4.50.",
+              options: ["pence", "pounds", "euros", "cents"],
+            },
+            {
+              template: "Can I pay by ___?",
+              answer: "card",
+              en: "Can I pay by card?",
+              options: ["cash", "card", "coin", "note"],
+            },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Say it in English",
+          direction: "en-to-l1",
+          prompt: "Ask the price of one item, then ask if you can pay by card.",
+          reference: "How much is it? Can I pay by card?",
+          hint: "Use 'is it' for a single item; 'pay by card' (no 'a').",
+        },
+      ],
+    },
+    {
+      slug: "shopping-clothes-sizes",
+      title: "Clothes and sizes",
+      estMinutes: 9,
+      pages: [
+        {
+          type: "intro",
+          heading: "Trying things on and asking for sizes",
+          body: [
+            "To try clothes on, ask <strong>'Can I try it on?'</strong> (one item) or <strong>'Can I try these on?'</strong> (more than one). The room for this is the <strong>fitting room</strong> (also called the <em>changing room</em>).",
+            "Sizes are usually <strong>small, medium, large</strong> (S, M, L) or numbers. To ask for a size, say <strong>'Have you got this in a medium?'</strong> — <em>'have you got'</em> is the everyday British way to say <em>'do you have'</em>.",
+            "British clothing words differ from American ones: <strong>trousers</strong> (not pants), <strong>jumper</strong> (a knitted top), and <strong>trainers</strong> (sports shoes).",
+          ],
+          keyPoint:
+            "'Can I try it on?' Fitting room = where you try things. 'Have you got this in a medium?' Trousers, jumper, trainers.",
+        },
+        {
+          type: "vocab",
+          heading: "Clothes",
+          items: [
+            { l1: "trousers", en: "what Americans call 'pants' — always plural" },
+            { l1: "jeans", en: "denim trousers — plural" },
+            { l1: "a jumper", en: "a knitted top / sweater" },
+            { l1: "a shirt", en: "a top with buttons and a collar" },
+            { l1: "a T-shirt", en: "a plain short-sleeved top" },
+            { l1: "a dress", en: "a one-piece garment worn mainly by women" },
+            { l1: "a skirt", en: "covers the lower body, open at the bottom" },
+            { l1: "a coat / a jacket", en: "outerwear — coat is longer, jacket shorter" },
+            { l1: "shoes", en: "footwear — plural" },
+            { l1: "trainers", en: "sports / running shoes" },
+          ],
+        },
+        {
+          type: "vocab",
+          heading: "Sizes and fit",
+          items: [
+            { l1: "size", en: "how big something is" },
+            { l1: "small / medium / large", en: "common sizes (S / M / L)" },
+            { l1: "Have you got this in a medium?", en: "asking for a particular size" },
+            { l1: "a bigger size", en: "the next size up" },
+            { l1: "a smaller size", en: "the next size down" },
+            { l1: "It's too tight.", en: "too small / close-fitting" },
+            { l1: "It's too loose.", en: "too big / not close enough" },
+            { l1: "It fits.", en: "it's the right size" },
+            { l1: "the fitting room", en: "where you try clothes on" },
+            { l1: "Can I try it on?", en: "asking to try on a single item" },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "In a clothes shop",
+          setup: "You like a jumper and want to try it on.",
+          lines: [
+            { speaker: "Assistant", l1: "Hiya, can I help you with anything?", en: "Friendly British 'hello, do you need help?'" },
+            { speaker: "You", l1: "Yes, have you got this jumper in a medium?", en: "Asking for a size." },
+            { speaker: "Assistant", l1: "Let me have a look… Yes, here you are.", en: "I'll check — here it is." },
+            { speaker: "You", l1: "Thanks. Can I try it on?", en: "Asking to try it on." },
+            { speaker: "Assistant", l1: "Of course, the fitting rooms are just over there.", en: "Pointing to the fitting room." },
+            { speaker: "You", l1: "It's a bit tight. Have you got a bigger size?", en: "Asking for the next size up." },
+            { speaker: "Assistant", l1: "I'll check the large for you.", en: "I'll look for an L." },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "Which is right?",
+          questions: [
+            {
+              q: "You want to try on a single shirt. You say…",
+              options: ["Can I try these on?", "Can I try it on?", "Can I try?", "Do I try on?"],
+              correct: 1,
+              fb: "'It' = one item; 'these' = more than one.",
+            },
+            {
+              q: "The British word for 'pants' (the long leg garment) is…",
+              options: ["trousers", "shorts", "tights", "leggings"],
+              correct: 0,
+              fb: "In Britain 'pants' means underwear, so use 'trousers'.",
+            },
+            {
+              q: "A knitted top is a…",
+              options: ["jacket", "jumper", "coat", "shirt"],
+              correct: 1,
+              fb: "Americans say 'sweater'; the British everyday word is 'jumper'.",
+            },
+            {
+              q: "It's too small. You ask for…",
+              options: ["a smaller size", "a tighter size", "a bigger size", "a shorter size"],
+              correct: 2,
+              fb: "Too tight means you need the next size up.",
+            },
+            {
+              q: "The everyday British way to say 'Do you have…?' is…",
+              options: ["Have you got…?", "Are you having…?", "Got you…?", "You have…?"],
+              correct: 0,
+              fb: "'Have you got…?' is the natural spoken form.",
+            },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Say it in English",
+          direction: "en-to-l1",
+          prompt: "Ask whether the shop has this jumper in a medium, then ask to try it on.",
+          reference: "Have you got this jumper in a medium? Can I try it on?",
+          hint: "Use 'have you got…' and 'try it on' for a single item.",
+        },
+      ],
+    },
+    {
+      slug: "shopping-till-receipts",
+      title: "At the till and receipts",
+      estMinutes: 8,
+      pages: [
+        {
+          type: "intro",
+          heading: "The till, bags, and receipts",
+          body: [
+            "In Britain the checkout counter is the <strong>till</strong>. The assistant might ask <strong>'Do you need a bag?'</strong> — bags cost a small charge, so you often bring your own.",
+            "You'll often hear <strong>'Would you like a receipt?'</strong> Keep the <strong>receipt</strong> if you might return the item — most shops need it for a refund or exchange.",
+            "Other common till phrases: <strong>'Are you paying by card?'</strong>, <strong>'Pop your card in / tap there'</strong>, and the friendly closer <strong>'Have a good day!'</strong>",
+          ],
+          keyPoint:
+            "Till = checkout. 'Do you need a bag?' Keep the receipt for returns. 'Tap there / pop your card in.'",
+        },
+        {
+          type: "vocab",
+          heading: "At the till",
+          items: [
+            { l1: "the till", en: "the checkout / counter where you pay" },
+            { l1: "a queue", en: "a line of people waiting" },
+            { l1: "to queue", en: "to wait in line" },
+            { l1: "a bag", en: "a carrier for your shopping (often costs a few pence)" },
+            { l1: "a receipt", en: "the printed proof of purchase" },
+            { l1: "Would you like a receipt?", en: "the assistant offering a receipt" },
+            { l1: "Do you need a bag?", en: "the assistant offering a bag" },
+            { l1: "Pop your card in.", en: "friendly 'put your card in the reader'" },
+            { l1: "Tap there.", en: "hold your card on the reader (contactless)" },
+            { l1: "Enter your PIN.", en: "type your secret 4-digit number" },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "Paying at the till",
+          setup: "You're at the till in a shop with one item.",
+          lines: [
+            { speaker: "Assistant", l1: "That's twelve pounds ninety, please. Do you need a bag?", en: "£12.90 — offering a bag." },
+            { speaker: "You", l1: "No thanks, I've got my own.", en: "Declining — I brought a bag." },
+            { speaker: "Assistant", l1: "Lovely. Are you paying by card?", en: "Checking the payment method." },
+            { speaker: "You", l1: "Yes, can I tap?", en: "Asking to pay contactless." },
+            { speaker: "Assistant", l1: "Go ahead, just tap there. Would you like a receipt?", en: "Offering a receipt." },
+            { speaker: "You", l1: "Yes please, I might bring it back.", en: "Keeping it in case of a return." },
+            { speaker: "Assistant", l1: "Here you go. Have a good day!", en: "Friendly goodbye." },
+          ],
+        },
+        {
+          type: "orderWords",
+          heading: "Put the words in order",
+          intro: "Tap the words into a natural English sentence.",
+          items: [
+            { tokens: ["Do", "you", "need", "a", "bag"], en: "Do you need a bag?" },
+            { tokens: ["Would", "you", "like", "a", "receipt"], en: "Would you like a receipt?" },
+            { tokens: ["No", "thanks", "I've", "got", "my", "own"], en: "No thanks, I've got my own." },
+            { tokens: ["Can", "I", "pay", "by", "card"], en: "Can I pay by card?" },
+          ],
+        },
+        {
+          type: "fillBlank",
+          heading: "Fill the gap",
+          items: [
+            {
+              template: "I'll pay at the ___.",
+              answer: "till",
+              en: "I'll pay at the till (checkout).",
+              options: ["till", "queue", "shelf", "bag"],
+            },
+            {
+              template: "Keep the ___ in case you want to return it.",
+              answer: "receipt",
+              en: "Keep the receipt in case you want to return it.",
+              options: ["change", "receipt", "bag", "card"],
+            },
+            {
+              template: "There's a long ___ at the checkout.",
+              answer: "queue",
+              en: "There's a long queue at the checkout.",
+              options: ["line", "queue", "row", "till"],
+            },
+          ],
+        },
+        {
+          type: "checkpoint",
+          heading: "Lesson check",
+          questions: [
+            {
+              q: "The British word for the checkout counter is…",
+              options: ["the till", "the desk", "the stand", "the booth"],
+              correct: 0,
+            },
+            {
+              q: "Why keep your receipt?",
+              options: [
+                "It's the law to carry it",
+                "You usually need it to return an item",
+                "It's worth money",
+                "Shops won't let you leave without it",
+              ],
+              correct: 1,
+            },
+            {
+              q: "The assistant says 'Tap there.' This means…",
+              options: [
+                "knock on the counter",
+                "hold your card on the reader",
+                "sign your name",
+                "wait a moment",
+              ],
+              correct: 1,
+            },
+          ],
+        },
+      ],
+    },
+  ],
+  checkpoint: {
+    passingPct: 80,
+    questions: [
+      {
+        q: "'How much is it?' is used for…",
+        options: ["one item", "more than one item", "only food", "only clothes"],
+        correct: 0,
+      },
+      {
+        q: "£4.50 is normally said as…",
+        options: ["four point five pounds", "four pounds fifty", "four fifty pence", "forty-five pounds"],
+        correct: 1,
+      },
+      {
+        q: "Paying by tapping your card is called…",
+        options: ["chip and PIN", "contactless", "cash back", "direct debit"],
+        correct: 1,
+      },
+      {
+        q: "The British word for 'sweater' (a knitted top) is…",
+        options: ["jacket", "jumper", "coat", "vest"],
+        correct: 1,
+      },
+      {
+        q: "To try on a single jacket you say…",
+        options: ["Can I try these on?", "Can I try it on?", "Can I trying on?", "Do I try on it?"],
+        correct: 1,
+      },
+      {
+        q: "If a jumper is too tight, you ask for…",
+        options: ["a smaller size", "a bigger size", "a shorter size", "a tighter size"],
+        correct: 1,
+      },
+      {
+        q: "The room where you try clothes on is the…",
+        options: ["fitting room", "back room", "store room", "rest room"],
+        correct: 0,
+      },
+      {
+        q: "The checkout counter in a British shop is the…",
+        options: ["queue", "till", "stall", "aisle"],
+        correct: 1,
+      },
+      {
+        q: "You should keep your receipt because…",
+        options: [
+          "it's required by law",
+          "you usually need it to get a refund",
+          "it proves your age",
+          "the shop keeps a copy",
+        ],
+        correct: 1,
+      },
+      {
+        q: "The everyday British way to ask 'Do you have this in medium?' is…",
+        options: [
+          "Have you got this in a medium?",
+          "Are you having a medium?",
+          "You got medium?",
+          "Is there a medium for you?",
+        ],
+        correct: 0,
+      },
+    ],
+  },
+};

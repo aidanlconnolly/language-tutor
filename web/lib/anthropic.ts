@@ -6,6 +6,7 @@ const LANG_NAMES: Record<Lang, string> = {
   french: "French",
   spanish: "Spanish",
   portuguese: "Brazilian Portuguese",
+  english: "English",
 };
 
 const LANG_DIACRITICS: Record<Lang, string> = {
@@ -13,6 +14,7 @@ const LANG_DIACRITICS: Record<Lang, string> = {
   french: "à â é è ê ë î ï ô ù û ü ç",
   spanish: "á é í ó ú ü ñ ¡ ¿",
   portuguese: "á â ã à é ê í ó ô õ ú ç",
+  english: "é ï (only in loanwords like café, naïve, résumé)",
 };
 
 const LANG_CONJUGATION_NOTE: Record<Lang, string> = {
@@ -24,6 +26,8 @@ const LANG_CONJUGATION_NOTE: Record<Lang, string> = {
     "Keys are tenses ('presente', 'pretérito indefinido', 'imperfecto', 'futuro simple', 'condicional'). Each value is an object keyed by person ('yo', 'tú', 'él/ella/usted', 'nosotros', 'vosotros', 'ellos/ustedes').",
   portuguese:
     "Brazilian Portuguese. Keys are tenses ('presente', 'pretérito perfeito', 'pretérito imperfeito', 'futuro do presente', 'futuro do pretérito'). Each value is an object keyed by person ('eu', 'você/ele/ela', 'nós', 'vocês/eles/elas'). Use the Brazilian você forms as the 2nd person; for compound tenses include the auxiliary (ter).",
+  english:
+    "Keys are tenses ('present simple', 'past simple', 'present continuous', 'present perfect', 'future (will)'). Each value is an object keyed by person ('I', 'you', 'he/she/it', 'we', 'they'). The only present-simple inflection is the 3rd-person -s (he works); include the auxiliary for continuous (am/is/are + -ing), perfect (have/has + past participle) and future (will + base form). Note irregular past forms where relevant.",
 };
 
 /**

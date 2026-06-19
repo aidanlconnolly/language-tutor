@@ -14,7 +14,7 @@ export default function HomeScreen() {
   const { user } = useAuth();
   const router = useRouter();
   const [stats, setStats] = useState<Record<Lang, LangStats | null>>({
-    italian: null, french: null, spanish: null, portuguese: null,
+    italian: null, french: null, spanish: null, portuguese: null, english: null,
   });
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
@@ -29,7 +29,7 @@ export default function HomeScreen() {
         return { lang, lessonStreak, readStreak, unitsCompleted: passed.size };
       }),
     );
-    const s: typeof stats = { italian: null, french: null, spanish: null, portuguese: null };
+    const s: typeof stats = { italian: null, french: null, spanish: null, portuguese: null, english: null };
     for (const r of results) {
       if (r.status === "fulfilled") s[r.value.lang] = r.value;
     }
