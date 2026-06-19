@@ -1,12 +1,13 @@
-export type Lang = "italian" | "french" | "spanish" | "portuguese";
+export type Lang = "italian" | "french" | "spanish" | "portuguese" | "english";
 
-export const SUPPORTED_LANGS: Lang[] = ["italian", "french", "spanish", "portuguese"];
+export const SUPPORTED_LANGS: Lang[] = ["italian", "french", "spanish", "portuguese", "english"];
 
 export const LANG_LABELS: Record<Lang, string> = {
   italian: "Italian",
   french: "French",
   spanish: "Spanish",
   portuguese: "Portuguese",
+  english: "English",
 };
 
 export const LANG_FLAGS: Record<Lang, string> = {
@@ -15,6 +16,8 @@ export const LANG_FLAGS: Record<Lang, string> = {
   spanish: "🇪🇸",
   // Brazilian-primary course (pt-BR audio), European Portuguese taught in notes.
   portuguese: "🇧🇷",
+  // British-primary course (en-GB audio), London-themed.
+  english: "🇬🇧",
 };
 
 export const LANG_SPEECH_CODE: Record<Lang, string> = {
@@ -22,6 +25,7 @@ export const LANG_SPEECH_CODE: Record<Lang, string> = {
   french: "fr-FR",
   spanish: "es-ES",
   portuguese: "pt-BR",
+  english: "en-GB",
 };
 
 export const LANG_ACCENT_COLOR: Record<Lang, string> = {
@@ -29,6 +33,7 @@ export const LANG_ACCENT_COLOR: Record<Lang, string> = {
   french: "blue",
   spanish: "red",
   portuguese: "green",
+  english: "purple",
 };
 
 export function isValidLang(value: string): value is Lang {
