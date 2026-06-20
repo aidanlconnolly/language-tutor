@@ -1,0 +1,47 @@
+name: EAS Update (OTA)
+
+# Manually-triggered over-the-air update for the Expo app.
+# Publishes the current JS bundle to the production channel — no native
+# build and no App Store review (JS/TS/content changes only).
+# Requires an EXPO_TOKEN repo secret (an Expo access token from expo.dev).
+
+on:
+  workflow_dispatch:
+    inputs:
+      message:
+        description: "Update message (shown in the EAS dashboard)"
+        required: true
+        default: "Manual OTA update"
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: mobile
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: mobile/package-lock.json
+
+      - name: Setup EAS
+        uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Publish OTA update to production channel
+        env:
+          # Pin the OTA bundle at the production API (matches the build profile).
+          EXPO_PUBLIC_API_BASE: https://learnallora.com
+          UPDATE_MESSAGE: ${{ github.event.inputs.message }}
+        run: eas update --channel production --message "$UPDATE_MESSAGE" --non-interactive
