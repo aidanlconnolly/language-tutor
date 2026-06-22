@@ -18,6 +18,7 @@ const GREETINGS: Record<Lang, [string, string, string]> = {
   spanish: ["Buenos días", "Buenas tardes", "Buenas noches"],
   portuguese: ["Bom dia", "Boa tarde", "Boa noite"],
   english: ["Good morning", "Good afternoon", "Good evening"],
+  german: ["Guten Morgen", "Guten Tag", "Guten Abend"],
 };
 
 export default function LangHomeScreen() {
