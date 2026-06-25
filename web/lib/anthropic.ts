@@ -8,6 +8,7 @@ const LANG_NAMES: Record<Lang, string> = {
   portuguese: "Brazilian Portuguese",
   english: "English",
   german: "German",
+  arabic: "Modern Standard Arabic",
 };
 
 const LANG_DIACRITICS: Record<Lang, string> = {
@@ -17,6 +18,7 @@ const LANG_DIACRITICS: Record<Lang, string> = {
   portuguese: "á â ã à é ê í ó ô õ ú ç",
   english: "é ï (only in loanwords like café, naïve, résumé)",
   german: "ä ö ü ß",
+  arabic: "the harakat: fatḥa َ, kasra ِ, ḍamma ُ, sukūn ْ, shadda ّ, tanwīn ً ٍ ٌ — Arabic is written right-to-left",
 };
 
 const LANG_CONJUGATION_NOTE: Record<Lang, string> = {
@@ -32,6 +34,8 @@ const LANG_CONJUGATION_NOTE: Record<Lang, string> = {
     "Keys are tenses ('present simple', 'past simple', 'present continuous', 'present perfect', 'future (will)'). Each value is an object keyed by person ('I', 'you', 'he/she/it', 'we', 'they'). The only present-simple inflection is the 3rd-person -s (he works); include the auxiliary for continuous (am/is/are + -ing), perfect (have/has + past participle) and future (will + base form). Note irregular past forms where relevant.",
   german:
     "Keys are tenses ('Präsens', 'Perfekt', 'Präteritum', 'Futur I'). Each value is an object keyed by person ('ich', 'du', 'er/sie/es', 'wir', 'ihr', 'sie/Sie'). For 'Perfekt' include the auxiliary (haben/sein) plus the past participle. Note separable-verb splits and strong-verb stem-vowel changes.",
+  arabic:
+    "Modern Standard Arabic. Keys are tenses ('al-māḍī' = past/perfect, 'al-muḍāriʿ' = present/imperfect, 'al-mustaqbal' = future). Each value is an object keyed by person ('anā', 'anta', 'anti', 'huwa', 'hiya', 'naḥnu', 'antum', 'hum'). Give the fully-vocalised Arabic form (with harakat). Note the three-letter root and the verb form (I–X) where relevant.",
 };
 
 /**
