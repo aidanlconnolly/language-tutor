@@ -2,27 +2,21 @@
 
 **Branch:** `claude/allora-status-wq7ffz` (review branch — **nothing deploys to prod or users** until you review & merge)
 **Goal:** add German → Arabic → Japanese → Chinese, each to full A0–B1 parity (35 units × 3 lessons + 8 reads), web + mobile.
-**Mode:** building continuously in the background; committing + pushing at each milestone.
 
-## Order & engineering notes
-1. **German** 🇩🇪 — standard course (Latin script). Content + plumbing only.
-2. **Arabic** 🇸🇦 — needs **RTL rendering** work across web + mobile components before content is usable.
-3. **Japanese** 🇯🇵 — needs **tokenizer** changes (no word spaces) + romaji + kana/kanji lessons.
-4. **Chinese** 🇨🇳 — needs tokenizer changes + pinyin + tones + characters.
+## Status (updated 2026-06-25 ~04:10 UTC)
 
-## Status
+⏸ **PAUSED — session usage limit hit, resets 19:30 UTC.** An hourly cron (`2253fcef`) will auto-resume the moment budget returns. Everything below is committed/pushed, so a resume is clean.
 
-### 🇩🇪 German — IN PROGRESS
-- [x] Curriculum outline (8 stages, 35 units) — `stages.ts`
-- [x] Web plumbing: lang.ts, anthropic.ts, content dispatcher, units/reads index
-- [x] Mobile plumbing: lang.ts, theme.ts tint, dispatcher, greeting + stats maps
-- [ ] Content authoring (35 units + 8 reads) — 9 agents running
-- [ ] Mirror content to mobile
-- [ ] Build/typecheck (web `next build` + `tsc`, mobile `tsc`) + integrity check
-- [ ] Commit working state
+### 🇩🇪 German — content authored, validation pending
+- [x] Curriculum outline (8 stages, 35 units; cases woven through @ U8/U26/U32)
+- [x] Web + mobile plumbing (lang, anthropic prompts, dispatchers, theme tint, screen maps)
+- [x] **All 35 units + 8 reads authored & committed** (`dab0195`)
+- [ ] Mirror content to mobile (`mobile/lib/content/german`)
+- [ ] Build/typecheck (web `next build`+`tsc`, mobile `tsc`) + integrity check
+- [ ] Commit validated state
 
-### 🇸🇦 Arabic — QUEUED (RTL engineering first)
-### 🇯🇵 Japanese — QUEUED (tokenizer + romaji first)
-### 🇨🇳 Chinese — QUEUED (tokenizer + pinyin first)
+### 🇸🇦 Arabic — QUEUED (build RTL rendering first, then content)
+### 🇯🇵 Japanese — QUEUED (tokenizer + romaji first, then content)
+### 🇨🇳 Chinese — QUEUED (tokenizer + pinyin first, then content)
 
-_Last updated: German scaffold + plumbing committed; authoring agents launched._
+**If auto-resume doesn't fire** (this cloud container may be reclaimed over a long idle gap): just message "continue" after 19:30 UTC and the build picks up from this committed state.
