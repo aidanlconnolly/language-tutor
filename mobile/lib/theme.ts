@@ -75,7 +75,7 @@ export const SUN = {
 
 /** Per-language tinted card colors for the home screen. */
 export const LANG_TINT: Record<
-  "italian" | "french" | "spanish" | "portuguese" | "english" | "german",
+  "italian" | "french" | "spanish" | "portuguese" | "english" | "german" | "arabic",
   { bg: string; border: string; text: string; bar: string; sub: string }
 > = {
   italian: { bg: "#eaf6e7", border: "#bcdcb4", text: "#27500a", bar: "#639922", sub: "#3b6d11" },
@@ -84,4 +84,5 @@ export const LANG_TINT: Record<
   portuguese: { bg: "#e7f5ea", border: "#b4dcc0", text: "#0a5028", bar: "#1c9b4b", sub: "#116d33" },
   english: { bg: "#f1ecfb", border: "#d6c8f0", text: "#42206b", bar: "#8b5cf6", sub: "#5b2e93" },
   german: { bg: "#f6f2e8", border: "#e0d3ad", text: "#4a3b12", bar: "#c79a3a", sub: "#6b5519" },
+  arabic: { bg: "#e7f4f3", border: "#b3dcd7", text: "#0c4a45", bar: "#0d9488", sub: "#115e57" },
 };

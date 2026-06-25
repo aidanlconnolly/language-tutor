@@ -1,6 +1,6 @@
-export type Lang = "italian" | "french" | "spanish" | "portuguese" | "english" | "german";
+export type Lang = "italian" | "french" | "spanish" | "portuguese" | "english" | "german" | "arabic";
 
-export const SUPPORTED_LANGS: Lang[] = ["italian", "french", "spanish", "portuguese", "english", "german"];
+export const SUPPORTED_LANGS: Lang[] = ["italian", "french", "spanish", "portuguese", "english", "german", "arabic"];
 
 export const LANG_LABELS: Record<Lang, string> = {
   italian: "Italian",
@@ -9,6 +9,7 @@ export const LANG_LABELS: Record<Lang, string> = {
   portuguese: "Portuguese",
   english: "English",
   german: "German",
+  arabic: "Arabic",
 };
 
 export const LANG_FLAGS: Record<Lang, string> = {
@@ -20,6 +21,8 @@ export const LANG_FLAGS: Record<Lang, string> = {
   // British-primary course (en-GB audio), London-themed.
   english: "🇬🇧",
   german: "🇩🇪",
+  // Modern Standard Arabic, Cairo/Egypt-themed (ar-EG audio).
+  arabic: "🇪🇬",
 };
 
 export const LANG_SPEECH_CODE: Record<Lang, string> = {
@@ -29,6 +32,7 @@ export const LANG_SPEECH_CODE: Record<Lang, string> = {
   portuguese: "pt-BR",
   english: "en-GB",
   german: "de-DE",
+  arabic: "ar-EG",
 };
 
 export const LANG_ACCENT_COLOR: Record<Lang, string> = {
@@ -38,7 +42,24 @@ export const LANG_ACCENT_COLOR: Record<Lang, string> = {
   portuguese: "green",
   english: "purple",
   german: "yellow",
+  arabic: "teal",
 };
+
+/** Text direction per language. Arabic is right-to-left; everything else LTR. */
+export const LANG_DIR: Record<Lang, "ltr" | "rtl"> = {
+  italian: "ltr",
+  french: "ltr",
+  spanish: "ltr",
+  portuguese: "ltr",
+  english: "ltr",
+  german: "ltr",
+  arabic: "rtl",
+};
+
+/** Convenience: true when a language is right-to-left. */
+export function isRTL(lang: Lang): boolean {
+  return LANG_DIR[lang] === "rtl";
+}
 
 export function isValidLang(value: string): value is Lang {
   return SUPPORTED_LANGS.includes(value as Lang);

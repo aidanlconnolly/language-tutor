@@ -6,24 +6,23 @@
 ## Status (updated 2026-06-25)
 
 ### 🇩🇪 German — ✅ DONE (web + mobile, validated)
-35 units / 105 lessons / 74 translate drills / 8 reads. web `tsc`+`next build` ✅, mobile `tsc` ✅, integrity ✅. Committed.
+35 units / 105 lessons / 74 drills / 8 reads. web `tsc`+`next build` ✅, mobile `tsc` ✅, integrity ✅.
 
-### 🇸🇦 Arabic — 🔄 IN PROGRESS
-- [x] Curriculum (8 stages, 35 units; MSA, Cairo-themed; script/al-/iḍāfa/root-system/dual woven in) — `stages.ts`
-- [x] units/reads index scaffolds
-- [ ] **Content authoring** — 9 agents running (35 units + 8 reads, Arabic script)
-- [ ] **RTL ENGINEERING** (the app is LTR-only today) — see plan below
-- [ ] Arabic plumbing (lang.ts, anthropic.ts, dispatcher, theme, screens) web + mobile
-- [ ] Mirror to mobile, validate, commit
+### 🇪🇬 Arabic — ✅ BUILT (web + mobile, validated) — v1, see caveats
+- [x] Curriculum (MSA, Cairo-themed; script/al-/iḍāfa/root-system/dual woven in)
+- [x] All 35 units + 8 reads authored (Arabic script + harakat)
+- [x] **RTL engineering (web):** `LANG_DIR` + `useIsRTL()`; `dir` applied on LessonPlayer (all lesson pages), TappableSentence (all tokenized target text incl. read paragraphs & dialogues), CheckpointRunner (quizzes). Unicode bidi renders Arabic RTL; English glosses stay LTR.
+- [x] Plumbing both platforms (lang.ts + LANG_DIR, anthropic.ts, dispatchers, theme tint, screens)
+- [x] Mirrored to mobile
+- [x] **Validated:** web `tsc` ✅ + `next build` ✅, mobile `tsc` ✅; integrity 35/105/77 drills/8 reads ✅
+- [x] Committed + pushed
 
-**RTL plan (from a full codebase scan):**
-1. Add `LANG_DIR: Record<Lang,"ltr"|"rtl">` to web+mobile `lang.ts` (arabic="rtl", all others "ltr").
-2. Web: add `useIsRTL()` to `lib/lang-context.tsx`; set `dir={isRTL?'rtl':'ltr'}` on containers — `LessonPlayer`, `TappableSentence`, `Reader`, `DailyRead`, `WordPopover`, `CheckpointRunner`, and page roots. Unicode bidi then renders Arabic correctly; English `en` glosses stay LTR.
-3. Finicky spots: WordPopover flex rows + left/right anchor; ConjugationPage table `text-right`; OrderWordsPage — do NOT flex-reverse (keep token order), just set `dir`.
-4. Mobile: `writingDirection:'rtl'` on the `l1` Text elements via an isRTL signal from the lang param (avoid global `I18nManager.forceRTL`, which would flip all 6 LTR languages).
-5. Tokenizer (`\p{L}+`) already handles Arabic; TTS `ar-SA` works via existing speech-code lookup.
+**Caveats / follow-ups (intentionally deferred — flagged for review):**
+- RTL polish not yet done: WordPopover left/right anchor, ConjugationPage table `text-right`, DailyRead/Reader container `dir` (read *paragraphs* already RTL via TappableSentence), OrderWords token order. Lessons/quizzes/reads render correctly; these are refinements.
+- **Mobile RTL**: content + Arabic text render, but per-`Text` `writingDirection` layout-mirroring on the RN page components is a follow-up (mobile currently lays out LTR with correct Arabic text runs).
+- **Content is AI-authored MSA** — needs a native/advanced-speaker proofread (harakat & case endings on iḍāfa/accusative especially).
 
-### 🇯🇵 Japanese — QUEUED (tokenizer + romaji first)
-### 🇨🇳 Chinese — QUEUED (tokenizer + pinyin first)
+### 🇯🇵 Japanese — NEXT (tokenizer for no-space text + romaji + kana/kanji, then content)
+### 🇨🇳 Chinese — QUEUED (tokenizer + pinyin + tones, then content)
 
 _Everything stays on the review branch — no deploy, no OTA — until you review. Hourly cron `2253fcef` resumes if budget caps out._

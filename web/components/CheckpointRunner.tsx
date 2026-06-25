@@ -5,6 +5,7 @@ import { useState, useTransition } from "react";
 import type { Unit } from "@/lib/content/types";
 import { recordCheckpoint } from "@/lib/actions/progress";
 import type { Lang } from "@/lib/lang";
+import { LANG_DIR } from "@/lib/lang";
 
 export function CheckpointRunner({
   unit,
@@ -118,7 +119,7 @@ export function CheckpointRunner({
   }
 
   return (
-    <div className="flex h-screen flex-col font-sans">
+    <div className="flex h-screen flex-col font-sans" dir={LANG_DIR[lang]}>
       <header
         className="flex items-center gap-3 border-b-2 border-emerald-500 bg-zinc-950 px-3 py-2.5 text-white sm:gap-4 sm:px-4 sm:py-3"
         style={{ paddingTop: "calc(env(safe-area-inset-top) + 0.625rem)" }}
