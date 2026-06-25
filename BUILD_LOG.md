@@ -6,23 +6,25 @@
 ## Status (updated 2026-06-25)
 
 ### 🇩🇪 German — ✅ DONE (web + mobile, validated)
-35 units / 105 lessons / 74 drills / 8 reads. web `tsc`+`next build` ✅, mobile `tsc` ✅, integrity ✅.
+35 units / 105 lessons / 74 drills / 8 reads. Full builds green.
 
-### 🇪🇬 Arabic — ✅ BUILT (web + mobile, validated) — v1, see caveats
-- [x] Curriculum (MSA, Cairo-themed; script/al-/iḍāfa/root-system/dual woven in)
-- [x] All 35 units + 8 reads authored (Arabic script + harakat)
-- [x] **RTL engineering (web):** `LANG_DIR` + `useIsRTL()`; `dir` applied on LessonPlayer (all lesson pages), TappableSentence (all tokenized target text incl. read paragraphs & dialogues), CheckpointRunner (quizzes). Unicode bidi renders Arabic RTL; English glosses stay LTR.
-- [x] Plumbing both platforms (lang.ts + LANG_DIR, anthropic.ts, dispatchers, theme tint, screens)
+### 🇪🇬 Arabic — ✅ BUILT (web + mobile, validated) — v1
+35 units / 105 lessons / 77 drills / 8 reads (MSA, Cairo). RTL engineering on web (LANG_DIR + useIsRTL + dir on LessonPlayer/TappableSentence/CheckpointRunner). Full builds green. Caveats: RTL polish (popover anchor, table align, mobile per-Text writingDirection) + native proofread — in commit notes.
+
+### 🇯🇵 Japanese — ✅ BUILT (web + mobile, validated) — v1
+- [x] Curriculum (Tokyo-themed; hiragana→katakana→particles→て-form→counters→keigo)
+- [x] All 35 units + 8 reads authored (kana-forward, rōmaji in vocab notes)
+- [x] **Tokenizer engineering:** `tokenize.ts` (web+mobile) now segments no-space CJK text — `Intl.Segmenter` word-level on web, script-run fallback on Hermes/mobile; recognises 。！？ sentence enders. Verified: a JP sentence → 11 word tokens (was 1).
+- [x] Plumbing both platforms (lang.ts, anthropic.ts, dispatchers, theme tint, screens)
 - [x] Mirrored to mobile
-- [x] **Validated:** web `tsc` ✅ + `next build` ✅, mobile `tsc` ✅; integrity 35/105/77 drills/8 reads ✅
+- [x] **Validated:** web `tsc` ✅ + `next build` ✅, mobile `tsc` ✅; integrity 35/105/83 drills/8 reads ✅; tokenizer sanity ✅
 - [x] Committed + pushed
 
-**Caveats / follow-ups (intentionally deferred — flagged for review):**
-- RTL polish not yet done: WordPopover left/right anchor, ConjugationPage table `text-right`, DailyRead/Reader container `dir` (read *paragraphs* already RTL via TappableSentence), OrderWords token order. Lessons/quizzes/reads render correctly; these are refinements.
-- **Mobile RTL**: content + Arabic text render, but per-`Text` `writingDirection` layout-mirroring on the RN page components is a follow-up (mobile currently lays out LTR with correct Arabic text runs).
-- **Content is AI-authored MSA** — needs a native/advanced-speaker proofread (harakat & case endings on iḍāfa/accusative especially).
+**Caveats / follow-ups (deferred — flagged for review):**
+- **Furigana/readings**: rōmaji is in vocab `note`s, but the content schema has no per-sentence reading field, so kanji in lessons/reads show without furigana (content is kana-forward to compensate). Adding a `reading?` field + rendering is the main JP enhancement.
+- **Mobile tokenizer**: Hermes lacks `Intl.Segmenter`, so mobile uses the script-run fallback (taps group kana runs / single kanji) rather than full-word segmentation. Web is word-level.
+- AI-authored — needs a native-speaker proofread.
 
-### 🇯🇵 Japanese — NEXT (tokenizer for no-space text + romaji + kana/kanji, then content)
-### 🇨🇳 Chinese — QUEUED (tokenizer + pinyin + tones, then content)
+### 🇨🇳 Chinese — NEXT (tokenizer already CJK-ready; needs pinyin + tones + content)
 
 _Everything stays on the review branch — no deploy, no OTA — until you review. Hourly cron `2253fcef` resumes if budget caps out._

@@ -27,7 +27,7 @@ const WORD_RE = /\p{L}+'(?=\p{L})|\p{L}+'?/gu;
  * need script-aware segmentation: WORD_RE would otherwise swallow a whole run
  * of kana/kanji/hanzi as one "word", breaking the tappable reader + lookup.
  */
-const CJK_LOCALE: Partial<Record<Lang, string>> = {
+const CJK_LOCALE: Record<string, string> = {
   japanese: "ja",
   chinese: "zh",
 };
