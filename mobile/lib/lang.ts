@@ -1,6 +1,6 @@
-export type Lang = "italian" | "french" | "spanish" | "portuguese" | "english" | "german" | "arabic";
+export type Lang = "italian" | "french" | "spanish" | "portuguese" | "english" | "german" | "arabic" | "japanese";
 
-export const SUPPORTED_LANGS: Lang[] = ["italian", "french", "spanish", "portuguese", "english", "german", "arabic"];
+export const SUPPORTED_LANGS: Lang[] = ["italian", "french", "spanish", "portuguese", "english", "german", "arabic", "japanese"];
 
 export const LANG_LABELS: Record<Lang, string> = {
   italian: "Italian",
@@ -10,6 +10,7 @@ export const LANG_LABELS: Record<Lang, string> = {
   english: "English",
   german: "German",
   arabic: "Arabic",
+  japanese: "Japanese",
 };
 
 export const LANG_FLAGS: Record<Lang, string> = {
@@ -23,6 +24,7 @@ export const LANG_FLAGS: Record<Lang, string> = {
   german: "🇩🇪",
   // Modern Standard Arabic, Cairo/Egypt-themed (ar-EG audio).
   arabic: "🇪🇬",
+  japanese: "🇯🇵",
 };
 
 export const LANG_SPEECH_CODE: Record<Lang, string> = {
@@ -33,6 +35,7 @@ export const LANG_SPEECH_CODE: Record<Lang, string> = {
   english: "en-GB",
   german: "de-DE",
   arabic: "ar-EG",
+  japanese: "ja-JP",
 };
 
 export const LANG_ACCENT_COLOR: Record<Lang, string> = {
@@ -43,6 +46,7 @@ export const LANG_ACCENT_COLOR: Record<Lang, string> = {
   english: "purple",
   german: "yellow",
   arabic: "teal",
+  japanese: "rose",
 };
 
 /** Text direction per language. Arabic is right-to-left; everything else LTR. */
@@ -54,6 +58,7 @@ export const LANG_DIR: Record<Lang, "ltr" | "rtl"> = {
   english: "ltr",
   german: "ltr",
   arabic: "rtl",
+  japanese: "ltr",
 };
 
 /** Convenience: true when a language is right-to-left. */
