@@ -10,6 +10,7 @@ const LANG_NAMES: Record<Lang, string> = {
   german: "German",
   arabic: "Modern Standard Arabic",
   japanese: "Japanese",
+  chinese: "Mandarin Chinese",
 };
 
 const LANG_DIACRITICS: Record<Lang, string> = {
@@ -21,6 +22,7 @@ const LANG_DIACRITICS: Record<Lang, string> = {
   german: "ä ö ü ß",
   arabic: "the harakat: fatḥa َ, kasra ِ, ḍamma ُ, sukūn ْ, shadda ّ, tanwīn ً ٍ ٌ — Arabic is written right-to-left",
   japanese: "hiragana, katakana and kanji (no Latin diacritics) — always give the kana reading and rōmaji for kanji",
+  chinese: "simplified Chinese characters — always give pinyin with tone marks (ā á ǎ à ē é ě è ī í ǐ ì ō ó ǒ ò ū ú ǔ ù ǖ ǘ ǚ ǜ)",
 };
 
 const LANG_CONJUGATION_NOTE: Record<Lang, string> = {
@@ -40,6 +42,8 @@ const LANG_CONJUGATION_NOTE: Record<Lang, string> = {
     "Modern Standard Arabic. Keys are tenses ('al-māḍī' = past/perfect, 'al-muḍāriʿ' = present/imperfect, 'al-mustaqbal' = future). Each value is an object keyed by person ('anā', 'anta', 'anti', 'huwa', 'hiya', 'naḥnu', 'antum', 'hum'). Give the fully-vocalised Arabic form (with harakat). Note the three-letter root and the verb form (I–X) where relevant.",
   japanese:
     "Japanese verbs do NOT inflect by person. Keys are forms ('plain' (dictionary), 'polite (ます)', 'past (ました)', 'negative (ません)', 'て-form'). Each value is an object keyed by 'form' whose value is the Japanese verb followed by its kana reading and rōmaji in parentheses. Note the verb group (godan/ichidan/irregular).",
+  chinese:
+    "Mandarin verbs do NOT conjugate (Chinese has no tense — it uses aspect particles). Keys describe usage ('base', 'with 了 (completed)', 'with 在 (ongoing)', 'with 过 (experienced)', 'negative 不/没'). Each value is an object keyed by 'form' whose value is the Chinese followed by pinyin with tone marks in parentheses.",
 };
 
 /**

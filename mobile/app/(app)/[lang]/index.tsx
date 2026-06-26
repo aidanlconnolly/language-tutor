@@ -21,6 +21,7 @@ const GREETINGS: Record<Lang, [string, string, string]> = {
   german: ["Guten Morgen", "Guten Tag", "Guten Abend"],
   arabic: ["صباح الخير", "مساء الخير", "مساء الخير"],
   japanese: ["おはようございます", "こんにちは", "こんばんは"],
+  chinese: ["早上好", "下午好", "晚上好"],
 };
 
 export default function LangHomeScreen() {

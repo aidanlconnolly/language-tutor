@@ -41,9 +41,15 @@ import { UNITS as JAPANESE_UNITS, findUnit as findJapaneseUnit, findLesson as fi
 import { DAILY_READS as JAPANESE_READS, findRead as findJapaneseRead, pickTodaysRead as pickJapaneseRead } from "./japanese/reads/index";
 import { STAGES as JAPANESE_STAGES, UNIT_OUTLINE as JAPANESE_UNIT_OUTLINE } from "./japanese/stages";
 
+// Chinese (Mandarin, simplified, Beijing-themed)
+import { UNITS as CHINESE_UNITS, findUnit as findChineseUnit, findLesson as findChineseLesson, findUnitByLessonSlug as findChineseUnitByLessonSlug } from "./chinese/units/index";
+import { DAILY_READS as CHINESE_READS, findRead as findChineseRead, pickTodaysRead as pickChineseRead } from "./chinese/reads/index";
+import { STAGES as CHINESE_STAGES, UNIT_OUTLINE as CHINESE_UNIT_OUTLINE } from "./chinese/stages";
+
 export type { Unit, DailyRead, Stage, UnitPreview };
 
 export function getUnits(lang: Lang): Unit[] {
+  if (lang === "chinese") return CHINESE_UNITS;
   if (lang === "japanese") return JAPANESE_UNITS;
   if (lang === "arabic") return ARABIC_UNITS;
   if (lang === "german") return GERMAN_UNITS;
@@ -54,6 +60,7 @@ export function getUnits(lang: Lang): Unit[] {
 }
 
 export function getReads(lang: Lang): DailyRead[] {
+  if (lang === "chinese") return CHINESE_READS;
   if (lang === "japanese") return JAPANESE_READS;
   if (lang === "arabic") return ARABIC_READS;
   if (lang === "german") return GERMAN_READS;
@@ -64,6 +71,7 @@ export function getReads(lang: Lang): DailyRead[] {
 }
 
 export function getStages(lang: Lang): Stage[] {
+  if (lang === "chinese") return CHINESE_STAGES;
   if (lang === "japanese") return JAPANESE_STAGES;
   if (lang === "arabic") return ARABIC_STAGES;
   if (lang === "german") return GERMAN_STAGES;
@@ -74,6 +82,7 @@ export function getStages(lang: Lang): Stage[] {
 }
 
 export function getUnitOutline(lang: Lang): UnitPreview[] {
+  if (lang === "chinese") return CHINESE_UNIT_OUTLINE;
   if (lang === "japanese") return JAPANESE_UNIT_OUTLINE;
   if (lang === "arabic") return ARABIC_UNIT_OUTLINE;
   if (lang === "german") return GERMAN_UNIT_OUTLINE;
@@ -84,6 +93,7 @@ export function getUnitOutline(lang: Lang): UnitPreview[] {
 }
 
 export function findUnit(lang: Lang, slug: string): Unit | undefined {
+  if (lang === "chinese") return findChineseUnit(slug);
   if (lang === "japanese") return findJapaneseUnit(slug);
   if (lang === "arabic") return findArabicUnit(slug);
   if (lang === "german") return findGermanUnit(slug);
@@ -98,6 +108,7 @@ export function findLesson(
   unitSlug: string,
   lessonSlug: string,
 ): { unit: Unit; lessonIndex: number } | undefined {
+  if (lang === "chinese") return findChineseLesson(unitSlug, lessonSlug);
   if (lang === "japanese") return findJapaneseLesson(unitSlug, lessonSlug);
   if (lang === "arabic") return findArabicLesson(unitSlug, lessonSlug);
   if (lang === "german") return findGermanLesson(unitSlug, lessonSlug);
@@ -110,6 +121,7 @@ export function findLesson(
 }
 
 export function findUnitByLessonSlug(lang: Lang, lessonSlug: string): Unit | undefined {
+  if (lang === "chinese") return findChineseUnitByLessonSlug(lessonSlug);
   if (lang === "japanese") return findJapaneseUnitByLessonSlug(lessonSlug);
   if (lang === "arabic") return findArabicUnitByLessonSlug(lessonSlug);
   if (lang === "german") return findGermanUnitByLessonSlug(lessonSlug);
@@ -122,6 +134,7 @@ export function findUnitByLessonSlug(lang: Lang, lessonSlug: string): Unit | und
 }
 
 export function findRead(lang: Lang, slug: string): DailyRead | undefined {
+  if (lang === "chinese") return findChineseRead(slug);
   if (lang === "japanese") return findJapaneseRead(slug);
   if (lang === "arabic") return findArabicRead(slug);
   if (lang === "german") return findGermanRead(slug);
@@ -132,6 +145,7 @@ export function findRead(lang: Lang, slug: string): DailyRead | undefined {
 }
 
 export function pickTodaysRead(lang: Lang, completedCount: number): DailyRead {
+  if (lang === "chinese") return pickChineseRead(completedCount);
   if (lang === "japanese") return pickJapaneseRead(completedCount);
   if (lang === "arabic") return pickArabicRead(completedCount);
   if (lang === "german") return pickGermanRead(completedCount);
