@@ -1,0 +1,345 @@
+import type { Unit } from "../../types";
+
+export const UNIT_COMPLAINTS: Unit = {
+  slug: "complaints",
+  stage: 6,
+  order: 28,
+  icon: "📣",
+  title: "Complaints & problems",
+  tagline: "有问题, 坏了, 我要退…",
+  badge: "tourist",
+  lessons: [
+    {
+      slug: "complaints-describing-a-problem",
+      title: "Describing a problem",
+      summary: "Say what's wrong: it doesn't work, it's broken, it's not right, it's too much.",
+      estMinutes: 9,
+      pages: [
+        {
+          type: "intro",
+          heading: "Naming the problem comes first",
+          body: [
+            "Before you can ask for a fix in a Beijing shop, you have to <strong>name the problem</strong>. Chinese keeps this refreshingly short — most complaints start with the thing, then state what's wrong with it.",
+            "The workhorse phrase is <strong>有问题</strong> (yǒu wèntí) — \"there's a problem.\" Stick the item in front of it: <strong>这个有问题</strong> means \"this one has a problem.\"",
+            "Two more you'll use constantly: <strong>坏了</strong> (huài le) — \"it's broken / gone bad,\" and <strong>不对</strong> (bú duì) — \"that's not right.\" The <em>了</em> on 坏了 marks a change of state: it became broken.",
+          ],
+          tip: {
+            label: "太…了 = too much",
+            body: "To say something is excessive, wrap the adjective: <strong>太</strong> + adjective + <strong>了</strong>. <em>太贵了</em> (tài guì le) = too expensive, <em>太慢了</em> (tài màn le) = too slow, <em>太吵了</em> (tài chǎo le) = too noisy.",
+          },
+          keyPoint: "有问题 = there's a problem · 坏了 = it's broken · 不对 = not right · 太…了 = too…",
+        },
+        {
+          type: "vocab",
+          heading: "Problem words",
+          intro: "The core vocabulary for telling someone something is wrong.",
+          items: [
+            { l1: "问题", en: "problem / question", note: "wèntí" },
+            { l1: "有问题", en: "there's a problem", note: "yǒu wèntí" },
+            { l1: "坏了", en: "broken / spoiled", note: "huài le — change of state" },
+            { l1: "不对", en: "not right / incorrect", note: "bú duì" },
+            { l1: "不好用", en: "doesn't work well", note: "bù hǎo yòng" },
+            { l1: "脏", en: "dirty", note: "zāng" },
+            { l1: "太贵了", en: "too expensive", note: "tài guì le" },
+            { l1: "太小了", en: "too small", note: "tài xiǎo le" },
+            { l1: "凉了", en: "gone cold", note: "liáng le — of food" },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "At a hotpot restaurant near Wangfujing",
+          setup: "Your dish arrives, but something isn't right.",
+          lines: [
+            { speaker: "You", l1: "服务员, 这个有问题。", en: "Excuse me, there's a problem with this." },
+            { speaker: "Waiter", l1: "怎么了?", en: "What's wrong?" },
+            { speaker: "You", l1: "汤是凉的, 已经凉了。", en: "The soup is cold — it's gone cold." },
+            { speaker: "Waiter", l1: "对不起, 我马上换一个。", en: "Sorry, I'll change it right away." },
+            { speaker: "You", l1: "还有, 这个菜太咸了。", en: "Also, this dish is too salty." },
+            { speaker: "Waiter", l1: "好的, 我跟厨房说。", en: "Okay, I'll tell the kitchen." },
+          ],
+        },
+        {
+          type: "fillBlank",
+          heading: "Fill in the complaint",
+          intro: "Choose the word that fits the problem.",
+          items: [
+            {
+              template: "这个手机 ___ 了, 不能开机。",
+              answer: "坏",
+              en: "This phone is broken, it won't turn on.",
+              options: ["坏", "凉", "脏", "对"],
+            },
+            {
+              template: "对不起, 这个价钱 ___ 贵了。",
+              answer: "太",
+              en: "Sorry, this price is too expensive.",
+              options: ["很", "太", "不", "也"],
+            },
+            {
+              template: "我的房间很 ___, 请打扫一下。",
+              answer: "脏",
+              en: "My room is very dirty, please clean it.",
+              options: ["脏", "对", "贵", "小"],
+            },
+            {
+              template: "这个数字 ___, 请再算一次。",
+              answer: "不对",
+              en: "This number isn't right, please add it up again.",
+              options: ["太贵", "不对", "坏了", "凉了"],
+            },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "Excuse me, there's a problem with this. It's broken.",
+          reference: "服务员, 这个有问题。坏了。",
+          hint: "Use 有问题 for the problem, then 坏了 for broken.",
+        },
+      ],
+    },
+    {
+      slug: "complaints-returns-and-refunds",
+      title: "Returns & refunds",
+      summary: "Ask to return or exchange, and handle receipts and invoices.",
+      estMinutes: 8,
+      pages: [
+        {
+          type: "intro",
+          heading: "退 vs 换: refund vs exchange",
+          body: [
+            "Two verbs do most of the work at a Beijing returns counter. <strong>退</strong> (tuì) means to return for a refund — give it back, get your money. <strong>换</strong> (huàn) means to exchange — swap it for a different one.",
+            "Front them with <strong>我要</strong> (wǒ yào) — \"I want to\": <strong>我要退</strong> = I want a refund, <strong>我要换</strong> = I want to exchange it.",
+            "Almost every counter will ask for proof of purchase. A <strong>收据</strong> (shōujù) is a receipt; a <strong>发票</strong> (fāpiào) is the official tax invoice — and in China the 发票 matters a lot, so keep it.",
+          ],
+          keyPoint: "退 = refund · 换 = exchange · 收据 = receipt · 发票 = official invoice",
+        },
+        {
+          type: "vocab",
+          heading: "Returns counter vocabulary",
+          items: [
+            { l1: "退", en: "to return (for refund)", note: "tuì" },
+            { l1: "换", en: "to exchange", note: "huàn" },
+            { l1: "退货", en: "to return goods", note: "tuì huò" },
+            { l1: "退款", en: "refund (the money)", note: "tuì kuǎn" },
+            { l1: "收据", en: "receipt", note: "shōujù" },
+            { l1: "发票", en: "official tax invoice", note: "fāpiào" },
+            { l1: "保修", en: "warranty", note: "bǎoxiū" },
+            { l1: "尺寸", en: "size / dimensions", note: "chǐcùn" },
+            { l1: "颜色", en: "color", note: "yánsè" },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "At a clothing store in Sanlitun",
+          setup: "The jacket you bought yesterday is the wrong size.",
+          lines: [
+            { speaker: "You", l1: "你好, 我要退这件外套。", en: "Hi, I'd like to return this jacket." },
+            { speaker: "Clerk", l1: "有收据吗?", en: "Do you have the receipt?" },
+            { speaker: "You", l1: "有, 在这里。尺寸太小了。", en: "Yes, here it is. The size is too small." },
+            { speaker: "Clerk", l1: "您想退款还是换一件?", en: "Would you like a refund or to exchange it?" },
+            { speaker: "You", l1: "我想换大一号的。", en: "I'd like to exchange it for one size bigger." },
+            { speaker: "Clerk", l1: "没问题, 我帮您换。", en: "No problem, I'll exchange it for you." },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "Refund or exchange?",
+          questions: [
+            {
+              q: "You want your money back. What do you say?",
+              qL1: "我要 ___。",
+              options: ["我要换", "我要退", "我要买", "我要看"],
+              correct: 1,
+              fb: "退 (tuì) is to return for a refund; 换 (huàn) is to exchange.",
+            },
+            {
+              q: "The clerk asks 有收据吗? — what are they asking for?",
+              options: ["The receipt", "The warranty", "Your size", "The color"],
+              correct: 0,
+              fb: "收据 (shōujù) is the receipt — proof of purchase.",
+            },
+            {
+              q: "You want the same shirt in a bigger size. The right verb is…",
+              options: ["退", "换", "买", "找"],
+              correct: 1,
+              fb: "换 (huàn) means to exchange — swapping for a different one.",
+            },
+          ],
+        },
+        {
+          type: "orderWords",
+          heading: "Build the sentence",
+          intro: "Put the words in the correct order.",
+          items: [
+            { tokens: ["我", "要", "退", "这", "个"], en: "I want to return this." },
+            { tokens: ["请", "问", "有", "发票", "吗"], en: "Excuse me, do you have the invoice?" },
+            { tokens: ["我", "想", "换", "一", "件"], en: "I'd like to exchange it for another one." },
+            { tokens: ["收据", "在", "这", "里"], en: "The receipt is right here." },
+          ],
+        },
+      ],
+    },
+    {
+      slug: "complaints-polite-escalation",
+      title: "Polite escalation",
+      summary: "Ask for the manager and request that the problem be solved — politely.",
+      estMinutes: 8,
+      pages: [
+        {
+          type: "intro",
+          heading: "Asking for the manager — politely",
+          body: [
+            "Sometimes the front-line staff can't help. To escalate without losing face on either side, ask softly: <strong>我可以找经理吗?</strong> (Wǒ kěyǐ zhǎo jīnglǐ ma?) — \"May I speak with the manager?\" The <em>可以…吗</em> frame makes it a polite request, not a demand.",
+            "<strong>找</strong> (zhǎo) literally means \"to look for,\" but with a person it means \"to go see / ask for\" them. <strong>经理</strong> (jīnglǐ) is the manager.",
+            "Then state what you want done: <strong>请帮我解决</strong> (qǐng bāng wǒ jiějué) — \"please help me resolve this.\" Leading with <strong>请</strong> (qǐng, please) and <strong>麻烦你</strong> (máfan nǐ, \"sorry to trouble you\") keeps the tone respectful — which gets you much further in Beijing than raising your voice.",
+          ],
+          tip: {
+            label: "Soften with 麻烦你",
+            body: "<strong>麻烦你</strong> (máfan nǐ) literally means \"trouble you,\" used like \"would you mind…\" before a request. <em>麻烦你帮我解决一下</em> = \"sorry to bother you — could you help me sort this out?\" It's polite gold.",
+          },
+        },
+        {
+          type: "vocab",
+          heading: "Escalation phrases",
+          items: [
+            { l1: "经理", en: "manager", note: "jīnglǐ" },
+            { l1: "找", en: "to look for / ask for (a person)", note: "zhǎo" },
+            { l1: "我可以找经理吗?", en: "May I speak with the manager?", note: "wǒ kěyǐ zhǎo jīnglǐ ma?" },
+            { l1: "解决", en: "to solve / resolve", note: "jiějué" },
+            { l1: "请帮我解决", en: "please help me resolve this", note: "qǐng bāng wǒ jiějué" },
+            { l1: "麻烦你", en: "sorry to trouble you", note: "máfan nǐ" },
+            { l1: "投诉", en: "to file a complaint", note: "tóusù" },
+            { l1: "负责人", en: "person in charge", note: "fùzérén" },
+            { l1: "谢谢你的帮助", en: "thank you for your help", note: "xièxie nǐ de bāngzhù" },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "At an electronics store in Zhongguancun",
+          setup: "The clerk says they can't refund you. Time to escalate — calmly.",
+          lines: [
+            { speaker: "You", l1: "麻烦你, 我可以找经理吗?", en: "Sorry to trouble you — may I speak with the manager?" },
+            { speaker: "Clerk", l1: "好的, 请稍等。", en: "Okay, please wait a moment." },
+            { speaker: "Manager", l1: "您好, 有什么问题?", en: "Hello, what's the problem?" },
+            { speaker: "You", l1: "这个电脑坏了, 请帮我解决。", en: "This computer is broken — please help me resolve it." },
+            { speaker: "Manager", l1: "对不起, 我们给您退款。", en: "I'm sorry, we'll give you a refund." },
+            { speaker: "You", l1: "谢谢你的帮助。", en: "Thank you for your help." },
+          ],
+        },
+        {
+          type: "tip",
+          heading: "可以…吗? turns a demand into a request",
+          body: "Wrapping a verb in <strong>可以 … 吗?</strong> asks permission and softens everything: <em>我可以退吗?</em> = \"may I get a refund?\" vs the blunt <em>我要退</em>. In a complaint, the polite frame keeps the other person willing to help.",
+          example: { l1: "我可以找经理吗?", en: "May I speak with the manager?" },
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "May I speak with the manager? Please help me resolve this.",
+          reference: "我可以找经理吗? 请帮我解决。",
+          hint: "Use 可以…吗 for the polite request, then 请帮我解决.",
+        },
+        {
+          type: "checkpoint",
+          heading: "Lesson check",
+          questions: [
+            {
+              q: "How do you politely ask to speak with the manager?",
+              options: ["我要经理!", "我可以找经理吗?", "经理在哪?", "没有经理"],
+              correct: 1,
+            },
+            {
+              q: "What does 请帮我解决 mean?",
+              options: [
+                "Please give me a receipt.",
+                "Please help me resolve this.",
+                "Please wait a moment.",
+                "Please exchange it.",
+              ],
+              correct: 1,
+            },
+            {
+              q: "麻烦你 is used to…",
+              options: [
+                "demand a refund",
+                "soften a request politely",
+                "ask the price",
+                "say goodbye",
+              ],
+              correct: 1,
+            },
+          ],
+        },
+      ],
+    },
+  ],
+  checkpoint: {
+    passingPct: 80,
+    questions: [
+      {
+        q: "How do you say 'there's a problem with this'?",
+        options: ["这个很好", "这个有问题", "这个不贵", "这个换了"],
+        correct: 1,
+      },
+      {
+        q: "Your food arrived cold. What's wrong with it?",
+        qL1: "这个 ___。",
+        options: ["凉了", "贵了", "脏了", "对了"],
+        correct: 0,
+      },
+      {
+        q: "Which means 'too expensive'?",
+        options: ["太小了", "太贵了", "太慢了", "太吵了"],
+        correct: 1,
+      },
+      {
+        q: "You want your money back. The right verb is…",
+        options: ["换", "退", "买", "找"],
+        correct: 1,
+      },
+      {
+        q: "You want to swap a shirt for a bigger size. You say…",
+        options: ["我要退", "我要换", "我要买", "我要看"],
+        correct: 1,
+      },
+      {
+        q: "What is a 发票?",
+        options: ["a receipt", "an official tax invoice", "a warranty", "a manager"],
+        correct: 1,
+      },
+      {
+        q: "How do you politely ask for the manager?",
+        options: ["经理!", "我可以找经理吗?", "我不要经理", "经理坏了"],
+        correct: 1,
+      },
+      {
+        q: "请帮我解决 means…",
+        options: [
+          "please help me resolve this",
+          "please give me the receipt",
+          "please wait here",
+          "please exchange it",
+        ],
+        correct: 0,
+      },
+      {
+        q: "The clerk asks 有收据吗? — what do they want?",
+        options: ["the receipt", "the manager", "your size", "the color"],
+        correct: 0,
+      },
+      {
+        q: "麻烦你 adds what to a request?",
+        options: [
+          "a demand for speed",
+          "a polite, softening tone",
+          "a complaint number",
+          "a price",
+        ],
+        correct: 1,
+      },
+    ],
+  },
+};
