@@ -1,25 +1,28 @@
-# Autonomous language build — live log
+# Autonomous language build — COMPLETE ✅
 
-**Branch:** `claude/allora-status-wq7ffz` (review branch — **nothing deploys to prod or users** until you review & merge)
-**Goal:** add German → Arabic → Japanese → Chinese, each to full A0–B1 parity (35 units × 3 lessons + 8 reads), web + mobile.
+**Branch:** `claude/allora-status-wq7ffz` (review branch — **nothing deployed to prod or users**; awaiting review)
+**Goal:** add German → Arabic → Japanese → Chinese, each to full A0–B1 parity (35 units × 3 lessons + 8 reads), web + mobile. **All four done.**
 
-## Status (updated 2026-06-25)
+## Final status (2026-06-25)
 
-⏸ **PAUSED — session usage limit hit, resets 9am UTC.** Hourly cron `2253fcef` auto-resumes when budget returns. All work below is committed/pushed.
+| Language | Units | Lessons | Drills | Reads | Web build | Mobile tsc | Notes |
+|---|---|---|---|---|---|---|---|
+| 🇩🇪 German | 35 | 105 | 74 | 8 | ✅ | ✅ | Berlin-themed; cases |
+| 🇪🇬 Arabic | 35 | 105 | 77 | 8 | ✅ | ✅ | MSA, Cairo; **RTL engineered** |
+| 🇯🇵 Japanese | 35 | 105 | 83 | 8 | ✅ | ✅ | Tokyo; **CJK tokenizer** |
+| 🇨🇳 Chinese | 35 | 105 | 82 | 8 | ✅ | ✅ | Beijing, Mandarin; pinyin/aspect/把-被 |
 
-### 🇩🇪 German — ✅ DONE (validated, web + mobile)
-### 🇪🇬 Arabic — ✅ BUILT (validated, web + mobile) — v1 (RTL engineered; polish + proofread deferred)
-### 🇯🇵 Japanese — ✅ BUILT (validated, web + mobile) — v1 (CJK tokenizer engineered; furigana + proofread deferred)
+**Total added: 140 units, 420 lessons, 32 reads, ~316 translate drills** — web + mobile, all validated (web `tsc`+`next build`, mobile `tsc`, integrity + tokenizer sanity).
 
-### 🇨🇳 Chinese — 🔄 ~85% — RESUME HERE
-- [x] Curriculum (Beijing-themed Mandarin, simplified; pinyin/tones/measure-words/aspect/把-被 woven in)
-- [x] Tokenizer: already handles `zh` (no change needed — done with Japanese)
-- [x] Web plumbing COMPLETE: lang.ts (+chinese, LANG_DIR ltr), anthropic.ts maps, content dispatcher (all 8 branches), units/reads index scaffolds
-- [x] Mobile plumbing PARTIAL: lang.ts, theme tint, greeting + stats maps DONE
-- [ ] **Mobile dispatcher branches for `chinese` NOT yet added** — `mobile/lib/content/index.ts` needs the chinese import + 8 `if (lang === "chinese")` branches (mirror what web/lib/content/index.ts has)
-- [ ] **5 unit files missing** (agents cut off by the cap): **19-chinese-food, 24-narrate-trip, 28-complaints, 32-comparatives, 35-opinions** — re-author these (briefs are in the git history / this session). 30/35 units + 8/8 reads already on disk.
-- [ ] Mirror web/lib/content/chinese → mobile/lib/content/chinese
-- [ ] Validate: web `tsc` + `next build`, mobile `tsc`, integrity check
-- [ ] Commit + push, mark DONE
+## Engineering done along the way
+- **RTL support** (`LANG_DIR` + `useIsRTL()` + `dir` on LessonPlayer/TappableSentence/CheckpointRunner) — Arabic renders right-to-left; the other 8 stay LTR.
+- **CJK tokenizer** (`tokenize.ts`, web + mobile): `Intl.Segmenter` word-segmentation for ja/zh (script-run fallback on Hermes) + 。！？ sentence enders — fixes the tappable reader/lookup for no-space scripts.
 
-_When Chinese is done: all four complete — update this log and delete cron `2253fcef`. Everything stays on the review branch — no deploy, no OTA — until the user reviews._
+## ⚠️ Deferred / for review (intentional v1 cuts)
+- **Native-speaker proofread** of the AI-authored Arabic / Japanese / Chinese (harakat & case endings; furigana; pinyin/tones).
+- **Arabic RTL polish**: WordPopover anchor side, conjugation-table alignment, full **mobile** layout-mirroring (per-`Text` writingDirection).
+- **Furigana/pinyin-on-sentences**: readings live in vocab `note`s; content is kana/hiragana- and common-character-forward to compensate. Adding a `reading?` schema field + rendering is the main JP/ZH enhancement.
+- Japanese/Chinese **mobile** tokenizing uses the script-run fallback (Hermes lacks `Intl.Segmenter`); web is full word-level.
+
+## Shipping
+Everything is on `claude/allora-status-wq7ffz`. **Nothing has been deployed or OTA-pushed.** Review, then merge to `main` (web auto-deploys) and run the EAS update for mobile. Auto-resume cron `2253fcef` removed — build is complete.
