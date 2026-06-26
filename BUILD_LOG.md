@@ -5,26 +5,21 @@
 
 ## Status (updated 2026-06-25)
 
-### 🇩🇪 German — ✅ DONE (web + mobile, validated)
-35 units / 105 lessons / 74 drills / 8 reads. Full builds green.
+⏸ **PAUSED — session usage limit hit, resets 9am UTC.** Hourly cron `2253fcef` auto-resumes when budget returns. All work below is committed/pushed.
 
-### 🇪🇬 Arabic — ✅ BUILT (web + mobile, validated) — v1
-35 units / 105 lessons / 77 drills / 8 reads (MSA, Cairo). RTL engineering on web (LANG_DIR + useIsRTL + dir on LessonPlayer/TappableSentence/CheckpointRunner). Full builds green. Caveats: RTL polish (popover anchor, table align, mobile per-Text writingDirection) + native proofread — in commit notes.
+### 🇩🇪 German — ✅ DONE (validated, web + mobile)
+### 🇪🇬 Arabic — ✅ BUILT (validated, web + mobile) — v1 (RTL engineered; polish + proofread deferred)
+### 🇯🇵 Japanese — ✅ BUILT (validated, web + mobile) — v1 (CJK tokenizer engineered; furigana + proofread deferred)
 
-### 🇯🇵 Japanese — ✅ BUILT (web + mobile, validated) — v1
-- [x] Curriculum (Tokyo-themed; hiragana→katakana→particles→て-form→counters→keigo)
-- [x] All 35 units + 8 reads authored (kana-forward, rōmaji in vocab notes)
-- [x] **Tokenizer engineering:** `tokenize.ts` (web+mobile) now segments no-space CJK text — `Intl.Segmenter` word-level on web, script-run fallback on Hermes/mobile; recognises 。！？ sentence enders. Verified: a JP sentence → 11 word tokens (was 1).
-- [x] Plumbing both platforms (lang.ts, anthropic.ts, dispatchers, theme tint, screens)
-- [x] Mirrored to mobile
-- [x] **Validated:** web `tsc` ✅ + `next build` ✅, mobile `tsc` ✅; integrity 35/105/83 drills/8 reads ✅; tokenizer sanity ✅
-- [x] Committed + pushed
+### 🇨🇳 Chinese — 🔄 ~85% — RESUME HERE
+- [x] Curriculum (Beijing-themed Mandarin, simplified; pinyin/tones/measure-words/aspect/把-被 woven in)
+- [x] Tokenizer: already handles `zh` (no change needed — done with Japanese)
+- [x] Web plumbing COMPLETE: lang.ts (+chinese, LANG_DIR ltr), anthropic.ts maps, content dispatcher (all 8 branches), units/reads index scaffolds
+- [x] Mobile plumbing PARTIAL: lang.ts, theme tint, greeting + stats maps DONE
+- [ ] **Mobile dispatcher branches for `chinese` NOT yet added** — `mobile/lib/content/index.ts` needs the chinese import + 8 `if (lang === "chinese")` branches (mirror what web/lib/content/index.ts has)
+- [ ] **5 unit files missing** (agents cut off by the cap): **19-chinese-food, 24-narrate-trip, 28-complaints, 32-comparatives, 35-opinions** — re-author these (briefs are in the git history / this session). 30/35 units + 8/8 reads already on disk.
+- [ ] Mirror web/lib/content/chinese → mobile/lib/content/chinese
+- [ ] Validate: web `tsc` + `next build`, mobile `tsc`, integrity check
+- [ ] Commit + push, mark DONE
 
-**Caveats / follow-ups (deferred — flagged for review):**
-- **Furigana/readings**: rōmaji is in vocab `note`s, but the content schema has no per-sentence reading field, so kanji in lessons/reads show without furigana (content is kana-forward to compensate). Adding a `reading?` field + rendering is the main JP enhancement.
-- **Mobile tokenizer**: Hermes lacks `Intl.Segmenter`, so mobile uses the script-run fallback (taps group kana runs / single kanji) rather than full-word segmentation. Web is word-level.
-- AI-authored — needs a native-speaker proofread.
-
-### 🇨🇳 Chinese — NEXT (tokenizer already CJK-ready; needs pinyin + tones + content)
-
-_Everything stays on the review branch — no deploy, no OTA — until you review. Hourly cron `2253fcef` resumes if budget caps out._
+_When Chinese is done: all four complete — update this log and delete cron `2253fcef`. Everything stays on the review branch — no deploy, no OTA — until the user reviews._
