@@ -5,6 +5,7 @@ import { useCallback, useEffect, useState, useTransition } from "react";
 import type { Lesson, LessonPage, Unit } from "@/lib/content/types";
 import { markLessonDone } from "@/lib/actions/progress";
 import type { Lang } from "@/lib/lang";
+import { LANG_DIR } from "@/lib/lang";
 import { LangProvider } from "@/lib/lang-context";
 
 function lessonProgressKey(slug: string): string {
@@ -184,7 +185,7 @@ export function LessonPlayer({
 
   return (
     <LangProvider lang={lang}>
-    <div className="flex h-screen flex-col font-sans">
+    <div className="flex h-screen flex-col font-sans" dir={LANG_DIR[lang]}>
       {/* Header */}
       <header
         className="flex items-center gap-3 border-b border-amber-500/30 bg-zinc-950 px-3 py-2.5 text-white sm:gap-4 sm:px-4 sm:py-3"

@@ -1,0 +1,427 @@
+import type { Unit } from "../../types";
+
+export const UNIT_SHOPPING: Unit = {
+  slug: "shopping",
+  stage: 6,
+  order: 25,
+  icon: "🛍️",
+  title: "Money & shopping",
+  tagline: "Was kostet das?, EC-Karte, sizes, Kann ich das anprobieren?",
+  badge: "tourist",
+  lessons: [
+    {
+      slug: "shopping-prices-paying",
+      title: "Prices & paying",
+      estMinutes: 9,
+      pages: [
+        {
+          type: "intro",
+          heading: "Was kostet das? — and why Germans love cash",
+          body: [
+            "Germany uses the <strong>Euro (€)</strong>. Cents = <em>Cent</em>. €4,50 is written with a comma and said <em>vier Euro fünfzig</em>. Germans usually drop \"Cent\" — €3,99 = <em>drei neunundneunzig</em>.",
+            "Ask the price with <strong>Was kostet das?</strong> (one item) or <strong>Was kosten die?</strong> (plural). At the till you'll hear <em>Das macht …</em> = \"that comes to …\".",
+            "Germany is famously cash-loving. Many bakeries, kiosks (<em>Kiosk / Späti</em>), and small Imbiss stands take only cash — watch for a handwritten <strong>Nur Bar</strong> (\"cash only\") sign. Card payment runs on the <strong>EC-Karte</strong> (the German debit/Girocard); credit cards are accepted less widely than in the US.",
+          ],
+          tip: {
+            label: "Nur Bar",
+            body: "If you see <em>Nur Bar</em> or <em>Wir nehmen keine Karte</em> at a Berlin Späti or Currywurst stand, that means cash only. Always carry €20–30 in small notes and coins — the €1 and €2 coins matter for the Pfand machine too.",
+          },
+          keyPoint:
+            "Was kostet das? = how much is it? · €4,50 = vier Euro fünfzig · EC-Karte = debit card · Nur Bar = cash only.",
+        },
+        {
+          type: "vocab",
+          heading: "Money & price words",
+          items: [
+            { l1: "das Geld", en: "money", note: "das Geld — usually no plural." },
+            { l1: "der Euro / die Euro", en: "euro", note: "Plural die Euro stays unchanged: zehn Euro." },
+            { l1: "der Cent", en: "cent" },
+            { l1: "der Preis", en: "the price", note: "Plural: die Preise." },
+            { l1: "Was kostet das?", en: "How much does it cost?" },
+            { l1: "Was kosten die?", en: "How much do they cost? (plural)" },
+            { l1: "Das macht …", en: "That comes to … (cashier phrase)" },
+            { l1: "das Bargeld", en: "cash", note: "Bar = cash, as adverb: bar bezahlen." },
+            { l1: "die EC-Karte", en: "debit card (German Girocard)" },
+            { l1: "die Kreditkarte", en: "credit card" },
+            { l1: "teuer", en: "expensive" },
+            { l1: "billig / günstig", en: "cheap / good value", note: "günstig sounds nicer than billig." },
+            { l1: "das Wechselgeld", en: "the change (money returned)" },
+            { l1: "Nur Bar", en: "cash only (sign)" },
+          ],
+        },
+        {
+          type: "tip",
+          heading: "EC-Karte vs Bargeld",
+          body: "The <strong>EC-Karte</strong> (officially the Girocard) is the everyday German debit card and is accepted almost everywhere that takes cards. Foreign credit cards (Visa, Mastercard) work in supermarkets and larger shops but can be refused at small businesses. When in doubt, ask <em>Kann ich mit Karte zahlen?</em> If the answer is <em>Nur Bar</em>, you'll need <strong>Bargeld</strong>.",
+          example: { l1: "Kann ich mit Karte zahlen? — Tut mir leid, nur Bar.", en: "Can I pay by card? — Sorry, cash only." },
+        },
+        {
+          type: "dialogue",
+          heading: "At a Berlin bakery",
+          setup: "You order at a Bäckerei counter that has a Nur Bar sign.",
+          lines: [
+            { speaker: "Verkäuferin", l1: "Guten Morgen! Was darf es sein?", en: "Good morning! What would you like?" },
+            { speaker: "You", l1: "Zwei Brötchen und einen Kaffee, bitte. Was kostet das?", en: "Two rolls and a coffee, please. How much is that?" },
+            { speaker: "Verkäuferin", l1: "Das macht drei Euro zwanzig.", en: "That comes to three euros twenty." },
+            { speaker: "You", l1: "Kann ich mit Karte zahlen?", en: "Can I pay by card?" },
+            { speaker: "Verkäuferin", l1: "Tut mir leid, nur Bar.", en: "Sorry, cash only." },
+            { speaker: "You", l1: "Kein Problem. Hier sind fünf Euro.", en: "No problem. Here is five euros." },
+            { speaker: "Verkäuferin", l1: "Danke, und ein Euro achtzig zurück.", en: "Thanks, and one euro eighty back." },
+          ],
+        },
+        {
+          type: "multipleChoice",
+          heading: "Price talk",
+          questions: [
+            {
+              q: "'How much does it cost?' (one item) =",
+              options: ["Was kosten die?", "Was kostet das?", "Das macht?", "Wie viel sind?"],
+              correct: 1,
+            },
+            {
+              q: "You see 'Nur Bar' at a kiosk. That means…",
+              options: ["card only", "cash only", "no change given", "closed"],
+              correct: 1,
+            },
+            {
+              q: "The everyday German debit card is the…",
+              options: ["Kreditkarte", "EC-Karte", "Wechselgeld", "Quittung"],
+              correct: 1,
+            },
+            {
+              q: "€4,50 is said…",
+              options: [
+                "vier Komma fünfzig",
+                "vier Euro und fünf",
+                "vier Euro fünfzig",
+                "fünfzig vier Euro",
+              ],
+              correct: 2,
+            },
+            {
+              q: "'günstig' means…",
+              options: ["expensive", "broken", "good value / cheap", "free"],
+              correct: 2,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      slug: "shopping-clothes-sizes",
+      title: "Clothes & sizes",
+      estMinutes: 10,
+      pages: [
+        {
+          type: "intro",
+          heading: "Trying things on and asking for sizes",
+          body: [
+            "<strong>Kann ich das anprobieren?</strong> = Can I try this on? The fitting room is the <em>die Umkleidekabine</em> (or just <em>die Kabine</em>).",
+            "Ask for what you need with <strong>Haben Sie das in …?</strong> — fill in a size or colour: <em>Haben Sie das in Größe M?</em> / <em>Haben Sie das in Blau?</em>",
+            "German clothing sizes (<em>die Größe</em>) run S/M/L/XL or numeric (women 34–46, men 44–58); shoe sizes (<em>die Schuhgröße</em>) use EU numbers 36–46.",
+            "If the fit is wrong: <em>Das ist zu klein / zu groß / zu eng / zu weit.</em> = too small / too big / too tight / too loose. Then ask: <em>Haben Sie das eine Nummer größer?</em>",
+          ],
+          keyPoint:
+            "Kann ich das anprobieren? = Can I try this on? · Haben Sie das in …? = Do you have it in …? · die Größe = size · zu eng / zu weit = too tight / too loose.",
+        },
+        {
+          type: "vocab",
+          heading: "Clothes",
+          items: [
+            { l1: "die Kleidung", en: "clothing", note: "die Kleidung — singular, collective." },
+            { l1: "das T-Shirt", en: "the t-shirt", note: "das T-Shirt, plural die T-Shirts." },
+            { l1: "das Hemd", en: "the (button-up) shirt", note: "das Hemd, plural die Hemden." },
+            { l1: "der Pullover / der Pulli", en: "the sweater", note: "der Pullover, plural die Pullover." },
+            { l1: "die Hose", en: "the trousers", note: "die Hose is singular in German!" },
+            { l1: "die Jeans", en: "the jeans", note: "die Jeans, used as singular or plural." },
+            { l1: "das Kleid", en: "the dress", note: "das Kleid, plural die Kleider." },
+            { l1: "der Rock", en: "the skirt", note: "der Rock, plural die Röcke." },
+            { l1: "die Jacke", en: "the jacket", note: "die Jacke, plural die Jacken." },
+            { l1: "der Mantel", en: "the coat", note: "der Mantel, plural die Mäntel." },
+            { l1: "die Schuhe", en: "the shoes", note: "der Schuh, usually plural die Schuhe." },
+            { l1: "der Schal", en: "the scarf", note: "der Schal, plural die Schals." },
+          ],
+        },
+        {
+          type: "vocab",
+          heading: "Colours & sizes",
+          items: [
+            { l1: "weiß / schwarz / grau", en: "white / black / grey" },
+            { l1: "rot / blau / grün", en: "red / blue / green" },
+            { l1: "gelb / orange", en: "yellow / orange" },
+            { l1: "rosa / lila", en: "pink / purple", note: "rosa and lila never change ending." },
+            { l1: "braun / beige", en: "brown / beige" },
+            { l1: "die Größe", en: "size (clothes)", note: "die Größe, plural die Größen." },
+            { l1: "die Schuhgröße", en: "shoe size" },
+            { l1: "zu eng / zu weit", en: "too tight / too loose" },
+            { l1: "zu klein / zu groß", en: "too small / too big" },
+            { l1: "eine Nummer größer / kleiner", en: "one size up / down" },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "In a clothing shop",
+          setup: "You like a jacket on the rack and call over the assistant.",
+          lines: [
+            { speaker: "Verkäufer", l1: "Hallo, kann ich Ihnen helfen?", en: "Hello, can I help you?" },
+            { speaker: "You", l1: "Ja, mir gefällt diese Jacke. Haben Sie das in Größe M?", en: "Yes, I like this jacket. Do you have it in size M?" },
+            { speaker: "Verkäufer", l1: "Einen Moment … ja, hier in M. Möchten Sie sie anprobieren?", en: "One moment … yes, here in M. Would you like to try it on?" },
+            { speaker: "You", l1: "Gern. Wo ist die Umkleidekabine?", en: "Gladly. Where is the fitting room?" },
+            { speaker: "Verkäufer", l1: "Da hinten links.", en: "Back there on the left." },
+            { speaker: "You", l1: "(später) Sie ist mir zu eng. Haben Sie sie eine Nummer größer?", en: "(later) It's too tight on me. Do you have it one size bigger?" },
+            { speaker: "Verkäufer", l1: "Ja, hier in L. Und sie ist auch in Schwarz da.", en: "Yes, here in L. And it also comes in black." },
+            { speaker: "You", l1: "Perfekt, die nehme ich.", en: "Perfect, I'll take it." },
+          ],
+        },
+        {
+          type: "fillBlank",
+          heading: "Shopping fill",
+          items: [
+            {
+              template: "Kann ich das ___?",
+              answer: "anprobieren",
+              en: "Can I try this on?",
+              options: ["anprobieren", "anziehen", "kaufen", "ausziehen"],
+            },
+            {
+              template: "Haben Sie das in ___ M?",
+              answer: "Größe",
+              en: "Do you have it in size M?",
+              options: ["Nummer", "Größe", "Maß", "Schuh"],
+            },
+            {
+              template: "Die Hose ist mir zu ___. Haben Sie eine Nummer größer?",
+              answer: "eng",
+              en: "The trousers are too tight on me. Do you have one size bigger?",
+              options: ["eng", "weit", "kurz", "lang"],
+            },
+            {
+              template: "Wo ist die ___, bitte?",
+              answer: "Umkleidekabine",
+              en: "Where is the fitting room, please?",
+              options: ["Kasse", "Umkleidekabine", "Quittung", "Tüte"],
+            },
+            {
+              template: "Haben Sie das auch in ___?",
+              answer: "Blau",
+              en: "Do you have it in blue too?",
+              options: ["Größe", "Blau", "teuer", "Bar"],
+            },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "Can I try this jacket on? Do you have it in black, size L?",
+          reference: "Kann ich diese Jacke anprobieren? Haben Sie das in Schwarz, Größe L?",
+          hint: "anprobieren goes to the end of the clause. die Jacke is feminine: diese Jacke.",
+        },
+      ],
+    },
+    {
+      slug: "shopping-kasse-pfand",
+      title: "At the Kasse — receipts & Pfand",
+      estMinutes: 9,
+      pages: [
+        {
+          type: "intro",
+          heading: "The checkout, the receipt, and the bottle deposit",
+          body: [
+            "At the till (<strong>die Kasse</strong>) you'll be asked <em>Brauchen Sie eine Tüte?</em> — Do you need a bag? Bags cost extra, so bring your own.",
+            "The receipt is <strong>der Kassenbon</strong> (or <em>der Bon</em>); a formal/handwritten receipt is <strong>die Quittung</strong>. By law shops must give you a <em>Bon</em> — keep it, you need it for returns.",
+            "Germany has <strong>das Pfand</strong> — a deposit on most bottles and cans (€0,08–0,25). You pay it at purchase and get it back by returning empties to the <em>der Pfandautomat</em> (reverse-vending machine) at any supermarket. It spits out a voucher (<em>der Pfandbon</em>) you redeem at the Kasse.",
+          ],
+          tip: {
+            label: "Pfand culture",
+            body: "Look for <strong>Pfand</strong> or <strong>Mehrweg</strong> on the label — that bottle is worth money back. People often leave deposit bottles standing next to public bins in Berlin so collectors can take them. Don't throw a <em>Pfandflasche</em> in the trash; feed it to the <em>Pfandautomat</em>.",
+          },
+          keyPoint:
+            "die Kasse = checkout · der Kassenbon / die Quittung = receipt · das Pfand = bottle deposit · der Pfandautomat = the return machine.",
+        },
+        {
+          type: "vocab",
+          heading: "Checkout vocabulary",
+          items: [
+            { l1: "die Kasse", en: "the checkout / till", note: "die Kasse, plural die Kassen." },
+            { l1: "der Kassenbon / der Bon", en: "the receipt", note: "der Bon, plural die Bons." },
+            { l1: "die Quittung", en: "the (formal) receipt", note: "die Quittung, plural die Quittungen." },
+            { l1: "die Tüte", en: "the bag", note: "die Tüte, plural die Tüten." },
+            { l1: "das Pfand", en: "the deposit (on bottles)", note: "das Pfand — no plural." },
+            { l1: "die Pfandflasche", en: "the deposit bottle" },
+            { l1: "der Pfandautomat", en: "the bottle-return machine" },
+            { l1: "der Pfandbon", en: "the deposit voucher" },
+            { l1: "zahlen / bezahlen", en: "to pay" },
+            { l1: "bar bezahlen", en: "to pay cash" },
+            { l1: "Brauchen Sie eine Tüte?", en: "Do you need a bag?" },
+            { l1: "Zusammen oder getrennt?", en: "Together or separately? (paying)" },
+          ],
+        },
+        {
+          type: "dialogue",
+          heading: "At the supermarket Kasse",
+          setup: "You've returned empties first, then pay for groceries.",
+          lines: [
+            { speaker: "Kassiererin", l1: "Hallo. Haben Sie einen Pfandbon?", en: "Hello. Do you have a deposit voucher?" },
+            { speaker: "You", l1: "Ja, hier ist der Pfandbon — ein Euro fünfzig.", en: "Yes, here is the deposit voucher — one euro fifty." },
+            { speaker: "Kassiererin", l1: "Danke. Das macht zwölf Euro dreißig. Brauchen Sie eine Tüte?", en: "Thanks. That comes to twelve euros thirty. Do you need a bag?" },
+            { speaker: "You", l1: "Nein danke, ich habe eine dabei. Kann ich mit EC-Karte zahlen?", en: "No thanks, I have one with me. Can I pay by debit card?" },
+            { speaker: "Kassiererin", l1: "Ja, gern. Bitte die Karte an das Gerät halten.", en: "Yes, of course. Please hold the card to the device." },
+            { speaker: "You", l1: "Bekomme ich einen Kassenbon?", en: "Do I get a receipt?" },
+            { speaker: "Kassiererin", l1: "Natürlich, hier ist der Bon. Schönen Tag noch!", en: "Of course, here is the receipt. Have a nice day!" },
+          ],
+        },
+        {
+          type: "fillBlank",
+          heading: "Checkout fill",
+          items: [
+            {
+              template: "Brauchen Sie eine ___?",
+              answer: "Tüte",
+              en: "Do you need a bag?",
+              options: ["Tüte", "Kasse", "Karte", "Quittung"],
+            },
+            {
+              template: "Auf die Flasche ist 25 Cent ___.",
+              answer: "Pfand",
+              en: "There is 25 cents deposit on the bottle.",
+              options: ["Preis", "Pfand", "Bon", "Geld"],
+            },
+            {
+              template: "Bekomme ich einen ___?",
+              answer: "Kassenbon",
+              en: "Do I get a receipt?",
+              options: ["Pfandbon", "Kassenbon", "Tüte", "Wechselgeld"],
+            },
+            {
+              template: "Ich gebe die Flaschen in den ___ zurück.",
+              answer: "Pfandautomat",
+              en: "I return the bottles to the deposit machine.",
+              options: ["Kasse", "Pfandautomat", "Mantel", "Bon"],
+            },
+            {
+              template: "Kann ich mit ___ zahlen?",
+              answer: "Karte",
+              en: "Can I pay by card?",
+              options: ["Karte", "Tüte", "Bon", "Pfand"],
+            },
+          ],
+        },
+        {
+          type: "translate",
+          heading: "Translate it",
+          direction: "en-to-l1",
+          prompt: "Do I get a receipt? And can I pay by debit card?",
+          reference: "Bekomme ich einen Kassenbon? Und kann ich mit EC-Karte zahlen?",
+          hint: "der Kassenbon is masculine → einen Kassenbon. 'mit EC-Karte zahlen' = pay by debit card.",
+        },
+        {
+          type: "checkpoint",
+          heading: "Lesson check",
+          questions: [
+            {
+              q: "'der Kassenbon' is…",
+              options: ["the bag", "the receipt", "the deposit", "the change"],
+              correct: 1,
+            },
+            {
+              q: "What is 'das Pfand'?",
+              options: [
+                "a credit card",
+                "the bottle deposit you get back",
+                "a discount",
+                "the fitting room",
+              ],
+              correct: 1,
+            },
+            {
+              q: "Translate: 'Do you need a bag?'",
+              options: [
+                "Haben Sie eine Tüte?",
+                "Brauchen Sie eine Tüte?",
+                "Wo ist die Tüte?",
+                "Kostet die Tüte?",
+              ],
+              correct: 1,
+            },
+          ],
+        },
+      ],
+    },
+  ],
+  checkpoint: {
+    passingPct: 80,
+    questions: [
+      {
+        q: "'How much does it cost?' (one item) =",
+        options: ["Was kosten die?", "Was kostet das?", "Das macht?", "Wie teuer sind?"],
+        correct: 1,
+      },
+      {
+        q: "You see 'Nur Bar' at a Späti. That means…",
+        options: ["card only", "cash only", "no receipts", "closed today"],
+        correct: 1,
+      },
+      {
+        q: "The German everyday debit card is the…",
+        options: ["Kreditkarte", "EC-Karte", "Pfandbon", "Quittung"],
+        correct: 1,
+      },
+      {
+        q: "'Can I try this on?' =",
+        options: [
+          "Kann ich das kaufen?",
+          "Kann ich das anprobieren?",
+          "Was kostet das?",
+          "Haben Sie das?",
+        ],
+        correct: 1,
+      },
+      {
+        q: "'Do you have it in size M?' =",
+        options: [
+          "Haben Sie das in Größe M?",
+          "Kostet das in M?",
+          "Ist das Größe M?",
+          "Wo ist Größe M?",
+        ],
+        correct: 0,
+      },
+      {
+        q: "The jacket is 'zu eng'. That means it is…",
+        options: ["too loose", "too tight", "too long", "too cheap"],
+        correct: 1,
+      },
+      {
+        q: "'der Kassenbon' is the…",
+        options: ["bag", "receipt", "deposit", "fitting room"],
+        correct: 1,
+      },
+      {
+        q: "'das Pfand' is…",
+        options: [
+          "the price tag",
+          "a deposit on bottles you get back",
+          "the credit card fee",
+          "the bag charge",
+        ],
+        correct: 1,
+      },
+      {
+        q: "Translate: 'Can I pay by card?'",
+        options: [
+          "Wo ist die Kasse?",
+          "Kann ich mit Karte zahlen?",
+          "Was macht das?",
+          "Brauchen Sie eine Tüte?",
+        ],
+        correct: 1,
+      },
+      {
+        q: "You return empty deposit bottles to the…",
+        options: ["Quittung", "Pfandautomat", "Umkleidekabine", "Tüte"],
+        correct: 1,
+      },
+    ],
+  },
+};

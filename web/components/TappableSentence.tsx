@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { tokenize } from "@/lib/tokenize";
 import type { Lang } from "@/lib/lang";
+import { LANG_DIR } from "@/lib/lang";
 import { TappableWord, type WordTapData } from "./TappableWord";
 import { WordPopover, type PopoverState } from "./WordPopover";
 import type { Word } from "@/lib/db/schema";
@@ -47,6 +48,7 @@ export function TappableSentence({
       <span
         className={[serif ? "font-serif" : "", className ?? ""].join(" ")}
         lang="auto"
+        dir={LANG_DIR[lang]}
       >
         {tokens.map((tok, i) =>
           tok.type === "word" ? (

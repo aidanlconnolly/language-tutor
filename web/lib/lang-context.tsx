@@ -2,7 +2,7 @@
 
 import { createContext, useContext } from "react";
 import type { Lang } from "./lang";
-import { LANG_SPEECH_CODE } from "./lang";
+import { LANG_SPEECH_CODE, LANG_DIR } from "./lang";
 
 const LangContext = createContext<Lang>("italian");
 
@@ -17,4 +17,15 @@ export function useLang(): Lang {
 export function useLangSpeechCode(): string {
   const lang = useContext(LangContext);
   return LANG_SPEECH_CODE[lang];
+}
+
+/** Text direction of the active language ("rtl" for Arabic, else "ltr"). */
+export function useLangDir(): "ltr" | "rtl" {
+  const lang = useContext(LangContext);
+  return LANG_DIR[lang];
+}
+
+/** True when the active language is right-to-left (Arabic). */
+export function useIsRTL(): boolean {
+  return useLangDir() === "rtl";
 }
