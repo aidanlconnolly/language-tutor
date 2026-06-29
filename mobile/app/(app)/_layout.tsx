@@ -16,6 +16,8 @@ export default function AppLayout() {
       {/* The [lang] group renders its own header; hide this outer one so
           "[lang]" doesn't show as a redundant bar above it. */}
       <Stack.Screen name="[lang]" options={{ headerShown: false }} />
+      {/* Geography group renders its own header stack */}
+      <Stack.Screen name="geography" options={{ headerShown: false }} />
       <Stack.Screen name="account" options={{ title: "Account" }} />
     </Stack>
   );
