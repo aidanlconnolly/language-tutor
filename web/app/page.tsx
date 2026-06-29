@@ -41,6 +41,8 @@ async function getLangStats(lang: Lang): Promise<LangStats> {
 
 export default async function Home() {
   const langStats = await Promise.all(SUPPORTED_LANGS.map(getLangStats));
+  // Most progress first; equal progress keeps SUPPORTED_LANGS order (stable sort).
+  langStats.sort((a, b) => b.lessonsCompleted - a.lessonsCompleted);
 
   return (
     <main className="min-h-screen bg-slate-950 text-slate-100 font-sans">
