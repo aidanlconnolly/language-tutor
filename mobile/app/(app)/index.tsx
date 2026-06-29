@@ -67,7 +67,10 @@ export default function HomeScreen() {
       {loading ? (
         <ActivityIndicator color={SUN.sub} style={{ marginTop: 40 }} />
       ) : (
-        SUPPORTED_LANGS.map((lang) => {
+        [...SUPPORTED_LANGS]
+          // Most units completed first; equal progress keeps SUPPORTED_LANGS order (stable sort).
+          .sort((a, b) => (stats[b]?.unitsCompleted ?? 0) - (stats[a]?.unitsCompleted ?? 0))
+          .map((lang) => {
           const st = stats[lang];
           const tint = LANG_TINT[lang];
           const totalUnits = getUnits(lang).length;
