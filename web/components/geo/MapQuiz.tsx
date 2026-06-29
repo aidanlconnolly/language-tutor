@@ -7,6 +7,8 @@ import type { Feature } from "geojson";
 import { findGame, type GeoGame } from "@/lib/geo/games";
 
 type Status = "correct" | "missed";
+type View = { k: number; x: number; y: number };
+type Pt = { x: number; y: number };
 
 function shuffle<T>(arr: T[]): T[] {
   const r = [...arr];
@@ -32,6 +34,7 @@ const REVEAL = "#f59e0b"; // amber — shows where the answer was on a miss
 const MAX_TRIES = 3;
 // Points earned by how many wrong clicks preceded the correct one.
 const POINTS = [100, 60, 30];
+const MAX_ZOOM = 8;
 
 /** Resolves the game client-side (keeps the large GeoJSON out of the RSC payload). */
 export function MapQuiz({ gameId }: { gameId: string }) {
@@ -110,6 +113,85 @@ function MapQuizGame({ game }: { game: GeoGame }) {
   const [hover, setHover] = useState<string | null>(null);
   const revealTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  // ---- Zoom & pan ----
+  const [view, setView] = useState<View>({ k: 1, x: 0, y: 0 });
+  const pointers = useRef<Map<number, Pt>>(new Map());
+  const pinchRef = useRef<{ dist: number; cx: number; cy: number } | null>(null);
+  const downRef = useRef<Pt | null>(null);
+  const movedRef = useRef(false);
+
+  const clampN = (n: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, n));
+  function clampView(v: View): View {
+    return { k: v.k, x: clampN(v.x, (1 - v.k) * size.w, 0), y: clampN(v.y, (1 - v.k) * size.h, 0) };
+  }
+  function zoomAbout(v: View, factor: number, px: number, py: number): View {
+    const k = clampN(v.k * factor, 1, MAX_ZOOM);
+    const rf = k / v.k;
+    return clampView({ k, x: px - rf * (px - v.x), y: py - rf * (py - v.y) });
+  }
+  const dist = (a: Pt, b: Pt) => Math.hypot(a.x - b.x, a.y - b.y);
+
+  // Wheel / trackpad-pinch zoom (non-passive so we can prevent browser zoom).
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    function onWheel(e: WheelEvent) {
+      e.preventDefault();
+      const factor = e.deltaY < 0 ? 1.12 : 1 / 1.12;
+      setView((v) => zoomAbout(v, factor, e.clientX, e.clientY));
+    }
+    el.addEventListener("wheel", onWheel, { passive: false });
+    return () => el.removeEventListener("wheel", onWheel);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [size.w, size.h]);
+
+  function onPointerDown(e: React.PointerEvent) {
+    pointers.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if (pointers.current.size === 1) {
+      downRef.current = { x: e.clientX, y: e.clientY };
+      movedRef.current = false;
+    } else if (pointers.current.size === 2) {
+      const p = [...pointers.current.values()];
+      pinchRef.current = { dist: dist(p[0], p[1]), cx: (p[0].x + p[1].x) / 2, cy: (p[0].y + p[1].y) / 2 };
+    }
+  }
+  function onPointerMove(e: React.PointerEvent) {
+    const prev = pointers.current.get(e.pointerId);
+    if (!prev) return;
+    pointers.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    const n = pointers.current.size;
+    if (n === 1) {
+      if (downRef.current && Math.hypot(e.clientX - downRef.current.x, e.clientY - downRef.current.y) > 6) {
+        movedRef.current = true;
+      }
+      if (movedRef.current) {
+        const dx = e.clientX - prev.x;
+        const dy = e.clientY - prev.y;
+        setView((v) => clampView({ ...v, x: v.x + dx, y: v.y + dy }));
+      }
+    } else if (n === 2 && pinchRef.current) {
+      movedRef.current = true;
+      const p = [...pointers.current.values()];
+      const nd = dist(p[0], p[1]);
+      const ncx = (p[0].x + p[1].x) / 2;
+      const ncy = (p[0].y + p[1].y) / 2;
+      const factor = nd / pinchRef.current.dist;
+      const panX = ncx - pinchRef.current.cx;
+      const panY = ncy - pinchRef.current.cy;
+      setView((v) => {
+        const k = clampN(v.k * factor, 1, MAX_ZOOM);
+        const rf = k / v.k;
+        return clampView({ k, x: ncx - rf * (ncx - v.x) + panX, y: ncy - rf * (ncy - v.y) + panY });
+      });
+      pinchRef.current = { dist: nd, cx: ncx, cy: ncy };
+    }
+  }
+  function endPointer(e: React.PointerEvent) {
+    pointers.current.delete(e.pointerId);
+    if (pointers.current.size < 2) pinchRef.current = null;
+    if (pointers.current.size === 0) downRef.current = null;
+  }
+
   function resetGame() {
     if (revealTimer.current) clearTimeout(revealTimer.current);
     setOrder(shuffle(targets));
@@ -120,6 +202,7 @@ function MapQuizGame({ game }: { game: GeoGame }) {
     setReveal(null);
     setFlash(null);
     setElapsed(0);
+    setView({ k: 1, x: 0, y: 0 });
   }
 
   useEffect(() => {
@@ -147,6 +230,7 @@ function MapQuizGame({ game }: { game: GeoGame }) {
   }
 
   function answer(clicked: string) {
+    if (movedRef.current) return; // a pan/pinch just happened — not a guess
     if (!current || reveal) return; // locked while revealing the previous answer
     if (clicked === current) {
       const pts = POINTS[Math.min(wrongPicks.length, POINTS.length - 1)];
@@ -183,6 +267,7 @@ function MapQuizGame({ game }: { game: GeoGame }) {
 
   const correctCount = Object.values(results).filter((v) => v === "correct").length;
   const dotR = Math.max(5, Math.min(size.w, size.h) / 95);
+  const transform = `translate(${view.x} ${view.y}) scale(${view.k})`;
 
   function fillForCountry(name: string): string {
     if (reveal === name) return REVEAL;
@@ -203,7 +288,14 @@ function MapQuizGame({ game }: { game: GeoGame }) {
   }
 
   return (
-    <div ref={containerRef} className="fixed inset-0 select-none overflow-hidden bg-[#dfe3df] font-sans">
+    <div
+      ref={containerRef}
+      onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
+      onPointerUp={endPointer}
+      onPointerCancel={endPointer}
+      className="fixed inset-0 touch-none select-none overflow-hidden bg-[#dfe3df] font-sans"
+    >
       {/* Full-bleed map */}
       {size.w > 0 && (
         <svg
@@ -212,46 +304,56 @@ function MapQuizGame({ game }: { game: GeoGame }) {
           viewBox={`0 0 ${size.w} ${size.h}`}
           className="absolute inset-0 h-full w-full"
         >
-          {game.kind === "countries"
-            ? features.map((f, i) => {
-                const name = (f.properties?.name as string) ?? "";
-                return (
-                  <path
-                    key={name || i}
-                    d={pathFor(f)}
-                    fill={fillForCountry(name)}
-                    stroke="#dfe3df"
-                    strokeWidth={0.6}
-                    className="cursor-pointer transition-colors"
-                    onClick={() => answer(name)}
-                    onMouseEnter={() => setHover(name)}
-                    onMouseLeave={() => setHover((hn) => (hn === name ? null : hn))}
-                  />
-                );
-              })
-            : (
-                <>
-                  <path d={pathFor(game.geo)} fill={LAND} stroke="#2f6b3f" strokeWidth={1} />
-                  {game.cities.map((c) => {
-                    const xy = project(c.coordinates);
-                    if (!xy) return null;
-                    const isReveal = reveal === c.name;
-                    return (
-                      <circle
-                        key={c.name}
-                        cx={xy[0]}
-                        cy={xy[1]}
-                        r={isReveal ? dotR * 1.6 : dotR}
-                        fill={fillForCity(c.name)}
-                        stroke="#1e293b"
-                        strokeWidth={1.5}
-                        className="cursor-pointer transition-all hover:stroke-sky-500"
-                        onClick={() => answer(c.name)}
-                      />
-                    );
-                  })}
-                </>
-              )}
+          <g transform={transform}>
+            {game.kind === "countries"
+              ? features.map((f, i) => {
+                  const name = (f.properties?.name as string) ?? "";
+                  return (
+                    <path
+                      key={name || i}
+                      d={pathFor(f)}
+                      fill={fillForCountry(name)}
+                      stroke="#dfe3df"
+                      strokeWidth={0.6}
+                      vectorEffect="non-scaling-stroke"
+                      className="cursor-pointer transition-colors"
+                      onClick={() => answer(name)}
+                      onMouseEnter={() => setHover(name)}
+                      onMouseLeave={() => setHover((hn) => (hn === name ? null : hn))}
+                    />
+                  );
+                })
+              : (
+                  <>
+                    <path
+                      d={pathFor(game.geo)}
+                      fill={LAND}
+                      stroke="#2f6b3f"
+                      strokeWidth={1}
+                      vectorEffect="non-scaling-stroke"
+                    />
+                    {game.cities.map((c) => {
+                      const xy = project(c.coordinates);
+                      if (!xy) return null;
+                      const isReveal = reveal === c.name;
+                      return (
+                        <circle
+                          key={c.name}
+                          cx={xy[0]}
+                          cy={xy[1]}
+                          r={(isReveal ? dotR * 1.6 : dotR) / view.k}
+                          fill={fillForCity(c.name)}
+                          stroke="#1e293b"
+                          strokeWidth={1.5}
+                          vectorEffect="non-scaling-stroke"
+                          className="cursor-pointer transition-all hover:stroke-sky-500"
+                          onClick={() => answer(c.name)}
+                        />
+                      );
+                    })}
+                  </>
+                )}
+          </g>
         </svg>
       )}
 
@@ -274,6 +376,33 @@ function MapQuizGame({ game }: { game: GeoGame }) {
         >
           ✕
         </button>
+      </div>
+
+      {/* Zoom controls (bottom-right) */}
+      <div className="absolute bottom-4 right-3 flex flex-col gap-2">
+        <button
+          onClick={() => setView((v) => zoomAbout(v, 1.5, size.w / 2, size.h / 2))}
+          title="Zoom in"
+          className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-900/85 text-xl font-bold text-white shadow-lg backdrop-blur-sm hover:bg-slate-800"
+        >
+          +
+        </button>
+        <button
+          onClick={() => setView((v) => zoomAbout(v, 1 / 1.5, size.w / 2, size.h / 2))}
+          title="Zoom out"
+          className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-900/85 text-xl font-bold text-white shadow-lg backdrop-blur-sm hover:bg-slate-800"
+        >
+          −
+        </button>
+        {view.k > 1.01 && (
+          <button
+            onClick={() => setView({ k: 1, x: 0, y: 0 })}
+            title="Reset zoom"
+            className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-900/85 text-xs font-bold text-white shadow-lg backdrop-blur-sm hover:bg-slate-800"
+          >
+            1:1
+          </button>
+        )}
       </div>
 
       {/* Center prompt — pops up over the map */}
