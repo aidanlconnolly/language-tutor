@@ -34,7 +34,12 @@ function fmtTime(secs: number): string {
 const LAND = "#3f8a52";
 const CORRECT = "#22c55e";
 const MISSED = "#dc2626";
+const REVEAL = "#f59e0b"; // amber — shows where the answer was on a miss
 const BG = "#dfe3df";
+
+const MAX_TRIES = 3;
+// Points earned by how many wrong clicks preceded the correct one.
+const POINTS = [100, 60, 30];
 
 /** Resolves the game client-side (keeps the large GeoJSON out of route params). */
 export function MapQuiz({ gameId }: { gameId: string }) {
@@ -97,19 +102,38 @@ function MapQuizGame({ game }: { game: GeoGame }) {
 
   const [order, setOrder] = useState<string[]>([]);
   const [idx, setIdx] = useState(0);
-  const [statuses, setStatuses] = useState<Record<string, Status>>({});
+  const [results, setResults] = useState<Record<string, Status>>({});
+  const [score, setScore] = useState(0);
+  const [wrongPicks, setWrongPicks] = useState<string[]>([]); // wrong clicks for the current target
+  const [reveal, setReveal] = useState<string | null>(null); // briefly show the answer after a miss
+  const [flash, setFlash] = useState<{ pts: number; key: number } | null>(null);
   const [elapsed, setElapsed] = useState(0);
+  const revealTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  useEffect(() => {
+  function resetGame() {
+    if (revealTimer.current) clearTimeout(revealTimer.current);
     setOrder(shuffle(targets));
     setIdx(0);
-    setStatuses({});
+    setResults({});
+    setScore(0);
+    setWrongPicks([]);
+    setReveal(null);
+    setFlash(null);
     setElapsed(0);
+  }
+
+  useEffect(() => {
+    resetGame();
+    return () => {
+      if (revealTimer.current) clearTimeout(revealTimer.current);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [targets]);
 
   const started = order.length > 0;
   const finished = started && idx >= order.length;
   const current = started && !finished ? order[idx] : null;
+  const triesLeft = MAX_TRIES - wrongPicks.length;
 
   useEffect(() => {
     if (!started || finished) return;
@@ -130,33 +154,73 @@ function MapQuizGame({ game }: { game: GeoGame }) {
     }).start();
   }, [current, pop]);
 
-  function answer(clicked: string) {
-    if (!current) return;
-    setStatuses((s) => ({ ...s, [current]: clicked === current ? "correct" : "missed" }));
+  // The "+100" / "Missed" feedback floats up and fades.
+  const rise = useRef(new Animated.Value(0)).current;
+  useEffect(() => {
+    if (!flash) return;
+    rise.setValue(0);
+    Animated.timing(rise, { toValue: 1, duration: 900, useNativeDriver: true }).start();
+  }, [flash, rise]);
+
+  function advance() {
+    setWrongPicks([]);
     setIdx((i) => i + 1);
-  }
-  function skip() {
-    if (!current) return;
-    setStatuses((s) => ({ ...s, [current]: "missed" }));
-    setIdx((i) => i + 1);
-  }
-  function restart() {
-    setOrder(shuffle(targets));
-    setIdx(0);
-    setStatuses({});
-    setElapsed(0);
   }
 
-  const answered = Object.keys(statuses).length;
-  const correct = Object.values(statuses).filter((v) => v === "correct").length;
-  const accuracy = answered > 0 ? Math.round((correct / answered) * 100) : 0;
+  function answer(clicked: string) {
+    if (!current || reveal) return; // locked while revealing the previous answer
+    if (clicked === current) {
+      const pts = POINTS[Math.min(wrongPicks.length, POINTS.length - 1)];
+      setScore((s) => s + pts);
+      setResults((r) => ({ ...r, [current]: "correct" }));
+      setFlash({ pts, key: idx });
+      advance();
+      return;
+    }
+    // Wrong tap — record it; flash red. Out of tries → reveal & move on.
+    const usedAfter = wrongPicks.includes(clicked) ? wrongPicks.length : wrongPicks.length + 1;
+    setWrongPicks((w) => (w.includes(clicked) ? w : [...w, clicked]));
+    if (usedAfter >= MAX_TRIES) {
+      setResults((r) => ({ ...r, [current]: "missed" }));
+      setFlash({ pts: 0, key: idx });
+      setReveal(current);
+      revealTimer.current = setTimeout(() => {
+        setReveal(null);
+        advance();
+      }, 1100);
+    }
+  }
+
+  function skip() {
+    if (!current || reveal) return;
+    setResults((r) => ({ ...r, [current]: "missed" }));
+    setFlash({ pts: 0, key: idx });
+    setReveal(current);
+    revealTimer.current = setTimeout(() => {
+      setReveal(null);
+      advance();
+    }, 1000);
+  }
+
+  const correctCount = Object.values(results).filter((v) => v === "correct").length;
   const dotR = Math.max(7, Math.min(size.w, size.h) / 55);
 
   function fillForCountry(name: string): string {
-    const st = statuses[name];
+    if (reveal === name) return REVEAL;
+    const st = results[name];
     if (st === "correct") return CORRECT;
     if (st === "missed") return MISSED;
+    if (wrongPicks.includes(name)) return MISSED; // wrong tries this round
     return LAND;
+  }
+
+  function fillForCity(name: string): string {
+    if (reveal === name) return REVEAL;
+    const st = results[name];
+    if (st === "correct") return CORRECT;
+    if (st === "missed") return MISSED;
+    if (wrongPicks.includes(name)) return MISSED;
+    return "#ffffff";
   }
 
   return (
@@ -184,16 +248,14 @@ function MapQuizGame({ game }: { game: GeoGame }) {
                   {game.cities.map((c) => {
                     const xy = project(c.coordinates);
                     if (!xy) return null;
-                    const st = statuses[c.name];
-                    const fill = st === "correct" ? CORRECT : st === "missed" ? MISSED : "#ffffff";
+                    const isReveal = reveal === c.name;
                     return (
                       <Circle
                         key={c.name}
                         cx={xy[0]}
                         cy={xy[1]}
-                        // Larger transparent hit-target sits under the visible dot.
-                        r={dotR}
-                        fill={fill}
+                        r={isReveal ? dotR * 1.6 : dotR}
+                        fill={fillForCity(c.name)}
                         stroke="#1e293b"
                         strokeWidth={1.5}
                         onPress={() => answer(c.name)}
@@ -205,12 +267,12 @@ function MapQuizGame({ game }: { game: GeoGame }) {
         </Svg>
       )}
 
-      {/* Top-left: progress */}
+      {/* Top-left: progress + score */}
       <View style={[styles.pill, styles.topLeft, { top: insets.top + 8 }]}>
         <Text style={styles.pillText}>
           {Math.min(idx + (finished ? 0 : 1), order.length)} / {order.length || targets.length}
           {"  ·  "}
-          {accuracy}%
+          {score} pts
         </Text>
       </View>
 
@@ -219,11 +281,7 @@ function MapQuizGame({ game }: { game: GeoGame }) {
         <View style={styles.pill}>
           <Text style={styles.pillText}>{fmtTime(elapsed)}</Text>
         </View>
-        <Pressable
-          onPress={() => router.back()}
-          accessibilityLabel="Close"
-          style={styles.closeBtn}
-        >
+        <Pressable onPress={() => router.back()} accessibilityLabel="Close" style={styles.closeBtn}>
           <Text style={styles.closeText}>✕</Text>
         </Pressable>
       </View>
@@ -232,11 +290,36 @@ function MapQuizGame({ game }: { game: GeoGame }) {
       {current && (
         <View style={[styles.promptWrap, { top: size.h * 0.16 }]} pointerEvents="box-none">
           <Text style={styles.findLabel}>FIND</Text>
-          <Animated.View style={[styles.promptChip, { transform: [{ scale: pop }] }]}>
-            <Text style={styles.promptText} numberOfLines={1}>
-              {current}
-            </Text>
-          </Animated.View>
+          <View>
+            <Animated.View style={[styles.promptChip, { transform: [{ scale: pop }] }]}>
+              <Text style={styles.promptText} numberOfLines={1}>
+                {current}
+              </Text>
+            </Animated.View>
+            {flash && (
+              <Animated.Text
+                key={flash.key}
+                style={[
+                  styles.flash,
+                  { color: flash.pts > 0 ? "#16a34a" : "#dc2626" },
+                  {
+                    opacity: rise.interpolate({ inputRange: [0, 0.2, 1], outputRange: [0, 1, 0] }),
+                    transform: [
+                      { translateY: rise.interpolate({ inputRange: [0, 1], outputRange: [6, -16] }) },
+                    ],
+                  },
+                ]}
+              >
+                {flash.pts > 0 ? `+${flash.pts}` : "Missed"}
+              </Animated.Text>
+            )}
+          </View>
+          {/* Chances remaining */}
+          <View style={styles.dots}>
+            {Array.from({ length: MAX_TRIES }).map((_, i) => (
+              <View key={i} style={[styles.dot, { opacity: i < triesLeft ? 0.8 : 0.18 }]} />
+            ))}
+          </View>
           <Pressable onPress={skip} style={styles.skipBtn}>
             <Text style={styles.skipText}>Skip ⏭</Text>
           </Pressable>
@@ -248,14 +331,14 @@ function MapQuizGame({ game }: { game: GeoGame }) {
         <View style={styles.endOverlay}>
           <View style={styles.endCard}>
             <Text style={styles.endEmoji}>
-              {accuracy >= 80 ? "🏆" : accuracy >= 50 ? "👏" : "📚"}
+              {correctCount / order.length >= 0.8 ? "🏆" : correctCount / order.length >= 0.5 ? "👏" : "📚"}
             </Text>
             <Text style={styles.endTitle}>{game.title}</Text>
+            <Text style={styles.endScore}>{score} pts</Text>
             <Text style={styles.endStats}>
-              You got <Text style={styles.endStrong}>{correct}</Text> / {order.length} ({accuracy}%)
-              {"\n"}in {fmtTime(elapsed)}
+              <Text style={styles.endStrong}>{correctCount}</Text> / {order.length} correct · {fmtTime(elapsed)}
             </Text>
-            <Pressable onPress={restart} style={styles.primaryBtn}>
+            <Pressable onPress={resetGame} style={styles.primaryBtn}>
               <Text style={styles.primaryBtnText}>Play again</Text>
             </Pressable>
             <Pressable onPress={() => router.back()} style={styles.secondaryBtn}>
@@ -312,6 +395,15 @@ const styles = StyleSheet.create({
     elevation: 8,
   },
   promptText: { color: "#ffffff", fontSize: 30, fontWeight: "800", textAlign: "center" },
+  flash: {
+    position: "absolute",
+    top: -24,
+    alignSelf: "center",
+    fontSize: 18,
+    fontWeight: "800",
+  },
+  dots: { flexDirection: "row", alignItems: "center", gap: 6 },
+  dot: { width: 10, height: 10, borderRadius: 5, backgroundColor: "#0f172a" },
   skipBtn: {
     marginTop: 4,
     backgroundColor: "rgba(255,255,255,0.9)",
@@ -344,8 +436,9 @@ const styles = StyleSheet.create({
   },
   endEmoji: { fontSize: 48 },
   endTitle: { marginTop: 12, fontSize: 20, fontWeight: "700", color: "#ffffff" },
-  endStats: { marginTop: 8, fontSize: 15, color: "#cbd5e1", textAlign: "center", lineHeight: 22 },
-  endStrong: { fontWeight: "700", color: "#34d399" },
+  endScore: { marginTop: 8, fontSize: 30, fontWeight: "800", color: "#34d399" },
+  endStats: { marginTop: 4, fontSize: 15, color: "#cbd5e1", textAlign: "center" },
+  endStrong: { fontWeight: "700", color: "#ffffff" },
   primaryBtn: {
     marginTop: 20,
     alignSelf: "stretch",
