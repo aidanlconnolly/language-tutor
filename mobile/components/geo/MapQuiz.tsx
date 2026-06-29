@@ -12,8 +12,8 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { GestureDetector, Gesture, GestureHandlerRootView } from "react-native-gesture-handler";
 import Svg, { Path, Circle, G } from "react-native-svg";
 import { geoMercator, geoPath } from "d3-geo";
-import type { Feature } from "geojson";
-import { findGame, type GeoGame } from "@/lib/geo/games";
+import type { Feature, FeatureCollection } from "geojson";
+import { findGame, type GeoGame, type GeoData } from "@/lib/geo/games";
 
 type Status = "correct" | "missed";
 type ViewT = { k: number; x: number; y: number };
@@ -44,9 +44,20 @@ const MAX_TRIES = 3;
 const POINTS = [100, 60, 30];
 const MAX_ZOOM = 8;
 
-/** Resolves the game client-side (keeps the large GeoJSON out of route params). */
+/** Resolves the game + lazily loads its GeoJSON client-side. */
 export function MapQuiz({ gameId }: { gameId: string }) {
   const game = findGame(gameId);
+  const [geo, setGeo] = useState<GeoData | null>(null);
+  useEffect(() => {
+    if (!game) return;
+    let live = true;
+    game.load().then((g) => {
+      if (live) setGeo(g);
+    });
+    return () => {
+      live = false;
+    };
+  }, [game]);
   if (!game) {
     return (
       <View style={styles.notFound}>
@@ -54,10 +65,17 @@ export function MapQuiz({ gameId }: { gameId: string }) {
       </View>
     );
   }
-  return <MapQuizGame game={game} />;
+  if (!geo) {
+    return (
+      <View style={[styles.notFound, { backgroundColor: BG }]}>
+        <Text style={styles.loadingText}>Loading map…</Text>
+      </View>
+    );
+  }
+  return <MapQuizGame game={game} geo={geo} />;
 }
 
-function MapQuizGame({ game }: { game: GeoGame }) {
+function MapQuizGame({ game, geo }: { game: GeoGame; geo: GeoData }) {
   const router = useRouter();
   const insets = useSafeAreaInsets();
   const [size, setSize] = useState({ w: 0, h: 0 });
@@ -83,24 +101,25 @@ function MapQuizGame({ game }: { game: GeoGame }) {
         [pad, pad],
         [size.w - pad, size.h - pad],
       ],
-      game.geo as Parameters<typeof projection.fitExtent>[1],
+      geo as Parameters<typeof projection.fitExtent>[1],
     );
     const gp = geoPath(projection);
     const feats: Feature[] =
-      game.kind === "countries" ? (game.geo.features as Feature[]) : [game.geo];
+      game.kind === "countries" ? ((geo as FeatureCollection).features as Feature[]) : [geo as Feature];
     return {
       pathFor: (f: Feature) => gp(f) ?? "",
       project: (c: [number, number]) => projection(c),
       features: feats,
     };
-  }, [game, size]);
+  }, [game, geo, size]);
 
+  const cities = game.cities ?? [];
   const targets = useMemo(
     () =>
       game.kind === "cities"
-        ? game.cities.map((c) => c.name)
-        : game.geo.features.map((f) => (f.properties?.name as string) ?? ""),
-    [game],
+        ? cities.map((c) => c.name)
+        : (geo as FeatureCollection).features.map((f) => (f.properties?.name as string) ?? ""),
+    [game, geo, cities],
   );
 
   const [order, setOrder] = useState<string[]>([]);
@@ -295,13 +314,13 @@ function MapQuizGame({ game }: { game: GeoGame }) {
                   : (
                       <>
                         <Path
-                          d={pathFor(game.geo)}
+                          d={pathFor(geo as Feature)}
                           fill={LAND}
                           stroke="#2f6b3f"
                           strokeWidth={1}
                           vectorEffect="non-scaling-stroke"
                         />
-                        {game.cities.map((c) => {
+                        {cities.map((c) => {
                           const xy = project(c.coordinates);
                           if (!xy) return null;
                           const isReveal = reveal === c.name;
@@ -443,6 +462,7 @@ const styles = StyleSheet.create({
   root: { flex: 1, backgroundColor: BG },
   notFound: { flex: 1, alignItems: "center", justifyContent: "center", backgroundColor: "#020617" },
   notFoundText: { color: "#cbd5e1", fontSize: 16 },
+  loadingText: { color: "#52525b", fontSize: 15, fontWeight: "600" },
 
   pill: {
     backgroundColor: "rgba(15,23,42,0.85)",

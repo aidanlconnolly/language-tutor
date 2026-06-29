@@ -3,8 +3,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { geoMercator, geoPath } from "d3-geo";
-import type { Feature } from "geojson";
-import { findGame, type GeoGame } from "@/lib/geo/games";
+import type { Feature, FeatureCollection } from "geojson";
+import { findGame, type GeoGame, type GeoData } from "@/lib/geo/games";
 
 type Status = "correct" | "missed";
 type View = { k: number; x: number; y: number };
@@ -36,9 +36,21 @@ const MAX_TRIES = 3;
 const POINTS = [100, 60, 30];
 const MAX_ZOOM = 8;
 
-/** Resolves the game client-side (keeps the large GeoJSON out of the RSC payload). */
+/** Resolves the game + lazily loads its GeoJSON client-side (keeps the large
+ *  data out of the RSC payload and out of sibling routes). */
 export function MapQuiz({ gameId }: { gameId: string }) {
   const game = findGame(gameId);
+  const [geo, setGeo] = useState<GeoData | null>(null);
+  useEffect(() => {
+    if (!game) return;
+    let live = true;
+    game.load().then((g) => {
+      if (live) setGeo(g);
+    });
+    return () => {
+      live = false;
+    };
+  }, [game]);
   if (!game) {
     return (
       <div className="flex h-screen items-center justify-center bg-slate-950 text-slate-300">
@@ -46,10 +58,17 @@ export function MapQuiz({ gameId }: { gameId: string }) {
       </div>
     );
   }
-  return <MapQuizGame game={game} />;
+  if (!geo) {
+    return (
+      <div className="fixed inset-0 flex items-center justify-center bg-[#dfe3df] text-sm font-semibold text-slate-600">
+        Loading map…
+      </div>
+    );
+  }
+  return <MapQuizGame game={game} geo={geo} />;
 }
 
-function MapQuizGame({ game }: { game: GeoGame }) {
+function MapQuizGame({ game, geo }: { game: GeoGame; geo: GeoData }) {
   const router = useRouter();
   const containerRef = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState({ w: 0, h: 0 });
@@ -82,24 +101,25 @@ function MapQuizGame({ game }: { game: GeoGame }) {
         [pad, pad],
         [size.w - pad, size.h - pad],
       ],
-      game.geo as Parameters<typeof projection.fitExtent>[1],
+      geo as Parameters<typeof projection.fitExtent>[1],
     );
     const gp = geoPath(projection);
     const feats: Feature[] =
-      game.kind === "countries" ? (game.geo.features as Feature[]) : [game.geo];
+      game.kind === "countries" ? ((geo as FeatureCollection).features as Feature[]) : [geo as Feature];
     return {
       pathFor: (f: Feature) => gp(f) ?? "",
       project: (c: [number, number]) => projection(c),
       features: feats,
     };
-  }, [game, size]);
+  }, [game, geo, size]);
 
+  const cities = game.cities ?? [];
   const targets = useMemo(
     () =>
       game.kind === "cities"
-        ? game.cities.map((c) => c.name)
-        : game.geo.features.map((f) => (f.properties?.name as string) ?? ""),
-    [game],
+        ? cities.map((c) => c.name)
+        : (geo as FeatureCollection).features.map((f) => (f.properties?.name as string) ?? ""),
+    [game, geo, cities],
   );
 
   const [order, setOrder] = useState<string[]>([]);
@@ -326,13 +346,13 @@ function MapQuizGame({ game }: { game: GeoGame }) {
               : (
                   <>
                     <path
-                      d={pathFor(game.geo)}
+                      d={pathFor(geo as Feature)}
                       fill={LAND}
                       stroke="#2f6b3f"
                       strokeWidth={1}
                       vectorEffect="non-scaling-stroke"
                     />
-                    {game.cities.map((c) => {
+                    {cities.map((c) => {
                       const xy = project(c.coordinates);
                       if (!xy) return null;
                       const isReveal = reveal === c.name;

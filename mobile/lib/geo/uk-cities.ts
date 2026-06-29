@@ -1,0 +1,32 @@
+import type { GeoCity } from "./italy-cities";
+
+/** Major UK cities for the "click the city" geography game. [lng, lat]. */
+export const UK_CITIES: GeoCity[] = [
+  { name: "London", coordinates: [-0.1276, 51.5072] },
+  { name: "Birmingham", coordinates: [-1.8904, 52.4862] },
+  { name: "Manchester", coordinates: [-2.2426, 53.4808] },
+  { name: "Glasgow", coordinates: [-4.2518, 55.8642] },
+  { name: "Liverpool", coordinates: [-2.9916, 53.4084] },
+  { name: "Leeds", coordinates: [-1.5491, 53.8008] },
+  { name: "Sheffield", coordinates: [-1.4701, 53.3811] },
+  { name: "Edinburgh", coordinates: [-3.1883, 55.9533] },
+  { name: "Bristol", coordinates: [-2.5879, 51.4545] },
+  { name: "Cardiff", coordinates: [-3.1791, 51.4816] },
+  { name: "Belfast", coordinates: [-5.9301, 54.5973] },
+  { name: "Newcastle", coordinates: [-1.6178, 54.9783] },
+  { name: "Nottingham", coordinates: [-1.1581, 52.9548] },
+  { name: "Leicester", coordinates: [-1.1398, 52.6369] },
+  { name: "Southampton", coordinates: [-1.4044, 50.9097] },
+  { name: "Aberdeen", coordinates: [-2.0943, 57.1497] },
+  { name: "Brighton", coordinates: [-0.1372, 50.8225] },
+  { name: "Plymouth", coordinates: [-4.1427, 50.3755] },
+  { name: "Cambridge", coordinates: [0.1218, 52.2053] },
+  { name: "Oxford", coordinates: [-1.2577, 51.752] },
+  { name: "York", coordinates: [-1.0815, 53.959] },
+  { name: "Norwich", coordinates: [1.2974, 52.6309] },
+  { name: "Swansea", coordinates: [-3.9436, 51.6214] },
+  { name: "Inverness", coordinates: [-4.2247, 57.4778] },
+  { name: "Exeter", coordinates: [-3.5339, 50.7184] },
+  { name: "Hull", coordinates: [-0.3367, 53.7676] },
+  { name: "Dundee", coordinates: [-2.9707, 56.462] },
+];
