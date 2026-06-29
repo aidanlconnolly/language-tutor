@@ -1,0 +1,33 @@
+import type { GeoCity } from "./italy-cities";
+
+/** Major Brazilian cities for the "click the city" geography game. [lng, lat]. */
+export const BRAZIL_CITIES: GeoCity[] = [
+  { name: "Brasília", coordinates: [-47.8825, -15.7942] },
+  { name: "São Paulo", coordinates: [-46.6333, -23.5505] },
+  { name: "Rio de Janeiro", coordinates: [-43.1729, -22.9068] },
+  { name: "Salvador", coordinates: [-38.5014, -12.9777] },
+  { name: "Fortaleza", coordinates: [-38.5267, -3.7319] },
+  { name: "Belo Horizonte", coordinates: [-43.9378, -19.9208] },
+  { name: "Manaus", coordinates: [-60.0217, -3.119] },
+  { name: "Curitiba", coordinates: [-49.2733, -25.4284] },
+  { name: "Recife", coordinates: [-34.877, -8.0476] },
+  { name: "Porto Alegre", coordinates: [-51.23, -30.0346] },
+  { name: "Belém", coordinates: [-48.5044, -1.4558] },
+  { name: "Goiânia", coordinates: [-49.2533, -16.6869] },
+  { name: "Campinas", coordinates: [-47.0608, -22.9056] },
+  { name: "São Luís", coordinates: [-44.3068, -2.5391] },
+  { name: "Maceió", coordinates: [-35.7353, -9.6498] },
+  { name: "Natal", coordinates: [-35.2094, -5.7945] },
+  { name: "Teresina", coordinates: [-42.8019, -5.0892] },
+  { name: "Campo Grande", coordinates: [-54.6464, -20.4697] },
+  { name: "João Pessoa", coordinates: [-34.8631, -7.1195] },
+  { name: "Cuiabá", coordinates: [-56.0967, -15.6014] },
+  { name: "Florianópolis", coordinates: [-48.5482, -27.5954] },
+  { name: "Vitória", coordinates: [-40.3376, -20.3155] },
+  { name: "Porto Velho", coordinates: [-63.9039, -8.7619] },
+  { name: "Macapá", coordinates: [-51.0664, 0.0349] },
+  { name: "Rio Branco", coordinates: [-67.8243, -9.9747] },
+  { name: "Boa Vista", coordinates: [-60.6753, 2.8235] },
+  { name: "Aracaju", coordinates: [-37.0731, -10.9472] },
+  { name: "Palmas", coordinates: [-48.3336, -10.184] },
+];
