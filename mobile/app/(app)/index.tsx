@@ -104,6 +104,18 @@ export default function HomeScreen() {
         })
       )}
 
+      <TouchableOpacity
+        style={s.geoCard}
+        onPress={() => router.push("/(app)/geography" as never)}
+      >
+        <Text style={s.geoEmoji}>🌍</Text>
+        <View style={s.geoTextWrap}>
+          <Text style={s.geoTitle}>Geography</Text>
+          <Text style={s.geoSubtitle}>Learn not just the language, but the countries.</Text>
+        </View>
+        <Text style={s.geoArrow}>→</Text>
+      </TouchableOpacity>
+
       <Text style={s.footer}>A language a day…</Text>
     </ScrollView>
   );
@@ -138,4 +150,20 @@ const s = StyleSheet.create({
   fill: { height: 6, borderRadius: 3 },
   caption: { fontSize: 13 },
   footer: { textAlign: "center", color: SUN.sub, fontSize: 13, marginTop: 12, marginBottom: 32 },
+  geoCard: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginHorizontal: 16,
+    marginTop: 12,
+    borderRadius: 18,
+    padding: 16,
+    borderWidth: 1,
+    backgroundColor: "#eaf6e7",
+    borderColor: "#bcdcb4",
+  },
+  geoEmoji: { fontSize: 28, marginRight: 12 },
+  geoTextWrap: { flex: 1 },
+  geoTitle: { fontSize: 17, fontWeight: "700", color: "#27500a" },
+  geoSubtitle: { fontSize: 13, color: "#3b6d11", marginTop: 2 },
+  geoArrow: { fontSize: 16, color: "#3b6d11", marginLeft: 8 },
 });
