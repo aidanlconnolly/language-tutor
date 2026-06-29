@@ -50,7 +50,7 @@ export default async function Home() {
             Allora
           </h1>
           <p className="mt-2 text-slate-400 text-sm">
-            A0 → B1 in Italian, French, Spanish and Portuguese. Ten minutes a day.
+            A0 → B1 across nine languages. Ten minutes a day.
           </p>
         </header>
 
@@ -60,9 +60,29 @@ export default async function Home() {
           ))}
         </div>
 
+        <GeographyCallout />
+
         <AppStoreCallout />
       </div>
     </main>
+  );
+}
+
+function GeographyCallout() {
+  return (
+    <Link
+      href="/geography"
+      className="mt-8 flex items-center gap-4 rounded-2xl border border-slate-800 bg-gradient-to-br from-emerald-950/60 to-slate-900 px-6 py-5 transition-all hover:border-emerald-700 hover:from-emerald-900/60"
+    >
+      <div className="text-4xl">🌍</div>
+      <div className="flex-1 min-w-0">
+        <div className="font-semibold text-white">Geography</div>
+        <div className="mt-0.5 text-sm text-slate-400">
+          Learn not just the language, but the countries — find cities and nations on the map.
+        </div>
+      </div>
+      <div className="shrink-0 text-sm text-slate-500">→</div>
+    </Link>
   );
 }
 
