@@ -1,4 +1,5 @@
 import type { Feature, FeatureCollection } from "geojson";
+import type { Lang } from "@/lib/lang";
 import type { GeoCity } from "./italy-cities";
 import { ITALY_CITIES } from "./italy-cities";
 import { FRANCE_CITIES } from "./france-cities";
@@ -28,6 +29,9 @@ export type GeoGame = {
   region: "country" | "continent";
   count: number;
   cities?: GeoCity[];
+  /** Optional geoMercator rotation [lambda, phi]. Needed for Asia so Russia,
+   *  which straddles the antimeridian, renders contiguously instead of wrapping. */
+  rotate?: [number, number];
   load: () => Promise<GeoData>;
 };
 
@@ -53,7 +57,8 @@ export const GEO_GAMES: GeoGame[] = [
     emoji: "🌏",
     kind: "countries",
     region: "continent",
-    count: 47,
+    count: 48,
+    rotate: [-100, 0], // center on ~100°E so Russia doesn't wrap the antimeridian
     load: () => import("./data/asia.geo.json").then(asCollection),
   },
   {
@@ -181,3 +186,17 @@ export const GEO_GAMES: GeoGame[] = [
 export function findGame(id: string): GeoGame | undefined {
   return GEO_GAMES.find((g) => g.id === id);
 }
+
+/** The two geography games surfaced on each language's home screen: the country
+ *  whose language this is, plus that country's continent. */
+export const GEO_GAMES_BY_LANG: Record<Lang, [string, string]> = {
+  italian: ["italy-cities", "europe-countries"],
+  french: ["france-cities", "europe-countries"],
+  spanish: ["spain-cities", "europe-countries"],
+  portuguese: ["brazil-cities", "south-america-countries"],
+  english: ["uk-cities", "europe-countries"],
+  german: ["germany-cities", "europe-countries"],
+  arabic: ["egypt-cities", "africa-countries"],
+  japanese: ["japan-cities", "asia-countries"],
+  chinese: ["china-cities", "asia-countries"],
+};
