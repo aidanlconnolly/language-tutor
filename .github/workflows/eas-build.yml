@@ -1,0 +1,43 @@
+name: EAS Build + Submit (iOS)
+
+# Manually-triggered production iOS build on EAS cloud, then auto-submit to
+# App Store Connect. Use for native changes (new native module, SDK bump,
+# app.json icon/permission/version changes) that an OTA update can't ship.
+# Requires an EXPO_TOKEN repo secret (an Expo access token from expo.dev).
+
+on:
+  workflow_dispatch:
+    inputs:
+      message:
+        description: "Build message (shown in the EAS dashboard)"
+        required: false
+        default: "Production iOS build"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: mobile
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: mobile/package-lock.json
+
+      - name: Setup EAS
+        uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build on EAS cloud + auto-submit to App Store Connect
+        run: eas build --profile production --platform ios --auto-submit --non-interactive --message "${{ github.event.inputs.message }}"
