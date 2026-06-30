@@ -96,6 +96,7 @@ function MapQuizGame({ game, geo }: { game: GeoGame; geo: GeoData }) {
     }
     const pad = 10;
     const projection = geoMercator();
+    if (game.rotate) projection.rotate(game.rotate);
     projection.fitExtent(
       [
         [pad, pad],

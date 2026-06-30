@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, StyleSheet, ScrollView, ActivityIndicator
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { apiGetProgress } from "@/lib/api";
 import { getUnits, getStages, getUnitOutline, pickTodaysRead } from "@/lib/content";
+import { findGame, GEO_GAMES_BY_LANG } from "@/lib/geo/games";
 import { isValidLang, LANG_FLAGS, LANG_LABELS } from "@/lib/lang";
 import { C } from "@/lib/theme";
 import type { Lang } from "@/lib/lang";
@@ -117,6 +118,26 @@ export default function LangHomeScreen() {
       <View style={s.tools}>
         <ToolCard emoji="🃏" label="Review" sub="Cards due" onPress={() => router.push(`/(app)/${lang}/tools/review` as never)} />
         <ToolCard emoji="📚" label="Deck" sub="Saved words" onPress={() => router.push(`/(app)/${lang}/tools/deck` as never)} />
+      </View>
+
+      {/* Geography — the country whose language this is, plus its continent */}
+      <View style={s.geoHead}>
+        <Text style={s.sectionLabel}>Geography</Text>
+      </View>
+      <View style={s.tools}>
+        {GEO_GAMES_BY_LANG[lang].map((id) => {
+          const g = findGame(id);
+          if (!g) return null;
+          return (
+            <ToolCard
+              key={id}
+              emoji={g.emoji}
+              label={g.title}
+              sub={`${g.count} ${g.kind === "cities" ? "cities" : "countries"}`}
+              onPress={() => router.push(`/(app)/geography/${id}` as never)}
+            />
+          );
+        })}
       </View>
 
       {/* Roadmap — zig-zag down a central spine, one section per stage */}
@@ -303,6 +324,7 @@ const s = StyleSheet.create({
   toolLabel: { color: C.text, fontSize: 15, fontWeight: "700" },
   toolSub: { color: C.textMuted, fontSize: 11, marginTop: 1 },
 
+  geoHead: { paddingHorizontal: 20, marginTop: 24, marginBottom: 10 },
   roadmapHead: { paddingHorizontal: 20, marginTop: 28, marginBottom: 14 },
   sectionLabel: { fontSize: 13, fontWeight: "700", color: C.textSecondary, letterSpacing: 0.5, textTransform: "uppercase" },
   sectionSub: { fontSize: 12, color: C.textMuted, marginTop: 2 },

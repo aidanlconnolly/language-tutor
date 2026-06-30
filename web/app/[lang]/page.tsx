@@ -5,6 +5,7 @@ import { getAllReadProgress, getRoadmapSummary } from "@/lib/actions/progress";
 import { findRead, pickTodaysRead, getStages, getUnitOutline, getUnits } from "@/lib/content";
 import { Roadmap } from "@/components/Roadmap";
 import { isValidLang, LANG_LABELS, LANG_FLAGS } from "@/lib/lang";
+import { findGame, GEO_GAMES_BY_LANG } from "@/lib/geo/games";
 
 export const dynamic = "force-dynamic";
 
@@ -153,6 +154,32 @@ export default async function LangHome({
             </div>
           </div>
         </Link>
+      </section>
+
+      {/* Geography games for this language */}
+      <section className="mb-10">
+        <h2 className="mb-3 text-xs font-bold uppercase tracking-widest text-zinc-500">
+          Geography
+        </h2>
+        <div className="grid grid-cols-2 gap-3">
+          {GEO_GAMES_BY_LANG[langParam].map((id) => {
+            const g = findGame(id);
+            if (!g) return null;
+            return (
+              <Link
+                key={id}
+                href={`/geography/${id}`}
+                className="rounded-xl border border-zinc-200 bg-white p-4 transition-shadow hover:shadow-md dark:border-zinc-800 dark:bg-zinc-950"
+              >
+                <div className="text-2xl">{g.emoji}</div>
+                <div className="mt-1.5 text-sm font-semibold">{g.title}</div>
+                <div className="text-[11px] text-zinc-500">
+                  {g.count} {g.kind === "cities" ? "cities" : "countries"} · tap to play
+                </div>
+              </Link>
+            );
+          })}
+        </div>
       </section>
 
       {/* Past reads */}

@@ -48,7 +48,7 @@ const CONTINENTS = {
     "Brunei", "Cambodia", "China", "Cyprus", "Georgia", "India", "Indonesia",
     "Iran", "Iraq", "Israel", "Japan", "Jordan", "Kazakhstan", "Kuwait",
     "Kyrgyzstan", "Laos", "Lebanon", "Malaysia", "Mongolia", "Myanmar", "Nepal",
-    "North Korea", "Oman", "Pakistan", "Palestine", "Philippines", "Qatar",
+    "North Korea", "Oman", "Pakistan", "Palestine", "Philippines", "Qatar", "Russia",
     "Saudi Arabia", "South Korea", "Sri Lanka", "Syria", "Taiwan", "Tajikistan",
     "Thailand", "Timor-Leste", "Turkey", "Turkmenistan", "United Arab Emirates",
     "Uzbekistan", "Vietnam", "Yemen",
@@ -63,6 +63,9 @@ for (const [key, name] of Object.entries(COUNTRIES)) {
   console.log(`${key}.geo.json  (${name})`);
 }
 
+// NOTE: Asia includes Russia, which straddles the antimeridian. We keep its true
+// coordinates here and instead rotate the Asia projection (see GEO_GAMES `rotate`
+// + MapQuiz) so it renders contiguously — far more robust than mangling the data.
 for (const [key, names] of Object.entries(CONTINENTS)) {
   const feats = names.map((n) => {
     const f = map50.get(n);
