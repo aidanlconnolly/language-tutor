@@ -114,7 +114,10 @@ function MapQuizGame({ game, geo }: { game: GeoGame; geo: GeoData }) {
     };
   }, [game, geo, size]);
 
-  const cities = game.cities ?? [];
+  // Stable ref: a bare `game.cities ?? []` makes a fresh [] every render, which
+  // invalidates the `targets` memo → the `[targets]` effect re-runs resetGame →
+  // infinite render loop (breaks countries games, which have no `cities`).
+  const cities = useMemo(() => game.cities ?? [], [game]);
   const targets = useMemo(
     () =>
       game.kind === "cities"
@@ -391,9 +394,9 @@ function MapQuizGame({ game, geo }: { game: GeoGame; geo: GeoData }) {
             )}
           </View>
 
-          {/* Center prompt — pops up over the map */}
+          {/* Prompt — pinned to the top so it never hides the map */}
           {current && (
-            <View style={[styles.promptWrap, { top: size.h * 0.16 }]} pointerEvents="box-none">
+            <View style={[styles.promptWrap, { top: insets.top + 44 }]} pointerEvents="box-none">
               <Text style={styles.findLabel}>FIND</Text>
               <View>
                 <Animated.View style={[styles.promptChip, { transform: [{ scale: pop }] }]}>
@@ -505,7 +508,7 @@ const styles = StyleSheet.create({
   },
   promptChip: {
     maxWidth: "90%",
-    backgroundColor: "rgba(15,23,42,0.92)",
+    backgroundColor: "rgba(15,23,42,0.62)",
     borderRadius: 18,
     paddingHorizontal: 28,
     paddingVertical: 14,
