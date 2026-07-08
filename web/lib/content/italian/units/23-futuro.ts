@@ -287,7 +287,7 @@ export const UNIT_FUTURO: Unit = {
           type: "orderWords",
           heading: "Build the future sentence",
           items: [
-            { tokens: ["Domani", "andrò", "a", "Firenze", "in", "treno"], en: "Tomorrow I'll go to Florence by train." },
+            { tokens: ["Domani", "andrò", "a", "Firenze", "in", "treno"], alts: [["Domani", "andrò", "in", "treno", "a", "Firenze"]], en: "Tomorrow I'll go to Florence by train." },
             { tokens: ["L'anno", "prossimo", "vivremo", "a", "Roma"], en: "Next year we'll live in Rome." },
             { tokens: ["Ti", "chiamerò", "appena", "arriverò"], en: "I'll call you as soon as I arrive." },
             { tokens: ["Sarà", "una", "lunga", "giornata", "domani"], en: "It will be a long day tomorrow." },

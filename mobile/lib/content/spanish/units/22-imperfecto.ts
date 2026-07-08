@@ -213,7 +213,7 @@ export const UNIT_IMPERFECTO: Unit = {
           heading: "Build the mixed-tense sentence",
           intro: "Background in the imperfecto, the event in the indefinido.",
           items: [
-            { tokens: ["Mientras", "leía", ",", "sonó", "el", "teléfono"], en: "While I was reading, the phone rang." },
+            { tokens: ["Mientras", "leía", ",", "sonó", "el", "teléfono"], alts: [["Mientras", "leía", ",", "el", "teléfono", "sonó"]], en: "While I was reading, the phone rang." },
             { tokens: ["Cuando", "era", "pequeño", ",", "vivía", "en", "Valencia"], en: "When I was little, I lived in Valencia." },
             { tokens: ["Llovía", ",", "pero", "salimos", "a", "pasear"], en: "It was raining, but we went out for a walk." },
             { tokens: ["Hacía", "calor", ",", "así", "que", "fuimos", "a", "la", "playa"], en: "It was hot, so we went to the beach." },

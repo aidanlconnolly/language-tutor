@@ -219,7 +219,7 @@ export const UNIT_CAFE: Unit = {
             { tokens: ["الْحِسَاب", "مِنْ", "فَضْلَك"], en: "The bill, please." },
             { tokens: ["كُلُّه", "كَم", "؟"], en: "How much all together?" },
             { tokens: ["خُد", "الْبَاقِي", "،", "شُكْرًا"], en: "Keep the change, thank you." },
-            { tokens: ["الشَّاي", "بِكَم", "؟"], en: "How much is the tea?" },
+            { tokens: ["الشَّاي", "بِكَم", "؟"], alts: [["بِكَم", "الشَّاي", "؟"]], en: "How much is the tea?" },
           ],
         },
         {

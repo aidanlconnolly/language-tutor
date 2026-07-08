@@ -216,7 +216,7 @@ export const UNIT_SMALLTALK: Unit = {
           heading: "Build the goodbye",
           intro: "Tap the words into order.",
           items: [
-            { tokens: ["نَلْتَقي", "قَريبًا", "إِنْ", "شاءَ", "اللَّه"], en: "We'll meet soon, God willing." },
+            { tokens: ["نَلْتَقي", "قَريبًا", "إِنْ", "شاءَ", "اللَّه"], alts: [["قَريبًا", "نَلْتَقي", "إِنْ", "شاءَ", "اللَّه"]], en: "We'll meet soon, God willing." },
             { tokens: ["مَعَ", "السَّلامَة،", "اللَّه", "يِحْفَظَك"], en: "Goodbye, may God protect you." },
             { tokens: ["شُكْرًا", "عَلى", "الضِّيافَة"], en: "Thank you for the hospitality." },
           ],

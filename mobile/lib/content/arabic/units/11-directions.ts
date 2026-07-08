@@ -125,7 +125,7 @@ export const UNIT_DIRECTIONS: Unit = {
           type: "orderWords",
           heading: "Build the question",
           items: [
-            { tokens: ["لَو", "سَمَحت", "،", "أَينَ", "المَحَطّة", "؟"], en: "Excuse me, where is the station?" },
+            { tokens: ["لَو", "سَمَحت", "،", "أَينَ", "المَحَطّة", "؟"], alts: [["أَينَ", "المَحَطّة", "،", "لَو", "سَمَحت", "؟"]], en: "Excuse me, where is the station?" },
             { tokens: ["كَيفَ", "أَصِلُ", "إلى", "الفُندُق", "؟"], en: "How do I get to the hotel?" },
             { tokens: ["هَل", "هو", "بَعيد", "؟"], en: "Is it far?" },
           ],

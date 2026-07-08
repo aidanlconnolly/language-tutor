@@ -243,7 +243,7 @@ export const UNIT_JAPANESE_FOOD: Unit = {
           items: [
             { tokens: ["チップ", "は", "いりません"], en: "A tip isn't necessary." },
             { tokens: ["ごちそうさま", "でした"], en: "Thank you for the meal." },
-            { tokens: ["はし", "を", "ごはん", "に", "たてないで", "ください"], en: "Please don't stand chopsticks in the rice." },
+            { tokens: ["はし", "を", "ごはん", "に", "たてないで", "ください"], alts: [["ごはん", "に", "はし", "を", "たてないで", "ください"]], en: "Please don't stand chopsticks in the rice." },
           ],
         },
         {

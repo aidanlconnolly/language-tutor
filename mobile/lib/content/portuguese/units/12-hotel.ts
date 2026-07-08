@@ -201,7 +201,7 @@ export const UNIT_HOTEL: Unit = {
             { tokens: ["Eu", "queria", "um", "quarto", "silencioso", ",", "se", "possível"], en: "I'd like a quiet room, if possible." },
             { tokens: ["Quanto", "custa", "a", "diária", "?"], en: "How much is the nightly rate?" },
             { tokens: ["Pode", "me", "dar", "a", "senha", "do", "wifi", "?"], en: "Can you give me the wifi password?" },
-            { tokens: ["A", "que", "horas", "fecha", "a", "recepção", "?"], en: "What time does reception close?" },
+            { tokens: ["A", "que", "horas", "fecha", "a", "recepção", "?"], alts: [["A", "que", "horas", "a", "recepção", "fecha", "?"]], en: "What time does reception close?" },
           ],
         },
       ],

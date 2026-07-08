@@ -266,7 +266,7 @@ export const UNIT_PASSATO_ESSERE: Unit = {
           type: "orderWords",
           heading: "Reconstruct the narration",
           items: [
-            { tokens: ["Ieri", "sono", "andato", "al", "cinema", "con", "Marco"], en: "Yesterday I went to the cinema with Marco." },
+            { tokens: ["Ieri", "sono", "andato", "al", "cinema", "con", "Marco"], alts: [["Ieri", "sono", "andato", "con", "Marco", "al", "cinema"]], en: "Yesterday I went to the cinema with Marco." },
             { tokens: ["Abbiamo", "visto", "un", "film", "francese"], en: "We watched a French film." },
             { tokens: ["Dopo", ",", "siamo", "andati", "a", "mangiare", "una", "pizza"], en: "After, we went to eat a pizza." },
             { tokens: ["Sono", "tornato", "a", "casa", "alle", "undici"], en: "I got home at eleven." },

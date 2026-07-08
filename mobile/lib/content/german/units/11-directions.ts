@@ -260,7 +260,7 @@ export const UNIT_DIRECTIONS: Unit = {
           type: "orderWords",
           heading: "Build the directions",
           items: [
-            { tokens: ["Gehen", "Sie", "geradeaus", "bis", "zur", "Ampel", "."], en: "Go straight on up to the traffic light." },
+            { tokens: ["Gehen", "Sie", "geradeaus", "bis", "zur", "Ampel", "."], alts: [["Gehen", "Sie", "bis", "zur", "Ampel", "geradeaus", "."]], en: "Go straight on up to the traffic light." },
             { tokens: ["Dann", "die", "zweite", "Straße", "rechts", "."], en: "Then the second street on the right." },
             { tokens: ["Überqueren", "Sie", "die", "Straße", "."], en: "Cross the street." },
             { tokens: ["Es", "ist", "fünf", "Minuten", "zu", "Fuß", "."], en: "It's five minutes on foot." },

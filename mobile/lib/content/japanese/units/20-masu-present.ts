@@ -180,7 +180,7 @@ export const UNIT_MASU_PRESENT: Unit = {
             { tokens: ["寿司", "を", "食べます"], en: "I eat sushi." },
             { tokens: ["東京", "に", "行きます"], en: "I go to Tokyo." },
             { tokens: ["お酒", "を", "飲みません"], en: "I don't drink alcohol." },
-            { tokens: ["私", "は", "肉", "を", "食べません"], en: "I don't eat meat." },
+            { tokens: ["私", "は", "肉", "を", "食べません"], alts: [["肉", "を", "私", "は", "食べません"]], en: "I don't eat meat." },
           ],
         },
         {

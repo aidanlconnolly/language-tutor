@@ -135,7 +135,7 @@ export const UNIT_COMPARATIVES: Unit = {
           heading: "Build the comparison",
           intro: "Tap the words into the correct order.",
           items: [
-            { tokens: ["電車", "と", "バス", "と", "どちらが", "速い", "ですか"], en: "Which is faster, the train or the bus?" },
+            { tokens: ["電車", "と", "バス", "と", "どちらが", "速い", "ですか"], alts: [["バス", "と", "電車", "と", "どちらが", "速い", "ですか"]], en: "Which is faster, the train or the bus?" },
             { tokens: ["電車", "の", "ほうが", "速い", "です"], en: "The train is faster." },
             { tokens: ["この", "店", "の", "ほうが", "安い", "です"], en: "This shop is cheaper." },
             { tokens: ["どちらも", "おいしい", "です"], en: "Both are delicious." },

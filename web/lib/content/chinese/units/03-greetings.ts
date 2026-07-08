@@ -192,7 +192,7 @@ export const UNIT_GREETINGS: Unit = {
           items: [
             { tokens: ["你", "叫", "什么", "名字"], en: "What's your name?" },
             { tokens: ["我", "很", "好"], en: "I'm fine." },
-            { tokens: ["认识", "你", "很", "高兴"], en: "Nice to meet you." },
+            { tokens: ["认识", "你", "很", "高兴"], alts: [["很", "高兴", "认识", "你"]], en: "Nice to meet you." },
           ],
         },
         {

@@ -219,9 +219,9 @@ export const UNIT_VERBS_BASIC: Unit = {
           heading: "Time + place + verb",
           intro: "Arrange into Subject + Time + Place + Verb + Object.",
           items: [
-            { tokens: ["我", "明天", "去", "北京"], en: "I'll go to Beijing tomorrow." },
-            { tokens: ["他", "今天", "在", "家", "吃饭"], en: "He eats at home today." },
-            { tokens: ["我们", "下午", "在", "学校", "看", "书"], en: "We read at school in the afternoon." },
+            { tokens: ["我", "明天", "去", "北京"], alts: [["明天", "我", "去", "北京"]], en: "I'll go to Beijing tomorrow." },
+            { tokens: ["他", "今天", "在", "家", "吃饭"], alts: [["今天", "他", "在", "家", "吃饭"]], en: "He eats at home today." },
+            { tokens: ["我们", "下午", "在", "学校", "看", "书"], alts: [["下午", "我们", "在", "学校", "看", "书"]], en: "We read at school in the afternoon." },
           ],
         },
         {

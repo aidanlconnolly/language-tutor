@@ -234,7 +234,7 @@ export const UNIT_PERFEKT_SEIN: Unit = {
           intro: "Arrange the words; helper second, participle last.",
           items: [
             { tokens: ["Ich", "bin", "nach", "Berlin", "gefahren"], en: "I travelled to Berlin." },
-            { tokens: ["Wir", "haben", "im", "Park", "Fußball", "gespielt"], en: "We played football in the park." },
+            { tokens: ["Wir", "haben", "im", "Park", "Fußball", "gespielt"], alts: [["Wir", "haben", "Fußball", "im", "Park", "gespielt"]], en: "We played football in the park." },
             { tokens: ["Sie", "ist", "spät", "nach", "Hause", "gekommen"], en: "She came home late." },
           ],
         },

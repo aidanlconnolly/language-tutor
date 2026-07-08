@@ -145,7 +145,7 @@ export const UNIT_FUTURE: Unit = {
           heading: "Build the plan",
           intro: "Arrange each into a natural future sentence.",
           items: [
-            { tokens: ["غَداً", "سَأَذْهَبُ", "إلى", "المَتْحَف"], en: "Tomorrow I will go to the museum." },
+            { tokens: ["غَداً", "سَأَذْهَبُ", "إلى", "المَتْحَف"], alts: [["سَأَذْهَبُ", "إلى", "المَتْحَف", "غَداً"]], en: "Tomorrow I will go to the museum." },
             { tokens: ["سَوْفَ", "أَزورُ", "الأَهْرام"], en: "I will visit the pyramids." },
             { tokens: ["أُريدُ", "أَنْ", "أُسافِرَ", "إلى", "الأُقْصُر"], en: "I want to travel to Luxor." },
           ],

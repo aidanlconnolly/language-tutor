@@ -234,7 +234,7 @@ export const UNIT_RESTAURANT: Unit = {
           items: [
             { tokens: ["服务员", "，", "买单"], en: "Waiter, the bill please." },
             { tokens: ["一共", "多少", "钱"], en: "How much is it altogether?" },
-            { tokens: ["今天", "我", "请客"], en: "Today it's my treat." },
+            { tokens: ["今天", "我", "请客"], alts: [["我", "今天", "请客"]], en: "Today it's my treat." },
             { tokens: ["可以", "打包", "吗"], en: "Can we box up the leftovers?" },
           ],
         },

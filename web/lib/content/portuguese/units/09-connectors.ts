@@ -90,7 +90,7 @@ export const UNIT_CONNECTORS: Unit = {
             { tokens: ["Sou", "americano", ",", "mas", "moro", "no", "Brasil"], en: "I'm American, but I live in Brazil." },
             { tokens: ["Falo", "inglês", "e", "um", "pouco", "de", "português"], en: "I speak English and a little Portuguese." },
             { tokens: ["Quero", "um", "chá", "ou", "um", "suco"], en: "I'd like a tea or a juice." },
-            { tokens: ["A", "minha", "irmã", "também", "trabalha", "aqui"], en: "My sister also works here." },
+            { tokens: ["A", "minha", "irmã", "também", "trabalha", "aqui"], alts: [["A", "minha", "irmã", "trabalha", "aqui", "também"]], en: "My sister also works here." },
           ],
         },
       ],
