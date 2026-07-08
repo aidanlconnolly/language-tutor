@@ -3,6 +3,9 @@ import { ScrollView, View, Text, TouchableOpacity, StyleSheet } from "react-nati
 import type { OrderWords } from "@/lib/content/types";
 import { C } from "@/lib/theme";
 
+/** Retries allowed before we reveal the answer and let the learner move on. */
+const MAX_ATTEMPTS = 5;
+
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr];
   for (let i = a.length - 1; i > 0; i--) {
@@ -12,19 +15,45 @@ function shuffle<T>(arr: T[]): T[] {
   return a;
 }
 
+/** Join tokens into a display sentence, dropping the space before punctuation. */
+function joinTokens(tokens: string[]): string {
+  return tokens.join(" ").replace(/\s+([,.!?;:])/g, "$1");
+}
+
 export function OrderWordsPage({ page, onNext }: { page: OrderWords; onNext: () => void }) {
   const [current, setCurrent] = useState(0);
   const item = page.items[current];
   const [pool, setPool] = useState<string[]>(() => shuffle(item.tokens));
   const [picked, setPicked] = useState<string[]>([]);
   const [submitted, setSubmitted] = useState(false);
+  const [attempts, setAttempts] = useState(0);
 
-  const isCorrect = submitted && picked.join(" ") === item.tokens.join(" ");
+  const answer = picked.join(" ");
+  const accepted = [item.tokens, ...(item.alts ?? [])].map((seq) => seq.join(" "));
+  const isCorrect = submitted && accepted.includes(answer);
+  // Ran out of retries — reveal the answer and let them move on.
+  const revealed = submitted && !isCorrect && attempts >= MAX_ATTEMPTS;
+  // Wrong, but retries remain.
+  const retryable = submitted && !isCorrect && !revealed;
 
   function reset() {
     const next = current + 1 < page.items.length ? current + 1 : current;
     setCurrent(next);
     setPool(shuffle(page.items[next].tokens));
+    setPicked([]);
+    setSubmitted(false);
+    setAttempts(0);
+  }
+
+  function check() {
+    const correct = accepted.includes(picked.join(" "));
+    if (!correct) setAttempts((a) => a + 1);
+    setSubmitted(true);
+  }
+
+  function tryAgain() {
+    // Back to an empty slate for another attempt (attempt count preserved).
+    setPool(shuffle(item.tokens));
     setPicked([]);
     setSubmitted(false);
   }
@@ -71,13 +100,21 @@ export function OrderWordsPage({ page, onNext }: { page: OrderWords; onNext: () 
 
       {submitted && (
         <Text style={[s.feedback, isCorrect ? s.correct : s.wrong]}>
-          {isCorrect ? "✓ Correct!" : `✗ Correct: ${item.tokens.join(" ")}`}
+          {isCorrect
+            ? "✓ Correct!"
+            : revealed
+              ? `✗ Correct: ${joinTokens(item.tokens)}`
+              : `Not quite — try again. (Attempt ${attempts} of ${MAX_ATTEMPTS})`}
         </Text>
       )}
 
       {!submitted ? (
-        <TouchableOpacity style={[s.btn, picked.length === 0 && s.btnDisabled]} onPress={() => setSubmitted(true)} disabled={picked.length === 0}>
+        <TouchableOpacity style={[s.btn, picked.length === 0 && s.btnDisabled]} onPress={check} disabled={picked.length === 0}>
           <Text style={s.btnText}>Check</Text>
+        </TouchableOpacity>
+      ) : retryable ? (
+        <TouchableOpacity style={s.btn} onPress={tryAgain}>
+          <Text style={s.btnText}>Try again</Text>
         </TouchableOpacity>
       ) : (
         <TouchableOpacity style={s.btn} onPress={() => { if (current + 1 < page.items.length) reset(); else onNext(); }}>
