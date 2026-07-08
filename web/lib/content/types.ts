@@ -91,6 +91,13 @@ export type FillBlank = {
 export type OrderWordsItem = {
   /** All tokens in canonical order; we shuffle for the user */
   tokens: string[];
+  /**
+   * Optional alternate valid orderings (each a full token sequence, same
+   * multiset as `tokens`). Accepted as correct in addition to `tokens` — use
+   * when a sentence has more than one grammatical word order
+   * (e.g. Italian subject–verb vs. verb–subject inversion).
+   */
+  alts?: string[][];
   en: string;
 };
 

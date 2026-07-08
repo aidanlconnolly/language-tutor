@@ -265,7 +265,7 @@ export const UNIT_IMPERFETTO: Unit = {
           type: "orderWords",
           heading: "Build the mixed-tense sentence",
           items: [
-            { tokens: ["Mentre", "leggevo", ",", "è", "squillato", "il", "telefono"], en: "While I was reading, the phone rang." },
+            { tokens: ["Mentre", "leggevo", ",", "è", "squillato", "il", "telefono"], alts: [["Mentre", "leggevo", ",", "il", "telefono", "è", "squillato"]], en: "While I was reading, the phone rang." },
             { tokens: ["Quando", "ero", "piccolo", ",", "abitavo", "a", "New", "York"], en: "When I was little, I lived in New York." },
             { tokens: ["Pioveva", ",", "ma", "siamo", "andati", "al", "parco", "lo", "stesso"], en: "It was raining, but we went to the park anyway." },
             { tokens: ["Faceva", "molto", "freddo", ",", "quindi", "abbiamo", "preso", "un", "taxi"], en: "It was very cold, so we took a taxi." },
