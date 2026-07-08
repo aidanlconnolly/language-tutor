@@ -176,7 +176,7 @@ export const UNIT_NARRATE_TRIP: Unit = {
             { tokens: ["Era", "un", "día", "frío", "de", "enero"], en: "It was a cold January day." },
             { tokens: ["Salí", "temprano", "para", "ir", "al", "trabajo"], en: "I left early to go to work." },
             { tokens: ["Mientras", "esperaba", "el", "autobús", ",", "empezó", "a", "nevar"], en: "While I was waiting for the bus, it started to snow." },
-            { tokens: ["Al", "final", "llegué", "a", "la", "oficina", "empapado"], en: "In the end I arrived at the office soaked." },
+            { tokens: ["Al", "final", "llegué", "a", "la", "oficina", "empapado"], alts: [["Al", "final", "llegué", "empapado", "a", "la", "oficina"]], en: "In the end I arrived at the office soaked." },
           ],
         },
         {

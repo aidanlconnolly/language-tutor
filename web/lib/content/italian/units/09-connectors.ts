@@ -225,7 +225,7 @@ export const UNIT_CONNECTORS: Unit = {
           items: [
             { tokens: ["Prima", "studio", ",", "poi", "esco", "con", "gli", "amici"], en: "First I study, then I go out with friends." },
             { tokens: ["Mi", "piace", "Roma", ",", "però", "è", "molto", "caotica"], en: "I like Rome, but it's very chaotic." },
-            { tokens: ["Marco", "preferisce", "il", "mare", ";", "io", "invece", "preferisco", "la", "montagna"], en: "Marco prefers the sea; I, on the other hand, prefer the mountains." },
+            { tokens: ["Marco", "preferisce", "il", "mare", ";", "io", "invece", "preferisco", "la", "montagna"], alts: [["Marco", "preferisce", "il", "mare", ";", "invece", "io", "preferisco", "la", "montagna"]], en: "Marco prefers the sea; I, on the other hand, prefer the mountains." },
             { tokens: ["Alla", "fine", "abbiamo", "deciso", "di", "restare", "a", "casa"], en: "In the end we decided to stay home." },
           ],
         },

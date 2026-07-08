@@ -297,8 +297,8 @@ export const UNIT_OPINIONS: Unit = {
           heading: "Build the sentence",
           intro: "Tap the words into the correct order.",
           items: [
-            { tokens: ["あした", "あめが", "ふる", "かもしれません"], en: "It might rain tomorrow." },
-            { tokens: ["たぶん", "あさっては", "はれる", "でしょう"], en: "The day after will probably be sunny." },
+            { tokens: ["あした", "あめが", "ふる", "かもしれません"], alts: [["あめが", "あした", "ふる", "かもしれません"]], en: "It might rain tomorrow." },
+            { tokens: ["たぶん", "あさっては", "はれる", "でしょう"], alts: [["あさっては", "たぶん", "はれる", "でしょう"]], en: "The day after will probably be sunny." },
             { tokens: ["つまり", "、", "あさっての", "ほうが", "いいということですね"], en: "So basically, the day after is better, right?" },
           ],
         },

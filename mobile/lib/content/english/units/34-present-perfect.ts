@@ -318,7 +318,7 @@ export const UNIT_PRESENT_PERFECT: Unit = {
           items: [
             { tokens: ["I've", "just", "got", "home"], en: "I've just got home." },
             { tokens: ["Have", "you", "finished", "yet"], en: "Have you finished yet?" },
-            { tokens: ["She's", "already", "left", "the", "office"], en: "She's already left the office." },
+            { tokens: ["She's", "already", "left", "the", "office"], alts: [["She's", "left", "the", "office", "already"]], en: "She's already left the office." },
             { tokens: ["I", "haven't", "eaten", "yet"], en: "I haven't eaten yet." },
           ],
         },

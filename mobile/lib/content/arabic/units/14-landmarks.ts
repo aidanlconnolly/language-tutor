@@ -204,8 +204,8 @@ export const UNIT_LANDMARKS: Unit = {
           type: "orderWords",
           heading: "Describe what you saw",
           items: [
-            { tokens: ["زُرتُ", "الأَهرام", "اليَوم"], en: "I visited the pyramids today." },
-            { tokens: ["رَأَيتُ", "النّيل", "عِندَ", "الغُروب"], en: "I saw the Nile at sunset." },
+            { tokens: ["زُرتُ", "الأَهرام", "اليَوم"], alts: [["اليَوم", "زُرتُ", "الأَهرام"]], en: "I visited the pyramids today." },
+            { tokens: ["رَأَيتُ", "النّيل", "عِندَ", "الغُروب"], alts: [["عِندَ", "الغُروب", "رَأَيتُ", "النّيل"]], en: "I saw the Nile at sunset." },
             { tokens: ["أَعجَبَني", "السّوق", "كَثيراً"], en: "I liked the bazaar a lot." },
           ],
         },

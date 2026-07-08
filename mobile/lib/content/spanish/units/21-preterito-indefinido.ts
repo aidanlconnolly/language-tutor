@@ -422,7 +422,7 @@ export const UNIT_PRETERITO_INDEFINIDO: Unit = {
             { tokens: ["El", "sábado", "fui", "a", "la", "playa"], en: "On Saturday I went to the beach." },
             { tokens: ["Comimos", "en", "un", "restaurante", "del", "puerto"], en: "We ate at a restaurant by the harbor." },
             { tokens: ["De", "repente", "empezó", "a", "llover"], en: "Suddenly it started to rain." },
-            { tokens: ["Volví", "a", "casa", "muy", "cansado"], en: "I came back home very tired." },
+            { tokens: ["Volví", "a", "casa", "muy", "cansado"], alts: [["Volví", "muy", "cansado", "a", "casa"]], en: "I came back home very tired." },
           ],
         },
         {

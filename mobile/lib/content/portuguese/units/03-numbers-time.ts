@@ -204,7 +204,7 @@ export const UNIT_NUMBERS_TIME: Unit = {
           heading: "Put it in order",
           intro: "Drag the words into a natural Portuguese sentence.",
           items: [
-            { tokens: ["a", "que", "horas", "sai", "o", "ônibus"], en: "What time does the bus leave?" },
+            { tokens: ["a", "que", "horas", "sai", "o", "ônibus"], alts: [["a", "que", "horas", "o", "ônibus", "sai"]], en: "What time does the bus leave?" },
             { tokens: ["são", "duas", "e", "meia"], en: "It's half past two." },
             { tokens: ["o", "filme", "é", "às", "oito", "horas"], en: "The film is at eight o'clock." },
           ],

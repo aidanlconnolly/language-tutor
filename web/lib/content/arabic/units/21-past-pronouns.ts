@@ -248,9 +248,9 @@ export const UNIT_PAST_PRONOUNS: Unit = {
           heading: "Order the narrative",
           intro: "Arrange each into a natural past sentence.",
           items: [
-            { tokens: ["أَمْس", "وَصَلْتُ", "إلى", "القاهِرة"], en: "Yesterday I arrived in Cairo." },
+            { tokens: ["أَمْس", "وَصَلْتُ", "إلى", "القاهِرة"], alts: [["وَصَلْتُ", "إلى", "القاهِرة", "أَمْس"]], en: "Yesterday I arrived in Cairo." },
             { tokens: ["ثُمَّ", "ذَهَبْتُ", "إلى", "السوق"], en: "Then I went to the market." },
-            { tokens: ["بَعْدَ", "ذَلِكَ", "أَكَلْنا", "الكُشَري"], en: "After that we ate koshari." },
+            { tokens: ["بَعْدَ", "ذَلِكَ", "أَكَلْنا", "الكُشَري"], alts: [["أَكَلْنا", "الكُشَري", "بَعْدَ", "ذَلِكَ"]], en: "After that we ate koshari." },
           ],
         },
         {

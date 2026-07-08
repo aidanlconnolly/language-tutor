@@ -330,7 +330,7 @@ export const UNIT_DATIVE_CASE: Unit = {
           heading: "Build the sentence",
           intro: "Put the words in the correct order.",
           items: [
-            { tokens: ["Ich", "fahre", "mit", "dem", "Zug", "nach", "Berlin"], en: "I'm travelling to Berlin by train." },
+            { tokens: ["Ich", "fahre", "mit", "dem", "Zug", "nach", "Berlin"], alts: [["Ich", "fahre", "nach", "Berlin", "mit", "dem", "Zug"]], en: "I'm travelling to Berlin by train." },
             { tokens: ["Wir", "wohnen", "bei", "unseren", "Freunden"], en: "We are staying at our friends' place." },
             { tokens: ["Sie", "kommt", "gerade", "von", "der", "Arbeit"], en: "She is just coming from work." },
             { tokens: ["Seit", "einem", "Jahr", "lerne", "ich", "Deutsch"], en: "I've been learning German for a year." },

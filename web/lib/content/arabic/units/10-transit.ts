@@ -224,7 +224,7 @@ export const UNIT_TRANSIT: Unit = {
           type: "orderWords",
           heading: "Build the microbus question",
           items: [
-            { tokens: ["هَل", "يَذهَب", "هذا", "إلى", "الجيزة", "؟"], en: "Does this go to Giza?" },
+            { tokens: ["هَل", "يَذهَب", "هذا", "إلى", "الجيزة", "؟"], alts: [["هَل", "هذا", "يَذهَب", "إلى", "الجيزة", "؟"]], en: "Does this go to Giza?" },
             { tokens: ["كَم", "الأُجرة", "؟"], en: "How much is the fare?" },
             { tokens: ["عَلى", "جَنب", "،", "مِن", "فَضلَك"], en: "Let me off, please." },
           ],

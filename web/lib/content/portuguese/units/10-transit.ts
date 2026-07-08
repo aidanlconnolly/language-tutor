@@ -178,7 +178,7 @@ export const UNIT_TRANSIT: Unit = {
           intro: "Tap the words into the correct order.",
           items: [
             { tokens: ["Eu", "queria", "uma", "recarga", "de", "vinte", "reais"], en: "I'd like a twenty-reais top-up." },
-            { tokens: ["A", "que", "horas", "sai", "o", "próximo", "trem", "?"], en: "What time does the next train leave?" },
+            { tokens: ["A", "que", "horas", "sai", "o", "próximo", "trem", "?"], alts: [["A", "que", "horas", "o", "próximo", "trem", "sai", "?"]], en: "What time does the next train leave?" },
             { tokens: ["Quanto", "custa", "a", "passagem", "de", "ônibus", "?"], en: "How much is the bus fare?" },
             { tokens: ["Posso", "pagar", "com", "cartão", "de", "crédito", "?"], en: "Can I pay with a credit card?" },
           ],

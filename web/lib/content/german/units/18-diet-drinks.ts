@@ -237,7 +237,7 @@ export const UNIT_DIET_DRINKS: Unit = {
             { tokens: ["Eine", "Runde", "Bier", "für", "alle", ",", "bitte"], en: "A round of beer for everyone, please." },
             { tokens: ["Noch", "ein", "Bier", ",", "bitte"], en: "Another beer, please." },
             { tokens: ["Prost", ",", "zusammen", "!"], en: "Cheers, everyone!" },
-            { tokens: ["Wir", "zahlen", "den", "Deckel", "später"], en: "We'll pay the tab later." },
+            { tokens: ["Wir", "zahlen", "den", "Deckel", "später"], alts: [["Wir", "zahlen", "später", "den", "Deckel"]], en: "We'll pay the tab later." },
           ],
         },
         {

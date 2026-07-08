@@ -132,7 +132,7 @@ export const UNIT_THIS_THAT: Unit = {
           items: [
             { tokens: ["すしを", "たべます"], en: "I eat sushi." },
             { tokens: ["コーヒーを", "のみます"], en: "I drink coffee." },
-            { tokens: ["わたしは", "テレビを", "みます"], en: "I watch TV." },
+            { tokens: ["わたしは", "テレビを", "みます"], alts: [["テレビを", "わたしは", "みます"]], en: "I watch TV." },
           ],
         },
         {

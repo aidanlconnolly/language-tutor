@@ -256,8 +256,8 @@ export const UNIT_MASU_PAST: Unit = {
           type: "orderWords",
           heading: "Build the past sentence",
           items: [
-            { tokens: ["きのう", "渋谷", "に", "行きました"], en: "Yesterday I went to Shibuya." },
-            { tokens: ["友達", "と", "ラーメン", "を", "食べました"], en: "I ate ramen with a friend." },
+            { tokens: ["きのう", "渋谷", "に", "行きました"], alts: [["渋谷", "に", "きのう", "行きました"]], en: "Yesterday I went to Shibuya." },
+            { tokens: ["友達", "と", "ラーメン", "を", "食べました"], alts: [["ラーメン", "を", "友達", "と", "食べました"]], en: "I ate ramen with a friend." },
             { tokens: ["どこ", "に", "行きました", "か"], en: "Where did you go?" },
             { tokens: ["お酒", "を", "飲みませんでした"], en: "I didn't drink alcohol." },
           ],

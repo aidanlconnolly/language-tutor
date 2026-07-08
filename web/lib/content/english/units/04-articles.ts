@@ -268,7 +268,7 @@ export const UNIT_ARTICLES: Unit = {
           intro: "Put the words in the correct order.",
           items: [
             { tokens: ["these", "knives", "are", "very", "sharp"], en: "These knives are very sharp." },
-            { tokens: ["there", "are", "two", "children", "in", "the", "garden"], en: "There are two children in the garden." },
+            { tokens: ["there", "are", "two", "children", "in", "the", "garden"], alts: [["in", "the", "garden", "there", "are", "two", "children"]], en: "There are two children in the garden." },
             { tokens: ["those", "are", "my", "shoes"], en: "Those are my shoes." },
           ],
         },

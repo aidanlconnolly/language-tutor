@@ -333,7 +333,7 @@ export const UNIT_LANDMARKS: Unit = {
           intro: "Tap the words into the correct order.",
           items: [
             { tokens: ["Quanto", "custa", "a", "entrada", "?"], en: "How much is admission?" },
-            { tokens: ["Que", "horas", "abre", "o", "museu", "?"], en: "What time does the museum open?" },
+            { tokens: ["Que", "horas", "abre", "o", "museu", "?"], alts: [["Que", "horas", "o", "museu", "abre", "?"]], en: "What time does the museum open?" },
             { tokens: ["Tem", "visita", "guiada", "em", "inglês", "?"], en: "Is there a guided tour in English?" },
             { tokens: ["Uma", "inteira", "e", "uma", "meia", "por", "favor"], en: "One full and one half-price, please." },
           ],

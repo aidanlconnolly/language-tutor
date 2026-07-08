@@ -214,7 +214,7 @@ export const UNIT_EXPRESSIONS: Unit = {
           items: [
             { tokens: ["الْحَمْدُ", "لِلَّه،", "أَنا", "بِخَيْر"], en: "Thank God, I'm well." },
             { tokens: ["ما", "شاءَ", "اللَّه،", "مَبْروك"], en: "Wonderful, congratulations!" },
-            { tokens: ["نَلْتَقي", "غَدًا", "إِنْ", "شاءَ", "اللَّه"], en: "We'll meet tomorrow, God willing." },
+            { tokens: ["نَلْتَقي", "غَدًا", "إِنْ", "شاءَ", "اللَّه"], alts: [["غَدًا", "نَلْتَقي", "إِنْ", "شاءَ", "اللَّه"]], en: "We'll meet tomorrow, God willing." },
             { tokens: ["مَعْلِش،", "مِش", "مُشْكِلَة"], en: "Never mind, it's not a problem." },
           ],
         },
